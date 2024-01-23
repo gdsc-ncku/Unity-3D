@@ -4,7 +4,7 @@ public class CameraMovement : MonoBehaviour
 {
     public bool _lock;
     [SerializeField] GameObject _cameraRoot;
-    [SerializeField] float _mouseSensitivity, _cameraMovingThreshold;
+    [SerializeField] float _mouseSensitivity, _cameraMovingThreshold, _topClamp, _bottomClamp;
     float _mouseXInput, _mouseYInput;
 
     void Update()
@@ -46,8 +46,8 @@ public class CameraMovement : MonoBehaviour
         }
 
         //Limit camera rotation
-        _rotateX = ClampAngle(_rotateX, -70, 70);
-        _rotateY = ClampAngle(_rotateY, -360, 360);
+        _rotateX = ClampAngle(_rotateX, -1 * _topClamp, _bottomClamp);
+        _rotateY = ClampAngle(_rotateY, float.MinValue, float.MaxValue);
 
         //Rotate camera
         _cameraRoot.transform.rotation = Quaternion.Euler(_rotateX, _rotateY, 0);

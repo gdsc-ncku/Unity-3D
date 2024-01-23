@@ -246,6 +246,8 @@ MonoBehaviour:
   _cameraRoot: {fileID: 2123521530}
   _mouseSensitivity: 800
   _cameraMovingThreshold: 0.05
+  _topClamp: 50
+  _bottomClamp: 70
 --- !u!1 &1065046096
 GameObject:
   m_ObjectHideFlags: 0
