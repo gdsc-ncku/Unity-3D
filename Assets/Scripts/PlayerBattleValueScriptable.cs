@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Storage inheritable information
+//Storage battle information
 [CreateAssetMenu(fileName = "Player", menuName = "PlayerInformation/PlayerInheritableInformation", order = 2)]
 public class PlayerBattleValueScriptable : ScriptableObject
 {

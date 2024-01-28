@@ -447,10 +447,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lock: 0
   _cameraRoot: {fileID: 2123521530}
-  _mouseSensitivity: 800
   _cameraMovingThreshold: 0.05
   _topClamp: 50
   _bottomClamp: 70
+  _playerInformation: {fileID: 11400000, guid: 601aa193e1c3ea04d8f3c0c2dc59526e, type: 2}
 --- !u!65 &1316960604
 BoxCollider:
   m_ObjectHideFlags: 0
