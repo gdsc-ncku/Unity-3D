@@ -4,8 +4,15 @@ public class CameraMovement : MonoBehaviour
 {
     public bool _lock;
     [SerializeField] GameObject _cameraRoot;
-    [SerializeField] float _mouseSensitivity, _cameraMovingThreshold, _topClamp, _bottomClamp;
+    [SerializeField] float _cameraMovingThreshold, _topClamp, _bottomClamp;
+    float _mouseSensitivity;
+    [SerializeField] PlayerBasicInformationScriptable _playerInformation;
     float _mouseXInput, _mouseYInput;
+
+    private void Start()
+    {
+        _mouseSensitivity = _playerInformation.MouseSensitivity;
+    }
 
     void Update()
     {
