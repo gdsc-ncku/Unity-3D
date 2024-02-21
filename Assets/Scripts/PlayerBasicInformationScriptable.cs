@@ -3,17 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Storage inheritable information
-[CreateAssetMenu(fileName = "Player", menuName = "PlayerInformation/Player/PlayerBattleInformation", order = 1)]
+[CreateAssetMenu(fileName = "Player", menuName = "PlayerInformation/Player/PlayerBasicInformation", order = 1)]
 public class PlayerBasicInformationScriptable : ScriptableObject
 {
     #region PlayerInformation
-    [Header("BasicBattleValue")]
-    public float Health = 100;
-    public float AttackDamage = 20;
-    public float WalkSpeed = 10;
-    public float AttackSpeed = 10;
-    public float SmallSkillDamage = 50;
-    public float BigSkillDamage = 100;
     [Header("PlayerInformation")]
     public string Name = "Admin";
     public float Level = 1;
@@ -33,6 +26,7 @@ public class PlayerBasicInformationScriptable : ScriptableObject
     public KeyCode WalkBackward = KeyCode.S;
     public KeyCode WalkLeft = KeyCode.A;
     public KeyCode WalkRight = KeyCode.D;
+    public float WalkSpeed = 10;
 
     [Header("Battle Setting")]
     public KeyCode Attack = KeyCode.Mouse0;

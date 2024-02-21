@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b134b4ccaa00969498aae5c3ecc05240, type: 3}
+  m_Script: {fileID: 11500000, guid: 286d038f52148ae40932868b959af281, type: 3}
   m_Name: PlayerBattleInformation
   m_EditorClassIdentifier: 
   Health: 100
@@ -18,21 +18,3 @@ MonoBehaviour:
   AttackSpeed: 10
   SmallSkillDamage: 50
   BigSkillDamage: 100
-  Name: Admin
-  Level: 1
-  Soul: 0
-  width: 1920
-  height: 1080
-  Jump: 32
-  WalkForward: 119
-  WalkBackward: 115
-  WalkLeft: 97
-  WalkRight: 100
-  Attack: 323
-  Aim: 324
-  SmallSkill: 101
-  BigSkill: 114
-  MouseSensitivity: 800
-  MovingMusic: 100
-  EnemyMusic: 100
-  BackgroundMusic: 100
