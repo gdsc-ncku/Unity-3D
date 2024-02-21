@@ -9,12 +9,11 @@ public class PlayerMovement : MonoBehaviour
     public float Speed;  // Movement speed
     public float JumpForce;  // Jump force
     private bool Grounded;  // Whether the player is on the ground
-    public float horizontal = 0f;
-    public float vertical = 0f;
 
     void Start()
     {
         Speed = PlayerMove.WalkSpeed;
+        JumpForce = PlayerMove.JumpForce;
         // Initialize Rigidbody and freeze rotation
         rb = GetComponent<Rigidbody>();
     }
@@ -25,56 +24,50 @@ public class PlayerMovement : MonoBehaviour
         //float horizontal = Input.GetAxis("Horizontal");
         //float vertical = Input.GetAxis("Vertical");
 
-        
+        public float horizontal = 0f;
+        public float vertical = 0f;
 
         if (Input.GetKey(PlayerMove.WalkForward)) {
             vertical = 1f;
         }
-        else if (Input.GetKey(PlayerMove.WalkBackward))
-{
-    vertical = -1f;
-}
-else
-{
-    vertical = 0f;
-}
+        else if(Input.GetKey(PlayerMove.WalkBackward)){
+            vertical = -1f;
+        } else{
+            vertical = 0f;
+        }
 
-if (Input.GetKey(PlayerMove.WalkRight))
-{
-    horizontal = 1f;
-}
-else if (Input.GetKey(PlayerMove.WalkLeft))
-{
-    horizontal = -1f;
-}
-else
-{
-    horizontal = 0f;
-}
+        if (Input.GetKey(PlayerMove.WalkRight)) {
+            horizontal = 1f;
+        }
+        else if(Input.GetKey(PlayerMove.WalkLeft)){
+            horizontal = -1f;
+        } else{
+            horizontal = 0f;
+        }
 
-Vector3 movement = new Vector3(horizontal, 0f, vertical) * Speed * Time.deltaTime;
-transform.Translate(movement);
+        Vector3 movement = new Vector3(horizontal, 0f, vertical) * Speed * Time.deltaTime;
+        transform.Translate(movement);
 
-// Jump
-if (Input.GetKey(PlayerMove.Jump) && Grounded)
-{
-    Jump();
-}
+        // Jump
+        if (Input.GetKey(PlayerMove.Jump) && Grounded)
+        {
+            Jump();
+        }
     }
 
     void Jump()
-{
-    // Reset vertical velocity, apply jump force, and set grounded to false
-    rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-    rb.AddForce(transform.up * JumpForce, ForceMode.Impulse);
-    Grounded = false;
-}
-void OnCollisionEnter(Collision collision)
-{
-    // Check if the player is on the ground by detecting collision with an object tagged as "Ground"
-    if (collision.gameObject.CompareTag("Ground"))
     {
-        Grounded = true;
+        // Reset vertical velocity, apply jump force, and set grounded to false
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        rb.AddForce(transform.up * JumpForce, ForceMode.Impulse);
+        Grounded = false;
     }
-}
+void OnCollisionEnter(Collision collision)
+    {
+        // Check if the player is on the ground by detecting collision with an object tagged as "Ground"
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            Grounded = true;
+        }
+    }
 }
