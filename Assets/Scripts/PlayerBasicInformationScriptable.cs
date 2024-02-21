@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Storage inheritable information
-[CreateAssetMenu(fileName = "Player", menuName = "PlayerInformation/PlayerBattleInformation", order = 1)]
+[CreateAssetMenu(fileName = "Player", menuName = "PlayerInformation/Player/PlayerBattleInformation", order = 1)]
 public class PlayerBasicInformationScriptable : ScriptableObject
 {
     #region PlayerInformation
