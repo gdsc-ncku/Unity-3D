@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Storage battle information
-[CreateAssetMenu(fileName = "Player", menuName = "PlayerInformation/PlayerInheritableInformation", order = 2)]
+[CreateAssetMenu(fileName = "Player", menuName = "PlayerInformation/Player/PlayerInheritableInformation", order = 2)]
 public class PlayerBattleValueScriptable : ScriptableObject
 {
     #region BasicBattleValue
