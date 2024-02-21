@@ -26,8 +26,6 @@ public class PlayerBasicInformationScriptable : ScriptableObject
     public KeyCode WalkBackward = KeyCode.S;
     public KeyCode WalkLeft = KeyCode.A;
     public KeyCode WalkRight = KeyCode.D;
-    public float WalkSpeed = 10;
-    public float JumpForce = 10;
 
     [Header("Battle Setting")]
     public KeyCode Attack = KeyCode.Mouse0;

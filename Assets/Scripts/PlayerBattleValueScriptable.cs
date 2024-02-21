@@ -11,6 +11,7 @@ public class PlayerBattleValueScriptable : ScriptableObject
     public float Health = 100;
     public float AttackDamage = 20;
     public float WalkSpeed = 10;
+    public float JumpForce = 10;
     public float AttackSpeed = 10;
     public float SmallSkillDamage = 50;
     public float BigSkillDamage = 100;
