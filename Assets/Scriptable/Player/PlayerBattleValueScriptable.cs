@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Storage battle information
-[CreateAssetMenu(fileName = "Player", menuName = "PlayerInformation/Player/PlayerBattleInformation", order = 2)]
+[CreateAssetMenu(fileName = "PlayerBattleInformation", menuName = "PlayerInformation/Player/PlayerBattleInformation", order = 2)]
 public class PlayerBattleValueScriptable : ScriptableObject
 {
     #region BasicBattleValue
@@ -11,7 +11,7 @@ public class PlayerBattleValueScriptable : ScriptableObject
     public float Health = 100;
     public float AttackDamage = 20;
     public float WalkSpeed = 10;
-    public float AttackSpeed = 10;
+    public float AttackSpeed = 2;
     public float SmallSkillDamage = 50;
     public float BigSkillDamage = 100;
     #endregion
