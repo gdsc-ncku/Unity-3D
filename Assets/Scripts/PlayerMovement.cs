@@ -5,15 +5,18 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private PlayerBasicInformationScriptable PlayerMove;
+    [SerializeField] private PlayerBattleValueScriptable MovementConst;
     private Rigidbody rb;
-    public float Speed;  // Movement speed
-    public float JumpForce;  // Jump force
+    float Speed;  // Movement speed
+    float JumpForce;  // Jump force
     private bool Grounded;  // Whether the player is on the ground
+    float horizontal = 0f;
+    float vertical = 0f;
 
     void Start()
     {
-        Speed = PlayerMove.WalkSpeed;
-        JumpForce = PlayerMove.JumpForce;
+        Speed = MovementConst.WalkSpeed;
+        JumpForce = MovementConst.JumpForce;
         // Initialize Rigidbody and freeze rotation
         rb = GetComponent<Rigidbody>();
     }
@@ -23,9 +26,6 @@ public class PlayerMovement : MonoBehaviour
         // Get keyboard input and move
         //float horizontal = Input.GetAxis("Horizontal");
         //float vertical = Input.GetAxis("Vertical");
-
-        public float horizontal = 0f;
-        public float vertical = 0f;
 
         if (Input.GetKey(PlayerMove.WalkForward)) {
             vertical = 1f;
