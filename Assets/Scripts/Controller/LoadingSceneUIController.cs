@@ -21,6 +21,7 @@ public class LoadingSceneUIController : MonoBehaviour
         
     }
 
+    //Add listener event in OnEnable and remove in OnDisable and OnDestroy to avoid memory leak
     private void OnEnable()
     {
         gameStatus.loadingSceneHandleChange.AddListener(HandleLoadingEvent);
@@ -36,6 +37,7 @@ public class LoadingSceneUIController : MonoBehaviour
         gameStatus.loadingSceneHandleChange.RemoveListener(HandleLoadingEvent);
     }
 
+    //If event happen excute the function which using IEnumerator to excute function async
     void HandleLoadingEvent(AsyncOperationHandle handle)
     {
         StartCoroutine(DisplayLoadingBar(handle));
@@ -43,6 +45,7 @@ public class LoadingSceneUIController : MonoBehaviour
 
     IEnumerator DisplayLoadingBar(AsyncOperationHandle handle)
     {
+        //handle is loading scene, if its isValid then close this function or its enter the "while" that can update the loading bar 
         if(!handle.IsValid())
             yield break;
 

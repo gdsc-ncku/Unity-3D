@@ -28,6 +28,7 @@ public class InitializationLoader : MonoBehaviour
             gameStatus.LoadingSceneHandle.Completed += (Handle) => 
             {
                 SceneManager.UnloadSceneAsync(0);
+                //Release handle to avoid memory leak 
                 Addressables.Release(gameStatus.LoadingSceneHandle);
             };
         }
