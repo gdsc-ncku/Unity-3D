@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec55489e788a8764caee366e2ca02cd9, type: 3}
   m_Name: GameStatus
   m_EditorClassIdentifier: 
+  commonFont: {fileID: 11400000, guid: f626ad39c31de8d41908d0496e1ae42b, type: 2}
+  loadingSceneHandleChange:
+    m_PersistentCalls:
+      m_Calls: []
   nowStatus: 0
   catchData: 0
