@@ -18,6 +18,7 @@ public class PlayerBattleValueScriptable : ScriptableObject
     public float Magic = 300;
     public float AttackDamage = 20;
     public float WalkSpeed = 10;
+    public float JumpForce = 10;
     public float AttackSpeed = 2;
     public float ReloadingSpeed = 2;
     public float SmallSkillDamage = 50;
