@@ -56,9 +56,16 @@ public class LoadingSceneUIController : MonoBehaviour
             yield return null;
         }
 
+        //Wait for DataManager catch the player data
+        while (!gameStatus.CatchData)
+        {
+            yield return null;
+        }
+
         //When handle is done, handle.PercentComplete = 1 but it won't enter the "while", thus we need set it to 1;
         yield return new WaitForSeconds(0.5f);
         uiManager.slider.value = 1;
+        //Disable loading UI
         yield return new WaitForSeconds(1f);
         uiManager.loadingUI.enabled = false;
         uiManager.slider.value = 0;
