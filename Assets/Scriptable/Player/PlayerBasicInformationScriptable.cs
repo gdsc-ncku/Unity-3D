@@ -15,8 +15,8 @@ public class PlayerBasicInformationScriptable : ScriptableObject
 
     #region ScreenResolution
     [Header("ScreenResolution")]
-    public float width = 1920;
-    public float height = 1080;
+    public float Width = 1920;
+    public float Height = 1080;
     #endregion
 
     #region ButtonSetting
@@ -30,8 +30,8 @@ public class PlayerBasicInformationScriptable : ScriptableObject
     [Header("Battle Setting")]
     public KeyCode Attack = KeyCode.Mouse0;
     public KeyCode Aim = KeyCode.Mouse1;
-    public KeyCode SmallSkill = KeyCode.E;
-    public KeyCode BigSkill = KeyCode.R;
+    public KeyCode E_Skill = KeyCode.E;
+    public KeyCode Q_Skill = KeyCode.Q;
     #endregion
 
     #region MouseSensitivity
@@ -44,5 +44,18 @@ public class PlayerBasicInformationScriptable : ScriptableObject
     public float MovingMusic = 100;
     public float EnemyMusic = 100;
     public float BackgroundMusic = 100;
+    #endregion
+
+    #region Character
+    public LawStudent Law;
+    #endregion
+
+    #region Talent
+    public float HealthRate = 1;
+    public float AttackRate = 1;
+    public float WalkSpeedRate = 1;
+    public float AttackSpeedRate = 1;
+    public float Q_SkillDamageRate = 1;
+    public float E_SkillDamageRate = 1;
     #endregion
 }

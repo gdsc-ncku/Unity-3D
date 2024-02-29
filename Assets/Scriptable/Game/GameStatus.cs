@@ -47,4 +47,10 @@ public class GameStatus : ScriptableObject
         }
     }
     #endregion
+
+    public void ExitGame()
+    {
+        PlayerPrefs.Save();
+        Application.Quit();
+    }
 }

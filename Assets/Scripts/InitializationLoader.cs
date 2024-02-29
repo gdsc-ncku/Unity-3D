@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -7,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class InitializationLoader : MonoBehaviour
 {
-    [SerializeField] AssetReferenceT<SceneAsset> InitializationScene, PersistenceScene, LoadingScene;
+    [SerializeField] AssetReferenceT<SceneAsset> PersistenceScene, LoadingScene;
     [SerializeField] GameStatus gameStatus;
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,7 @@ public class InitializationLoader : MonoBehaviour
             gameStatus.LoadingSceneHandle = Addressables.LoadSceneAsync(PersistenceScene, LoadSceneMode.Additive);
             gameStatus.LoadingSceneHandle.Completed += (Handle) => 
             {
-                SceneManager.UnloadSceneAsync(0);
+                StartCoroutine(WaitForCatachData());
                 //Release handle to avoid memory leak 
                 Addressables.Release(gameStatus.LoadingSceneHandle);
             };
@@ -39,5 +40,14 @@ public class InitializationLoader : MonoBehaviour
 
         //Release handle to avoid memory leak 
         Addressables.Release(asyncOperationHandle);
+    }
+
+    IEnumerator WaitForCatachData()
+    {
+        //Wait CatchData = true
+        yield return new WaitUntil(() => gameStatus.CatchData);
+
+        //Unloading InitializationScene when CatchData = true
+        SceneManager.UnloadSceneAsync(0);
     }
 }
