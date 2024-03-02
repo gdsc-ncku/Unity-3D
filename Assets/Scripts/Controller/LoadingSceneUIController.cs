@@ -1,14 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class LoadingSceneUIController : MonoBehaviour
 {
     [SerializeField] GameStatus gameStatus;
     [SerializeField] LoadingSceneUIManager uiManager;
+    [SerializeField] Camera camera;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +47,7 @@ public class LoadingSceneUIController : MonoBehaviour
         if(!handle.IsValid())
             yield break;
 
+        camera.enabled = true;
         uiManager.loadingUI.enabled = true;
         while (!handle.IsDone)
         {
@@ -67,6 +66,7 @@ public class LoadingSceneUIController : MonoBehaviour
         uiManager.slider.value = 1;
         //Disable loading UI
         yield return new WaitForSeconds(1f);
+        camera.enabled = false;
         uiManager.loadingUI.enabled = false;
         uiManager.slider.value = 0;
     }

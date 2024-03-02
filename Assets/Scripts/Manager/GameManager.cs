@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
@@ -24,5 +22,10 @@ public class GameManager : MonoBehaviour
     IEnumerator WaitForLoadingMainScene()
     {
         yield return new WaitUntil(() => gameStatus.CatchData);
+        gameStatus.LoadingSceneHandle = Addressables.LoadSceneAsync(mainScene, LoadSceneMode.Additive);
+        gameStatus.LoadingSceneHandle.Completed += (Handle) =>
+        {
+            Addressables.Release(gameStatus.LoadingSceneHandle);
+        };
     }
 }
