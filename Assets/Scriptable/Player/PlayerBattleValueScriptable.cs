@@ -21,10 +21,10 @@ public class PlayerBattleValueScriptable : ScriptableObject
     public float JumpForce = 10;
     public float AttackSpeed = 2;
     public float ReloadingSpeed = 2;
-    public float SmallSkillDamage = 50;
-    public ParticleSystem smallSkill = null;
-    public float BigSkillDamage = 100;
-    public ParticleSystem bigSkill = null;
+    public float Q_SkillDamage = 50;
+    public ParticleSystem Q_Skill = null;
+    public float E_SkillDamage = 100;
+    public ParticleSystem E_Skill = null;
     #endregion
 
     #region Scroll

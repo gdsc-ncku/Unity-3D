@@ -1,14 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class LoadingSceneUIController : MonoBehaviour
 {
     [SerializeField] GameStatus gameStatus;
     [SerializeField] LoadingSceneUIManager uiManager;
+    [SerializeField] Camera camera;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +47,7 @@ public class LoadingSceneUIController : MonoBehaviour
         if(!handle.IsValid())
             yield break;
 
+        camera.enabled = true;
         uiManager.loadingUI.enabled = true;
         while (!handle.IsDone)
         {
@@ -56,10 +55,18 @@ public class LoadingSceneUIController : MonoBehaviour
             yield return null;
         }
 
+        //Wait for DataManager catch the player data
+        while (!gameStatus.CatchData)
+        {
+            yield return null;
+        }
+
         //When handle is done, handle.PercentComplete = 1 but it won't enter the "while", thus we need set it to 1;
         yield return new WaitForSeconds(0.5f);
         uiManager.slider.value = 1;
+        //Disable loading UI
         yield return new WaitForSeconds(1f);
+        camera.enabled = false;
         uiManager.loadingUI.enabled = false;
         uiManager.slider.value = 0;
     }

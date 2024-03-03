@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
@@ -12,16 +10,22 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(WaitForLoadingMainScene());
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Unfinish
-        if(Input.GetKeyUp(KeyCode.T))
+        
+    }
+
+    IEnumerator WaitForLoadingMainScene()
+    {
+        yield return new WaitUntil(() => gameStatus.CatchData);
+        gameStatus.LoadingSceneHandle = Addressables.LoadSceneAsync(mainScene, LoadSceneMode.Additive);
+        gameStatus.LoadingSceneHandle.Completed += (Handle) =>
         {
-            gameStatus.LoadingSceneHandle = Addressables.LoadSceneAsync(mainScene, LoadSceneMode.Additive);
-        }
+            Addressables.Release(gameStatus.LoadingSceneHandle);
+        };
     }
 }

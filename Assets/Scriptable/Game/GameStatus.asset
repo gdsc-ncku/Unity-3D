@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: GameStatus
   m_EditorClassIdentifier: 
   commonFont: {fileID: 11400000, guid: f626ad39c31de8d41908d0496e1ae42b, type: 2}
+  nowStatus: 0
+  _catach: 1
+  catachDataSuccess:
+    m_PersistentCalls:
+      m_Calls: []
   loadingSceneHandleChange:
     m_PersistentCalls:
       m_Calls: []
-  nowStatus: 0
-  catchData: 0
