@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class CameraMovement : MonoBehaviour
-{
+public class CameraMovement : MonoBehaviour {
     public bool _lock;
     [SerializeField] GameObject _cameraRoot;
     [SerializeField] float _cameraMovingThreshold, _topClamp, _bottomClamp;
@@ -59,6 +58,7 @@ public class CameraMovement : MonoBehaviour
 
         //Rotate camera
         _cameraRoot.transform.rotation = Quaternion.Euler(_rotateX, _rotateY, 0);
+
     }
 
     float ClampAngle(float Angle, float Min, float Max)
