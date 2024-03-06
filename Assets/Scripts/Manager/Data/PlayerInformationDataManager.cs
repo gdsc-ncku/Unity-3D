@@ -1,0 +1,22 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+
+public class PlayerInformationDataManager : BasicDataManager
+{
+    void Start()
+    {
+        StartCoroutine(WaitForDataManager());
+    }
+
+    IEnumerator WaitForDataManager()
+    {
+        yield return new WaitUntil(() => dataManager.initData);
+        playerBasicInformation.Name = PlayerPrefs.GetString("Name");
+        playerBasicInformation.Level = PlayerPrefs.GetInt("Level");
+        playerBasicInformation.Soul = PlayerPrefs.GetInt("Soul");
+
+        Catched.Invoke(true);
+    }
+}
