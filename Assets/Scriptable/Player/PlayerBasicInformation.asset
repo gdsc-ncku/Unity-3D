@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b134b4ccaa00969498aae5c3ecc05240, type: 3}
+  m_Name: PlayerBasicInformation
+  m_EditorClassIdentifier: 
+  Name: Admin
+  Level: 1
+  Soul: 0
+  Width: 1920
+  Height: 1080
+  Jump: 32
+  WalkForward: 119
+  WalkBackward: 115
+  WalkLeft: 97
+  WalkRight: 100
+  Attack: 323
+  Aim: 324
+  E_Skill: 101
+  Q_Skill: 113
+  MouseSensitivity: 800
+  MovingMusic: 100
+  EnemyMusic: 100
+  BackgroundMusic: 100
+  Law: {fileID: 11400000, guid: d2600dd773fa00b45a09a3270bb931fe, type: 2}
+  HealthRate: 1
+  AttackRate: 1
+  WalkSpeedRate: 1
+  AttackSpeedRate: 1
+  Q_SkillDamageRate: 1
+  E_SkillDamageRate: 1

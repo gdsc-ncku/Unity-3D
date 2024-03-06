@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881b3793c4783e3499c7b7fc06410c53, type: 3}
+  m_Name: LawStudent
+  m_EditorClassIdentifier: 
+  Unlocked: 1
+  Health: 1200
+  Magic: 300
+  MagicReply: 10
+  AttackDamage: 300
+  WalkSpeed: 7
+  AttackSpeed: 0.25
+  Q_SkillDamage: 300
+  Q_Skill: {fileID: 0}
+  E_SkillDamage: 200
+  E_Skill: {fileID: 0}
+  Q_MagicConsumption: 1
+  Q_DamageRate: 1
+  Q_SkillRange: 1
+  E_MagicConsumption: 1
+  E_DamageRate: 1
+  E_SkillRange: 1

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec55489e788a8764caee366e2ca02cd9, type: 3}
+  m_Name: GameStatus
+  m_EditorClassIdentifier: 
+  commonFont: {fileID: 11400000, guid: f626ad39c31de8d41908d0496e1ae42b, type: 2}
+  nowStatus: 0
+  _catach: 1
+  catachDataSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  loadingSceneHandleChange:
+    m_PersistentCalls:
+      m_Calls: []
