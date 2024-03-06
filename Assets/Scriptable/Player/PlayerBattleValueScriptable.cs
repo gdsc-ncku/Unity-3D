@@ -14,9 +14,9 @@ public class PlayerBattleValueScriptable : ScriptableObject
     #region BasicBattleValue
     [Header("BasicBattleValue")]
     public Character Role = Character.Law;
-    public float Health = 100;
+    public float Health = 1200;
     public float Magic = 300;
-    public float AttackDamage = 20;
+    public float AttackDamage = 300;
     public float WalkSpeed = 10;
     public float JumpForce = 10;
     public float AttackSpeed = 2;
