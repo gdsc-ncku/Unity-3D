@@ -6,7 +6,7 @@ public class LoadingSceneUIController : MonoBehaviour
 {
     [SerializeField] GameStatus gameStatus;
     [SerializeField] LoadingSceneUIManager uiManager;
-    [SerializeField] Camera camera;
+    [SerializeField] new Camera camera;
     // Start is called before the first frame update
     void Start()
     {
