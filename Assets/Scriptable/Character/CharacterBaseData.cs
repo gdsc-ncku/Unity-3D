@@ -10,6 +10,7 @@ public class CharacterBaseData : ScriptableObject
     public float MagicReply;
     public float AttackDamage;
     public float WalkSpeed;
+    public float JumpForce = 10;
     public float AttackSpeed;
     public float Q_SkillDamage;
     public ParticleSystem Q_Skill;
@@ -30,4 +31,13 @@ public class CharacterBaseData : ScriptableObject
     public float E_DamageRate = 1;
     public float E_SkillRange = 1;
     #endregion
+    public void UseingQ_Skill()
+    {
+
+    }
+
+    public void UseingE_Skill()
+    {
+
+    }
 }

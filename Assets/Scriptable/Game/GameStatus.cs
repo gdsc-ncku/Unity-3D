@@ -10,9 +10,15 @@ public enum gameStatus
     Ended
 }
 
+public enum Character
+{
+    Law
+}
+
 [CreateAssetMenu(fileName = "GameStatus", menuName = "PlayerInformation/Game/GameStatus", order = 1)]
 public class GameStatus : ScriptableObject
 {
+    public CharacterBaseData []Roles = {};
     public TMP_FontAsset commonFont;
     public gameStatus nowStatus = gameStatus.Active;
     #region Listen Event Setting
