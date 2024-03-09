@@ -7,7 +7,7 @@ using UnityEngine;
 public class WeaponData : ScriptableObject
 {
     public float attackMultiplier = 1;
-    public double attackSpeedMultiplier = 0.1;
+    public float attackSpeedMultiplier = 0.1f;
     // public float reloadSpeedMultiplier = 1;
     // public float criticalHitMultiplier = 0;
 }
