@@ -61,11 +61,8 @@ public class LoadingSceneUIController : MonoBehaviour
             yield return null;
         }
 
-        //When handle is done, handle.PercentComplete = 1 but it won't enter the "while", thus we need set it to 1;
-        yield return new WaitForSeconds(0.5f);
+        //When handle is done, handle.PercentComplete = 1 but it won't enter the "while", thus we need set it to 1
         uiManager.slider.value = 1;
-        //Disable loading UI
-        yield return new WaitForSeconds(1f);
         camera.enabled = false;
         uiManager.loadingUI.enabled = false;
         uiManager.slider.value = 0;
