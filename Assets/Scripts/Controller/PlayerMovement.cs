@@ -13,8 +13,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        Speed = MovementConst.WalkSpeed;
-        JumpForce = MovementConst.JumpForce;
+        Speed = MovementConst.Role.WalkSpeed;
+        JumpForce = MovementConst.Role.JumpForce;
         // Initialize Rigidbody and freeze rotation
         rb = GetComponent<Rigidbody>();
     }

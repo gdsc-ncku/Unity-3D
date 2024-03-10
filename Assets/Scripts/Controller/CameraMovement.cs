@@ -56,8 +56,8 @@ public class CameraMovement : MonoBehaviour {
         _rotateY = ClampAngle(_rotateY, float.MinValue, float.MaxValue);
 
         //Rotate camera
-        _cameraRoot.transform.rotation = Quaternion.Euler(_rotateX, _rotateY, 0);
-
+        transform.root.rotation = Quaternion.Euler(0, _rotateY, 0);
+        _cameraRoot.transform.localRotation = Quaternion.Euler(_rotateX, 0, 0);
     }
 
     float ClampAngle(float Angle, float Min, float Max)

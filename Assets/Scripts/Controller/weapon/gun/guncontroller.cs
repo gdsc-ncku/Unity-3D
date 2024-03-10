@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,7 @@ public class guncontroller : MonoBehaviour
     //子彈
     public GameObject bulletPre;
     //計時器
-    private float timer =0;
+    private bool shooting = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,10 +24,17 @@ public class guncontroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer+= Time.deltaTime;
-        if (timer>gun.attackSpeedMultiplier && Input.GetMouseButton(0)) {
-            timer =0;
-            Instantiate(bulletPre,shotpoint.position,shotpoint.rotation);
+        if (Input.GetMouseButton(0) && !shooting) {
+            shooting = true;
+            StartCoroutine(Shoot());
+            
         }
+    }
+
+    IEnumerator Shoot()
+    {
+        yield return new WaitForSeconds(gun.attackSpeedMultiplier);
+        Instantiate(bulletPre, shotpoint.position, shotpoint.rotation);
+        shooting = false;
     }
 }

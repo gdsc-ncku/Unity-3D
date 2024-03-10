@@ -11,12 +11,12 @@ public class LawStudent : CharacterBaseData
     #endregion
 
     //Hero skills effect need to write in the functions below.
-    public void UseingQ_Skill()
+    public new void UseingQ_Skill()
     {
         
     }
 
-    public void UseingE_Skill()
+    public new void UseingE_Skill()
     {
 
     }
