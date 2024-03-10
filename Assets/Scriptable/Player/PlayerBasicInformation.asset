@@ -26,7 +26,8 @@ MonoBehaviour:
   Aim: 324
   E_Skill: 101
   Q_Skill: 113
-  MouseSensitivity: 800
+  PickUp: 114
+  MouseSensitivity: 400
   MovingMusic: 100
   EnemyMusic: 100
   BackgroundMusic: 100

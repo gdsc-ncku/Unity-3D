@@ -14,6 +14,7 @@ public class guncontroller : MonoBehaviour
     public GameObject bulletPre;
     //計時器
     private bool shooting = false;
+    [SerializeField] Vector3 offset = new(0, 0, 0);
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,6 @@ public class guncontroller : MonoBehaviour
         if (Input.GetMouseButton(0) && !shooting) {
             shooting = true;
             StartCoroutine(Shoot());
-            
         }
     }
 

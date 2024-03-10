@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour {
     public bool _lock;
-    [SerializeField] GameObject _cameraRoot;
+    [SerializeField] GameObject _cameraRoot, _gun;
     [SerializeField] float _cameraMovingThreshold, _topClamp, _bottomClamp;
     float _mouseSensitivity;
     [SerializeField] PlayerBasicInformationScriptable _playerInformation;
