@@ -44,8 +44,7 @@ public class CameraMovement : MonoBehaviour {
             _rotateX -= 360;
         else if (_rotateX < -180)
             _rotateX += 360;
-
-        //Detect whether camera open and input >= threshold
+//Detect whether camera open and input >= threshold
         if (!_lock && (Mathf.Abs(_mouseXInput) >= _cameraMovingThreshold || Mathf.Abs(_mouseYInput) >= _cameraMovingThreshold))
         {
             _rotateX -= _mouseYInput * _mouseSensitivity * Time.deltaTime;

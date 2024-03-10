@@ -32,6 +32,7 @@ public class PlayerBasicInformationScriptable : ScriptableObject
     public KeyCode Aim = KeyCode.Mouse1;
     public KeyCode E_Skill = KeyCode.E;
     public KeyCode Q_Skill = KeyCode.Q;
+    public KeyCode PickUp = KeyCode.R;
     #endregion
 
     #region MouseSensitivity
