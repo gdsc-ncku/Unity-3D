@@ -13,6 +13,4 @@ MonoBehaviour:
   m_Name: gun_click
   m_EditorClassIdentifier: 
   attackMultiplier: 1
-  attackSpeedMultiplier: 1
-  reloadSpeedMultiplier: 1
-  criticalHitMultiplier: 0
+  attackSpeedMultiplier: 0.2

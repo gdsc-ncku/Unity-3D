@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,32 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &132531136 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6348570173072020005, guid: b9023535df6d76a45ac8b9a88b75b508, type: 3}
+  m_PrefabInstance: {fileID: 7555309596154714759}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &132531140
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132531136}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 70e17133e72613542b9272123e35ce36, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1329909867
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,18 +415,18 @@ PrefabInstance:
     - target: {fileID: 2522619374925780810, guid: b9023535df6d76a45ac8b9a88b75b508, type: 3}
       propertyPath: gun
       value: 
-      objectReference: {fileID: 11400000, guid: 59e32dec094dc674d9959fa141e82ba6, type: 2}
+      objectReference: {fileID: 11400000, guid: 1aeb17e8b0846fe458a8387d98375342, type: 2}
     - target: {fileID: 6416515883460382839, guid: b9023535df6d76a45ac8b9a88b75b508, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.7
+      value: 3.4
       objectReference: {fileID: 0}
     - target: {fileID: 6416515883460382839, guid: b9023535df6d76a45ac8b9a88b75b508, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1712652
+      value: 0.94
       objectReference: {fileID: 0}
     - target: {fileID: 6416515883460382839, guid: b9023535df6d76a45ac8b9a88b75b508, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.18
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 6416515883460382839, guid: b9023535df6d76a45ac8b9a88b75b508, type: 3}
       propertyPath: m_LocalRotation.w
@@ -434,10 +460,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gun
       objectReference: {fileID: 0}
+    - target: {fileID: 6645870067674494817, guid: b9023535df6d76a45ac8b9a88b75b508, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6348570173072020005, guid: b9023535df6d76a45ac8b9a88b75b508, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 132531140}
   m_SourcePrefab: {fileID: 100100000, guid: b9023535df6d76a45ac8b9a88b75b508, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
