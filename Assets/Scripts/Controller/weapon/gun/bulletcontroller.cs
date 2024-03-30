@@ -11,6 +11,8 @@ public class bulletcontroller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        Invoke("displayBullet", 0.05f);
         GetComponent<Rigidbody>().AddForce(transform.forward*8000);
     }
     private void OnCollisionEnter(Collision collision)
@@ -22,5 +24,10 @@ public class bulletcontroller : MonoBehaviour
     void Update()
     {
         Destroy(gameObject,downtime);
+    }
+
+    private void displayBullet()
+    {
+        gameObject.GetComponent<MeshRenderer>().enabled = true;
     }
 }
