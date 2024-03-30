@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private PlayerBattleValueScriptable MovementConst;
     private Rigidbody rb;
     float Speed;  // Movement speed
-    private bool Grounded = true;  // Whether the player is on the ground
+    private bool Grounded = true, isJumping = false;  // Whether the player is on the ground
     float horizontal = 0f;
     float vertical = 0f;
 
@@ -40,9 +40,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Jump
-        if (Input.GetKeyDown(PlayerMove.Jump) && Grounded)
+        if (Input.GetKeyDown(PlayerMove.Jump) && Grounded && !isJumping)
         {
             Grounded = false;
+            rb.useGravity = false;
             StartCoroutine(Jump());
         }
 
@@ -52,6 +53,8 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator Jump()
     {
+        isJumping = true;
+
         float jumpSpeed = MovementConst.Role.JumpSpeed;
         float targetHeight = transform.position.y + MovementConst.Role.JumpHigh;
         while (transform.position.y < targetHeight)
@@ -60,12 +63,8 @@ public class PlayerMovement : MonoBehaviour
             yield return null;
         }
 
-        while (transform.position.y > targetHeight - MovementConst.Role.JumpHigh)
-        {
-            transform.position -= Vector3.up * jumpSpeed * Time.deltaTime;
-            yield return null;
-        }
-
+        rb.useGravity = true;
+        isJumping = false;
         Grounded = true;
     }
 }
