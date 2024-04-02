@@ -1,16 +1,28 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private PlayerBasicInformationScriptable PlayerMove;
     [SerializeField] private PlayerBattleValueScriptable MovementConst;
+    [SerializeField] private GameObject GroundDetector;
     private Rigidbody rb;
     float Speed;  // Movement speed
     private bool Grounded = true, isJumping = false;  // Whether the player is on the ground
-    float horizontal = 0f;
-    float vertical = 0f;
+    PlayerControl playerControl;
+    private void Awake()
+    {
+        playerControl = new PlayerControl();
+        playerControl.Player.Enable();
+        playerControl.Player.Jump.performed += Jumping;
+    }
+
+    private void OnDisable()
+    {
+        playerControl.Player.Disable();
+    }
 
     void Start()
     {
@@ -19,51 +31,52 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    private void Update()
     {
-        if (Input.GetKey(PlayerMove.WalkForward)) {
-            vertical = 1f;
-        }
-        else if(Input.GetKey(PlayerMove.WalkBackward)){
-            vertical = -1f;
-        } else{
-            vertical = 0f;
-        }
+        SpeedLimit();
+    }
 
-        if (Input.GetKey(PlayerMove.WalkRight)) {
-            horizontal = 1f;
-        }
-        else if(Input.GetKey(PlayerMove.WalkLeft)){
-            horizontal = -1f;
-        } else{
-            horizontal = 0f;
-        }
+    void FixedUpdate()
+    {
+        //Moving
+        Vector2 inputVector = playerControl.Player.Move.ReadValue<Vector2>();
+        Vector3 moveDirection = rb.transform.forward * inputVector.y + rb.transform.right * inputVector.x;
+        rb.AddForce(moveDirection.normalized * Speed * 5f, ForceMode.Force);
+    }
 
-        // Jump
-        if (Input.GetKeyDown(PlayerMove.Jump) && Grounded && !isJumping)
+    // Jump
+    void Jumping(InputAction.CallbackContext context)
+    {
+        if (Grounded && !isJumping)
         {
-            Grounded = false;
-            rb.useGravity = false;
             StartCoroutine(Jump());
         }
+    }
 
-        Vector3 movement = new Vector3(horizontal, 0f, vertical) * Speed * Time.deltaTime;
-        transform.Translate(movement);
+    void SpeedLimit()
+    {
+        Vector3 Vel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        if(Vel.magnitude > Speed)
+        {
+            Vector3 limitedVel = Vel.normalized * Speed;
+            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+        }
     }
 
     IEnumerator Jump()
     {
         isJumping = true;
+        Grounded = false;
 
-        float jumpSpeed = MovementConst.Role.JumpSpeed;
-        float targetHeight = transform.position.y + MovementConst.Role.JumpHigh;
-        while (transform.position.y < targetHeight)
+        float jumpForce = MovementConst.Role.JumpForce;
+        rb.AddForce(gameObject.transform.up * jumpForce, ForceMode.Impulse);
+
+        RaycastHit hit;
+        while(!Physics.Raycast(GroundDetector.transform.position, GroundDetector.transform.up * -1, out hit, 0.1f))
         {
-            transform.position += Vector3.up * jumpSpeed * Time.deltaTime;
             yield return null;
         }
 
-        rb.useGravity = true;
         isJumping = false;
         Grounded = true;
     }

@@ -1,6 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
+[Serializable]
+public class KeyCodeToImage
+{
+    public KeyCode key;
+    public Sprite image;
+}
 
 //Storage inheritable information
 [CreateAssetMenu(fileName = "PlayerBasicInformation", menuName = "PlayerInformation/Player/PlayerBasicInformation", order = 1)]
@@ -20,19 +29,109 @@ public class PlayerBasicInformationScriptable : ScriptableObject
     #endregion
 
     #region ButtonSetting
+    public List<KeyCodeToImage> keyboard = new();
+
     [Header("Move Setting")]
-    public KeyCode Jump = KeyCode.Space;
-    public KeyCode WalkForward = KeyCode.W;
-    public KeyCode WalkBackward = KeyCode.S;
-    public KeyCode WalkLeft = KeyCode.A;
-    public KeyCode WalkRight = KeyCode.D;
+    private KeyCode jump = KeyCode.Space;
+    public KeyCode Jump
+    {
+        get => jump;
+        set
+        {
+            jump = value;
+        }
+    }
+
+    private KeyCode walkForward = KeyCode.W;
+    public KeyCode WalkForward
+    {
+        get => walkForward;
+        set
+        {
+            walkForward = value;
+        }
+    }
+
+    private KeyCode walkBackward = KeyCode.S;
+    public KeyCode WalkBackward
+    {
+        get => walkBackward;
+        set
+        {
+            walkBackward = value;
+        }
+    }
+
+    private KeyCode walkLeft = KeyCode.A;
+    public KeyCode WalkLeft
+    {
+        get => walkLeft;
+        set
+        {
+            walkLeft = value;
+        }
+    }
+
+    private KeyCode walkRight = KeyCode.D;
+    public KeyCode WalkRight
+    {
+        get => walkRight;
+        set
+        {
+            walkRight = value;
+        }
+    }
 
     [Header("Battle Setting")]
-    public KeyCode Attack = KeyCode.Mouse0;
-    public KeyCode Aim = KeyCode.Mouse1;
-    public KeyCode E_Skill = KeyCode.E;
-    public KeyCode Q_Skill = KeyCode.Q;
-    public KeyCode PickUp = KeyCode.R;
+    private KeyCode attack = KeyCode.Mouse0;
+    public KeyCode Attack
+    {
+        get => attack;
+        set
+        {
+            attack = value;
+        }
+    }
+
+    private KeyCode aim = KeyCode.Mouse1;
+    public KeyCode Aim
+    {
+        get => aim;
+        set
+        {
+            aim = value;
+        }
+    }
+
+    private KeyCode e_Skill = KeyCode.E;
+    public KeyCode E_Skill
+    {
+        get => e_Skill;
+        set
+        {
+            e_Skill = value;
+        }
+    }
+
+    private KeyCode q_Skill = KeyCode.Q;
+    public KeyCode Q_Skill
+    {
+        get => q_Skill;
+        set
+        {
+            q_Skill = value;
+        }
+    }
+
+    private KeyCode pickUp = KeyCode.R;
+    public KeyCode PickUp
+    {
+        get => pickUp;
+        set
+        {
+            pickUp = value;
+        }
+    }
     #endregion
 
     #region MouseSensitivity

@@ -1,10 +1,13 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SettingDataManager : BasicDataManager
 {
+    PlayerControl playerControl;
     void Start()
     {
+        playerControl = new PlayerControl();
         StartCoroutine(WaitForDataManager());
     }
 
@@ -14,6 +17,7 @@ public class SettingDataManager : BasicDataManager
         playerBasicInformation.Width = PlayerPrefs.GetInt("Width");
         playerBasicInformation.Height = PlayerPrefs.GetInt("Height");
 
+        playerControl.LoadBindingOverridesFromJson(PlayerPrefs.GetString("Rebinds"));
         playerBasicInformation.Jump = (KeyCode)PlayerPrefs.GetInt("Jump");
         playerBasicInformation.WalkForward = (KeyCode)PlayerPrefs.GetInt("WalkForward");
         playerBasicInformation.WalkBackward = (KeyCode)PlayerPrefs.GetInt("WalkBackward");
