@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        Debug.DrawRay(GroundDetector.transform.position, GroundDetector.transform.up * -1 * 1f, Color.red);
         SpeedLimit();
     }
 
@@ -49,6 +50,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Grounded && !isJumping)
         {
+            isJumping = true;
+            Grounded = false;
             StartCoroutine(Jump());
         }
     }
@@ -65,14 +68,15 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator Jump()
     {
-        isJumping = true;
-        Grounded = false;
-
         float jumpForce = MovementConst.Role.JumpForce;
         rb.AddForce(gameObject.transform.up * jumpForce, ForceMode.Impulse);
 
+        //jump cooldown
+        yield return new WaitForSeconds(0.5f);
+
+        //wait for tauch ground again
         RaycastHit hit;
-        while(!Physics.Raycast(GroundDetector.transform.position, GroundDetector.transform.up * -1, out hit, 0.1f))
+        while(!Physics.Raycast(GroundDetector.transform.position, GroundDetector.transform.up * -1, out hit, 0.05f))
         {
             yield return null;
         }
