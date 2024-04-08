@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class SettingManager : MonoBehaviour
 {
-    PlayerBasicInformationScriptable playerBasicInformation;
-    public List<KeyCodeToImage> keyboardPair; 
+    public PlayerBasicInformationScriptable playerBasicInformationScriptable;
+    public List<keyboard> keyboards = new List<keyboard>();
     // Start is called before the first frame update
     void Start()
     {
-        keyboardPair = playerBasicInformation.keyboard;
+        
     }
 }

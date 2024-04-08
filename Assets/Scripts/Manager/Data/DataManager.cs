@@ -35,12 +35,6 @@ public class DataManager : MonoBehaviour
 
             PlayerPrefs.SetString("Rebinds", playerControl.SaveBindingOverridesAsJson());
 
-            PlayerPrefs.SetInt("Jump", (int)KeyCode.Space);
-            PlayerPrefs.SetInt("WalkForward", (int)KeyCode.W);
-            PlayerPrefs.SetInt("WalkBackward", (int)KeyCode.S);
-            PlayerPrefs.SetInt("WalkLeft", (int)KeyCode.A);
-            PlayerPrefs.SetInt("WalkRight", (int)KeyCode.D);
-
             PlayerPrefs.SetInt("Attack", (int)KeyCode.Mouse0);
             PlayerPrefs.SetInt("Aim", (int)KeyCode.Mouse1);
             PlayerPrefs.SetInt("E_Skill", (int)KeyCode.E);

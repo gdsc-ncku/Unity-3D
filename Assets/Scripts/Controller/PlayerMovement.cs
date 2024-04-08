@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -14,7 +13,8 @@ public class PlayerMovement : MonoBehaviour
     PlayerControl playerControl;
     private void Awake()
     {
-        playerControl = new PlayerControl();
+        PlayerMove.playerControl = new PlayerControl();
+        playerControl = PlayerMove.playerControl;
         playerControl.Player.Enable();
         playerControl.Player.Jump.performed += Jumping;
     }
@@ -33,7 +33,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        Debug.DrawRay(GroundDetector.transform.position, GroundDetector.transform.up * -1 * 1f, Color.red);
         SpeedLimit();
     }
 

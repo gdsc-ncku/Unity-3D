@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class SettingDataManager : BasicDataManager
 {
+    [SerializeField] PlayerBasicInformationScriptable playerBasicInformationScriptable;
     PlayerControl playerControl;
     void Start()
     {
@@ -17,12 +18,8 @@ public class SettingDataManager : BasicDataManager
         playerBasicInformation.Width = PlayerPrefs.GetInt("Width");
         playerBasicInformation.Height = PlayerPrefs.GetInt("Height");
 
+        playerBasicInformationScriptable.playerControl = playerControl;
         playerControl.LoadBindingOverridesFromJson(PlayerPrefs.GetString("Rebinds"));
-        playerBasicInformation.Jump = (KeyCode)PlayerPrefs.GetInt("Jump");
-        playerBasicInformation.WalkForward = (KeyCode)PlayerPrefs.GetInt("WalkForward");
-        playerBasicInformation.WalkBackward = (KeyCode)PlayerPrefs.GetInt("WalkBackward");
-        playerBasicInformation.WalkLeft = (KeyCode)PlayerPrefs.GetInt("WalkLeft");
-        playerBasicInformation.WalkRight = (KeyCode)PlayerPrefs.GetInt("WalkRight");
 
         playerBasicInformation.Attack = (KeyCode)PlayerPrefs.GetInt("Attack");
         playerBasicInformation.Aim = (KeyCode)PlayerPrefs.GetInt("Aim");

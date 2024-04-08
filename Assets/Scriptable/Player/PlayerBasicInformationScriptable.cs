@@ -1,14 +1,16 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 [Serializable]
-public class KeyCodeToImage
+public class keyboard
 {
-    public KeyCode key;
-    public Sprite image;
+    public String key;
+    public String display;
+    public TextMeshProUGUI value;
 }
 
 //Storage inheritable information
@@ -29,59 +31,7 @@ public class PlayerBasicInformationScriptable : ScriptableObject
     #endregion
 
     #region ButtonSetting
-    public List<KeyCodeToImage> keyboard = new();
-
-    [Header("Move Setting")]
-    private KeyCode jump = KeyCode.Space;
-    public KeyCode Jump
-    {
-        get => jump;
-        set
-        {
-            jump = value;
-        }
-    }
-
-    private KeyCode walkForward = KeyCode.W;
-    public KeyCode WalkForward
-    {
-        get => walkForward;
-        set
-        {
-            walkForward = value;
-        }
-    }
-
-    private KeyCode walkBackward = KeyCode.S;
-    public KeyCode WalkBackward
-    {
-        get => walkBackward;
-        set
-        {
-            walkBackward = value;
-        }
-    }
-
-    private KeyCode walkLeft = KeyCode.A;
-    public KeyCode WalkLeft
-    {
-        get => walkLeft;
-        set
-        {
-            walkLeft = value;
-        }
-    }
-
-    private KeyCode walkRight = KeyCode.D;
-    public KeyCode WalkRight
-    {
-        get => walkRight;
-        set
-        {
-            walkRight = value;
-        }
-    }
-
+    public PlayerControl playerControl = null;
     [Header("Battle Setting")]
     private KeyCode attack = KeyCode.Mouse0;
     public KeyCode Attack
