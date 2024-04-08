@@ -17,7 +17,7 @@ public class CameraMovement : MonoBehaviour {
     void Update()
     {
         //Click right mouse to hide cursor or press ESC to display cursor
-        if(Input.GetMouseButtonDown(0))
+        /*if(Input.GetMouseButtonDown(0))
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
@@ -26,7 +26,7 @@ public class CameraMovement : MonoBehaviour {
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-        }
+        }*/
     }
 
     // Update is called once per frame
