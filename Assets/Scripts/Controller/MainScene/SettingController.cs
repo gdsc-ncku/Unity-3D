@@ -2,11 +2,27 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 public class SettingController : MonoBehaviour
 {
     public SettingManager settingManager;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        foreach (Key key in System.Enum.GetValues(typeof(Key)))
+        {
+            if (key != Key.None)
+            {
+                KeyControl keyControl = Keyboard.current[key];
+                if (keyControl != null)
+                {
+                    Debug.Log(keyControl.path);
+                    //settingManager.keyboards.Add(keyControl.path);
+                }
+            }
+        }
+    }
     void Start()
     {
         
@@ -37,7 +53,7 @@ public class SettingController : MonoBehaviour
                     for (int i = 0; i < ac.bindings.Count; i++)
                     {
                         InputBinding binding = ac.bindings[i];
-                        if (binding.overridePath == callback.action.bindings[bindingIndex].overridePath && binding.id != action.bindings[bindingIndex].id)
+                        if ((binding.path == callback.action.bindings[bindingIndex].overridePath || (binding.overridePath != null && binding.overridePath == callback.action.bindings[bindingIndex].overridePath)) && binding.id != action.bindings[bindingIndex].id)
                         {
                             ac.ApplyBindingOverride(i, new InputBinding { overridePath = "" });
                             break;
@@ -51,7 +67,7 @@ public class SettingController : MonoBehaviour
                 {
                     if (key.key == newKey)
                     {
-                        if (key.value.text == key.display)
+                        if (key.value != null && key.value.text == key.display)
                         {
                             key.value.text = "";
                         }
