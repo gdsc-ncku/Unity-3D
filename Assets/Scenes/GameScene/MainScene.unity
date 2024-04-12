@@ -4198,6 +4198,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBasicInformationScriptable: {fileID: 11400000, guid: 5186a9aa120a8a049a936607850ca30c, type: 2}
   keyboards:
+  - key: f1
+    display: F1
+    value: {fileID: 0}
+  - key: f2
+    display: F2
+    value: {fileID: 0}
   - key: w
     display: W
     value: {fileID: 5095993063860059241}
@@ -4212,6 +4218,9 @@ MonoBehaviour:
     value: {fileID: 7119491704235412300}
   - key: t
     display: T
+    value: {fileID: 0}
+  - key: g
+    display: G
     value: {fileID: 0}
 --- !u!1 &2057822086
 GameObject:
