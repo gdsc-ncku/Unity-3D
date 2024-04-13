@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -8,24 +10,37 @@ public class SettingController : MonoBehaviour
 {
     public SettingManager settingManager;
     // Start is called before the first frame update
-    private void Awake()
+    IEnumerator Start()
     {
-        foreach (Key key in System.Enum.GetValues(typeof(Key)))
+        yield return new WaitUntil(() => settingManager != null);
+        foreach (var device in InputSystem.devices)
         {
-            if (key != Key.None)
+            foreach (var control in device.allControls)
             {
-                KeyControl keyControl = Keyboard.current[key];
-                if (keyControl != null)
+                string key = control.path.ToString();
+                string NewKey = key.ToString().Split('/').Last();
+                if (settingManager.keyboards.Any(k => k.key == NewKey))
                 {
-                    Debug.Log(keyControl.path);
-                    //settingManager.keyboards.Add(keyControl.path);
+                    continue;
                 }
+
+                keyboard newkey = new();
+                newkey.key = NewKey;
+
+                int index = settingManager.keyboardDisplayKey.FindIndex(x => x == NewKey);
+                if (index == -1)
+                {
+                    newkey.display = NewKey.ToUpper();
+                }
+                else
+                {
+                    newkey.display = settingManager.keyboardDisplayValue[index];
+                }
+
+                newkey.value = null;
+                settingManager.keyboards.Add(newkey);
             }
         }
-    }
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
