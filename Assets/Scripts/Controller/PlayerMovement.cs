@@ -1,71 +1,86 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private PlayerBasicInformationScriptable PlayerMove;
     [SerializeField] private PlayerBattleValueScriptable MovementConst;
+    [SerializeField] private GameObject GroundDetector;
     private Rigidbody rb;
     float Speed;  // Movement speed
-    float JumpForce;  // Jump force
-    private bool Grounded;  // Whether the player is on the ground
-    float horizontal = 0f;
-    float vertical = 0f;
+    private bool Grounded = true, isJumping = false;  // Whether the player is on the ground
+    PlayerControl playerControl;
+    private void Awake()
+    {
+        PlayerMove.playerControl = new PlayerControl();
+        playerControl = PlayerMove.playerControl;
+        playerControl.Player.Enable();
+        playerControl.Player.Jump.performed += Jumping;
+    }
+
+    private void OnDisable()
+    {
+        playerControl.Player.Disable();
+    }
 
     void Start()
     {
         Speed = MovementConst.Role.WalkSpeed;
-        JumpForce = MovementConst.Role.JumpForce;
         // Initialize Rigidbody and freeze rotation
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    private void Update()
     {
-        // Get keyboard input and move
-        //float horizontal = Input.GetAxis("Horizontal");
-        //float vertical = Input.GetAxis("Vertical");
+        SpeedLimit();
+    }
 
-        if (Input.GetKey(PlayerMove.WalkForward)) {
-            vertical = 1f;
-        }
-        else if(Input.GetKey(PlayerMove.WalkBackward)){
-            vertical = -1f;
-        } else{
-            vertical = 0f;
-        }
+    void FixedUpdate()
+    {
+        //Moving
+        Vector2 inputVector = playerControl.Player.Move.ReadValue<Vector2>();
+        Vector3 moveDirection = rb.transform.forward * inputVector.y + rb.transform.right * inputVector.x;
+        rb.AddForce(moveDirection.normalized * Speed * 5f, ForceMode.Force);
+    }
 
-        if (Input.GetKey(PlayerMove.WalkRight)) {
-            horizontal = 1f;
-        }
-        else if(Input.GetKey(PlayerMove.WalkLeft)){
-            horizontal = -1f;
-        } else{
-            horizontal = 0f;
-        }
-
-        Vector3 movement = new Vector3(horizontal, 0f, vertical) * Speed * Time.deltaTime;
-        transform.Translate(movement);
-
-        // Jump
-        if (Input.GetKey(PlayerMove.Jump) && Grounded)
+    // Jump
+    void Jumping(InputAction.CallbackContext context)
+    {
+        if (Grounded && !isJumping)
         {
-            Jump();
+            isJumping = true;
+            Grounded = false;
+            StartCoroutine(Jump());
         }
     }
 
-    void Jump()
+    void SpeedLimit()
     {
-        // Reset vertical velocity, apply jump force, and set grounded to false
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        rb.AddForce(transform.up * JumpForce, ForceMode.Impulse);
-        Grounded = false;
-    }
-void OnCollisionEnter(Collision collision)
-    {
-        // Check if the player is on the ground by detecting collision with an object tagged as "Ground"
-        if (collision.gameObject.CompareTag("Ground"))
+        Vector3 Vel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        if(Vel.magnitude > Speed)
         {
-            Grounded = true;
+            Vector3 limitedVel = Vel.normalized * Speed;
+            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
+    }
+
+    IEnumerator Jump()
+    {
+        float jumpForce = MovementConst.Role.JumpForce;
+        rb.AddForce(gameObject.transform.up * jumpForce, ForceMode.Impulse);
+
+        //jump cooldown
+        yield return new WaitForSeconds(0.5f);
+
+        //wait for tauch ground again
+        RaycastHit hit;
+        while(!Physics.Raycast(GroundDetector.transform.position, GroundDetector.transform.up * -1, out hit, 0.05f))
+        {
+            yield return null;
+        }
+
+        isJumping = false;
+        Grounded = true;
     }
 }
