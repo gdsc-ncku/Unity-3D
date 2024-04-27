@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour {
     public bool _lock;
-    [SerializeField] GameObject _cameraRoot, _gun;
+    [SerializeField] GameObject _cameraRoot;
     [SerializeField] float _cameraMovingThreshold, _topClamp, _bottomClamp;
     float _mouseSensitivity;
     [SerializeField] PlayerBasicInformationScriptable _playerInformation;
@@ -17,7 +17,7 @@ public class CameraMovement : MonoBehaviour {
     void Update()
     {
         //Click right mouse to hide cursor or press ESC to display cursor
-        /*if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0))
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
@@ -26,7 +26,7 @@ public class CameraMovement : MonoBehaviour {
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-        }*/
+        }
     }
 
     // Update is called once per frame
@@ -44,7 +44,7 @@ public class CameraMovement : MonoBehaviour {
             _rotateX -= 360;
         else if (_rotateX < -180)
             _rotateX += 360;
-//Detect whether camera open and input >= threshold
+        //Detect whether camera open and input >= threshold
         if (!_lock && (Mathf.Abs(_mouseXInput) >= _cameraMovingThreshold || Mathf.Abs(_mouseYInput) >= _cameraMovingThreshold))
         {
             _rotateX -= _mouseYInput * _mouseSensitivity * Time.deltaTime;

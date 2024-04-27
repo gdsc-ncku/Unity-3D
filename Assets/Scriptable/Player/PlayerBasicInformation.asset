@@ -17,7 +17,7 @@ MonoBehaviour:
   Soul: 0
   Width: 1920
   Height: 1080
-  MouseSensitivity: 400
+  MouseSensitivity: 800
   MovingMusic: 100
   EnemyMusic: 100
   BackgroundMusic: 100
