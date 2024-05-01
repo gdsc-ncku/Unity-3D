@@ -514,11 +514,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &719110649 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6645870067674494817, guid: b9023535df6d76a45ac8b9a88b75b508, type: 3}
-  m_PrefabInstance: {fileID: 3672662506214265774}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &719110650 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6416515883460382839, guid: b9023535df6d76a45ac8b9a88b75b508, type: 3}
@@ -847,6 +842,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBasicInformationScriptable: {fileID: 11400000, guid: 5186a9aa120a8a049a936607850ca30c, type: 2}
   keyboards: []
+  keyboardDisplayKey: []
+  keyboardDisplayValue: []
 --- !u!114 &1457734807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1209,7 +1206,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lock: 0
   _cameraRoot: {fileID: 8518146837821020723}
-  _gun: {fileID: 719110649}
   _cameraMovingThreshold: 0.1
   _topClamp: 70
   _bottomClamp: 70

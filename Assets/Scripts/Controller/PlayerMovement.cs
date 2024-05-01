@@ -13,7 +13,6 @@ public class PlayerMovement : MonoBehaviour
     PlayerControl playerControl;
     private void Awake()
     {
-        PlayerMove.playerControl = new PlayerControl();
         playerControl = PlayerMove.playerControl;
         playerControl.Player.Enable();
         playerControl.Player.Jump.performed += Jumping;

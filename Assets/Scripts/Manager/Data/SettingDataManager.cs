@@ -4,11 +4,8 @@ using UnityEngine.InputSystem;
 
 public class SettingDataManager : BasicDataManager
 {
-    [SerializeField] PlayerBasicInformationScriptable playerBasicInformationScriptable;
-    PlayerControl playerControl;
     void Start()
     {
-        playerControl = new PlayerControl();
         StartCoroutine(WaitForDataManager());
     }
 
@@ -18,13 +15,8 @@ public class SettingDataManager : BasicDataManager
         playerBasicInformation.Width = PlayerPrefs.GetInt("Width");
         playerBasicInformation.Height = PlayerPrefs.GetInt("Height");
 
-        playerBasicInformationScriptable.playerControl = playerControl;
-        playerControl.LoadBindingOverridesFromJson(PlayerPrefs.GetString("Rebinds"));
-
-        playerBasicInformation.Attack = (KeyCode)PlayerPrefs.GetInt("Attack");
-        playerBasicInformation.Aim = (KeyCode)PlayerPrefs.GetInt("Aim");
-        playerBasicInformation.E_Skill = (KeyCode)PlayerPrefs.GetInt("E_Skill");
-        playerBasicInformation.Q_Skill = (KeyCode)PlayerPrefs.GetInt("Q_Skill");
+        playerBasicInformation.playerControl = new PlayerControl();
+        playerBasicInformation.playerControl.LoadBindingOverridesFromJson(PlayerPrefs.GetString("Rebinds"));
 
         playerBasicInformation.MouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity");
 

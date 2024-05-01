@@ -15,22 +15,24 @@ public class PickUpItem : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(PlayerMove.PickUp))
+        
+    }
+
+    public void pickUp()
+    {
+        // Get the position of main camera
+        Vector3 cameraPosition = Camera.main.transform.position;
+        Vector3 cameraDirection = Camera.main.transform.forward;
+
+        RaycastHit hitInfo;
+
+        // Emit a ray to detect item
+        if (Physics.Raycast(cameraPosition, cameraDirection, out hitInfo, pickUpRange))
         {
-            // Get the position of main camera
-            Vector3 cameraPosition = Camera.main.transform.position;
-            Vector3 cameraDirection = Camera.main.transform.forward;
-
-            RaycastHit hitInfo;
-
-            // Emit a ray to detect item
-            if (Physics.Raycast(cameraPosition, cameraDirection, out hitInfo, pickUpRange))
+            if (hitInfo.collider.CompareTag("Item"))
             {
-                if (hitInfo.collider.CompareTag("Item"))
-                {
-                    Debug.Log("Picked up: " + hitInfo.collider.name);
-                    Destroy(hitInfo.collider.gameObject);
-                }
+                Debug.Log("Picked up: " + hitInfo.collider.name);
+                Destroy(hitInfo.collider.gameObject);
             }
         }
     }

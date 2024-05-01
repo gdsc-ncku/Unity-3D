@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,9 +7,15 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 
+enum ContentsName { TalentContent, HeroContent, SettingContent };
 public class SettingController : MonoBehaviour
 {
+    ContentsName contentsName;
     public SettingManager settingManager;
+    private GameObject NowContent;
+    public List<GameObject> Contents;
+    public List<TextMeshProUGUI> SettingKeyText;
+    
     // Start is called before the first frame update
     IEnumerator Start()
     {
@@ -41,12 +48,20 @@ public class SettingController : MonoBehaviour
                 settingManager.keyboards.Add(newkey);
             }
         }
+        foreach(var key in Enum.GetValues(typeof(KeyIndex)))
+        {
+            Debug.Log(PlayerPrefs.GetString(key.ToString()));
+            SettingKeyText[(int)key].text = PlayerPrefs.GetString(key.ToString());
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            NowContent.SetActive(false);
+        }
     }
 
     public void ChangeKey(InputActionMap mp, InputAction action, int bindingIndex, TextMeshProUGUI text)
@@ -90,9 +105,19 @@ public class SettingController : MonoBehaviour
                         text.text = key.display;
                     }
                 }
+
+                PlayerPrefs.SetString("Rebinds", settingManager.playerBasicInformationScriptable.playerControl.SaveBindingOverridesAsJson());
                 callback.Dispose();
                 mp.Enable();
+
+                Debug.Log("Finish");
             })
             .Start();
+    }
+
+    public void OpenSetting()
+    {
+        NowContent = Contents[(int)ContentsName.SettingContent];
+        NowContent.SetActive(true);
     }
 }

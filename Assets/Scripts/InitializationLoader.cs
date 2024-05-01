@@ -10,6 +10,7 @@ public class InitializationLoader : MonoBehaviour
 {
     [SerializeField] AssetReferenceT<SceneAsset> PersistenceScene, LoadingScene;
     [SerializeField] GameStatus gameStatus;
+
     // Start is called before the first frame update
     void Start()
     {
