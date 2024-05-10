@@ -10,7 +10,7 @@ public class CharacterBaseData : ScriptableObject
     public float MagicReply;
     public float AttackDamage;
     public float WalkSpeed;
-    public float JumpForce = 10;
+    public float JumpForce;
     public float AttackSpeed;
     public float Q_SkillDamage;
     public ParticleSystem Q_Skill;

@@ -17,7 +17,8 @@ MonoBehaviour:
   Magic: 300
   MagicReply: 10
   AttackDamage: 300
-  WalkSpeed: 7
+  WalkSpeed: 4
+  JumpForce: 8
   AttackSpeed: 0.25
   Q_SkillDamage: 300
   Q_Skill: {fileID: 0}

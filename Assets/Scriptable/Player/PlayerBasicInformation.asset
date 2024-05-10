@@ -17,16 +17,6 @@ MonoBehaviour:
   Soul: 0
   Width: 1920
   Height: 1080
-  Jump: 32
-  WalkForward: 119
-  WalkBackward: 115
-  WalkLeft: 97
-  WalkRight: 100
-  Attack: 323
-  Aim: 324
-  E_Skill: 101
-  Q_Skill: 113
-  PickUp: 114
   MouseSensitivity: 400
   MovingMusic: 100
   EnemyMusic: 100

@@ -1,6 +1,17 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
+[Serializable]
+public class keyboard
+{
+    public String key;
+    public String display;
+    public TextMeshProUGUI value;
+}
 
 //Storage inheritable information
 [CreateAssetMenu(fileName = "PlayerBasicInformation", menuName = "PlayerInformation/Player/PlayerBasicInformation", order = 1)]
@@ -20,19 +31,57 @@ public class PlayerBasicInformationScriptable : ScriptableObject
     #endregion
 
     #region ButtonSetting
-    [Header("Move Setting")]
-    public KeyCode Jump = KeyCode.Space;
-    public KeyCode WalkForward = KeyCode.W;
-    public KeyCode WalkBackward = KeyCode.S;
-    public KeyCode WalkLeft = KeyCode.A;
-    public KeyCode WalkRight = KeyCode.D;
-
+    public PlayerControl playerControl = null;
     [Header("Battle Setting")]
-    public KeyCode Attack = KeyCode.Mouse0;
-    public KeyCode Aim = KeyCode.Mouse1;
-    public KeyCode E_Skill = KeyCode.E;
-    public KeyCode Q_Skill = KeyCode.Q;
-    public KeyCode PickUp = KeyCode.R;
+    private KeyCode attack = KeyCode.Mouse0;
+    public KeyCode Attack
+    {
+        get => attack;
+        set
+        {
+            attack = value;
+        }
+    }
+
+    private KeyCode aim = KeyCode.Mouse1;
+    public KeyCode Aim
+    {
+        get => aim;
+        set
+        {
+            aim = value;
+        }
+    }
+
+    private KeyCode e_Skill = KeyCode.E;
+    public KeyCode E_Skill
+    {
+        get => e_Skill;
+        set
+        {
+            e_Skill = value;
+        }
+    }
+
+    private KeyCode q_Skill = KeyCode.Q;
+    public KeyCode Q_Skill
+    {
+        get => q_Skill;
+        set
+        {
+            q_Skill = value;
+        }
+    }
+
+    private KeyCode pickUp = KeyCode.R;
+    public KeyCode PickUp
+    {
+        get => pickUp;
+        set
+        {
+            pickUp = value;
+        }
+    }
     #endregion
 
     #region MouseSensitivity

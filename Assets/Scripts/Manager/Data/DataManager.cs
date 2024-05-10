@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DataManager : MonoBehaviour
 {
@@ -8,9 +9,14 @@ public class DataManager : MonoBehaviour
     [SerializeField] HeroDataManager heroDataManager;
     [SerializeField] PlayerInformationDataManager playerInformationDataManager;
     [SerializeField] SettingDataManager settingDataManager;
+    PlayerControl playerControl;
 
     public bool initData = false;
     private bool TalentData = false, HeroData = false, PlayerData = false, SettingData = false;
+    private void Awake()
+    {
+        playerControl = new PlayerControl();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -27,11 +33,7 @@ public class DataManager : MonoBehaviour
             PlayerPrefs.SetInt("Width", 1920);
             PlayerPrefs.SetInt("Height", 1080);
 
-            PlayerPrefs.SetInt("Jump", (int)KeyCode.Space);
-            PlayerPrefs.SetInt("WalkForward", (int)KeyCode.W);
-            PlayerPrefs.SetInt("WalkBackward", (int)KeyCode.S);
-            PlayerPrefs.SetInt("WalkLeft", (int)KeyCode.A);
-            PlayerPrefs.SetInt("WalkRight", (int)KeyCode.D);
+            PlayerPrefs.SetString("Rebinds", playerControl.SaveBindingOverridesAsJson());
 
             PlayerPrefs.SetInt("Attack", (int)KeyCode.Mouse0);
             PlayerPrefs.SetInt("Aim", (int)KeyCode.Mouse1);
