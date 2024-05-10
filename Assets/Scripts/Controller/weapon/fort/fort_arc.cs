@@ -1,36 +1,74 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+
 public class fort_arc : MonoBehaviour
 {
-    public float speed = 5f;
-    public Transform fort; // 砲台
-    public LayerMask whatIsEnemy; // 敵人的層
-    public float searchRadius = 0.1f; // 尋找敵人的範圍
-
-    void Update()
+    [SerializeField] private Transform yaw;
+    [SerializeField] private Transform yaw_rotatespeed;
+    [SerializeField] private Transform pitch;
+    [SerializeField] private Transform pitch_rotatespeed;
+    // Update is called once per frame
+void Update()
+{
+    float horizontalInput = Input.GetAxis("Horizontal");
+    float verticalInput = Input.GetAxis("Vertical");
+    Vector3 direction = new Vector3(horizontalInput, 0f, verticalInput);
+    if (direction != Vector3.zero)
     {
-        Collider[] enemies = Physics.OverlapSphere(transform.position, searchRadius, whatIsEnemy);
-        // GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        if (enemies.Length > 0)
-        {
-            Collider closestEnemy = null;
-            float closestDistance = Mathf.Infinity;
-            // 找到最近的敵人
-            foreach (Collider enemy in enemies)
-            {
-                float distance = Vector3.Distance(fort.transform.position, enemy.transform.position);
-                if (distance < closestDistance)
-                {
-                    closestDistance = distance;
-                    closestEnemy = enemy;
-                }
-            }
-            if (closestEnemy != null)
-            {
-                Vector3 direction = closestEnemy.transform.position - transform.position;
-                Quaternion toRotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Lerp(fort.rotation, toRotation, speed * Time.deltaTime);
-            }
-        }
-
+        RotateToDirection(direction);
     }
+}
+
+void RotateToDirection(Vector3 direction)
+    {
+    Quaternion targetRotation = Quaternion.LookRotation(direction);
+    transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+    }
+void RotateToTarget(Vector3 p)
+    {
+        YawRotateTo(p);
+    }
+
+void YawRotateTo(Vector3 p)
+{
+    Vector3 p_xz = new Vector3(p.x, 0, p.z);
+    Vector3 cur_xz = new Vector3(yaw.forward.x, 0,yaw.forward.z);
+    float angle = Vector3.Angle(p_xz, cur_xz);
+    yaw.localRotation = Quaternion.RotateTowards(
+        yaw.localRotation,
+        Quaternion.LookRotation(p_xz, yaw.up),
+        Math.Min(angle, yaw_rotate_speed * Time.deltaTime));
+}
+   //弹道线
+List<Vector3> GetParabolaLine(Vector3 lanchPoint,Vector3 vdir,float maxVelocity)
+{
+    parabolaPath=new List<Vector3>();
+    Vector3 s;
+
+    if (mFcm.TryGet_flyTime(lanchPoint,vdir,maxVelocity,
+            out float t,out Vector3 dp))
+    {
+        estimateFlyTime = t;
+        int max_count = 1000;
+        float t0 = 0f;
+        float dt = 0.02f;
+        parabolaPath.Add(lanchPoint);
+        while (t0< t && max_count > 0)
+        {
+            t0 = Mathf.Min(t0 + dt, t);
+            s = lanchPoint + 0.5f * g * t0 * t0 * Vector3.down + vdir * maxVelocity * t0;
+            parabolaPath.Add(s);
+            max_count--;
+        }
+    }
+    return parabolaPath;
+}
+
+private void OnDrawGizmos()
+{
+    var path= GetParabolaLine(pitch.position,-pitch.forward,max_muzzle_velocity);
+    GizmosDrawPath(path, Color.green, Vector3.zero);
+} 
+
 }
