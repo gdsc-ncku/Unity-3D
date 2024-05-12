@@ -8,12 +8,13 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1995273648146037086}
-  - component: {fileID: 6763195440715739231}
-  - component: {fileID: 26845153170697498}
-  - component: {fileID: 5361120627583660565}
-  - component: {fileID: 1692635859649583696}
-  - component: {fileID: 5921927811849932210}
+
+  - component: {fileID: 627776787194346841}
+  - component: {fileID: 1153565334822044077}
+  - component: {fileID: 6715995053428814241}
+  - component: {fileID: 1309364433615208258}
+  - component: {fileID: 1528565224484763961}
+
   m_Layer: 0
   m_Name: MolotovCocktail
   m_TagString: Untagged
@@ -134,17 +135,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5921927811849932210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4903091769707347577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 797a950a3b735bb4c974fdb32da5db78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectionRadius: 5
-  explosionEffect: {fileID: 911762845499449839, guid: 0cca2750e418ef94f89c8d0ed13bc07b, type: 3}
