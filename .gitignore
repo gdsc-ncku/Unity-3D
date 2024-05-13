@@ -110,3 +110,4 @@ UserSettings/
 *.pdb
 *.opendb
 *.VC.db
+./Assets/Scripts/Controller/weapon/gun/item
