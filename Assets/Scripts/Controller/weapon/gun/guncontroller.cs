@@ -21,20 +21,4 @@ public class guncontroller : MonoBehaviour
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButton(0) && !shooting) {
-            shooting = true;
-            StartCoroutine(Shoot());
-        }
-    }
-
-    IEnumerator Shoot()
-    {
-        yield return new WaitForSeconds(gun.attackSpeedMultiplier);
-        Instantiate(bulletPre, shotpoint.position, shotpoint.rotation);
-        shooting = false;
-    }
 }

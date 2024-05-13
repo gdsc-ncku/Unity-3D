@@ -66,12 +66,11 @@ public class CamRecoil : MonoBehaviour
             //}
 
         }
-            
-        
 
         targetRotaion = Vector3.Lerp(targetRotaion, Vector3.zero, returnSpeed * Time.deltaTime);
         currentRotation = Vector3.Slerp(currentRotation, targetRotaion, snappiness* Time.fixedDeltaTime);
         transform.localRotation = Quaternion.Euler(currentRotation);
+        Debug.Log($"{targetRotaion}, {currentRotation}, {transform.localRotation}");
     }
 
     public void RecoilFire()

@@ -59,6 +59,7 @@ public class ProjectileGun : MonoBehaviour
 
     private void Update()
     {
+        //detect player's activity
         MyInput();
 
         animator = transform.parent.GetComponent<Animator>();
@@ -149,8 +150,6 @@ public class ProjectileGun : MonoBehaviour
 
         //CamRecoil
         camrecoil.RecoilFire();
-
-
     }
     private void ResetShot()
     {
