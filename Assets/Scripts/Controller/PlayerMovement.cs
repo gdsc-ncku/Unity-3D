@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private PlayerBasicInformationScriptable PlayerMove;
     [SerializeField] private PlayerBattleValueScriptable MovementConst;
     [SerializeField] private GameObject GroundDetector;
+    [SerializeField] private GameObject MainCamera;
     private Rigidbody rb;
     float Speed;  // Movement speed
     private bool Grounded = true, isJumping = false;  // Whether the player is on the ground
@@ -42,6 +43,10 @@ public class PlayerMovement : MonoBehaviour
         Vector2 inputVector = playerControl.Player.Move.ReadValue<Vector2>();
         Vector3 moveDirection = rb.transform.forward * inputVector.y + rb.transform.right * inputVector.x;
         rb.AddForce(moveDirection.normalized * Speed * 5f, ForceMode.Force);
+
+        // Get camera's Y rotation and apply it to the player
+        float cameraYRotation = Camera.main.transform.rotation.eulerAngles.y;
+        transform.rotation = Quaternion.Euler(0f, cameraYRotation, 0f);
     }
 
     // Jump
@@ -66,21 +71,19 @@ public class PlayerMovement : MonoBehaviour
     }
 
     IEnumerator Jump()
+{
+    float jumpForce = MovementConst.Role.JumpForce;
+    rb.AddForce(gameObject.transform.up * jumpForce, ForceMode.Impulse);
+
+    yield return new WaitForSeconds(0.1f);
+    
+    while (!Physics.Raycast(GroundDetector.transform.position, GroundDetector.transform.up * -1, out _, 0.05f))
     {
-        float jumpForce = MovementConst.Role.JumpForce;
-        rb.AddForce(gameObject.transform.up * jumpForce, ForceMode.Impulse);
-
-        //jump cooldown
-        yield return new WaitForSeconds(0.5f);
-
-        //wait for tauch ground again
-        RaycastHit hit;
-        while(!Physics.Raycast(GroundDetector.transform.position, GroundDetector.transform.up * -1, out hit, 0.05f))
-        {
-            yield return null;
-        }
-
-        isJumping = false;
-        Grounded = true;
+        yield return null;
     }
+
+    Grounded = true;
+    isJumping = false;
+}
+
 }

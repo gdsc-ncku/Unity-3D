@@ -5,6 +5,7 @@ public class LawStudent : CharacterBaseData
 {
     //You can Create specific strengthening below.
     #region Hero_Q_Skill
+    
     #endregion
 
     #region Hero_E_Skill
