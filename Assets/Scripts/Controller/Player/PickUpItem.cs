@@ -34,6 +34,10 @@ public class PickUpItem : MonoBehaviour
                 Debug.Log("Picked up: " + hitInfo.collider.name);
                 Destroy(hitInfo.collider.gameObject);
             }
+            else if(hitInfo.collider.CompareTag("Weapon"))
+            {
+                
+            }
         }
     }
 }

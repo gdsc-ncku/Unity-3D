@@ -8,10 +8,10 @@ public class PlayerShoot : MonoBehaviour
 {
     [SerializeField] PlayerBasicInformationScriptable informationScriptable;
     //bools
-    public bool shooting, readyToShoot, reloading;
+    public bool shooting, reloading;
 
     //Reference
-    public Camera fpsCam;
+    Camera fpsCam; //auto fatch
     public Transform attackPoint;
     public Rigidbody playerRb;
     public WeaponData weaponData = null;
@@ -31,8 +31,12 @@ public class PlayerShoot : MonoBehaviour
     public void Awake()
     {
         shooting = false;
-        readyToShoot = false;
         reloading = false;
+    }
+
+    private void Start()
+    {
+        fpsCam = Camera.main;
     }
 
     public void OnEnable()
@@ -46,6 +50,7 @@ public class PlayerShoot : MonoBehaviour
 
         informationScriptable.playerControl.Player.Fire.started += startShoot;
         informationScriptable.playerControl.Player.Fire.canceled += FinishShoot;
+        informationScriptable.playerControl.Player.Reload.started += Reload;
     }
 
     public void OnDisable()
@@ -58,12 +63,14 @@ public class PlayerShoot : MonoBehaviour
 
         informationScriptable.playerControl.Player.Fire.started -= startShoot;
         informationScriptable.playerControl.Player.Fire.canceled -= FinishShoot;
+        informationScriptable.playerControl.Player.Reload.started -= Reload;
     }
 
     public void OnDestroy()
     {
         informationScriptable.playerControl.Player.Fire.started -= startShoot;
         informationScriptable.playerControl.Player.Fire.canceled -= FinishShoot;
+        informationScriptable.playerControl.Player.Reload.started -= Reload;
     }
 
     public void startShoot(InputAction.CallbackContext context)
@@ -79,15 +86,24 @@ public class PlayerShoot : MonoBehaviour
             return;
         }
 
-        if(weaponData.bulletsLeft <= 0)
+        if (reloading)
         {
-            Debug.Log("Reload..");
-            weaponData.bulletsLeft = weaponData.maxBullets;
             return;
         }
 
-        readyToShoot = false;
+        if (weaponData.bulletsLeft <= 0 && !shooting)
+        {
+            Debug.Log("Reload..");
+            Reload();
+            ResetShoot();
+            return;
+        }
 
+        if (Camera.main == null)
+        {
+            Debug.LogError("Camera.main is not assigned, setting camera's tag as MainCamera first");
+            return;
+        }
         //Find the exact hit position using a raycast
         Ray ray = fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)); //Just a ray through the middle of your current view
         RaycastHit hit;
@@ -118,29 +134,29 @@ public class PlayerShoot : MonoBehaviour
         currentBullet.GetComponent<Rigidbody>().AddForce(directionWithSpread.normalized * weaponData.shootForce, ForceMode.Impulse);
         currentBullet.GetComponent<Rigidbody>().AddForce(fpsCam.transform.up * weaponData.upwardForce, ForceMode.Impulse);
 
-        if(weaponData.gunSound != null)
+        if(weaponData.gunSound != null && !shooting)
         {
             audioSource.PlayOneShot(weaponData.gunSound);
         }
 
         //Instantiate muzzle flash, if you have one
-        if (muzzleFlash != null)
+        if (muzzleFlash != null && !shooting)
         {
-            Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
+            Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity).GetComponent<MuzzleFlash>().followingAttackPoint = attackPoint.gameObject;
         }
 
         if (!shooting)
         {
             weaponData.bulletsLeft--;
             animator.Play("WeaponRecoil", 0, 0f);
+            Debug.Log(weaponData.bulletsLeft);
         }
         weaponData.bulletsShot++;
 
-        if (weaponData.bulletsLeft <= 0)
+        if (weaponData.bulletsLeft < 0)
         {
             Debug.Log("Reload..");
-            weaponData.bulletsLeft = weaponData.maxBullets;
-
+            Reload();
             ResetShoot();
         }
         else if(weaponData.bulletsShot < weaponData.bulletsPerTap)
@@ -181,5 +197,28 @@ public class PlayerShoot : MonoBehaviour
         yield return new WaitForSeconds(1);
         informationScriptable.playerControl.Player.Fire.started += startShoot;
         informationScriptable.playerControl.Player.Fire.canceled += FinishShoot;
+        informationScriptable.playerControl.Player.Reload.started += Reload;
+    }
+
+    private void Reload(InputAction.CallbackContext context)
+    {
+        reloading = true;
+        animator.SetFloat("SpeedMultiplier", weaponData.reloadTime);
+        animator.Play("WeaponReload", 0, 0f);
+        Invoke("ResetBullets", weaponData.reloadTime);
+    }
+
+    private void Reload()
+    {
+        reloading = true;
+        animator.SetFloat("SpeedMultiplier", weaponData.reloadTime);
+        animator.Play("WeaponReload", 0, 0f);
+        Invoke("ResetBullets", weaponData.reloadTime);
+    }
+
+    private void ResetBullets()
+    {
+        weaponData.bulletsLeft = weaponData.maxBullets;
+        reloading = false;
     }
 }
