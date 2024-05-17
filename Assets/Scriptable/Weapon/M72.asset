@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: M72
   m_EditorClassIdentifier: 
   bullet: {fileID: 2386818071773510221, guid: dc9631633ec1c214ba29f85095da53ff, type: 3}
-  shootForce: 30
+  shootForce: 80
   upwardForce: 3
   timeBetweenShooting: 0
   spread: 0
@@ -28,6 +28,6 @@ MonoBehaviour:
   recoilForce: 50
   allowInvoke: 1
   gunSound: {fileID: 8300000, guid: 6ac4b883b685995438f8c425cbb14c3f, type: 3}
-  recoilX: -40
+  recoilX: -10
   recoilY: 2
   recoilZ: 0.3

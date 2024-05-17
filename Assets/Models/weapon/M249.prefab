@@ -348,6 +348,7 @@ GameObject:
   - component: {fileID: 7694244934559760679}
   - component: {fileID: 4944618954621599411}
   - component: {fileID: 174524092561682543}
+  - component: {fileID: -8855950274942594448}
   m_Layer: 7
   m_Name: M249
   m_TagString: Weapon
@@ -516,6 +517,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-8855950274942594448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5004794661129548158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e34c0065d5190d44c941deef56b29821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ThisWeapon: {fileID: 11400000, guid: ad846c5062f8d2547bc1076ebc8335ac, type: 2}
+  weaponPosOffset: {x: 0, y: 0, z: 0}
+  weaponAttackPoint: {fileID: 9208676334830511290}
 --- !u!1 &8848099843878233523
 GameObject:
   m_ObjectHideFlags: 0

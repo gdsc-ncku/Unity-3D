@@ -6,7 +6,14 @@ using UnityEngine.InputSystem;
 public class Weapons : MonoBehaviour
 {
     [SerializeField] PlayerBasicInformationScriptable informationScriptable;
+    [SerializeField] PlayerBattleValueScriptable BattleInfo;
     [SerializeField] GameObject MainWeapon, SecondWeapon;
+    [SerializeField] PlayerShoot playerShoot;
+
+    private void Start()
+    {
+        BattleInfo.nowWeapon = MainWeapon.transform.GetChild(0).gameObject;
+    }
 
     private void OnEnable()
     {
@@ -35,12 +42,18 @@ public class Weapons : MonoBehaviour
 
     void changeToMainWeapon(InputAction.CallbackContext context)
     {
+        BattleInfo.nowWeapon = MainWeapon.transform.GetChild(0).gameObject;
+        GetComponent<Animator>().Play("WeaponIdle");
+        playerShoot.reloading = false;
         MainWeapon.SetActive(true);
         SecondWeapon.SetActive(false);
     }
 
     void changeToSecondWeapon(InputAction.CallbackContext context)
     {
+        BattleInfo.nowWeapon = SecondWeapon.transform.GetChild(0).gameObject;
+        GetComponent<Animator>().Play("WeaponIdle");
+        playerShoot.reloading = false;
         MainWeapon.SetActive(false);
         SecondWeapon.SetActive(true);
     }

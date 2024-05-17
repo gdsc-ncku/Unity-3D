@@ -464,6 +464,7 @@ GameObject:
   - component: {fileID: 3192514591221118507}
   - component: {fileID: 3648089436622973016}
   - component: {fileID: 9110295874007021852}
+  - component: {fileID: -2623734740511764774}
   m_Layer: 7
   m_Name: M72
   m_TagString: Weapon
@@ -632,6 +633,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-2623734740511764774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7019969886298369894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e34c0065d5190d44c941deef56b29821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ThisWeapon: {fileID: 11400000, guid: df817235697d5e34692d0174d9463adf, type: 2}
+  weaponPosOffset: {x: 0, y: 0, z: 0}
+  weaponAttackPoint: {fileID: 1009906399641393077}
 --- !u!1 &7377711980014094828
 GameObject:
   m_ObjectHideFlags: 0

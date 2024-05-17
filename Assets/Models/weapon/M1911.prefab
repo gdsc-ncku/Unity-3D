@@ -412,6 +412,7 @@ GameObject:
   - component: {fileID: 532240417865233990}
   - component: {fileID: 1991907310971049991}
   - component: {fileID: 6859756771818658198}
+  - component: {fileID: 5274224740409823083}
   m_Layer: 7
   m_Name: M1911
   m_TagString: Weapon
@@ -580,6 +581,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5274224740409823083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3740127585108845052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e34c0065d5190d44c941deef56b29821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ThisWeapon: {fileID: 11400000, guid: 4ae0524cf5983594d9341972a52bf86e, type: 2}
+  weaponPosOffset: {x: 0, y: 0, z: 0}
+  weaponAttackPoint: {fileID: 4875039449990318111}
 --- !u!1 &4875039449990318111
 GameObject:
   m_ObjectHideFlags: 0
