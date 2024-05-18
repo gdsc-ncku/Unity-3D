@@ -18,7 +18,7 @@ public class WeaponData : ScriptableObject
     public int magazineSize, bulletsPerTap;
     public bool allowButtonHold;
 
-    public int bulletsLeft, maxBullets, bulletsShot;
+    public int maxBullets, bulletsShot;
 
     //Recoil
     public float recoilForce;

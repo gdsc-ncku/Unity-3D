@@ -9,4 +9,10 @@ public class WeaponsDataFetch : MonoBehaviour
     //Can adjust
     public Vector3 weaponPosOffset = new Vector3(0, 0, 0);
     public Transform weaponAttackPoint;
+    public int bulletsLeft;
+    private void Start()
+    {
+        weaponAttackPoint = gameObject.transform.GetChild(0).gameObject.transform;
+        bulletsLeft = ThisWeapon.maxBullets;
+    }
 }

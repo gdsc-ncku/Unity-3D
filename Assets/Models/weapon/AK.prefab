@@ -309,7 +309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ThisWeapon: {fileID: 11400000, guid: bb254ac2fc5c9454d9e4887b82a81961, type: 2}
   weaponPosOffset: {x: 0, y: 0, z: 0}
-  weaponAttackPoint: {fileID: 509360291664503816}
+  weaponAttackPoint: {fileID: 1545163362158174379}
 --- !u!1 &2493705048337379768
 GameObject:
   m_ObjectHideFlags: 0

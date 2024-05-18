@@ -7,8 +7,16 @@ public class Weapons : MonoBehaviour
 {
     [SerializeField] PlayerBasicInformationScriptable informationScriptable;
     [SerializeField] PlayerBattleValueScriptable BattleInfo;
-    [SerializeField] GameObject MainWeapon, SecondWeapon;
+    public GameObject MainWeapon, SecondWeapon, HoldingWeapon;
     [SerializeField] PlayerShoot playerShoot;
+
+    private void OnValidate()
+    {
+        if (MainWeapon != null)
+        {
+            HoldingWeapon = MainWeapon;
+        }
+    }
 
     private void Start()
     {
@@ -40,18 +48,40 @@ public class Weapons : MonoBehaviour
         informationScriptable.playerControl.Player.Weapon2.performed -= changeToSecondWeapon;
     }
 
-    void changeToMainWeapon(InputAction.CallbackContext context)
+    public void changeToMainWeapon(InputAction.CallbackContext context)
     {
         BattleInfo.nowWeapon = MainWeapon.transform.GetChild(0).gameObject;
+        HoldingWeapon = MainWeapon;
         GetComponent<Animator>().Play("WeaponIdle");
         playerShoot.reloading = false;
         MainWeapon.SetActive(true);
         SecondWeapon.SetActive(false);
     }
 
-    void changeToSecondWeapon(InputAction.CallbackContext context)
+    public void changeToSecondWeapon(InputAction.CallbackContext context)
     {
         BattleInfo.nowWeapon = SecondWeapon.transform.GetChild(0).gameObject;
+        HoldingWeapon = SecondWeapon;
+        GetComponent<Animator>().Play("WeaponIdle");
+        playerShoot.reloading = false;
+        MainWeapon.SetActive(false);
+        SecondWeapon.SetActive(true);
+    }
+
+    public void changeToMainWeapon()
+    {
+        BattleInfo.nowWeapon = MainWeapon.transform.GetChild(0).gameObject;
+        HoldingWeapon = MainWeapon;
+        GetComponent<Animator>().Play("WeaponIdle");
+        playerShoot.reloading = false;
+        MainWeapon.SetActive(true);
+        SecondWeapon.SetActive(false);
+    }
+
+    public void changeToSecondWeapon()
+    {
+        BattleInfo.nowWeapon = SecondWeapon.transform.GetChild(0).gameObject;
+        HoldingWeapon = SecondWeapon;
         GetComponent<Animator>().Play("WeaponIdle");
         playerShoot.reloading = false;
         MainWeapon.SetActive(false);

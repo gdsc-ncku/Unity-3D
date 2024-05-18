@@ -10,7 +10,8 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] PlayerBasicInformationScriptable informationScriptable;
     [SerializeField] PlayerBattleValueScriptable BattleInfo;
     //bools
-    public bool shooting, reloading;
+    public bool reloading;
+    bool CanShoot = true;
 
     //Reference
     Camera fpsCam; //auto fatch
@@ -29,7 +30,6 @@ public class PlayerShoot : MonoBehaviour
 
     public void Awake()
     {
-        shooting = false;
         reloading = false;
     }
 
@@ -79,6 +79,16 @@ public class PlayerShoot : MonoBehaviour
 
     public void Shoot()
     {
+        if(!CanShoot)
+        {
+            return;
+        }
+        else
+        {
+            CanShoot = false;
+            StartCoroutine(ResetShoot());
+        }
+
         if (BattleInfo.nowWeaponData.ThisWeapon == null)
         {
             Debug.Log("Setting gun data first");
@@ -90,11 +100,10 @@ public class PlayerShoot : MonoBehaviour
             return;
         }
 
-        if (BattleInfo.nowWeaponData.ThisWeapon.bulletsLeft <= 0 && !shooting)
+        if (BattleInfo.nowWeaponData.bulletsLeft <= 0)
         {
             Debug.Log("Reload..");
             Reload();
-            ResetShoot();
             return;
         }
 
@@ -114,70 +123,52 @@ public class PlayerShoot : MonoBehaviour
         else
             targetPoint = ray.GetPoint(75); //Just a point far away from the player
 
-        //Calculate direction from attackPoint to targetPoint
-        Vector3 directionWithoutSpread = targetPoint - BattleInfo.nowWeaponData.weaponAttackPoint.position;
+        while (BattleInfo.nowWeaponData.ThisWeapon.bulletsShot < BattleInfo.nowWeaponData.ThisWeapon.bulletsPerTap)
+        {
+            //Calculate direction from attackPoint to targetPoint
+            Vector3 directionWithoutSpread = targetPoint - BattleInfo.nowWeaponData.weaponAttackPoint.position;
 
-        //Calculate spread
-        float x = Random.Range(-BattleInfo.nowWeaponData.ThisWeapon.spread, BattleInfo.nowWeaponData.ThisWeapon.spread);
-        float y = Random.Range(-BattleInfo.nowWeaponData.ThisWeapon.spread, BattleInfo.nowWeaponData.ThisWeapon.spread);
+            //Calculate spread
+            float x = Random.Range(-BattleInfo.nowWeaponData.ThisWeapon.spread, BattleInfo.nowWeaponData.ThisWeapon.spread);
+            float y = Random.Range(-BattleInfo.nowWeaponData.ThisWeapon.spread, BattleInfo.nowWeaponData.ThisWeapon.spread);
 
-        //Calculate new direction with spread
-        Vector3 directionWithSpread = directionWithoutSpread + new Vector3(x, y, 0); //Just add spread to last direction
+            //Calculate new direction with spread
+            Vector3 directionWithSpread = directionWithoutSpread + new Vector3(x, y, 0); //Just add spread to last direction
 
-        //Instantiate bullet/projectile
-        GameObject currentBullet = Instantiate(BattleInfo.nowWeaponData.ThisWeapon.bullet, BattleInfo.nowWeaponData.weaponAttackPoint.position, Quaternion.identity); //store instantiated bullet in currentBullet
-        //Rotate bullet to shoot direction
-        currentBullet.transform.forward = directionWithSpread.normalized;
+            //Instantiate bullet/projectile
+            GameObject currentBullet = Instantiate(BattleInfo.nowWeaponData.ThisWeapon.bullet, BattleInfo.nowWeaponData.weaponAttackPoint.position, Quaternion.identity); //store instantiated bullet in currentBullet
+                                                                                                                                                                                     //Rotate bullet to shoot direction
+            currentBullet.transform.forward = directionWithSpread.normalized;
 
-        //Add forces to bullet
-        currentBullet.GetComponent<Rigidbody>().AddForce(directionWithSpread.normalized * BattleInfo.nowWeaponData.ThisWeapon.shootForce, ForceMode.Impulse);
-        currentBullet.GetComponent<Rigidbody>().AddForce(fpsCam.transform.up * BattleInfo.nowWeaponData.ThisWeapon.upwardForce, ForceMode.Impulse);
+            //Add forces to bullet
+            currentBullet.GetComponent<Rigidbody>().AddForce(directionWithSpread.normalized * BattleInfo.nowWeaponData.ThisWeapon.shootForce, ForceMode.Impulse);
+            currentBullet.GetComponent<Rigidbody>().AddForce(fpsCam.transform.up * BattleInfo.nowWeaponData.ThisWeapon.upwardForce, ForceMode.Impulse);
+            BattleInfo.nowWeaponData.ThisWeapon.bulletsShot++;
+        }
+        BattleInfo.nowWeaponData.ThisWeapon.bulletsShot = 0;
 
-        if(BattleInfo.nowWeaponData.ThisWeapon.gunSound != null && !shooting)
+        if (BattleInfo.nowWeaponData.ThisWeapon.gunSound != null)
         {
             audioSource.PlayOneShot(BattleInfo.nowWeaponData.ThisWeapon.gunSound);
         }
 
         //Instantiate muzzle flash, if you have one
-        if (muzzleFlash != null && !shooting)
+        if (muzzleFlash != null)
         {
             Instantiate(muzzleFlash, BattleInfo.nowWeaponData.weaponAttackPoint.position, Quaternion.identity).GetComponent<MuzzleFlash>().followingAttackPoint = BattleInfo.nowWeaponData.weaponAttackPoint.gameObject;
         }
 
-        if (!shooting)
-        {
-            BattleInfo.nowWeaponData.ThisWeapon.bulletsLeft--;
-            animator.Play("WeaponRecoil", 0, 0f);
-            Debug.Log(BattleInfo.nowWeaponData.ThisWeapon.bulletsLeft);
-        }
-        BattleInfo.nowWeaponData.ThisWeapon.bulletsShot++;
+        BattleInfo.nowWeaponData.bulletsLeft--;
+        animator.Play("WeaponRecoil", 0, 0f);
+        Debug.Log(BattleInfo.nowWeaponData.bulletsLeft);
 
-        if (BattleInfo.nowWeaponData.ThisWeapon.bulletsLeft <= 0)
+        if (BattleInfo.nowWeaponData.bulletsLeft <= 0)
         {
             Debug.Log("Reload..");
             Reload();
-            ResetShoot();
-        }
-        else if(BattleInfo.nowWeaponData.ThisWeapon.bulletsShot < BattleInfo.nowWeaponData.ThisWeapon.bulletsPerTap)
-        {
-            Invoke("Shoot", BattleInfo.nowWeaponData.ThisWeapon.timeBetweenShots);
-            shooting = true;
-        }
-        else
-        {
-            ResetShoot();
         }
 
-        if (!shooting)
-        {
-            RecoilFire();
-        }
-    }
-
-    private void ResetShoot()
-    {
-        BattleInfo.nowWeaponData.ThisWeapon.bulletsShot = 0;
-        shooting = false;
+        RecoilFire();
     }
 
     private void RecoilFire()
@@ -201,7 +192,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void Reload(InputAction.CallbackContext context)
     {
-        if(BattleInfo.nowWeaponData.ThisWeapon.bulletsLeft == BattleInfo.nowWeaponData.ThisWeapon.maxBullets)
+        if(BattleInfo.nowWeaponData.bulletsLeft == BattleInfo.nowWeaponData.ThisWeapon.maxBullets)
         {
             return;
         }
@@ -214,7 +205,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void Reload()
     {
-        if (BattleInfo.nowWeaponData.ThisWeapon.bulletsLeft == BattleInfo.nowWeaponData.ThisWeapon.maxBullets)
+        if (BattleInfo.nowWeaponData.bulletsLeft == BattleInfo.nowWeaponData.ThisWeapon.maxBullets)
         {
             return;
         }
@@ -222,13 +213,19 @@ public class PlayerShoot : MonoBehaviour
         reloading = true;
         animator.SetFloat("SpeedMultiplier", 1 / BattleInfo.nowWeaponData.ThisWeapon.reloadTime);
         animator.Play("WeaponReload", 0, 0f);
-        StartCoroutine(ResetBullets(BattleInfo.nowWeaponData.ThisWeapon, BattleInfo.nowWeaponData.ThisWeapon.maxBullets));
+        StartCoroutine(ResetBullets());
     }
  
-    private IEnumerator ResetBullets(WeaponData weapon, int maxBullets)
+    private IEnumerator ResetBullets()
     {
         yield return new WaitForSeconds(BattleInfo.nowWeaponData.ThisWeapon.reloadTime);
-        weapon.bulletsLeft = maxBullets;
+        BattleInfo.nowWeaponData.bulletsLeft = BattleInfo.nowWeaponData.ThisWeapon.maxBullets;
         reloading = false;
+    }
+
+    private IEnumerator ResetShoot()
+    {
+        yield return new WaitForSeconds(BattleInfo.nowWeaponData.ThisWeapon.timeBetweenShooting);
+        CanShoot = true;
     }
 }
