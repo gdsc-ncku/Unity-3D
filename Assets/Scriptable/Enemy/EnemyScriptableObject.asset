@@ -12,3 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aba3968936b0394990deb76e6ddc4c1, type: 3}
   m_Name: EnemyScriptableObject
   m_EditorClassIdentifier: 
+  AttackRangeOffset: 5
+  AttackRange: 15
+  AttackSpeed: 0.5
+  AttackDamage: 0
+  MoveSpeed: 0
+  Health: 0
