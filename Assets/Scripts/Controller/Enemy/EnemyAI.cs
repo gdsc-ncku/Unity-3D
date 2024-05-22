@@ -2,21 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
-enum status { chasing, attack};
+enum status { chasing, attack, die};
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField] EnemyScriptableObject EnemyInfo;
     [SerializeField] GameObject player;
     [SerializeField] LayerMask searchLayer;
-    [SerializeField] float searchRadius;
-    status nowStatus;
+    [SerializeField] Slider HealthBar;
+    private Animator animator;
+    private status nowStatus;
+    private float Hp;
+    private float Health 
+    { 
+        get 
+        {
+            return Hp; 
+        }
+        
+        set
+        {
+            Hp = value;
+            HealthBar.value = Hp;
+
+            if(Hp == 0)
+            {
+                Debug.Log("Enemy Die");
+                nowStatus = status.die;
+            }
+        }
+    }
+
+    public float GetHealth()
+    {
+        return Health;
+    }
 
     private NavMeshAgent agent;
     // Start is called before the first frame update
     void Start()
     {
-        agent = this.GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
+        HealthBar.maxValue = EnemyInfo.Health;
+        agent.speed = EnemyInfo.MoveSpeed;
+        Health = EnemyInfo.Health;
         nowStatus = status.chasing;
         StartCoroutine(SearchRoutine());
     }
@@ -24,23 +55,24 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player != null && transform.position != player.transform.position)
+        if(Input.GetKeyDown(KeyCode.Mouse0))
         {
-            
-        }
-
-        if (agent.isOnNavMesh)
-        {
-            
+            Health -= Random.Range(5.0f, 10.0f);
         }
     }
 
     IEnumerator SearchRoutine()
     {
+        //animator.Play("Chasing", 0, 0);
+        //Debug.Log("Chasing");
         while (player != null && nowStatus == status.chasing)
         {
-            Debug.Log("Chasing");
-            agent.SetDestination(player.transform.position);
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(player.transform.position, out hit, 20.0f, NavMesh.AllAreas))
+            {
+                agent.SetDestination(hit.position);
+            }
+
             if (SearchInSphere())
             {
                 nowStatus = status.attack;
@@ -66,6 +98,7 @@ public class EnemyAI : MonoBehaviour
         {
             if (IsPathObstructed() && !agent.hasPath)
             {
+                //animator.Play("Walking", 0, 0);
                 MoveToNoObstalcePosition();
                 yield return null;
             }
@@ -74,7 +107,7 @@ public class EnemyAI : MonoBehaviour
                 yield return null;
             }
 
-            Debug.Log("Aim");
+            //Debug.Log("Aim");
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5.0f);
             direction = player.transform.position - transform.position;
@@ -109,7 +142,7 @@ public class EnemyAI : MonoBehaviour
 
     void MoveToNoObstalcePosition()
     {
-        Debug.Log("Reset Path");
+        //Debug.Log("Reset Path");
         Vector3 directionToTarget = player.transform.position - transform.position;
         float angle = Random.Range(-90f, 90f);
         Vector3 direction = Quaternion.Euler(0, angle, 0) * directionToTarget.normalized;
@@ -133,7 +166,8 @@ public class EnemyAI : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
             }
 
-            Debug.Log("Attack");
+            //animator.Play("Attacking", 0, 0);
+            //Debug.Log("Attack");
             yield return new WaitForSeconds(EnemyInfo.AttackSpeed);
         }
     }
@@ -146,7 +180,7 @@ public class EnemyAI : MonoBehaviour
         foreach (Collider hitCollider in hitColliders)
         {
             GameObject foundObject = hitCollider.gameObject;
-            Debug.Log("Found object: " + foundObject.name);
+            //Debug.Log("Found object: " + foundObject.name);
         }
 
         return hitColliders.Length > 0;

@@ -22,12 +22,11 @@ MonoBehaviour:
   magazineSize: 200
   bulletsPerTap: 1
   allowButtonHold: 0
-  bulletsLeft: 200
   maxBullets: 200
   bulletsShot: 0
   recoilForce: 0
   allowInvoke: 1
   gunSound: {fileID: 8300000, guid: 4c4ee023dbac92e41931105cc2d6f142, type: 3}
   recoilX: -1.5
-  recoilY: 4
-  recoilZ: 0.5
+  recoilY: 0
+  recoilZ: 0

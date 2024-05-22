@@ -119,7 +119,10 @@ public class PlayerShoot : MonoBehaviour
         //check if ray hits something
         Vector3 targetPoint;
         if (Physics.Raycast(ray, out hit))
+        {
+            Debug.Log($"Aim: {hit.collider.gameObject.name}");
             targetPoint = hit.point;
+        }
         else
             targetPoint = ray.GetPoint(75); //Just a point far away from the player
 
