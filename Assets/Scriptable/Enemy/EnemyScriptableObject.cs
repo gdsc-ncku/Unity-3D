@@ -8,10 +8,11 @@ public class EnemyScriptableObject : ScriptableObject
     public float AttackRangeOffset;
     public float AttackRange;
     public float AttackSpeed;
+    public float AttackTime;
     public float AttackDamage;
     public float MoveSpeed;
     public float Health;
-    public virtual void attack(GameObject gameObject)
+    public virtual void attack(GameObject gameObject, float waittingTime)
     {
         
     }

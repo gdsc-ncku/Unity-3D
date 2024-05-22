@@ -7,7 +7,7 @@ using UnityEngine.UI;
 enum status { chasing, attack, die};
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] EnemyScriptableObject EnemyInfo;
+    public EnemyScriptableObject EnemyInfo;
     [SerializeField] GameObject player;
     [SerializeField] LayerMask searchLayer;
     [SerializeField] Slider HealthBar;
@@ -68,7 +68,7 @@ public class EnemyAI : MonoBehaviour
     IEnumerator SearchRoutine()
     {
         animator.Play("Chasing", 0, 0);
-        Debug.Log("Chasing");
+        //Debug.Log("Chasing");
         while (player != null && nowStatus == status.chasing)
         {
             NavMeshHit hit;
@@ -114,7 +114,7 @@ public class EnemyAI : MonoBehaviour
                 continue;
             }
 
-            Debug.Log("Aim");
+            //Debug.Log("Aim");
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5.0f);
             direction = player.transform.position - transform.position;
@@ -140,12 +140,12 @@ public class EnemyAI : MonoBehaviour
         if(hit.collider.gameObject.layer == player.layer)
         {
             agent.ResetPath();
-            Debug.Log("No Obstacle");
+            //Debug.Log("No Obstacle");
             return false;
         }
         else
         {
-            Debug.Log("Has Obstacle");
+            //Debug.Log("Has Obstacle");
             return true;
         }
     }
@@ -180,9 +180,10 @@ public class EnemyAI : MonoBehaviour
                 continue;
             }
 
+            animator.SetFloat("Attack", 1 / EnemyInfo.AttackTime);
             animator.Play("Attacking", 0, 0);
-            Debug.Log("Attack?");
-            yield return new WaitForSeconds(EnemyInfo.AttackSpeed);
+            //Debug.Log("Attack");
+            yield return new WaitForSeconds(EnemyInfo.AttackSpeed + EnemyInfo.AttackTime);
         }
     }
 
