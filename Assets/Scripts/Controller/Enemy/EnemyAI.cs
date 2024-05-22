@@ -63,8 +63,8 @@ public class EnemyAI : MonoBehaviour
 
     IEnumerator SearchRoutine()
     {
-        //animator.Play("Chasing", 0, 0);
-        //Debug.Log("Chasing");
+        animator.Play("Chasing", 0, 0);
+        Debug.Log("Chasing");
         while (player != null && nowStatus == status.chasing)
         {
             NavMeshHit hit;
@@ -78,7 +78,7 @@ public class EnemyAI : MonoBehaviour
                 nowStatus = status.attack;
                 agent.ResetPath();
                 StartCoroutine(Aim());
-                break;
+                yield break;
             }
             else
             {
@@ -98,16 +98,18 @@ public class EnemyAI : MonoBehaviour
         {
             if (IsPathObstructed() && !agent.hasPath)
             {
-                //animator.Play("Walking", 0, 0);
+                animator.Play("Walking", 0, 0);
                 MoveToNoObstalcePosition();
                 yield return null;
+                continue;
             }
             else if(agent.hasPath)
             {
                 yield return null;
+                continue;
             }
 
-            //Debug.Log("Aim");
+            Debug.Log("Aim");
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5.0f);
             direction = player.transform.position - transform.position;
@@ -132,10 +134,12 @@ public class EnemyAI : MonoBehaviour
         if(hit.collider.gameObject.layer == player.layer)
         {
             agent.ResetPath();
+            Debug.Log("No Obstacle");
             return false;
         }
         else
         {
+            Debug.Log("Has Obstacle");
             return true;
         }
     }
@@ -161,13 +165,15 @@ public class EnemyAI : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         while (player != null && nowStatus == status.attack)
         {
-            if(IsPathObstructed() && agent.hasPath)
+            if(IsPathObstructed() || agent.hasPath)
             {
+                Debug.Log("return attack");
                 yield return new WaitForSeconds(0.5f);
+                continue;
             }
 
-            //animator.Play("Attacking", 0, 0);
-            //Debug.Log("Attack");
+            animator.Play("Attacking", 0, 0);
+            Debug.Log("Attack?");
             yield return new WaitForSeconds(EnemyInfo.AttackSpeed);
         }
     }

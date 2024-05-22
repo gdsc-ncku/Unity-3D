@@ -203,7 +203,7 @@ public class PlayerShoot : MonoBehaviour
         reloading = true;
         animator.SetFloat("SpeedMultiplier", 1 / BattleInfo.nowWeaponData.ThisWeapon.reloadTime);
         animator.Play("WeaponReload", 0, 0f);
-        Invoke("ResetBullets", BattleInfo.nowWeaponData.ThisWeapon.reloadTime);
+        StartCoroutine(ResetBullets());
     }
 
     private void Reload()

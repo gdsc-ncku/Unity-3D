@@ -11,8 +11,8 @@ public class EnemyScriptableObject : ScriptableObject
     public float AttackDamage;
     public float MoveSpeed;
     public float Health;
-    public void attack()
+    public virtual void attack(GameObject gameObject)
     {
-
+        
     }
 }
