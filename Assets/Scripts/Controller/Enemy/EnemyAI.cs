@@ -29,6 +29,7 @@ public class EnemyAI : MonoBehaviour
             if(Hp == 0)
             {
                 Debug.Log("Enemy Die");
+                animator.Play("Die", 0, 0);
                 nowStatus = status.die;
             }
         }
@@ -37,6 +38,11 @@ public class EnemyAI : MonoBehaviour
     public float GetHealth()
     {
         return Health;
+    }
+
+    public void ReduceHealth(float val)
+    {
+        Health -= val;
     }
 
     private NavMeshAgent agent;
@@ -55,12 +61,10 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            Health -= Random.Range(5.0f, 10.0f);
-        }
+        
     }
 
+    //Chasing player
     IEnumerator SearchRoutine()
     {
         animator.Play("Chasing", 0, 0);
@@ -88,6 +92,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    //Let enemy orient to player
     IEnumerator Aim()
     {
         Vector3 direction = player.transform.position - transform.position;
@@ -125,6 +130,7 @@ public class EnemyAI : MonoBehaviour
         } 
     }
 
+    //Detect if has obstacle between enemy and player
     bool IsPathObstructed()
     {
         Ray ray = new Ray(transform.position, player.transform.position - transform.position);
@@ -144,6 +150,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    //Repath
     void MoveToNoObstalcePosition()
     {
         //Debug.Log("Reset Path");
@@ -160,6 +167,7 @@ public class EnemyAI : MonoBehaviour
         Debug.Log(hit.position);
     }
 
+    //Attacking between every EnemyInfo.AttackSpeed second
     IEnumerator Attack()
     {
         yield return new WaitForSeconds(0.5f);
@@ -178,6 +186,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    //Search if player around enemy
     bool SearchInSphere()
     {
         Vector3 center = transform.position;
