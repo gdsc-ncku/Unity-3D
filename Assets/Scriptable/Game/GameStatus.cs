@@ -2,6 +2,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
+using UnityEngine.SceneManagement;
 
 public enum gameStatus
 {
@@ -37,15 +39,19 @@ public class GameStatus : ScriptableObject
         }
     }
 
-    private AsyncOperationHandle _loadingSceneHandle;
-    public UnityEvent<AsyncOperationHandle> loadingSceneHandleChange;
-    public AsyncOperationHandle LoadingSceneHandle
+    private AsyncOperationHandle<SceneInstance> _loadingSceneHandle;
+    public UnityEvent<AsyncOperationHandle<SceneInstance>> loadingSceneHandleChange;
+    public AsyncOperationHandle<SceneInstance> LoadingSceneHandle
     {
         get => _loadingSceneHandle;
         set
         {
             _loadingSceneHandle = value;
             loadingSceneHandleChange.Invoke(_loadingSceneHandle);
+            LoadingSceneHandle.Completed += (Handle) =>
+            {
+                SceneManager.SetActiveScene(LoadingSceneHandle.Result.Scene);
+            };
         }
     }
     #endregion

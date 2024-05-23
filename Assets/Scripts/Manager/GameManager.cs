@@ -27,9 +27,5 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitUntil(() => gameStatus.CatchData);
         gameStatus.LoadingSceneHandle = Addressables.LoadSceneAsync(mainScene, LoadSceneMode.Additive);
-        gameStatus.LoadingSceneHandle.Completed += (Handle) =>
-        {
-            Addressables.Release(gameStatus.LoadingSceneHandle);
-        };
     }
 }
