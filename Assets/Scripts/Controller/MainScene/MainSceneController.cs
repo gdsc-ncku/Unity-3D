@@ -7,8 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class MainSceneController : MonoBehaviour
 {
-    [SerializeField] GameStatus gameStatus;
-    [SerializeField] AssetReference advenatureScene, mainScene;
+    [SerializeField] MainSceneManager mainSceneManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,16 +22,16 @@ public class MainSceneController : MonoBehaviour
 
     public void StartGame()
     {
-        if (advenatureScene != null)
+        if (mainSceneManager.advenatureScene != null)
         {
-            AsyncOperationHandle unLoad = gameStatus.LoadingSceneHandle;
+            AsyncOperationHandle unLoad = mainSceneManager.gameStatus.LoadingSceneHandle;
             Addressables.UnloadSceneAsync(unLoad);
-            gameStatus.LoadingSceneHandle = Addressables.LoadSceneAsync(advenatureScene, LoadSceneMode.Additive);
+            mainSceneManager.gameStatus.LoadingSceneHandle = Addressables.LoadSceneAsync(mainSceneManager.advenatureScene, LoadSceneMode.Additive);
         }
     }
 
     public void ExitGame()
     {
-       gameStatus.ExitGame();
+        mainSceneManager.gameStatus.ExitGame();
     }
 }

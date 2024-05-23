@@ -10124,12 +10124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b87efa9e8a69bf4e9c4da6d2a7632b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameStatus: {fileID: 11400000, guid: 45b26f6374270b54899136a3a711ada1, type: 2}
-  advenatureScene:
-    m_AssetGUID: 38bf1e0571c6b2f4fb9c67f8373dcf20
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 1
+  mainSceneManager: {fileID: 0}
 --- !u!4 &838206080
 Transform:
   m_ObjectHideFlags: 0
@@ -20038,6 +20033,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8457a3d9b80d4b849bdf049ab998ef47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameStatus: {fileID: 11400000, guid: 45b26f6374270b54899136a3a711ada1, type: 2}
+  advenatureScene:
+    m_AssetGUID: 38bf1e0571c6b2f4fb9c67f8373dcf20
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 1
+  mainScene:
+    m_AssetGUID: 534455f7538c3bb4da64f2735d4b3db2
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
 --- !u!1 &1746639805
 GameObject:
   m_ObjectHideFlags: 0
