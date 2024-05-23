@@ -3,6 +3,7 @@
 public class FPSCustomBullet : MonoBehaviour
 {
     //Assignables
+    [SerializeField] WeaponData AttackWeapon;
     public Rigidbody rb;
     public GameObject explosion;
     public LayerMask whatIsEnemies;
@@ -28,6 +29,11 @@ public class FPSCustomBullet : MonoBehaviour
     public AudioClip explosionSound;
     private void Start()
     {
+        if (rb == null)
+        {
+            rb = GetComponent<Rigidbody>();
+        }
+        rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
         Setup();
     }
 
@@ -49,16 +55,11 @@ public class FPSCustomBullet : MonoBehaviour
         if (GetComponent<AudioSource>())
         {
             GetComponent<AudioSource>().PlayOneShot(explosionSound);
-
         }
            
 
         //Add a little delay, just to make sure everything works fine
         //Invoke("Delay", 0.05f);
-        Destroy(gameObject);
-    }
-    private void Delay()
-    {
         Destroy(gameObject);
     }
 
@@ -67,6 +68,11 @@ public class FPSCustomBullet : MonoBehaviour
         //Don't count collisions with other bullets
         if (collision.collider.CompareTag("Bullet")) return;
 
+        EnemyAI EnemyInfo = collision.collider.gameObject.GetComponent<EnemyAI>();
+        if (EnemyInfo != null)
+        {
+            EnemyInfo.ReduceHealth(AttackWeapon.damage);
+        }
         //Count up collisions
         collisions++;
 

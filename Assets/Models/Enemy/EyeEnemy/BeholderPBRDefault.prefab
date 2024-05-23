@@ -1591,6 +1591,7 @@ GameObject:
   - component: {fileID: 3280837256282555557}
   - component: {fileID: 6369766362078067287}
   - component: {fileID: 6558968397173402460}
+  - component: {fileID: 3169363688355936835}
   m_Layer: 0
   m_Name: BeholderPBRDefault
   m_TagString: Untagged
@@ -1660,7 +1661,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -1699,7 +1700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyInfo: {fileID: 11400000, guid: 6188b8f2d4a6c9f488b78becc2b49bed, type: 2}
-  player: {fileID: 0}
+  BattleInfo: {fileID: 11400000, guid: e7c568f5ad6fe6e4d80ab0c9089eb3a4, type: 2}
   searchLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -1717,6 +1718,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eyeEnemy: {fileID: 11400000, guid: 6188b8f2d4a6c9f488b78becc2b49bed, type: 2}
+--- !u!135 &3169363688355936835
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7225062596225999594}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.6
+  m_Center: {x: 0, y: 1.4, z: 0}
 --- !u!1 &7278241300597495467
 GameObject:
   m_ObjectHideFlags: 0

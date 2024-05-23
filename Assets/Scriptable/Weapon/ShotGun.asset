@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ShotGun
   m_EditorClassIdentifier: 
   bullet: {fileID: 6231888369005412580, guid: 1ac98dde1a6ec2b47b8cc8e5b0ef7b31, type: 3}
+  damage: 20
   shootForce: 15
   upwardForce: 1
   timeBetweenShooting: 1
@@ -22,12 +23,11 @@ MonoBehaviour:
   magazineSize: 150
   bulletsPerTap: 10
   allowButtonHold: 0
-  bulletsLeft: 8
   maxBullets: 8
   bulletsShot: 0
   recoilForce: 1
   allowInvoke: 1
   gunSound: {fileID: 8300000, guid: e838df0e5967a214786f196333d6058b, type: 3}
-  recoilX: -3
-  recoilY: 3.25
+  recoilX: -2
+  recoilY: 0
   recoilZ: 1

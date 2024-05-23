@@ -8,7 +8,7 @@ enum status { chasing, attack, die};
 public class EnemyAI : MonoBehaviour
 {
     public EnemyScriptableObject EnemyInfo;
-    [SerializeField] GameObject player;
+    [SerializeField] PlayerBattleValueScriptable BattleInfo;
     [SerializeField] LayerMask searchLayer;
     [SerializeField] Slider HealthBar;
     private Animator animator;
@@ -69,10 +69,10 @@ public class EnemyAI : MonoBehaviour
     {
         animator.Play("Chasing", 0, 0);
         //Debug.Log("Chasing");
-        while (player != null && nowStatus == status.chasing)
+        while (BattleInfo.Player != null && nowStatus == status.chasing)
         {
             NavMeshHit hit;
-            if (NavMesh.SamplePosition(player.transform.position, out hit, 20.0f, NavMesh.AllAreas))
+            if (NavMesh.SamplePosition(BattleInfo.Player.transform.position, out hit, 20.0f, NavMesh.AllAreas))
             {
                 agent.SetDestination(hit.position);
             }
@@ -95,11 +95,11 @@ public class EnemyAI : MonoBehaviour
     //Let enemy orient to player
     IEnumerator Aim()
     {
-        Vector3 direction = player.transform.position - transform.position;
+        Vector3 direction = BattleInfo.Player.transform.position - transform.position;
         direction.y = 0; // ©¿²¤ Y ¶bªº®t²§
         StartCoroutine(Attack());
 
-        while (player != null && direction != Vector3.zero && nowStatus == status.attack)
+        while (BattleInfo.Player != null && direction != Vector3.zero && nowStatus == status.attack)
         {
             if (IsPathObstructed() && !agent.hasPath)
             {
@@ -117,7 +117,7 @@ public class EnemyAI : MonoBehaviour
             //Debug.Log("Aim");
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5.0f);
-            direction = player.transform.position - transform.position;
+            direction = BattleInfo.Player.transform.position - transform.position;
             direction.y = 0; // ©¿²¤ Y ¶bªº®t²§
 
             if (!SearchInSphere())
@@ -133,11 +133,11 @@ public class EnemyAI : MonoBehaviour
     //Detect if has obstacle between enemy and player
     bool IsPathObstructed()
     {
-        Ray ray = new Ray(transform.position, player.transform.position - transform.position);
+        Ray ray = new Ray(transform.position, BattleInfo.Player.transform.position - transform.position);
         RaycastHit hit;
-        Physics.Raycast(ray, out hit, Vector3.Distance(transform.position, player.transform.position));
-        Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.red, 0.1f);
-        if(hit.collider.gameObject.layer == player.layer)
+        Physics.Raycast(ray, out hit, Vector3.Distance(transform.position, BattleInfo.Player.transform.position));
+        Debug.DrawRay(transform.position, BattleInfo.Player.transform.position - transform.position, Color.red, 0.1f);
+        if(hit.collider.gameObject.layer == BattleInfo.Player.layer)
         {
             agent.ResetPath();
             //Debug.Log("No Obstacle");
@@ -154,7 +154,7 @@ public class EnemyAI : MonoBehaviour
     void MoveToNoObstalcePosition()
     {
         //Debug.Log("Reset Path");
-        Vector3 directionToTarget = player.transform.position - transform.position;
+        Vector3 directionToTarget = BattleInfo.Player.transform.position - transform.position;
         float angle = Random.Range(-90f, 90f);
         Vector3 direction = Quaternion.Euler(0, angle, 0) * directionToTarget.normalized;
         Vector3 RePathForObstacle = transform.position + direction * Random.Range(5f, 20f);
@@ -171,7 +171,7 @@ public class EnemyAI : MonoBehaviour
     IEnumerator Attack()
     {
         yield return new WaitForSeconds(0.5f);
-        while (player != null && nowStatus == status.attack)
+        while (BattleInfo.Player != null && nowStatus == status.attack)
         {
             if(IsPathObstructed() || agent.hasPath)
             {

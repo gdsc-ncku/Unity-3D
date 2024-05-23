@@ -13,21 +13,21 @@ MonoBehaviour:
   m_Name: AK_rare
   m_EditorClassIdentifier: 
   bullet: {fileID: 6231888369005412580, guid: a80eff1b9e736064cb0ffd35a10af00e, type: 3}
-  shootForce: 25
+  damage: 10
+  shootForce: 50
   upwardForce: 1
-  timeBetweenShooting: 0.1
+  timeBetweenShooting: 0.05
   spread: 0
   reloadTime: 1
   timeBetweenShots: 0.02
   magazineSize: 1000
   bulletsPerTap: 3
   allowButtonHold: 0
-  bulletsLeft: 30
   maxBullets: 30
   bulletsShot: 0
   recoilForce: 1
   allowInvoke: 1
   gunSound: {fileID: 8300000, guid: dff055e4400984148b4c6f0e0b3bd666, type: 3}
-  recoilX: -3.05
+  recoilX: -0.5
   recoilY: 0
   recoilZ: 0

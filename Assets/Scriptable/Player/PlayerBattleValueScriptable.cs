@@ -12,6 +12,7 @@ public class PlayerBattleValueScriptable : ScriptableObject
     }
     #region BasicBattleValue
     [Header("BasicBattleValue")]
+    public GameObject Player;
     public float initM_Hp;
     private float m_Health;
     public float MaxHealth

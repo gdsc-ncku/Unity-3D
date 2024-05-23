@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: M249
   m_EditorClassIdentifier: 
   bullet: {fileID: 6231888369005412580, guid: a80eff1b9e736064cb0ffd35a10af00e, type: 3}
-  shootForce: 20
+  damage: 5
+  shootForce: 100
   upwardForce: 1
   timeBetweenShooting: 0.05
   spread: 1

@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
         Speed = MovementConst.Role.WalkSpeed;
         // Initialize Rigidbody and freeze rotation
         rb = GetComponent<Rigidbody>();
+        MovementConst.Player = gameObject;
     }
 
     private void Update()

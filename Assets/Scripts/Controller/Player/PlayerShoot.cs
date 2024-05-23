@@ -120,11 +120,11 @@ public class PlayerShoot : MonoBehaviour
         Vector3 targetPoint;
         if (Physics.Raycast(ray, out hit))
         {
-            Debug.Log($"Aim: {hit.collider.gameObject.name}");
+            //Debug.Log($"Aim: {hit.collider.gameObject.name}");
             targetPoint = hit.point;
         }
         else
-            targetPoint = ray.GetPoint(75); //Just a point far away from the player
+            targetPoint = ray.GetPoint(1000); //Just a point far away from the player
 
         while (BattleInfo.nowWeaponData.ThisWeapon.bulletsShot < BattleInfo.nowWeaponData.ThisWeapon.bulletsPerTap)
         {
@@ -141,11 +141,11 @@ public class PlayerShoot : MonoBehaviour
             //Instantiate bullet/projectile
             GameObject currentBullet = Instantiate(BattleInfo.nowWeaponData.ThisWeapon.bullet, BattleInfo.nowWeaponData.weaponAttackPoint.position, Quaternion.identity); //store instantiated bullet in currentBullet
                                                                                                                                                                                      //Rotate bullet to shoot direction
-            currentBullet.transform.forward = directionWithSpread.normalized;
+            currentBullet.transform.forward = directionWithoutSpread.normalized;
 
             //Add forces to bullet
-            currentBullet.GetComponent<Rigidbody>().AddForce(directionWithSpread.normalized * BattleInfo.nowWeaponData.ThisWeapon.shootForce, ForceMode.Impulse);
-            currentBullet.GetComponent<Rigidbody>().AddForce(fpsCam.transform.up * BattleInfo.nowWeaponData.ThisWeapon.upwardForce, ForceMode.Impulse);
+            currentBullet.GetComponent<Rigidbody>().AddForce(directionWithoutSpread.normalized * BattleInfo.nowWeaponData.ThisWeapon.shootForce, ForceMode.Impulse);
+            //currentBullet.GetComponent<Rigidbody>().AddForce(fpsCam.transform.up * BattleInfo.nowWeaponData.ThisWeapon.upwardForce, ForceMode.Impulse);
             BattleInfo.nowWeaponData.ThisWeapon.bulletsShot++;
         }
         BattleInfo.nowWeaponData.ThisWeapon.bulletsShot = 0;

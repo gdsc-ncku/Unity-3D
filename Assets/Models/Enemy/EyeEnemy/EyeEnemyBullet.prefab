@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Spawner: {fileID: 0}
-  waittingTime: 0
+  waittingTime: 0.5
   EnemyInfo: {fileID: 11400000, guid: 6188b8f2d4a6c9f488b78becc2b49bed, type: 2}
   PlayerInfo: {fileID: 11400000, guid: e7c568f5ad6fe6e4d80ab0c9089eb3a4, type: 2}
   bulletAim:

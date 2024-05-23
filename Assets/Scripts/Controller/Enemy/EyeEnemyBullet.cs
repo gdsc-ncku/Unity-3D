@@ -17,7 +17,7 @@ public class EyeEnemyBullet : MonoBehaviour
 
     void Start()
     {
-        Destroy(this, 3.0f);
+        Destroy(gameObject, 3.0f);
         offset = transform.position - Spawner.transform.position;
         rb = GetComponent<Rigidbody>();
         rb.velocity = Vector3.zero; // 清除初始速度

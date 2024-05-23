@@ -9,6 +9,7 @@ public class WeaponData : ScriptableObject
 {
     //bullet
     public GameObject bullet;
+    public float damage;
 
     //bullet force
     public float shootForce, upwardForce;
