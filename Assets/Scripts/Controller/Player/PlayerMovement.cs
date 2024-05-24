@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         SpeedLimit();
+        Debug.Log($"{isJumping}, {Grounded}");
     }
 
     void FixedUpdate()
@@ -76,11 +77,11 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(gameObject.transform.up * jumpForce, ForceMode.Impulse);
 
         //jump cooldown
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
 
         //wait for tauch ground again
         RaycastHit hit;
-        while(!Physics.Raycast(GroundDetector.transform.position, GroundDetector.transform.up * -1, out hit, 0.05f))
+        while(!Physics.Raycast(GroundDetector.transform.position, GroundDetector.transform.up * -1, out hit, 0.1f))
         {
             yield return null;
         }
