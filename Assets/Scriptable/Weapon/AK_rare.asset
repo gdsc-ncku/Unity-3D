@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9e5ee33ac581944895bb2515ae8ebc, type: 3}
   m_Name: AK_rare
   m_EditorClassIdentifier: 
-  bullet: {fileID: 6231888369005412580, guid: a80eff1b9e736064cb0ffd35a10af00e, type: 3}
+  bullet: {fileID: 6231888369005412580, guid: 82aecbce257a6564e934d7db36c6c610, type: 3}
   damage: 10
   shootForce: 50
   upwardForce: 1
-  timeBetweenShooting: 0.05
+  timeBetweenShooting: 0.1
   spread: 0
   reloadTime: 1
   timeBetweenShots: 0.02

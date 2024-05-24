@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9446a65ad0e990842aa37f4c46d68134, type: 3}
   m_Name: M72
   m_EditorClassIdentifier: 
-  bullet: {fileID: 2386818071773510221, guid: dc9631633ec1c214ba29f85095da53ff, type: 3}
+  bullet: {fileID: 2386818071773510221, guid: 429356bded98f9e4aa2fb25dd1a99a11, type: 3}
   damage: 100
   shootForce: 80
   upwardForce: 3

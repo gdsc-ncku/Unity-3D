@@ -26,10 +26,12 @@ public class EnemyAI : MonoBehaviour
             Hp = value;
             HealthBar.value = Hp;
 
-            if(Hp == 0)
+            if(Hp <= 0)
             {
                 Debug.Log("Enemy Die");
+                gameObject.GetComponent<Collider>().enabled = false;
                 animator.Play("Die", 0, 0);
+                Destroy(gameObject, animator.GetCurrentAnimatorClipInfo(0).Length);
                 nowStatus = status.die;
             }
         }
@@ -164,7 +166,7 @@ public class EnemyAI : MonoBehaviour
         {
             agent.SetDestination(hit.position);
         }
-        Debug.Log(hit.position);
+        //Debug.Log(hit.position);
     }
 
     //Attacking between every EnemyInfo.AttackSpeed second
@@ -175,7 +177,7 @@ public class EnemyAI : MonoBehaviour
         {
             if(IsPathObstructed() || agent.hasPath)
             {
-                Debug.Log("return attack");
+                //Debug.Log("return attack");
                 yield return new WaitForSeconds(0.5f);
                 continue;
             }

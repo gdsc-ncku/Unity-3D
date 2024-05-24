@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d092fa9aceb8140bf882f1760dce66, type: 3}
   m_Name: M249
   m_EditorClassIdentifier: 
-  bullet: {fileID: 6231888369005412580, guid: a80eff1b9e736064cb0ffd35a10af00e, type: 3}
+  bullet: {fileID: 6231888369005412580, guid: 4a269118e8207d544b1a85d39cc50279, type: 3}
   damage: 5
-  shootForce: 100
+  shootForce: 50
   upwardForce: 1
-  timeBetweenShooting: 0.05
+  timeBetweenShooting: 0.01
   spread: 1
   reloadTime: 3
   timeBetweenShots: 0

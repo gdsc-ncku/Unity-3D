@@ -30,9 +30,13 @@ public class EyeEnemyBullet : MonoBehaviour
     void Update()
     {
         gameObject.transform.RotateAround(transform.position, Vector3.up, rotateSpeed);
-        if (!Attacking)
+        if (!Attacking && Spawner != null)
         {
             transform.position = Spawner.transform.position + offset;
+        }
+        else if(Spawner == null)
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -44,13 +48,13 @@ public class EyeEnemyBullet : MonoBehaviour
         
         if(hitColliders.Length > 0)
         {
-            Debug.Log("Attack Player");
+            //Debug.Log("Attack Player");
             rb.AddForce((hitColliders[0].transform.position - transform.position).normalized * Random.Range(10f, 15f), ForceMode.Impulse);
         }
         else
         {
             StartCoroutine(attack());
-            Debug.Log("No Player");
+            //Debug.Log("No Player");
         }
         yield break;
     }

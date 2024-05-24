@@ -102,7 +102,7 @@ public class PlayerShoot : MonoBehaviour
 
         if (BattleInfo.nowWeaponData.bulletsLeft <= 0)
         {
-            Debug.Log("Reload..");
+            //Debug.Log("Reload..");
             Reload();
             return;
         }
@@ -124,24 +124,27 @@ public class PlayerShoot : MonoBehaviour
             targetPoint = hit.point;
         }
         else
+        {
             targetPoint = ray.GetPoint(1000); //Just a point far away from the player
+        }
 
         while (BattleInfo.nowWeaponData.ThisWeapon.bulletsShot < BattleInfo.nowWeaponData.ThisWeapon.bulletsPerTap)
         {
             //Calculate direction from attackPoint to targetPoint
             Vector3 directionWithoutSpread = targetPoint - BattleInfo.nowWeaponData.weaponAttackPoint.position;
 
-            //Calculate spread
-            float x = Random.Range(-BattleInfo.nowWeaponData.ThisWeapon.spread, BattleInfo.nowWeaponData.ThisWeapon.spread);
-            float y = Random.Range(-BattleInfo.nowWeaponData.ThisWeapon.spread, BattleInfo.nowWeaponData.ThisWeapon.spread);
-
-            //Calculate new direction with spread
-            Vector3 directionWithSpread = directionWithoutSpread + new Vector3(x, y, 0); //Just add spread to last direction
-
             //Instantiate bullet/projectile
-            GameObject currentBullet = Instantiate(BattleInfo.nowWeaponData.ThisWeapon.bullet, BattleInfo.nowWeaponData.weaponAttackPoint.position, Quaternion.identity); //store instantiated bullet in currentBullet
-                                                                                                                                                                                     //Rotate bullet to shoot direction
+            GameObject currentBullet;
+            RaycastHit attackPointHit;
+            float offset = 0f;
+            while (Physics.Raycast(new Ray(BattleInfo.nowWeaponData.weaponAttackPoint.position + directionWithoutSpread.normalized * offset, directionWithoutSpread), out attackPointHit) && attackPointHit.collider.gameObject != hit.collider.gameObject)
+            {
+                offset += 0.1f;
+            }
+
+            currentBullet = Instantiate(BattleInfo.nowWeaponData.ThisWeapon.bullet, BattleInfo.nowWeaponData.weaponAttackPoint.position + directionWithoutSpread.normalized * (offset + 1), Quaternion.identity);
             currentBullet.transform.forward = directionWithoutSpread.normalized;
+            currentBullet.GetComponent<FPSCustomBullet>().AttackWeapon = BattleInfo.nowWeaponData;
 
             //Add forces to bullet
             currentBullet.GetComponent<Rigidbody>().AddForce(directionWithoutSpread.normalized * BattleInfo.nowWeaponData.ThisWeapon.shootForce, ForceMode.Impulse);
@@ -167,7 +170,7 @@ public class PlayerShoot : MonoBehaviour
 
         if (BattleInfo.nowWeaponData.bulletsLeft <= 0)
         {
-            Debug.Log("Reload..");
+            //Debug.Log("Reload..");
             Reload();
         }
 

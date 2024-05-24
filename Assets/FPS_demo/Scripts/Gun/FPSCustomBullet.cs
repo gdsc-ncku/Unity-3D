@@ -3,7 +3,7 @@
 public class FPSCustomBullet : MonoBehaviour
 {
     //Assignables
-    [SerializeField] WeaponData AttackWeapon;
+    public WeaponsDataFetch AttackWeapon;
     public Rigidbody rb;
     public GameObject explosion;
     public LayerMask whatIsEnemies;
@@ -63,15 +63,15 @@ public class FPSCustomBullet : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
         //Don't count collisions with other bullets
-        if (collision.collider.CompareTag("Bullet")) return;
+        if (collider.CompareTag("Bullet") || collider.gameObject == AttackWeapon.gameObject) return;
 
-        EnemyAI EnemyInfo = collision.collider.gameObject.GetComponent<EnemyAI>();
+        EnemyAI EnemyInfo = collider.gameObject.GetComponent<EnemyAI>();
         if (EnemyInfo != null)
         {
-            EnemyInfo.ReduceHealth(AttackWeapon.damage);
+            EnemyInfo.ReduceHealth(AttackWeapon.ThisWeapon.damage);
         }
         //Count up collisions
         collisions++;

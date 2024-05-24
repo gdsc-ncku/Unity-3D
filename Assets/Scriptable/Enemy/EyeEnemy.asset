@@ -18,6 +18,6 @@ MonoBehaviour:
   AttackTime: 2
   AttackDamage: 5
   MoveSpeed: 2
-  Health: 100
+  Health: 30
   Bullet: {fileID: 4038842101496279827, guid: 0766e9edb6709c740a7fef949530fbd5, type: 3}
   BulletsPerGen: 3
