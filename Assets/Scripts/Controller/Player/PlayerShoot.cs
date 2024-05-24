@@ -130,6 +130,13 @@ public class PlayerShoot : MonoBehaviour
 
         while (BattleInfo.nowWeaponData.ThisWeapon.bulletsShot < BattleInfo.nowWeaponData.ThisWeapon.bulletsPerTap)
         {
+            //For Shotgun
+            Vector3 offsetShotgunBullet = new Vector3(0, 0, 0);
+            if(BattleInfo.nowWeaponData.ThisWeapon.bulletsShot > 0)
+            {
+                offsetShotgunBullet = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
+            }
+
             //Calculate direction from attackPoint to targetPoint
             Vector3 directionWithoutSpread = targetPoint - BattleInfo.nowWeaponData.weaponAttackPoint.position;
 
@@ -142,7 +149,7 @@ public class PlayerShoot : MonoBehaviour
                 offset += 0.1f;
             }
 
-            currentBullet = Instantiate(BattleInfo.nowWeaponData.ThisWeapon.bullet, BattleInfo.nowWeaponData.weaponAttackPoint.position + directionWithoutSpread.normalized * (offset + 1), Quaternion.identity);
+            currentBullet = Instantiate(BattleInfo.nowWeaponData.ThisWeapon.bullet, BattleInfo.nowWeaponData.weaponAttackPoint.position + directionWithoutSpread.normalized * (offset + 1) + offsetShotgunBullet, Quaternion.identity);
             currentBullet.transform.forward = directionWithoutSpread.normalized;
             currentBullet.GetComponent<FPSCustomBullet>().AttackWeapon = BattleInfo.nowWeaponData;
 

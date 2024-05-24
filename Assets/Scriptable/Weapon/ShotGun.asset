@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 6231888369005412580, guid: 6ca876d01b5358e4c91a263d7b3105dd, type: 3}
   damage: 20
-  shootForce: 50
+  shootForce: 20
   upwardForce: 1
   timeBetweenShooting: 1
   spread: 1
@@ -28,6 +28,6 @@ MonoBehaviour:
   recoilForce: 1
   allowInvoke: 1
   gunSound: {fileID: 8300000, guid: e838df0e5967a214786f196333d6058b, type: 3}
-  recoilX: -2
+  recoilX: 0
   recoilY: 0
-  recoilZ: 1
+  recoilZ: 0
