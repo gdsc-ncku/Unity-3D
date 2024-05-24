@@ -112,6 +112,12 @@ public class PlayerShoot : MonoBehaviour
             Debug.LogError("Camera.main is not assigned, setting camera's tag as MainCamera first");
             return;
         }
+
+        StartCoroutine(Fire());
+    }
+
+    IEnumerator Fire()
+    {
         //Find the exact hit position using a raycast
         Ray ray = fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)); //Just a ray through the middle of your current view
         RaycastHit hit;
@@ -128,37 +134,26 @@ public class PlayerShoot : MonoBehaviour
             targetPoint = ray.GetPoint(1000); //Just a point far away from the player
         }
 
-        while (BattleInfo.nowWeaponData.ThisWeapon.bulletsShot < BattleInfo.nowWeaponData.ThisWeapon.bulletsPerTap)
+        //Calculate direction from attackPoint to targetPoint
+        Vector3 directionWithoutSpread = targetPoint - BattleInfo.nowWeaponData.weaponAttackPoint.position;
+
+        //Instantiate bullet/projectile
+        GameObject currentBullet;
+        RaycastHit attackPointHit;
+        float offset = 0f;
+        while (Physics.Raycast(new Ray(BattleInfo.nowWeaponData.weaponAttackPoint.position + directionWithoutSpread.normalized * offset, directionWithoutSpread), out attackPointHit) && attackPointHit.collider.gameObject != hit.collider.gameObject)
         {
-            //For Shotgun
-            Vector3 offsetShotgunBullet = new Vector3(0, 0, 0);
-            if(BattleInfo.nowWeaponData.ThisWeapon.bulletsShot > 0)
-            {
-                offsetShotgunBullet = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
-            }
-
-            //Calculate direction from attackPoint to targetPoint
-            Vector3 directionWithoutSpread = targetPoint - BattleInfo.nowWeaponData.weaponAttackPoint.position;
-
-            //Instantiate bullet/projectile
-            GameObject currentBullet;
-            RaycastHit attackPointHit;
-            float offset = 0f;
-            while (Physics.Raycast(new Ray(BattleInfo.nowWeaponData.weaponAttackPoint.position + directionWithoutSpread.normalized * offset, directionWithoutSpread), out attackPointHit) && attackPointHit.collider.gameObject != hit.collider.gameObject)
-            {
-                offset += 0.1f;
-            }
-
-            currentBullet = Instantiate(BattleInfo.nowWeaponData.ThisWeapon.bullet, BattleInfo.nowWeaponData.weaponAttackPoint.position + directionWithoutSpread.normalized * (offset + 1) + offsetShotgunBullet, Quaternion.identity);
-            currentBullet.transform.forward = directionWithoutSpread.normalized;
-            currentBullet.GetComponent<FPSCustomBullet>().AttackWeapon = BattleInfo.nowWeaponData;
-
-            //Add forces to bullet
-            currentBullet.GetComponent<Rigidbody>().AddForce(directionWithoutSpread.normalized * BattleInfo.nowWeaponData.ThisWeapon.shootForce, ForceMode.Impulse);
-            //currentBullet.GetComponent<Rigidbody>().AddForce(fpsCam.transform.up * BattleInfo.nowWeaponData.ThisWeapon.upwardForce, ForceMode.Impulse);
-            BattleInfo.nowWeaponData.ThisWeapon.bulletsShot++;
+            offset += 0.1f;
         }
-        BattleInfo.nowWeaponData.ThisWeapon.bulletsShot = 0;
+
+        currentBullet = Instantiate(BattleInfo.nowWeaponData.ThisWeapon.bullet, BattleInfo.nowWeaponData.weaponAttackPoint.position + directionWithoutSpread.normalized * (offset + 1), Quaternion.identity);
+        currentBullet.transform.forward = directionWithoutSpread.normalized;
+        currentBullet.GetComponent<FPSCustomBullet>().AttackWeapon = BattleInfo.nowWeaponData;
+
+        //Add forces to bullet
+        currentBullet.GetComponent<Rigidbody>().AddForce(directionWithoutSpread.normalized * BattleInfo.nowWeaponData.ThisWeapon.shootForce, ForceMode.Impulse);
+        //currentBullet.GetComponent<Rigidbody>().AddForce(fpsCam.transform.up * BattleInfo.nowWeaponData.ThisWeapon.upwardForce, ForceMode.Impulse);
+        BattleInfo.nowWeaponData.ThisWeapon.bulletsShot++;
 
         if (BattleInfo.nowWeaponData.ThisWeapon.gunSound != null)
         {
@@ -173,6 +168,7 @@ public class PlayerShoot : MonoBehaviour
 
         BattleInfo.nowWeaponData.bulletsLeft--;
         animator.Play("WeaponRecoil", 0, 0f);
+
         Debug.Log(BattleInfo.nowWeaponData.bulletsLeft);
 
         if (BattleInfo.nowWeaponData.bulletsLeft <= 0)
@@ -182,6 +178,16 @@ public class PlayerShoot : MonoBehaviour
         }
 
         RecoilFire();
+
+        if(BattleInfo.nowWeaponData.ThisWeapon.bulletsShot < BattleInfo.nowWeaponData.ThisWeapon.bulletsPerTap)
+        {
+            yield return new WaitForSeconds(BattleInfo.nowWeaponData.ThisWeapon.timeBetweenShots);
+            StartCoroutine(Fire());
+        }
+        else
+        {
+            BattleInfo.nowWeaponData.ThisWeapon.bulletsShot = 0;
+        }
     }
 
     private void RecoilFire()

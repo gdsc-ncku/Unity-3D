@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1165490155807771508}
   - component: {fileID: 9043474513915953768}
   - component: {fileID: 3435128838079751265}
+  - component: {fileID: 2580812098146747786}
   m_Layer: 15
   m_Name: ShotgunBullet
   m_TagString: bullet
@@ -147,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0498daa91f8afb4fafaf221e152e582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackWeapon: {fileID: 11400000, guid: eeedd43b723dcf44cbff5260f4bc3185, type: 2}
+  AttackWeapon: {fileID: 0}
   rb: {fileID: 1165490155807771508}
   explosion: {fileID: 0}
   whatIsEnemies:
@@ -275,3 +276,16 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &2580812098146747786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6231888369005412580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdbc507402a3e5449baea8b0f7519ed6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splitAmount: 8
