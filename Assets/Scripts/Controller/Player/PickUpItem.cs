@@ -77,25 +77,25 @@ public class PickUpItem : MonoBehaviour
 
     private void changeItems(GameObject ItemA, GameObject ItemB)
     {
-        // «O¦sª«¥óAªº¦ì¸m¡B±ÛÂà©MÁY©ñ
+        // ï¿½Oï¿½sï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½mï¿½Bï¿½ï¿½ï¿½ï¿½Mï¿½Yï¿½ï¿½
         Vector3 positionA = ItemA.transform.position;
         Quaternion rotationA = ItemA.transform.rotation;
         Vector3 scaleA = ItemA.transform.localScale;
         Transform parentA = ItemA.transform.parent;
 
-        // «O¦sª«¥óBªº¦ì¸m¡B±ÛÂà©MÁY©ñ
+        // ï¿½Oï¿½sï¿½ï¿½ï¿½ï¿½Bï¿½ï¿½ï¿½ï¿½mï¿½Bï¿½ï¿½ï¿½ï¿½Mï¿½Yï¿½ï¿½
         Vector3 positionB = ItemB.transform.position;
         Quaternion rotationB = ItemB.transform.rotation;
         Vector3 scaleB = ItemB.transform.localScale;
         Transform parentB = ItemB.transform.parent;
 
-        // ±Nª«¥óAªº¦ì¸m¡B±ÛÂà©MÁY©ñ³]¸m¬°ª«¥óBªº¦ì¸m¡B±ÛÂà©MÁY©ñ
+        // ï¿½Nï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½mï¿½Bï¿½ï¿½ï¿½ï¿½Mï¿½Yï¿½ï¿½]ï¿½mï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Bï¿½ï¿½ï¿½ï¿½mï¿½Bï¿½ï¿½ï¿½ï¿½Mï¿½Yï¿½ï¿½
         ItemA.transform.position = positionB;
         ItemA.transform.rotation = rotationB;
         ItemA.transform.localScale = scaleB;
         ItemA.transform.parent = parentB;
 
-        // ±Nª«¥óBªº¦ì¸m¡B±ÛÂà©MÁY©ñ³]¸m¬°ª«¥óAªº¦ì¸m¡B±ÛÂà©MÁY©ñ
+        // ï¿½Nï¿½ï¿½ï¿½ï¿½Bï¿½ï¿½ï¿½ï¿½mï¿½Bï¿½ï¿½ï¿½ï¿½Mï¿½Yï¿½ï¿½]ï¿½mï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½mï¿½Bï¿½ï¿½ï¿½ï¿½Mï¿½Yï¿½ï¿½
         ItemB.transform.position = positionA;
         ItemB.transform.rotation = rotationA;
         ItemB.transform.localScale = scaleA;

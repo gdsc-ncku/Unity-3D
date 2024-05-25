@@ -532,6 +532,9 @@ MonoBehaviour:
   ThisWeapon: {fileID: 11400000, guid: ad846c5062f8d2547bc1076ebc8335ac, type: 2}
   weaponPosOffset: {x: 0, y: 0, z: 0}
   weaponAttackPoint: {fileID: 1545163362158174379, guid: c6a164e412efb2046a4451f17d4b6a9e, type: 3}
+  bulletsMax: 0
+  bulletsLeft: 0
+  weaponIcon: {fileID: 0}
 --- !u!1 &8848099843878233523
 GameObject:
   m_ObjectHideFlags: 0
