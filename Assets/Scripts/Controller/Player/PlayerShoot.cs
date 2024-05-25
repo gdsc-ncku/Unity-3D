@@ -9,6 +9,7 @@ public class PlayerShoot : MonoBehaviour
 {
     [SerializeField] PlayerBasicInformationScriptable informationScriptable;
     [SerializeField] PlayerBattleValueScriptable BattleInfo;
+    [SerializeField] PlayerUI PlayerUI;
     //bools
     public bool reloading;
     bool CanShoot = true;
@@ -36,6 +37,7 @@ public class PlayerShoot : MonoBehaviour
     private void Start()
     {
         fpsCam = Camera.main;
+        PlayerUI = gameObject.GetComponent<PlayerUI>();
     }
 
     public void OnEnable()
@@ -167,6 +169,7 @@ public class PlayerShoot : MonoBehaviour
         }
 
         BattleInfo.nowWeaponData.bulletsLeft--;
+        PlayerUI.BulletLeftNumUpdate();
         animator.Play("WeaponRecoil", 0, 0f);
 
         Debug.Log(BattleInfo.nowWeaponData.bulletsLeft);
@@ -179,7 +182,7 @@ public class PlayerShoot : MonoBehaviour
 
         RecoilFire();
 
-        if(BattleInfo.nowWeaponData.ThisWeapon.bulletsShot < BattleInfo.nowWeaponData.ThisWeapon.bulletsPerTap)
+        if (BattleInfo.nowWeaponData.ThisWeapon.bulletsShot < BattleInfo.nowWeaponData.ThisWeapon.bulletsPerTap)
         {
             yield return new WaitForSeconds(BattleInfo.nowWeaponData.ThisWeapon.timeBetweenShots);
             StartCoroutine(Fire());

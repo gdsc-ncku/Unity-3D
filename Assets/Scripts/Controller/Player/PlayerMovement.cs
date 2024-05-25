@@ -39,7 +39,6 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         SpeedLimit();
-        Debug.Log($"{isJumping}, {Grounded}");
     }
 
     void FixedUpdate()

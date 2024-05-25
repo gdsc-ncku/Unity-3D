@@ -21,7 +21,7 @@ public class PlayerUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ChangeWeaponInfo();
+        
     }
 
     private void ChangeHealthBar()
@@ -29,10 +29,15 @@ public class PlayerUI : MonoBehaviour
         HealthBar.value = PlayerInfo.GetHealth();
     }
 
-    private void ChangeWeaponInfo()
+    public void ChangeWeaponInfo()
     {
         BulletMaxNum.text = "/ " + PlayerInfo.nowWeaponData.bulletsMax.ToString();
         BulletLeftNum.text = PlayerInfo.nowWeaponData.bulletsLeft.ToString();
-        WeaponIcon.sprite = PlayerInfo.nowWeaponData.weaponIcon;
+        WeaponIcon.sprite = PlayerInfo.nowWeaponData.ThisWeapon.Icon;
+    }
+
+    public void BulletLeftNumUpdate()
+    {
+        BulletLeftNum.text = PlayerInfo.nowWeaponData.bulletsLeft.ToString();
     }
 }

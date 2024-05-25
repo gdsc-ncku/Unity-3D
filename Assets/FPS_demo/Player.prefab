@@ -223,8 +223,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -40}
-  m_SizeDelta: {x: 40, y: 15}
+  m_AnchoredPosition: {x: 0, y: -15}
+  m_SizeDelta: {x: 15, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1363286085983693146
 CanvasRenderer:
@@ -458,11 +458,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ThisWeapon: {fileID: 11400000, guid: bb254ac2fc5c9454d9e4887b82a81961, type: 2}
+  BulletsLeftChange:
+    m_PersistentCalls:
+      m_Calls: []
   weaponPosOffset: {x: 0, y: 0, z: 0}
   weaponAttackPoint: {fileID: 1545163362158174379}
   bulletsMax: 0
-  bulletsLeft: 0
-  weaponIcon: {fileID: 0}
+  BulletsLeft: 0
 --- !u!1 &1981986485039425083
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,6 +622,7 @@ MonoBehaviour:
   SecondWeapon: {fileID: 4165057690004520564}
   HoldingWeapon: {fileID: 6467462383065795060}
   playerShoot: {fileID: 6126825716273743917}
+  PlayerUI: {fileID: 8867151234388378933}
 --- !u!1 &2493705048337379768
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,7 +821,7 @@ Transform:
   m_GameObject: {fileID: 3337776507645192840}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.95, z: 0}
+  m_LocalPosition: {x: 0, y: -0.996, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -925,7 +928,7 @@ Transform:
   m_GameObject: {fileID: 4165057690004520564}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.16999996, z: -0.34999847}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1385,11 +1388,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ThisWeapon: {fileID: 11400000, guid: ad846c5062f8d2547bc1076ebc8335ac, type: 2}
+  BulletsLeftChange:
+    m_PersistentCalls:
+      m_Calls: []
   weaponPosOffset: {x: 0, y: 0, z: 0}
   weaponAttackPoint: {fileID: 6869575260466724928}
   bulletsMax: 0
-  bulletsLeft: 0
-  weaponIcon: {fileID: 0}
+  BulletsLeft: 0
 --- !u!1 &5151483369506654127
 GameObject:
   m_ObjectHideFlags: 0
@@ -1499,8 +1504,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 40, y: 0}
-  m_SizeDelta: {x: 40, y: 15}
+  m_AnchoredPosition: {x: 15, y: 0}
+  m_SizeDelta: {x: 15, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5394764708267183809
 CanvasRenderer:
@@ -1574,8 +1579,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -40, y: 0}
-  m_SizeDelta: {x: 40, y: 15}
+  m_AnchoredPosition: {x: -15, y: 0}
+  m_SizeDelta: {x: 15, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2871545141245893437
 CanvasRenderer:
@@ -1913,7 +1918,7 @@ Transform:
   m_GameObject: {fileID: 6467462383065795060}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.17, z: -0.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2401,8 +2406,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 40}
-  m_SizeDelta: {x: 40, y: 15}
+  m_AnchoredPosition: {x: 0, y: 15}
+  m_SizeDelta: {x: 15, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2056411640312148390
 CanvasRenderer:
@@ -2639,7 +2644,7 @@ Transform:
   m_GameObject: {fileID: 8973365206664145692}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.6, y: 0.931, z: 20.1}
+  m_LocalPosition: {x: 123.64, y: 1.081, z: 96.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2809,6 +2814,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   informationScriptable: {fileID: 11400000, guid: 5186a9aa120a8a049a936607850ca30c, type: 2}
   BattleInfo: {fileID: 11400000, guid: e7c568f5ad6fe6e4d80ab0c9089eb3a4, type: 2}
+  PlayerUI: {fileID: 8867151234388378933}
   reloading: 0
   playerRb: {fileID: 776725816767697887}
   muzzleFlash: {fileID: 5886990694264556941, guid: 03f4db269d7650647b599a4ab97f4462, type: 3}
@@ -2930,7 +2936,7 @@ MonoBehaviour:
   HealthBar: {fileID: 3728569883005778759}
   BulletLeftNum: {fileID: 346429871941082011}
   BulletMaxNum: {fileID: 4180648370160603176}
-  WeaponIcon: {fileID: 0}
+  WeaponIcon: {fileID: 5170985888391862425}
   PlayerInfo: {fileID: 11400000, guid: e7c568f5ad6fe6e4d80ab0c9089eb3a4, type: 2}
 --- !u!1 &9208676334830511290
 GameObject:

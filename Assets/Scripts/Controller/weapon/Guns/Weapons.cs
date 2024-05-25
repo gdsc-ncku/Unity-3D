@@ -9,6 +9,7 @@ public class Weapons : MonoBehaviour
     [SerializeField] PlayerBattleValueScriptable BattleInfo;
     public GameObject MainWeapon, SecondWeapon, HoldingWeapon;
     [SerializeField] PlayerShoot playerShoot;
+    [SerializeField] PlayerUI PlayerUI;
 
     private void OnValidate()
     {
@@ -21,6 +22,8 @@ public class Weapons : MonoBehaviour
     private void Start()
     {
         BattleInfo.nowWeapon = MainWeapon.transform.GetChild(0).gameObject;
+        PlayerUI = gameObject.transform.root.gameObject.GetComponent<PlayerUI>();
+        changeToMainWeapon();
     }
 
     private void OnEnable()
@@ -56,6 +59,10 @@ public class Weapons : MonoBehaviour
         playerShoot.reloading = false;
         MainWeapon.SetActive(true);
         SecondWeapon.SetActive(false);
+
+        //UI
+        BattleInfo.nowWeaponData.BulletsLeftChange.AddListener(() => PlayerUI.BulletLeftNumUpdate());
+        PlayerUI.ChangeWeaponInfo();
     }
 
     public void changeToSecondWeapon(InputAction.CallbackContext context)
@@ -66,6 +73,10 @@ public class Weapons : MonoBehaviour
         playerShoot.reloading = false;
         MainWeapon.SetActive(false);
         SecondWeapon.SetActive(true);
+
+        //UI
+        BattleInfo.nowWeaponData.BulletsLeftChange.AddListener(() => PlayerUI.BulletLeftNumUpdate());
+        PlayerUI.ChangeWeaponInfo();
     }
 
     public void changeToMainWeapon()
@@ -76,6 +87,10 @@ public class Weapons : MonoBehaviour
         playerShoot.reloading = false;
         MainWeapon.SetActive(true);
         SecondWeapon.SetActive(false);
+
+        //UI
+        BattleInfo.nowWeaponData.BulletsLeftChange.AddListener(() => PlayerUI.BulletLeftNumUpdate());
+        PlayerUI.ChangeWeaponInfo();
     }
 
     public void changeToSecondWeapon()
@@ -86,6 +101,10 @@ public class Weapons : MonoBehaviour
         playerShoot.reloading = false;
         MainWeapon.SetActive(false);
         SecondWeapon.SetActive(true);
+
+        //UI
+        BattleInfo.nowWeaponData.BulletsLeftChange.AddListener(() => PlayerUI.BulletLeftNumUpdate());
+        PlayerUI.ChangeWeaponInfo();
     }
 
     IEnumerator DebugPlayerControl()
