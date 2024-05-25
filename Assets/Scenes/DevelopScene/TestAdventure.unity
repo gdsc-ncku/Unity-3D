@@ -31331,6 +31331,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 2509cc5763ca17f4598bf61fd585a93e, type: 3}
   m_PrefabInstance: {fileID: 956041834}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &956610951 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5170985888391862425, guid: 66cc2845a5721ae4e86b3698f14fa332, type: 3}
+  m_PrefabInstance: {fileID: 1818547316}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &956959614 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: e0e851c58997b9c438fae494e3412749, type: 3}
@@ -71984,6 +71995,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8867151234388378933, guid: 66cc2845a5721ae4e86b3698f14fa332, type: 3}
+      propertyPath: WeaponIcon
+      value: 
+      objectReference: {fileID: 956610951}
     - target: {fileID: 8973365206664145692, guid: 66cc2845a5721ae4e86b3698f14fa332, type: 3}
       propertyPath: m_Name
       value: Player

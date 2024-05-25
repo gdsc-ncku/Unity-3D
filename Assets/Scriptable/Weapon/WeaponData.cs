@@ -32,4 +32,6 @@ public class WeaponData : ScriptableObject
     public float recoilX;
     public float recoilY;
     public float recoilZ;
+
+    public Sprite Icon;
 }
