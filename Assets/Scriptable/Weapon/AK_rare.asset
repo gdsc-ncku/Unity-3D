@@ -16,10 +16,10 @@ MonoBehaviour:
   damage: 10
   shootForce: 50
   upwardForce: 1
-  timeBetweenShooting: 0.1
+  timeBetweenShooting: 0.3
   spread: 0
   reloadTime: 1
-  timeBetweenShots: 0.02
+  timeBetweenShots: 0.1
   magazineSize: 1000
   bulletsPerTap: 3
   allowButtonHold: 0

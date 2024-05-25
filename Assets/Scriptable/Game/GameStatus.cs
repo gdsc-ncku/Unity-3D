@@ -23,6 +23,46 @@ public class GameStatus : ScriptableObject
     public CharacterBaseData []Roles = {};
     public TMP_FontAsset commonFont;
     public gameStatus nowStatus = gameStatus.Active;
+    public UnityEvent settingTimer;
+    private int level = 0, duration = 0, remainingDuration = 0;
+    public int Level
+    {
+        get 
+        { 
+            return level; 
+        }
+
+        set 
+        { 
+            level = value;
+        }
+    }
+
+    public int Duration
+    {
+        get
+        { 
+            return duration; 
+        }
+
+        set
+        {
+            duration = value;
+            settingTimer.Invoke();
+        }
+    }
+    public int RemainingDuration
+    {
+        get
+        { 
+            return remainingDuration; 
+        }
+
+        set 
+        {
+            remainingDuration = value;
+        }
+    }
     #region Listen Event Setting
     public bool _catach = false;
     public UnityEvent<bool> catachDataSuccess;

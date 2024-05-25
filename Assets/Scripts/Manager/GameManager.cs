@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    int level = 1;
+    int level = 0;
     [SerializeField] GameStatus gameStatus;
     [SerializeField] AssetReference mainScene, advenatureScene;
     // Start is called before the first frame update
@@ -30,9 +30,14 @@ public class GameManager : MonoBehaviour
         gameStatus.LoadingSceneHandle = Addressables.LoadSceneAsync(mainScene, LoadSceneMode.Additive);
     }
 
+    public void GameStart()
+    {
+        level++;
+    }
+
     public void GameReset()
     {
-        level = 1;
+        level = 0;
     }
 
     public void level1()

@@ -7,7 +7,7 @@ public class PickUpItem : MonoBehaviour
 {
     [SerializeField] private PlayerBasicInformationScriptable PlayerMove;
     [SerializeField] Weapons Weapon;
-    private float pickUpRange = 2f;
+    private float pickUpRange = 4f;
 
     private void OnEnable()
     {

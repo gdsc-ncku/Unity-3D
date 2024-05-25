@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3abe5057433daab4690e24c6b750537e, type: 3}
   m_Name: EyeEnemy
   m_EditorClassIdentifier: 
+  Drops: []
   AttackRangeOffset: 5
   AttackRange: 15
   AttackSpeed: 1
@@ -19,5 +20,6 @@ MonoBehaviour:
   AttackDamage: 5
   MoveSpeed: 2
   Health: 30
-  Bullet: {fileID: 4038842101496279827, guid: 0766e9edb6709c740a7fef949530fbd5, type: 3}
+  Bullets:
+  - {fileID: 4038842101496279827, guid: 0766e9edb6709c740a7fef949530fbd5, type: 3}
   BulletsPerGen: 3

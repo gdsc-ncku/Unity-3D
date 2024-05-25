@@ -32,4 +32,16 @@ public class WeaponData : ScriptableObject
     public float recoilX;
     public float recoilY;
     public float recoilZ;
+
+    private void OnValidate()
+    {
+        if(bulletsPerTap > 1)
+        {
+            timeBetweenShooting = timeBetweenShots * bulletsPerTap;
+        }
+        else
+        {
+            timeBetweenShots = 0;
+        }
+    }
 }
