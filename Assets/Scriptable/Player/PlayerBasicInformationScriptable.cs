@@ -39,7 +39,8 @@ public class PlayerBasicInformationScriptable : ScriptableObject
 
     #region MouseSensitivity
     [Header("MouseSensitivity")]
-    public float MouseSensitivity = 800;
+    public float MouseDPI = 800;
+    public float edpi = 800;
     #endregion
 
     #region Music

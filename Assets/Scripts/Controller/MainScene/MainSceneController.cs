@@ -27,6 +27,7 @@ public class MainSceneController : MonoBehaviour
             AsyncOperationHandle unLoad = mainSceneManager.gameStatus.LoadingSceneHandle;
             Addressables.UnloadSceneAsync(unLoad);
             mainSceneManager.gameStatus.LoadingSceneHandle = Addressables.LoadSceneAsync(mainSceneManager.advenatureScene, LoadSceneMode.Additive);
+            mainSceneManager.gameStatus.LoadingSceneHandle.Completed += (Handle) => { mainSceneManager.gameStatus.Level = 1; };
         }
     }
 

@@ -172,7 +172,7 @@ public class PlayerShoot : MonoBehaviour
         PlayerUI.BulletLeftNumUpdate();
         animator.Play("WeaponRecoil", 0, 0f);
 
-        Debug.Log(BattleInfo.nowWeaponData.bulletsLeft);
+        //Debug.Log(BattleInfo.nowWeaponData.bulletsLeft);
 
         if (BattleInfo.nowWeaponData.bulletsLeft <= 0)
         {

@@ -23,7 +23,7 @@ public class GameStatus : ScriptableObject
     public CharacterBaseData []Roles = {};
     public TMP_FontAsset commonFont;
     public gameStatus nowStatus = gameStatus.Active;
-    public UnityEvent settingTimer;
+    public UnityEvent settingTimer, settingLevel;
     private int level = 0, duration = 0, remainingDuration = 0;
     public int Level
     {
@@ -35,6 +35,7 @@ public class GameStatus : ScriptableObject
         set 
         { 
             level = value;
+            settingLevel.Invoke();
         }
     }
 

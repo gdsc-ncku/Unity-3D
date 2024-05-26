@@ -18,7 +18,7 @@ public class SettingDataManager : BasicDataManager
         playerBasicInformation.playerControl = new PlayerControl();
         playerBasicInformation.playerControl.LoadBindingOverridesFromJson(PlayerPrefs.GetString("Rebinds"));
 
-        playerBasicInformation.MouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity");
+        playerBasicInformation.edpi = PlayerPrefs.GetFloat("MouseSensitivity");
 
         playerBasicInformation.MovingMusic = PlayerPrefs.GetFloat("MovingMusic");
         playerBasicInformation.EnemyMusic = PlayerPrefs.GetFloat("EnemyMusic");
