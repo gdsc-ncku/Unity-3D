@@ -15,8 +15,8 @@ public class EyeEnemyController : MonoBehaviour
     {
         for(int i = 0; i < eyeEnemy.BulletsPerGen; i++)
         {
-            yield return new WaitForSeconds(0.5f);
-            eyeEnemy.attack(gameObject, 0.5f * (eyeEnemy.BulletsPerGen - i));
+            yield return new WaitForSeconds(eyeEnemy.GenBulletsTime);
+            eyeEnemy.attack(gameObject, eyeEnemy.GenBulletsTime * (eyeEnemy.BulletsPerGen - i));
         }
     }
 }

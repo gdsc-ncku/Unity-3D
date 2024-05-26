@@ -16,10 +16,16 @@ MonoBehaviour:
   AttackRangeOffset: 5
   AttackRange: 15
   AttackSpeed: 1
-  AttackTime: 2
+  AttackTime: 1.5
   AttackDamage: 5
   MoveSpeed: 2
   Health: 30
   Bullets:
   - {fileID: 4038842101496279827, guid: 0766e9edb6709c740a7fef949530fbd5, type: 3}
+  - {fileID: 1371378461770868, guid: 51b2ef8e1019a9f46acce36d1dbf1a1f, type: 3}
+  - {fileID: 1776194245679698, guid: ea3209ecece0ced44b158eb1e123a1f3, type: 3}
+  - {fileID: 1583088881000794, guid: bf109773fb462d64bb58bd2e51fa3437, type: 3}
+  - {fileID: 1256887342803240, guid: bbe9cfde17e172a45bedace32471c6fb, type: 3}
+  - {fileID: 1422868883321464, guid: 391fdfb0516da4d4b9ed3281748028a3, type: 3}
   BulletsPerGen: 3
+  GenBulletsTime: 0.5

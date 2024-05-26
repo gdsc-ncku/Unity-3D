@@ -360,7 +360,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.24653359
+      - time: 0.4980396
         functionName: InvokeEyeEnemyAttack
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 2f965df04bce06d4ca8b2f6ca58255cd, type: 3}
