@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 23009212754820222}
   - component: {fileID: 64566811401406002}
   - component: {fileID: -4994381477890897110}
-  - component: {fileID: -6585097870499716923}
   - component: {fileID: -8930134230753405322}
   m_Layer: 0
   m_Name: EyeEnemyBullet4
@@ -102,7 +101,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -117,7 +116,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1583088881000794}
   serializedVersion: 4
-  m_Mass: 5
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -136,28 +135,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &-6585097870499716923
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1583088881000794}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: d00418a779e1ca849afb37390eb74de4, type: 3}
 --- !u!114 &-8930134230753405322
 MonoBehaviour:
   m_ObjectHideFlags: 0

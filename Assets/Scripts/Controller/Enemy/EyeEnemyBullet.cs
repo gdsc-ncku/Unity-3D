@@ -21,7 +21,7 @@ public class EyeEnemyBullet : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.velocity = Vector3.zero; // 清除初始速度
         rb.angularVelocity = Vector3.zero; // 清除初始角速度
-        rotateSpeed = Random.Range(3f, 8f);
+        rotateSpeed = Random.Range(1f, 5f);
         StartCoroutine(attack());
     }
 
@@ -58,22 +58,19 @@ public class EyeEnemyBullet : MonoBehaviour
         yield break;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.collider.gameObject.tag != gameObject.tag && Attacking)
+        if (other.gameObject.tag != gameObject.tag && Attacking)
         {
-            if(((1 << collision.collider.gameObject.layer) & bulletAim) != 0)
+            if (((1 << other.gameObject.transform.root.gameObject.layer) & bulletAim) != 0)
             {
                 PlayerInfo.ReduceHealth(Spawner.GetComponent<EnemyAI>().EnemyInfo.AttackDamage);
+                other.gameObject.transform.root.gameObject.GetComponent<Rigidbody>().AddForce(rb.velocity.normalized * rb.mass, ForceMode.Impulse);
             }
 
             Destroy(gameObject);
         }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("bullet"))
+        else if (other.gameObject.CompareTag("bullet"))
         {
             Destroy(gameObject);
         }
