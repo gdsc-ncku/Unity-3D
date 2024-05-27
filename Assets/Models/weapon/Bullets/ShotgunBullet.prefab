@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackWeapon: {fileID: 0}
   rb: {fileID: 1165490155807771508}
-  explosion: {fileID: 0}
+  explosion: {fileID: 1263282939118438294, guid: c150d7df7f6325646bea7fda20458269, type: 3}
   whatIsEnemies:
     serializedVersion: 2
     m_Bits: 128
@@ -289,3 +289,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splitAmount: 8
+  GenOtherBullet: 1
+  spreadRange: 0.2

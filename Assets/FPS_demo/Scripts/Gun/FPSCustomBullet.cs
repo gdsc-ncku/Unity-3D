@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UIElements;
 
 public class FPSCustomBullet : MonoBehaviour
 {
@@ -34,23 +35,19 @@ public class FPSCustomBullet : MonoBehaviour
             rb = GetComponent<Rigidbody>();
         }
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+        Destroy(gameObject, maxLifetime);
         Setup();
     }
 
     private void Update()
     {
-        //When to explode:
-        if (collisions > maxCollisions) Explode();
-
-        //Count down lifetime
-        maxLifetime -= Time.deltaTime;
-        if (maxLifetime <= 0) Explode();
+        
     }
 
-    private void Explode()
+    private void Explode(Vector3 position)
     {
         //Instantiate explosion
-        if (explosion != null) Instantiate(explosion, transform.position, Quaternion.identity);
+        if (explosion != null) Destroy(Instantiate(explosion, position, Quaternion.identity), 1f);
 
         if (GetComponent<AudioSource>())
         {
@@ -65,20 +62,21 @@ public class FPSCustomBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        //Don't count collisions with other bullets
-        if (collider.CompareTag("Bullet") || collider.gameObject == AttackWeapon.gameObject) return;
+        Ray ray = new(AttackWeapon.weaponAttackPoint.position, rb.velocity.normalized);
+        RaycastHit hit;
 
+        if (collider.CompareTag("bullet") || collider.gameObject == AttackWeapon.gameObject) return;
+        
         EnemyAI EnemyInfo = collider.gameObject.GetComponent<EnemyAI>();
         if (EnemyInfo != null)
         {
             EnemyInfo.ReduceHealth(AttackWeapon.ThisWeapon.damage);
         }
-        //Count up collisions
-        collisions++;
 
-        //Explode if bullet hits an enemy directly and explodeOnTouch is activated
-        //collision.collider.CompareTag("Enemy") && 
-        if (explodeOnTouch) Explode();
+        if (Physics.Raycast(ray, out hit, (collider.transform.position - AttackWeapon.weaponAttackPoint.position).magnitude) && !hit.collider.gameObject.CompareTag("bullet") && AttackWeapon.gameObject != hit.collider.gameObject)
+        {
+            Explode(hit.point);
+        }
     }
 
     private void Setup()

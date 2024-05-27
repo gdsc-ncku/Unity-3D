@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     int maxAttempts = 100, radius = 500;
-    [SerializeField] int level1EnemyNum = 50;
+    [SerializeField] int level1EnemyNum = 100;
     [SerializeField] GameStatus gameStatus;
     [SerializeField] AssetReference mainScene, advenatureScene;
     [SerializeField] GameObject[] Enemys;
