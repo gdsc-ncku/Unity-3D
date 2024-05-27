@@ -1,7 +1,13 @@
+
+/* 取消合併專案 'Assembly-CSharp.Player' 的變更
+之前:
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+之後:
 using System;
+using System.Collections;
+*/
+using System;
+using UnityEngine;
 
 public class WallMovement : MonoBehaviour
 {

@@ -123,6 +123,7 @@ public class PlayerShoot : MonoBehaviour
         //Find the exact hit position using a raycast
         Ray ray = fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)); //Just a ray through the middle of your current view
         RaycastHit hit;
+        bool isHit = false;
 
         //check if ray hits something
         Vector3 targetPoint;
@@ -130,6 +131,7 @@ public class PlayerShoot : MonoBehaviour
         {
             //Debug.Log($"Aim: {hit.collider.gameObject.name}");
             targetPoint = hit.point;
+            isHit = true;
         }
         else
         {
@@ -143,9 +145,12 @@ public class PlayerShoot : MonoBehaviour
         GameObject currentBullet;
         RaycastHit attackPointHit;
         float offset = 0f;
-        while (Physics.Raycast(new Ray(BattleInfo.nowWeaponData.weaponAttackPoint.position + directionWithoutSpread.normalized * offset, directionWithoutSpread), out attackPointHit) && attackPointHit.collider.gameObject != hit.collider.gameObject)
+        if (isHit)
         {
-            offset += 0.1f;
+            while (Physics.Raycast(new Ray(BattleInfo.nowWeaponData.weaponAttackPoint.position + directionWithoutSpread.normalized * offset, directionWithoutSpread), out attackPointHit) && attackPointHit.collider.gameObject != hit.collider.gameObject)
+            {
+                offset += 0.1f;
+            }
         }
 
         currentBullet = Instantiate(BattleInfo.nowWeaponData.ThisWeapon.bullet, BattleInfo.nowWeaponData.weaponAttackPoint.position + directionWithoutSpread.normalized * (offset + 1), Quaternion.identity);

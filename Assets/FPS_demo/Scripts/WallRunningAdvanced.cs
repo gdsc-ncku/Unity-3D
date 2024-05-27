@@ -1,6 +1,4 @@
 using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WallRunningAdvanced : MonoBehaviour
@@ -90,7 +88,7 @@ public class WallRunningAdvanced : MonoBehaviour
         downwardsRunning = Input.GetKey(downwardsRunKey);
 
         // State 1 - Wallrunning
-        if((wallLeft || wallRight) && verticalInput > 0 && AboveGround() && !exitingWall)
+        if ((wallLeft || wallRight) && verticalInput > 0 && AboveGround() && !exitingWall)
         {
             if (!pm.wallrunning)
                 StartWallRun();
@@ -99,7 +97,7 @@ public class WallRunningAdvanced : MonoBehaviour
             if (wallRunTimer > 0)
                 wallRunTimer -= Time.deltaTime;
 
-            if(wallRunTimer <= 0 && pm.wallrunning)
+            if (wallRunTimer <= 0 && pm.wallrunning)
             {
                 exitingWall = true;
                 exitWallTimer = exitWallTime;

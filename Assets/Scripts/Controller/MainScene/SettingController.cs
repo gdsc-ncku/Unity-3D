@@ -5,7 +5,6 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
 
 enum ContentsName { TalentContent, HeroContent, SettingContent };
 public class SettingController : MonoBehaviour
@@ -14,8 +13,19 @@ public class SettingController : MonoBehaviour
     public SettingManager settingManager;
     private GameObject NowContent;
     public List<GameObject> Contents;
+
+/* 取消合併專案 'Assembly-CSharp.Player' 的變更
+之前:
     public List<TextMeshProUGUI> SettingKeyText;
     
+    // Start is called before the first frame update
+之後:
+    public List<TextMeshProUGUI> SettingKeyText;
+
+    // Start is called before the first frame update
+*/
+    public List<TextMeshProUGUI> SettingKeyText;
+
     // Start is called before the first frame update
     IEnumerator Start()
     {
@@ -48,7 +58,7 @@ public class SettingController : MonoBehaviour
                 settingManager.keyboards.Add(newkey);
             }
         }
-        foreach(var key in Enum.GetValues(typeof(KeyIndex)))
+        foreach (var key in Enum.GetValues(typeof(KeyIndex)))
         {
             Debug.Log(PlayerPrefs.GetString(key.ToString()));
             SettingKeyText[(int)key].text = PlayerPrefs.GetString(key.ToString());
@@ -58,7 +68,7 @@ public class SettingController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             NowContent.SetActive(false);
         }
@@ -74,7 +84,8 @@ public class SettingController : MonoBehaviour
         mp.Disable();
         text.text = "";
         action.PerformInteractiveRebinding(bindingIndex)
-            .OnComplete(callback => {
+            .OnComplete(callback =>
+            {
                 string newKey = callback.action.bindings[bindingIndex].overridePath.ToString().Split('/').Last();
                 //Input System
                 foreach (InputAction ac in settingManager.playerBasicInformationScriptable.playerControl)

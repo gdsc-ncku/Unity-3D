@@ -1,7 +1,7 @@
 using UnityEngine;
-using Cinemachine;
-using UnityEngine.InputSystem;
 using System.Collections;
+using UnityEngine.InputSystem;
+
 
 public class PickUpItem : MonoBehaviour
 {
@@ -49,7 +49,7 @@ public class PickUpItem : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     public void pickUp(InputAction.CallbackContext context)
@@ -68,7 +68,7 @@ public class PickUpItem : MonoBehaviour
                 Debug.Log("Picked up: " + hitInfo.collider.name);
                 Destroy(hitInfo.collider.gameObject);
             }
-            else if(hitInfo.collider.CompareTag("Weapon"))
+            else if (hitInfo.collider.CompareTag("Weapon"))
             {
                 changeItems(Weapon.HoldingWeapon.transform.GetChild(0).gameObject, hitInfo.collider.gameObject);
             }
@@ -101,7 +101,7 @@ public class PickUpItem : MonoBehaviour
         ItemB.transform.localScale = scaleA;
         ItemB.transform.parent = parentA;
 
-        if(Weapon.HoldingWeapon == Weapon.MainWeapon)
+        if (Weapon.HoldingWeapon == Weapon.MainWeapon)
         {
             Weapon.changeToMainWeapon();
         }

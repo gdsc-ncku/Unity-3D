@@ -1,9 +1,24 @@
+
+/* 取消合併專案 'Assembly-CSharp.Player' 的變更
+之前:
 using System;
-using System.Collections;
-using System.Collections.Generic;
+之後:
+using Dave.PhysicsExtension;
+using System;
+*/
+using Dave.PhysicsExtension;
+using TMPro;
+
+/* 取消合併專案 'Assembly-CSharp.Player' 的變更
+之前:
 using UnityEngine;
 using TMPro;
 using Dave.PhysicsExtension;
+之後:
+using TMPro;
+using UnityEngine;
+*/
+using UnityEngine;
 
 public class NextGenWallRunning : MonoBehaviour
 {
@@ -346,7 +361,7 @@ public class NextGenWallRunning : MonoBehaviour
             Vector3 maxRangePoint = cam.transform.position + camHolder.forward * maxJumpRange;
 
             RaycastHit wallHit;
-            if(Physics.Raycast(maxRangePoint, -viewRayHit.normal, out wallHit, 4f, whatIsWall))
+            if (Physics.Raycast(maxRangePoint, -viewRayHit.normal, out wallHit, 4f, whatIsWall))
             {
                 markerSphere.position = wallHit.point;
                 text_predictionState.SetText("out of distance, to wall");
@@ -355,7 +370,7 @@ public class NextGenWallRunning : MonoBehaviour
             {
                 someSecondSphere.position = viewRayHit.point;
 
-                if(Vector3.Distance(cam.transform.position, viewRayHit.point) <= maxJumpRange)
+                if (Vector3.Distance(cam.transform.position, viewRayHit.point) <= maxJumpRange)
                 {
                     text_predictionState.SetText("out of distance, hitPoint");
                     markerSphere.position = viewRayHit.point;

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ChestEnemyController : MonoBehaviour
@@ -22,12 +20,6 @@ public class ChestEnemyController : MonoBehaviour
 
     public void InvokeChestEnemyAttack()
     {
-        StartCoroutine(Attack());
-    }
-
-    IEnumerator Attack()
-    {
         chestEnemy.attack(gameObject);
-        yield return null;
     }
 }

@@ -1,8 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
+
 
 public class Timer : MonoBehaviour
 {
@@ -24,7 +23,7 @@ public class Timer : MonoBehaviour
 
     private IEnumerator UpdateTimer()
     {
-        while(gameStatus.RemainingDuration >= 0)
+        while (gameStatus.RemainingDuration >= 0)
         {
             if (!Pause)
             {

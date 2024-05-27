@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class WeaponsDataFetch : MonoBehaviour
 {
@@ -17,8 +14,8 @@ public class WeaponsDataFetch : MonoBehaviour
     public int bulletsLeft
     {
         get
-        { 
-            return BulletsLeft; 
+        {
+            return BulletsLeft;
         }
 
         set
@@ -37,6 +34,6 @@ public class WeaponsDataFetch : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
 }

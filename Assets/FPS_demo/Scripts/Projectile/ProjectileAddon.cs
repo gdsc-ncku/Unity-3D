@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileAddon : MonoBehaviour
@@ -24,7 +22,7 @@ public class ProjectileAddon : MonoBehaviour
             targetHit = true;
 
         // check if you hit an enemy
-        if(collision.gameObject.GetComponent<BasicEnemy>() != null)
+        if (collision.gameObject.GetComponent<BasicEnemy>() != null)
         {
             BasicEnemy enemy = collision.gameObject.GetComponent<BasicEnemy>();
 

@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -18,10 +17,10 @@ public class PlayerBattleValueScriptable : ScriptableObject
     public float MaxHealth
     {
         get
-        { 
-            return m_Health; 
-        } 
-        set 
+        {
+            return m_Health;
+        }
+        set
         {
             m_Health = value;
             CurrentHealth = value;
@@ -50,21 +49,21 @@ public class PlayerBattleValueScriptable : ScriptableObject
     private GameObject Weapon;
     public WeaponsDataFetch nowWeaponData;
     public GameObject nowWeapon
-    { 
-        get 
-        { 
-            return Weapon; 
-        } 
-        set 
+    {
+        get
+        {
+            return Weapon;
+        }
+        set
         {
             Weapon = value;
             nowWeaponData = value.GetComponent<WeaponsDataFetch>();
-        } 
+        }
     }
 
     public void ChangeWeapon(GameObject weapon)
     {
-        if(weapon.tag != "Weapon")
+        if (weapon.tag != "Weapon")
         {
             return;
         }

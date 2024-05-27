@@ -22,12 +22,12 @@ public class InitializationLoader : MonoBehaviour
 
     void LoadPersistence(AsyncOperationHandle<SceneInstance> asyncOperationHandle)
     {
-        if(asyncOperationHandle.Status == AsyncOperationStatus.Succeeded)
+        if (asyncOperationHandle.Status == AsyncOperationStatus.Succeeded)
         {
             //Unload Scene which follow the build setting order
             //Because InitializationScene is the only one Scene in build thus use order 0;
             gameStatus.LoadingSceneHandle = Addressables.LoadSceneAsync(PersistenceScene, LoadSceneMode.Additive);
-            gameStatus.LoadingSceneHandle.Completed += (Handle) => 
+            gameStatus.LoadingSceneHandle.Completed += (Handle) =>
             {
                 StartCoroutine(WaitForCatachData());
             };

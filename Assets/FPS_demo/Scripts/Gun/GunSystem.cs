@@ -1,5 +1,5 @@
 using UnityEngine;
-using TMPro;
+
 
 public class GunSystem : MonoBehaviour
 {
@@ -39,9 +39,9 @@ public class GunSystem : MonoBehaviour
     }
     private void MyInput()
     {
-        if (allowButtonHold) 
+        if (allowButtonHold)
             shooting = Input.GetKey(KeyCode.Mouse0);
-        else 
+        else
             shooting = Input.GetKeyDown(KeyCode.Mouse0);
 
         if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading) Reload();

@@ -1,6 +1,6 @@
 ﻿
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 /// Dave
 public class ProjectileGunTutorial : MonoBehaviour
 {

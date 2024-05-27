@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SwingingDone : MonoBehaviour
@@ -51,11 +49,11 @@ public class SwingingDone : MonoBehaviour
         if (joint != null) return;
 
         RaycastHit sphereCastHit;
-        Physics.SphereCast(cam.position, predictionSphereCastRadius, cam.forward, 
+        Physics.SphereCast(cam.position, predictionSphereCastRadius, cam.forward,
                             out sphereCastHit, maxSwingDistance, whatIsGrappleable);
 
         RaycastHit raycastHit;
-        Physics.Raycast(cam.position, cam.forward, 
+        Physics.Raycast(cam.position, cam.forward,
                             out raycastHit, maxSwingDistance, whatIsGrappleable);
 
         Vector3 realHitPoint;
@@ -94,7 +92,7 @@ public class SwingingDone : MonoBehaviour
         if (predictionHit.point == Vector3.zero) return;
 
         // deactivate active grapple
-        if(GetComponent<Grappling>() != null)
+        if (GetComponent<Grappling>() != null)
             GetComponent<Grappling>().StopGrapple();
         pm.ResetRestrictions();
 
@@ -167,7 +165,7 @@ public class SwingingDone : MonoBehaviour
         // if not grappling, don't draw rope
         if (!joint) return;
 
-        currentGrapplePosition = 
+        currentGrapplePosition =
             Vector3.Lerp(currentGrapplePosition, swingPoint, Time.deltaTime * 8f);
 
         lr.SetPosition(0, gunTip.position);

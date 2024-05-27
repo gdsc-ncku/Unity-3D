@@ -21,7 +21,7 @@ public class DataManager : MonoBehaviour
     void Start()
     {
         //If player firstly open game, init some base player information in PlayerPrefs System;
-        if(!PlayerPrefs.HasKey("IsFirstTime"))
+        if (!PlayerPrefs.HasKey("IsFirstTime"))
         {
             //Setting the Key that represent the game has already inited the basic informations. 
             PlayerPrefs.SetInt("IsFirstTime", 1);

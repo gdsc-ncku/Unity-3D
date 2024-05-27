@@ -28,6 +28,7 @@ MonoBehaviour:
   recoilForce: 1
   allowInvoke: 1
   gunSound: {fileID: 8300000, guid: e838df0e5967a214786f196333d6058b, type: 3}
-  recoilX: 0
+  recoilX: -0.6
   recoilY: 0
   recoilZ: 0
+  Icon: {fileID: 0}

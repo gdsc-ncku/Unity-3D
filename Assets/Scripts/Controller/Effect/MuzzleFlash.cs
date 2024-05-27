@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MuzzleFlash : MonoBehaviour
@@ -14,7 +12,7 @@ public class MuzzleFlash : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(followingAttackPoint != null)
+        if (followingAttackPoint != null)
         {
             transform.position = followingAttackPoint.transform.position;
         }

@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     PlayerControl playerControl;
     private void Awake()
     {
-        if(PlayerMove.playerControl == null)
+        if (PlayerMove.playerControl == null)
         {
             PlayerMove.playerControl = new();
         }
@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
     void SpeedLimit()
     {
         Vector3 Vel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        if(Vel.magnitude > Speed)
+        if (Vel.magnitude > Speed)
         {
             Vector3 limitedVel = Vel.normalized * Speed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
 
         //wait for tauch ground again
         RaycastHit hit;
-        while(!Physics.Raycast(GroundDetector.transform.position, GroundDetector.transform.up * -1, out hit, 0.1f))
+        while (!Physics.Raycast(GroundDetector.transform.position, GroundDetector.transform.up * -1, out hit, 0.1f))
         {
             yield return null;
         }

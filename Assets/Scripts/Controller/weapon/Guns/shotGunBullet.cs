@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShotGunBullet : MonoBehaviour
@@ -18,7 +17,7 @@ public class ShotGunBullet : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
+
     }
 
     IEnumerator Calculateforce()
