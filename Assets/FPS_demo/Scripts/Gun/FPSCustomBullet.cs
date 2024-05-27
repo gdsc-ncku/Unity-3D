@@ -24,7 +24,6 @@ public class FPSCustomBullet : MonoBehaviour
     public float maxLifetime;
     public bool explodeOnTouch = true;
 
-    int collisions;
     PhysicMaterial physics_mat;
 
     public AudioClip explosionSound;
@@ -36,7 +35,6 @@ public class FPSCustomBullet : MonoBehaviour
         }
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
         Destroy(gameObject, maxLifetime);
-        Setup();
     }
 
     private void Update()
@@ -52,12 +50,7 @@ public class FPSCustomBullet : MonoBehaviour
         if (GetComponent<AudioSource>())
         {
             GetComponent<AudioSource>().PlayOneShot(explosionSound);
-        }
-
-
-        //Add a little delay, just to make sure everything works fine
-        //Invoke("Delay", 0.05f);
-        Destroy(gameObject);
+        }     
     }
 
     private void OnTriggerEnter(Collider collider)
@@ -77,33 +70,6 @@ public class FPSCustomBullet : MonoBehaviour
         {
             Explode(hit.point);
         }
+        Destroy(gameObject);
     }
-
-    private void Setup()
-    {
-        //Create a new Physic material
-        physics_mat = new PhysicMaterial();
-        physics_mat.bounciness = bounciness;
-        physics_mat.frictionCombine = PhysicMaterialCombine.Minimum;
-        physics_mat.bounceCombine = PhysicMaterialCombine.Maximum;
-        //Assign material to collider
-        if (GetComponent<SphereCollider>() != null)
-            GetComponent<SphereCollider>().material = physics_mat;
-        else if (GetComponent<BoxCollider>() != null)
-            GetComponent<BoxCollider>().material = physics_mat;
-        else if (GetComponent<CapsuleCollider>() != null)
-            GetComponent<CapsuleCollider>().material = physics_mat;
-
-        //Set gravity
-        rb.useGravity = useGravity;
-    }
-
-    /// Just to visualize the explosion range
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, explosionRange);
-    }
-
-
 }
