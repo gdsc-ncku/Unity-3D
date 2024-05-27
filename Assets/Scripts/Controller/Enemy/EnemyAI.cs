@@ -218,7 +218,7 @@ public class EnemyAI : MonoBehaviour
     bool SearchInSphere()
     {
         Vector3 center = transform.position;
-        Collider[] hitColliders = Physics.OverlapSphere(center, EnemyInfo.AttackRange + EnemyInfo.AttackRangeOffset, searchLayer);
+        Collider[] hitColliders = Physics.OverlapSphere(center, EnemyInfo.AttackRange, searchLayer);
 
         foreach (Collider hitCollider in hitColliders)
         {

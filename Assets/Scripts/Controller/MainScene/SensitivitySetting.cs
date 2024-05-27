@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,7 +22,7 @@ public class SensitivitySetting : MonoBehaviour
     public void SliderChange(float value)
     {
         float localValue = value * maxSliderAmount;
-        if(localValue > maxSliderAmount)
+        if (localValue > maxSliderAmount)
         {
             localValue = maxSliderAmount;
         }

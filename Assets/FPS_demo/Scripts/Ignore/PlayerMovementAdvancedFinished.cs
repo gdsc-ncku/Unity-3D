@@ -1,7 +1,14 @@
+
+/* 取消合併專案 'Assembly-CSharp.Player' 的變更
+之前:
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+之後:
 using Dave.PhysicsExtension;
+using System.Collections;
+*/
+using Dave.PhysicsExtension;
+using System.Collections;
+using UnityEngine;
 
 /// Stuff changed
 /// Added wallrunning and restricted state (Don't forget FixedUpdate part)
@@ -49,7 +56,7 @@ public class PlayerMovementAdvancedFinished : MonoBehaviour
     public float maxSlopeAngle;
     private RaycastHit slopeHit;
     private bool exitingSlope;
-    
+
 
     public Transform orientation;
 
@@ -104,7 +111,7 @@ public class PlayerMovementAdvancedFinished : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(state != MovementState.restricted)
+        if (state != MovementState.restricted)
             MovePlayer();
     }
 
@@ -114,7 +121,7 @@ public class PlayerMovementAdvancedFinished : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         // when to jump
-        if(Input.GetKey(jumpKey) && readyToJump && grounded)
+        if (Input.GetKey(jumpKey) && readyToJump && grounded)
         {
             readyToJump = false;
 
@@ -172,7 +179,7 @@ public class PlayerMovementAdvancedFinished : MonoBehaviour
         }
 
         // Mode - Sprinting
-        else if(grounded && Input.GetKey(sprintKey))
+        else if (grounded && Input.GetKey(sprintKey))
         {
             state = MovementState.sprinting;
             desiredMoveSpeed = sprintSpeed;
@@ -192,7 +199,7 @@ public class PlayerMovementAdvancedFinished : MonoBehaviour
         }
 
         // check if desiredMoveSpeed has changed drastically
-        if(Mathf.Abs(desiredMoveSpeed - lastDesiredMoveSpeed) > 4f && moveSpeed != 0)
+        if (Mathf.Abs(desiredMoveSpeed - lastDesiredMoveSpeed) > 4f && moveSpeed != 0)
         {
             StopAllCoroutines();
             StartCoroutine(SmoothlyLerpMoveSpeed());
@@ -247,11 +254,11 @@ public class PlayerMovementAdvancedFinished : MonoBehaviour
         }
 
         // on ground
-        else if(grounded)
+        else if (grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
 
         // in air
-        else if(!grounded)
+        else if (!grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
 
         // turn gravity off while on slope
@@ -304,7 +311,7 @@ public class PlayerMovementAdvancedFinished : MonoBehaviour
 
     public bool OnSlope()
     {
-        if(Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
         {
             float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
             return angle < maxSlopeAngle && angle != 0;

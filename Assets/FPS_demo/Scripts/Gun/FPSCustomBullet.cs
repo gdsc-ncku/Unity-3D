@@ -9,7 +9,7 @@ public class FPSCustomBullet : MonoBehaviour
     public LayerMask whatIsEnemies;
 
     //Stats
-    [Range(0f,1f)]
+    [Range(0f, 1f)]
     public float bounciness;
     public bool useGravity;
 
@@ -56,7 +56,7 @@ public class FPSCustomBullet : MonoBehaviour
         {
             GetComponent<AudioSource>().PlayOneShot(explosionSound);
         }
-           
+
 
         //Add a little delay, just to make sure everything works fine
         //Invoke("Delay", 0.05f);
@@ -89,7 +89,7 @@ public class FPSCustomBullet : MonoBehaviour
         physics_mat.frictionCombine = PhysicMaterialCombine.Minimum;
         physics_mat.bounceCombine = PhysicMaterialCombine.Maximum;
         //Assign material to collider
-        if(GetComponent<SphereCollider>() != null)
+        if (GetComponent<SphereCollider>() != null)
             GetComponent<SphereCollider>().material = physics_mat;
         else if (GetComponent<BoxCollider>() != null)
             GetComponent<BoxCollider>().material = physics_mat;
@@ -107,5 +107,5 @@ public class FPSCustomBullet : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, explosionRange);
     }
 
-  
+
 }

@@ -17,7 +17,7 @@ public class LoadingSceneUIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     //Add listener event in OnEnable and remove in OnDisable and OnDestroy to avoid memory leak
@@ -45,7 +45,7 @@ public class LoadingSceneUIController : MonoBehaviour
     IEnumerator DisplayLoadingBar(AsyncOperationHandle<SceneInstance> handle)
     {
         //handle is loading scene, if its isValid then close this function or its enter the "while" that can update the loading bar 
-        if(!handle.IsValid())
+        if (!handle.IsValid())
             yield break;
 
         camera.enabled = true;

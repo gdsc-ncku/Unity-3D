@@ -20,7 +20,7 @@ public class TestPlayer : MonoBehaviour
         transform.Translate(Vector3.right * Time.deltaTime * -Input.GetAxis("Horizontal") * speed);
     }
 
-    void GetChestItems (GameObject[] prizes)
+    void GetChestItems(GameObject[] prizes)
     {
         foreach (GameObject prize in prizes)
         {

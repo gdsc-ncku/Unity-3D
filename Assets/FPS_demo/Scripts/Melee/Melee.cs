@@ -1,6 +1,6 @@
 
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class Melee : MonoBehaviour
 {
@@ -15,7 +15,7 @@ public class Melee : MonoBehaviour
     public float timeBetweenSlashing, timeBetweenSlashs;
     public int bulletsPerTap;
 
-    int  bulletsShot;
+    int bulletsShot;
 
     //bools
     bool slashing, readyToSlash;
@@ -56,7 +56,7 @@ public class Melee : MonoBehaviour
         slashing = Input.GetKeyDown(KeyCode.Mouse0);
 
         //Shooting
-        if (readyToSlash && slashing )
+        if (readyToSlash && slashing)
         {
             //Set bullets shot to 0
             bulletsShot = 0;

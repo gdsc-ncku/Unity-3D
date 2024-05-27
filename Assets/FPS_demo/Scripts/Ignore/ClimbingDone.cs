@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ClimbingDone : MonoBehaviour
@@ -181,7 +179,7 @@ public class ClimbingDone : MonoBehaviour
         }
 
         // vaulting
-        if(Physics.Raycast(transform.position, orientation.forward, detectionLength, whatIsWall))
+        if (Physics.Raycast(transform.position, orientation.forward, detectionLength, whatIsWall))
             print("raycastCheck done");
 
         midCheck = Physics.Raycast(transform.position, orientation.forward, vaultDetectionLength, whatIsWall);
@@ -301,7 +299,7 @@ public class ClimbingDone : MonoBehaviour
             // Vector3 directionToLedge = ledgeHit.transform.position - transform.position;
             // rb.velocity = directionToLedge.normalized * moveToLedgeSpeed;
 
-            if(rb.velocity.magnitude < moveToLedgeSpeed)
+            if (rb.velocity.magnitude < moveToLedgeSpeed)
                 rb.AddForce(directionToLedge.normalized * moveToLedgeSpeed * 1000f * Time.deltaTime);
 
             /// The current problem is that I can't set the velocity from here, I can only add force
@@ -342,7 +340,7 @@ public class ClimbingDone : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.transform.tag == "Ledge")
+        if (collision.transform.tag == "Ledge")
         {
             touchingLedge = true;
         }

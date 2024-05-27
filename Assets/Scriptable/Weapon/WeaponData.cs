@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 //Storage inheritable information
@@ -36,7 +33,7 @@ public class WeaponData : ScriptableObject
 
     private void OnValidate()
     {
-        if(bulletsPerTap > 1)
+        if (bulletsPerTap > 1)
         {
             timeBetweenShooting = timeBetweenShots * bulletsPerTap;
         }

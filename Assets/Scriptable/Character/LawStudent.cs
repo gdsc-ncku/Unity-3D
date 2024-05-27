@@ -13,7 +13,7 @@ public class LawStudent : CharacterBaseData
     //Hero skills effect need to write in the functions below.
     public new void UseingQ_Skill()
     {
-        
+
     }
 
     public new void UseingE_Skill()

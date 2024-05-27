@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class CameraMovement : MonoBehaviour {
+public class CameraMovement : MonoBehaviour
+{
     public bool _lock;
     [SerializeField] GameObject _cameraRoot;
     [SerializeField] float _cameraMovingThreshold, _topClamp, _bottomClamp;
@@ -17,12 +18,12 @@ public class CameraMovement : MonoBehaviour {
     void Update()
     {
         //Click right mouse to hide cursor or press ESC to display cursor
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
-        else if(Input.GetKeyDown(KeyCode.Escape))
+        else if (Input.GetKeyDown(KeyCode.Escape))
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
