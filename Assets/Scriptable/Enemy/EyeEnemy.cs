@@ -9,8 +9,9 @@ public class EyeEnemy : EnemyScriptableObject
     public int BulletsPerGen;
     public float GenBulletsTime;
 
-    private void OnValidate()
+    protected override void OnValidate()
     {
+        base.OnValidate();
         AttackTime = BulletsPerGen * GenBulletsTime;
     }
 

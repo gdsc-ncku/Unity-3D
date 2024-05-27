@@ -31,6 +31,11 @@ public class EnemyAI : MonoBehaviour
                 Debug.Log("Enemy Die");
                 gameObject.GetComponent<Collider>().enabled = false;
                 animator.Play("Die", 0, 0);
+                if(EnemyInfo.Drops.Length != 0 && Random.Range(0f, 1f) <= EnemyInfo.DropsProbability)
+                {
+                    Instantiate(EnemyInfo.Drops[Random.Range(0, EnemyInfo.Drops.Length)], transform);
+                }
+
                 Destroy(gameObject, animator.GetCurrentAnimatorClipInfo(0).Length);
                 nowStatus = status.die;
             }

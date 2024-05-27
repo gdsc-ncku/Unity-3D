@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: ChestEnemy
   m_EditorClassIdentifier: 
   Drops: []
-  AttackRangeOffset: 0
-  AttackRange: 0
-  AttackSpeed: 0
-  AttackTime: 0
-  AttackDamage: 0
-  MoveSpeed: 0
-  Health: 0
+  AttackRangeOffset: 5
+  AttackRange: 15
+  AttackSpeed: 0.5
+  AttackTime: 1
+  AttackDamage: 10
+  MoveSpeed: 2
+  Health: 30

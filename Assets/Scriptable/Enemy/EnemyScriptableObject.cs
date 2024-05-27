@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyScriptableObject : ScriptableObject
 {
     public GameObject[] Drops;
+    public float DropsProbability;
     public float AttackRangeOffset;
     public float AttackRange;
     //Time between every new attack
@@ -15,6 +16,19 @@ public class EnemyScriptableObject : ScriptableObject
     public float AttackDamage;
     public float MoveSpeed;
     public float Health;
+
+    protected virtual void OnValidate()
+    {
+        if(DropsProbability > 1)
+        {
+            DropsProbability = 1;
+        }
+        else if(DropsProbability < 0)
+        {
+            DropsProbability = 0;
+        }
+    }
+    
     public virtual void attack(GameObject gameObject, float waittingTime)
     {
         
