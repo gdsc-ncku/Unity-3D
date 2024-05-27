@@ -31,7 +31,7 @@ public class EnemyAI : MonoBehaviour
                 Debug.Log("Enemy Die");
                 gameObject.GetComponent<Collider>().enabled = false;
                 animator.Play("Die", 0, 0);
-                if(EnemyInfo.Drops.Length != 0 && Random.Range(0f, 1f) <= EnemyInfo.DropsProbability)
+                if(EnemyInfo.Drops.Length != 0 && Random.Range(0f, 1f) < EnemyInfo.DropsProbability)
                 {
                     Instantiate(EnemyInfo.Drops[Random.Range(0, EnemyInfo.Drops.Length)], transform);
                 }
@@ -75,11 +75,12 @@ public class EnemyAI : MonoBehaviour
     IEnumerator SearchRoutine()
     {
         animator.Play("Chasing", 0, 0);
+        EnemyInfo.MoveSpeed *= 4;
         //Debug.Log("Chasing");
         while (BattleInfo.Player != null && nowStatus == status.chasing)
         {
             NavMeshHit hit;
-            if (NavMesh.SamplePosition(BattleInfo.Player.transform.position, out hit, 20.0f, NavMesh.AllAreas))
+            if (NavMesh.SamplePosition(BattleInfo.Player.transform.position, out hit, EnemyInfo.AttackRange, NavMesh.AllAreas))
             {
                 agent.SetDestination(hit.position);
             }
@@ -102,6 +103,7 @@ public class EnemyAI : MonoBehaviour
     //Let enemy orient to player
     IEnumerator Aim()
     {
+        EnemyInfo.MoveSpeed /= 4;
         Vector3 direction = BattleInfo.Player.transform.position - transform.position;
         direction.y = 0; // ©¿²¤ Y ¶bªº®t²§
         StartCoroutine(Attack());
@@ -141,20 +143,29 @@ public class EnemyAI : MonoBehaviour
     bool IsPathObstructed()
     {
         Ray ray = new Ray(transform.position, BattleInfo.Player.transform.position - transform.position);
-        RaycastHit hit;
-        Physics.Raycast(ray, out hit, Vector3.Distance(transform.position, BattleInfo.Player.transform.position));
+        RaycastHit[] hits = Physics.RaycastAll(ray, Vector3.Distance(transform.position, BattleInfo.Player.transform.position)); ;
         Debug.DrawRay(transform.position, BattleInfo.Player.transform.position - transform.position, Color.red, 0.1f);
-        if(hit.collider.gameObject.layer == BattleInfo.Player.layer)
+        foreach(RaycastHit hit in hits)
         {
-            agent.ResetPath();
-            //Debug.Log("No Obstacle");
-            return false;
+            if(hit.collider.gameObject.transform.root == gameObject.transform.root)
+            {
+                continue;
+            }
+
+            if (hit.collider.transform.root.gameObject.layer == BattleInfo.Player.layer)
+            {
+                agent.ResetPath();
+                //Debug.Log("No Obstacle");
+                return false;
+            }
+            else
+            {
+                //Debug.Log("Has Obstacle");
+                return true;
+            }
         }
-        else
-        {
-            //Debug.Log("Has Obstacle");
-            return true;
-        }
+
+        return false;
     }
 
     //Repath
@@ -189,8 +200,17 @@ public class EnemyAI : MonoBehaviour
 
             animator.SetFloat("Attack", 1 / EnemyInfo.AttackTime);
             animator.Play("Attacking", 0, 0);
+            yield return new WaitForSeconds(EnemyInfo.AttackTime);
+            if (BattleInfo.Player != null && nowStatus == status.attack)
+            {
+                animator.Play("Idle", 0, 0);
+            }
+            else
+            {
+                yield break;
+            }
             //Debug.Log("Attack");
-            yield return new WaitForSeconds(EnemyInfo.AttackSpeed + EnemyInfo.AttackTime);
+            yield return new WaitForSeconds(EnemyInfo.AttackTime);
         }
     }
 

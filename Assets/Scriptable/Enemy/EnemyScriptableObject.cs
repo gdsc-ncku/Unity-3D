@@ -16,6 +16,7 @@ public class EnemyScriptableObject : ScriptableObject
     public float AttackDamage;
     public float MoveSpeed;
     public float Health;
+    public GameObject[] Bullets;
 
     protected virtual void OnValidate()
     {
@@ -28,7 +29,13 @@ public class EnemyScriptableObject : ScriptableObject
             DropsProbability = 0;
         }
     }
-    
+
+    //Polymorphism function
+    public virtual void attack(GameObject enemy)
+    {
+
+    }
+
     public virtual void attack(GameObject gameObject, float waittingTime)
     {
         
