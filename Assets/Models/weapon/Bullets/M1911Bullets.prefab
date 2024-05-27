@@ -147,12 +147,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0498daa91f8afb4fafaf221e152e582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackWeapon: {fileID: 11400000, guid: 4ae0524cf5983594d9341972a52bf86e, type: 2}
+  AttackWeapon: {fileID: 0}
   rb: {fileID: 1165490155807771508}
-  explosion: {fileID: 0}
+  explosion: {fileID: 1263282939118438294, guid: c150d7df7f6325646bea7fda20458269, type: 3}
   whatIsEnemies:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   bounciness: 1
   useGravity: 1
   explosionDamage: 10
