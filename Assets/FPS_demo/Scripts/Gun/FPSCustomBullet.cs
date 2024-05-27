@@ -8,6 +8,7 @@ public class FPSCustomBullet : MonoBehaviour
     public Rigidbody rb;
     public GameObject explosion;
     public LayerMask whatIsEnemies;
+    private Vector3 OriginAttackPoint;
 
     //Stats
     [Range(0f, 1f)]
@@ -29,6 +30,7 @@ public class FPSCustomBullet : MonoBehaviour
     public AudioClip explosionSound;
     private void Start()
     {
+        OriginAttackPoint = AttackWeapon.weaponAttackPoint.position;
         if (rb == null)
         {
             rb = GetComponent<Rigidbody>();
@@ -42,21 +44,12 @@ public class FPSCustomBullet : MonoBehaviour
         
     }
 
-    private void Explode(Vector3 position)
-    {
-        //Instantiate explosion
-        if (explosion != null) Destroy(Instantiate(explosion, position, Quaternion.identity), 1f);
-
-        if (GetComponent<AudioSource>())
-        {
-            GetComponent<AudioSource>().PlayOneShot(explosionSound);
-        }     
-    }
-
     private void OnTriggerEnter(Collider collider)
     {
-        Ray ray = new(AttackWeapon.weaponAttackPoint.position, rb.velocity.normalized);
-        RaycastHit hit;
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<TrailRenderer>().enabled = false;
+        Ray ray = new(OriginAttackPoint, rb.velocity.normalized);
+        RaycastHit[] hits = Physics.RaycastAll(ray, (collider.transform.position - OriginAttackPoint).magnitude);
 
         if (collider.CompareTag("bullet") || collider.gameObject == AttackWeapon.gameObject) return;
         
@@ -66,10 +59,22 @@ public class FPSCustomBullet : MonoBehaviour
             EnemyInfo.ReduceHealth(AttackWeapon.ThisWeapon.damage);
         }
 
-        if (Physics.Raycast(ray, out hit, (collider.transform.position - AttackWeapon.weaponAttackPoint.position).magnitude) && !hit.collider.gameObject.CompareTag("bullet") && AttackWeapon.gameObject != hit.collider.gameObject)
+        foreach (RaycastHit hit in hits)
         {
-            Explode(hit.point);
+            if (!hit.collider.gameObject.CompareTag("bullet") && AttackWeapon.gameObject != hit.collider.gameObject && hit.collider.gameObject == collider.gameObject)
+            {
+                if (explosion != null)
+                {
+                    Destroy(Instantiate(explosion, hit.point, Quaternion.identity), 1f);
+                }
+
+                if (GetComponent<AudioSource>())
+                {
+                    GetComponent<AudioSource>().PlayOneShot(explosionSound);
+                }
+            }
         }
+
         Destroy(gameObject);
     }
 }
