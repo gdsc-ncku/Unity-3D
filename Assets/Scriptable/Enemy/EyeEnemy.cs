@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EyeEnemy", menuName = "Enemy/EyeEnemy", order = 2)]
 public class EyeEnemy : EnemyScriptableObject
 {
-    public GameObject[] Bullets;
     public int BulletsPerGen;
     public float GenBulletsTime;
 

@@ -200,7 +200,7 @@ public class PlayerShoot : MonoBehaviour
 
     public void FinishShoot(InputAction.CallbackContext context)
     {
-        Debug.Log("cancel");
+        //Debug.Log("cancel");
         CancelInvoke("Shoot");
     }
 

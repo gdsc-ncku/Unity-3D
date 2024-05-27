@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ChestEnemy
   m_EditorClassIdentifier: 
   Drops: []
+  DropsProbability: 0
   AttackRangeOffset: 5
   AttackRange: 15
   AttackSpeed: 0.5
@@ -20,3 +21,8 @@ MonoBehaviour:
   AttackDamage: 10
   MoveSpeed: 2
   Health: 30
+  Bullets:
+  - {fileID: 1152432382298514, guid: 3b4a0f53dedf97742ab19c480c965e8d, type: 3}
+  - {fileID: 1156661934076386, guid: 7fc0fee6962314e429370d8a99a3017c, type: 3}
+  - {fileID: 1487584829266522, guid: fc1c2ad730ee10d4ca58cb26fa41c38b, type: 3}
+  - {fileID: 1262348151898546, guid: 600e7bb4dc8bf2f4b8335acf9f96c326, type: 3}
