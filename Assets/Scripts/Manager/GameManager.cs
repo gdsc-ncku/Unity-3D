@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     int maxAttempts = 100, radius = 500;
     [SerializeField] int level1EnemyNum = 100;
     [SerializeField] GameStatus gameStatus;
-    [SerializeField] AssetReference mainScene, advenatureScene;
     [SerializeField] GameObject[] Enemys;
     // Start is called before the first frame update
     void Start()
@@ -32,17 +31,7 @@ public class GameManager : MonoBehaviour
     IEnumerator WaitForLoadingMainScene()
     {
         yield return new WaitUntil(() => gameStatus.CatchData);
-        gameStatus.LoadingSceneHandle = Addressables.LoadSceneAsync(mainScene, LoadSceneMode.Additive);
-    }
-
-    public void GameStart()
-    {
-        gameStatus.Level++;
-    }
-
-    public void GameReset()
-    {
-        gameStatus.Level = 0;
+        gameStatus.LoadOtherScene(false, gameStatus.mainScene);
     }
 
     public void LevelChoose()

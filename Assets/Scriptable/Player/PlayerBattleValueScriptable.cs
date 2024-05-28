@@ -36,7 +36,7 @@ public class PlayerBattleValueScriptable : ScriptableObject
 
     public void ReduceHealth(float Damage)
     {
-        Debug.Log("Player be attacked");
+        //Debug.Log("Player be attacked");
         CurrentHealth -= Damage;
         if (CurrentHealth < 0)
         {

@@ -39,21 +39,17 @@ public class FPSCustomBullet : MonoBehaviour
         Destroy(gameObject, maxLifetime);
     }
 
-    private void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider collider)
     {
+        if (collider.transform.root.gameObject.CompareTag("bullet") || collider.transform.root.gameObject.CompareTag("Weapon") || collider.transform.root.gameObject == AttackWeapon.transform.root.gameObject) return;
+
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<TrailRenderer>().enabled = false;
         Ray ray = new(OriginAttackPoint, rb.velocity.normalized);
         RaycastHit[] hits = Physics.RaycastAll(ray, (collider.transform.position - OriginAttackPoint).magnitude);
 
-        if (collider.CompareTag("bullet") || collider.gameObject == AttackWeapon.gameObject) return;
-        
-        EnemyAI EnemyInfo = collider.gameObject.GetComponent<EnemyAI>();
+        EnemyAI EnemyInfo = collider.transform.root.gameObject.GetComponent<EnemyAI>();
+        Debug.Log(collider.gameObject.name);
         if (EnemyInfo != null)
         {
             EnemyInfo.ReduceHealth(AttackWeapon.ThisWeapon.damage);
@@ -61,7 +57,7 @@ public class FPSCustomBullet : MonoBehaviour
 
         foreach (RaycastHit hit in hits)
         {
-            if (!hit.collider.gameObject.CompareTag("bullet") && AttackWeapon.gameObject != hit.collider.gameObject && hit.collider.gameObject == collider.gameObject)
+            if (hit.collider.transform.root.gameObject == collider.transform.root.gameObject)
             {
                 if (explosion != null)
                 {

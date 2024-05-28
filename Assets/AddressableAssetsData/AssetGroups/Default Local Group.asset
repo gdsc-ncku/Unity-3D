@@ -17,11 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 0a29e6499a07c754c8ef500ed386925b
   m_SerializeEntries:
-  - m_GUID: 947adea53dee95443bdd5e791c52fba1
-    m_Address: Assets/Scenes/GameScene/AdventureScene.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 638829124b210234ca65bb79e6544168
     m_Address: Assets/Scenes/GameScene/LoadingScene.unity
     m_ReadOnly: 0

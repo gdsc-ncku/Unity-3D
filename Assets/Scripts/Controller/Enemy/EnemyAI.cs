@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-enum status { chasing, attack, die};
+enum status { chasing, stuck, attack, die};
 public class EnemyAI : MonoBehaviour
 {
     public EnemyScriptableObject EnemyInfo;
@@ -14,6 +14,7 @@ public class EnemyAI : MonoBehaviour
     private Animator animator;
     private status nowStatus;
     private float Hp;
+    private Vector3 lastPosition;
     private float Health 
     { 
         get 
@@ -28,7 +29,7 @@ public class EnemyAI : MonoBehaviour
 
             if(Hp <= 0)
             {
-                Debug.Log("Enemy Die");
+                nowStatus = status.die;
                 gameObject.GetComponent<Collider>().enabled = false;
                 animator.Play("Die", 0, 0);
                 if(EnemyInfo.Drops.Length != 0 && Random.Range(0f, 1f) < EnemyInfo.DropsProbability)
@@ -37,7 +38,6 @@ public class EnemyAI : MonoBehaviour
                 }
 
                 Destroy(gameObject, animator.GetCurrentAnimatorClipInfo(0).Length);
-                nowStatus = status.die;
             }
         }
     }
@@ -56,6 +56,7 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        lastPosition = transform.position;
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         HealthBar.maxValue = EnemyInfo.Health;
@@ -63,22 +64,62 @@ public class EnemyAI : MonoBehaviour
         Health = EnemyInfo.Health;
         nowStatus = status.chasing;
         StartCoroutine(SearchRoutine());
+        StartCoroutine(AvoidStuck());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator AvoidStuck()
     {
-        
+        int stuckTime = 0;
+        yield return new WaitForSeconds(1f);
+        while(true)
+        {
+            if (Vector3.Distance(agent.transform.position, lastPosition) < 0.1f && nowStatus != status.attack)
+            {
+                Debug.Log(gameObject.name + "Stuck");
+                nowStatus = status.stuck;
+                agent.ResetPath();
+                Vector3 randomPoint = transform.position + Random.insideUnitSphere * 100;
+                NavMeshHit hit;
+                if (NavMesh.SamplePosition(randomPoint, out hit, 500, NavMesh.AllAreas))
+                {
+                    agent.SetDestination(hit.position);
+                }
+                stuckTime++;
+            }
+            else
+            {
+                lastPosition = agent.transform.position;
+                stuckTime = 0;
+            }
+
+            if(nowStatus == status.stuck && !agent.hasPath) 
+            {
+                nowStatus = status.chasing;
+                StartCoroutine(SearchRoutine());
+            }
+
+            if(stuckTime > 10)
+            {
+                Vector3 randomPoint = transform.position + Random.insideUnitSphere * 10;
+                NavMeshHit hit;
+                if (NavMesh.SamplePosition(randomPoint, out hit, 50, NavMesh.AllAreas))
+                {
+                    transform.position = hit.position;
+                }
+            }
+
+            yield return new WaitForSeconds(1f);
+        }
     }
 
     //Chasing player
     IEnumerator SearchRoutine()
-    {
-        animator.Play("Chasing", 0, 0);
-        EnemyInfo.MoveSpeed *= 4;
+    {    
         //Debug.Log("Chasing");
         while (BattleInfo.Player != null && nowStatus == status.chasing)
         {
+            animator.Play("Chasing", 0, 0);
+            agent.speed = EnemyInfo.RunSpeed;
             NavMeshHit hit;
             if (NavMesh.SamplePosition(BattleInfo.Player.transform.position, out hit, EnemyInfo.AttackRange, NavMesh.AllAreas))
             {
@@ -103,7 +144,7 @@ public class EnemyAI : MonoBehaviour
     //Let enemy orient to player
     IEnumerator Aim()
     {
-        EnemyInfo.MoveSpeed /= 4;
+        agent.speed = EnemyInfo.MoveSpeed;
         Vector3 direction = BattleInfo.Player.transform.position - transform.position;
         direction.y = 0; // ©¿²¤ Y ¶bªº®t²§
         StartCoroutine(Attack());

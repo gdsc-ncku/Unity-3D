@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Drops: []
   DropsProbability: 0
-  AttackRangeOffset: 5
   AttackRange: 15
   AttackSpeed: 0.5
   AttackTime: 1
   AttackDamage: 10
   MoveSpeed: 2
+  RunSpeed: 4
   Health: 30
   Bullets:
   - {fileID: 1152432382298514, guid: 3b4a0f53dedf97742ab19c480c965e8d, type: 3}
