@@ -49,6 +49,7 @@ public class FPSCustomBullet : MonoBehaviour
         RaycastHit[] hits = Physics.RaycastAll(ray, (collider.transform.position - OriginAttackPoint).magnitude);
 
         EnemyAI EnemyInfo = collider.transform.root.gameObject.GetComponent<EnemyAI>();
+        Debug.Log(collider.gameObject.name);
         if (EnemyInfo != null)
         {
             EnemyInfo.ReduceHealth(AttackWeapon.ThisWeapon.damage);

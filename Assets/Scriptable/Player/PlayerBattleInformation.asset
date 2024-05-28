@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 286d038f52148ae40932868b959af281, type: 3}
   m_Name: PlayerBattleInformation
   m_EditorClassIdentifier: 
-  initM_Hp: 100
+  Player: {fileID: 0}
+  PlayerDieUI: {fileID: 0}
+  initM_Hp: 100000
   HealthChange:
     m_PersistentCalls:
       m_Calls: []
