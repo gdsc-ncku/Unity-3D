@@ -12,6 +12,7 @@ public class EnemyScriptableObject : ScriptableObject
     public float AttackTime;
     public float AttackDamage;
     public float MoveSpeed;
+    public float RunSpeed;
     public float Health;
     public GameObject[] Bullets;
 

@@ -6,27 +6,10 @@ using UnityEngine.SceneManagement;
 public class MainSceneController : MonoBehaviour
 {
     [SerializeField] MainSceneManager mainSceneManager;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void StartGame()
     {
-        if (mainSceneManager.advenatureScene != null)
-        {
-            AsyncOperationHandle unLoad = mainSceneManager.gameStatus.LoadingSceneHandle;
-            Addressables.UnloadSceneAsync(unLoad);
-            mainSceneManager.gameStatus.LoadingSceneHandle = Addressables.LoadSceneAsync(mainSceneManager.advenatureScene, LoadSceneMode.Additive);
-            mainSceneManager.gameStatus.LoadingSceneHandle.Completed += (Handle) => { mainSceneManager.gameStatus.Level = 1; };
-        }
+        mainSceneManager.gameStatus.StartGame();
     }
 
     public void ExitGame()

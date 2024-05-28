@@ -75,7 +75,7 @@ public class EnemyAI : MonoBehaviour
     IEnumerator SearchRoutine()
     {
         animator.Play("Chasing", 0, 0);
-        EnemyInfo.MoveSpeed *= 4;
+        agent.speed = EnemyInfo.RunSpeed;
         //Debug.Log("Chasing");
         while (BattleInfo.Player != null && nowStatus == status.chasing)
         {
@@ -103,7 +103,7 @@ public class EnemyAI : MonoBehaviour
     //Let enemy orient to player
     IEnumerator Aim()
     {
-        EnemyInfo.MoveSpeed /= 4;
+        agent.speed = EnemyInfo.MoveSpeed;
         Vector3 direction = BattleInfo.Player.transform.position - transform.position;
         direction.y = 0; // ©¿²¤ Y ¶bªº®t²§
         StartCoroutine(Attack());
