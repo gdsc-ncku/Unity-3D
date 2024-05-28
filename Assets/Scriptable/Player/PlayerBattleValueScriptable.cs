@@ -9,6 +9,8 @@ public class PlayerBattleValueScriptable : ScriptableObject
     private void OnEnable()
     {
         MaxHealth = initM_Hp;
+        HealthDecrease.AddListener(ChangeHealth);
+        HealthIncrease.AddListener(ChangeHealth);
     }
     #region BasicBattleValue
     [Header("BasicBattleValue")]
@@ -28,7 +30,7 @@ public class PlayerBattleValueScriptable : ScriptableObject
         }
     }
     private float CurrentHealth;
-    public UnityEvent HealthChange;
+    public UnityEvent HealthDecrease, HealthIncrease, HealthChange;
     public float GetHealth()
     {
         return CurrentHealth;
@@ -51,6 +53,11 @@ public class PlayerBattleValueScriptable : ScriptableObject
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
+        HealthDecrease.Invoke();
+    }
+
+    public void ChangeHealth()
+    {
         HealthChange.Invoke();
     }
 

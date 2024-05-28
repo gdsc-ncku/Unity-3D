@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   PlayerDieUI: {fileID: 0}
-  initM_Hp: 100000
+  initM_Hp: 100
   HealthChange:
     m_PersistentCalls:
       m_Calls: []
