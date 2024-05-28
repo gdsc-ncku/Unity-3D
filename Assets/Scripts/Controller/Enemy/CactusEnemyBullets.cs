@@ -26,6 +26,7 @@ public class CactusEnemyBullets : MonoBehaviour
         transform.GetChild(0).transform.rotation = Quaternion.Euler(Vector3.zero);
         transform.GetChild(0).transform.position = Enemy + new Vector3(0, cactusEnemy.BulletZoomInEverySecond - 2f, 0);
         zoom = cactusEnemy.BulletFinalSize * parts / cactusEnemy.BulletChargingTime;
+        Destroy(gameObject, cactusEnemy.BulletChargingTime + 5f);
         StartCoroutine(attack());
     }
 
