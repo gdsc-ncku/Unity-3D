@@ -75,7 +75,7 @@ public class EnemyAI : MonoBehaviour
         {
             if (Vector3.Distance(agent.transform.position, lastPosition) < 0.1f && nowStatus != status.attack)
             {
-                Debug.Log(gameObject.name + "Stuck");
+                //Debug.Log(gameObject.name + "Stuck");
                 nowStatus = status.stuck;
                 agent.ResetPath();
                 Vector3 randomPoint = transform.position + Random.insideUnitSphere * 100;
