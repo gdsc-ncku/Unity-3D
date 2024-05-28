@@ -13,6 +13,8 @@ public class keyboard
     public TextMeshProUGUI value;
 }
 
+public enum KeyIndex { Weapon1, Weapon2, Q_Skill, E_Skill, Backpack, Reload, WeaponSkill, Forward, Backward, Left, Right, Jump, Fire, PickUp };
+
 //Storage inheritable information
 [CreateAssetMenu(fileName = "PlayerBasicInformation", menuName = "PlayerInformation/Player/PlayerBasicInformation", order = 1)]
 public class PlayerBasicInformationScriptable : ScriptableObject
@@ -31,57 +33,8 @@ public class PlayerBasicInformationScriptable : ScriptableObject
     #endregion
 
     #region ButtonSetting
+    //Input System
     public PlayerControl playerControl = null;
-    [Header("Battle Setting")]
-    private KeyCode attack = KeyCode.Mouse0;
-    public KeyCode Attack
-    {
-        get => attack;
-        set
-        {
-            attack = value;
-        }
-    }
-
-    private KeyCode aim = KeyCode.Mouse1;
-    public KeyCode Aim
-    {
-        get => aim;
-        set
-        {
-            aim = value;
-        }
-    }
-
-    private KeyCode e_Skill = KeyCode.E;
-    public KeyCode E_Skill
-    {
-        get => e_Skill;
-        set
-        {
-            e_Skill = value;
-        }
-    }
-
-    private KeyCode q_Skill = KeyCode.Q;
-    public KeyCode Q_Skill
-    {
-        get => q_Skill;
-        set
-        {
-            q_Skill = value;
-        }
-    }
-
-    private KeyCode pickUp = KeyCode.R;
-    public KeyCode PickUp
-    {
-        get => pickUp;
-        set
-        {
-            pickUp = value;
-        }
-    }
     #endregion
 
     #region MouseSensitivity

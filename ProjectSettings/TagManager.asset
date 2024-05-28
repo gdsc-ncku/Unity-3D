@@ -8,6 +8,9 @@ TagManager:
   - bullet
   - Item
   - Enemy
+  - FxTemporaire
+  - Bullet
+  - Weapon
   layers:
   - Default
   - TransparentFX
@@ -17,9 +20,9 @@ TagManager:
   - UI
   - ItemLayer
   - Enemy
-  - 
-  - 
-  - 
+  - whatIsHolding
+  - whatIsWall
+  - WhatIsGround
   - 
   - 
   - 

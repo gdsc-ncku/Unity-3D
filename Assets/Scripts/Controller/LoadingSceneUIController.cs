@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
 
 public class LoadingSceneUIController : MonoBehaviour
 {
@@ -36,12 +37,12 @@ public class LoadingSceneUIController : MonoBehaviour
     }
 
     //If event happen excute the function which using IEnumerator to excute function async
-    void HandleLoadingEvent(AsyncOperationHandle handle)
+    void HandleLoadingEvent(AsyncOperationHandle<SceneInstance> handle)
     {
         StartCoroutine(DisplayLoadingBar(handle));
     }
 
-    IEnumerator DisplayLoadingBar(AsyncOperationHandle handle)
+    IEnumerator DisplayLoadingBar(AsyncOperationHandle<SceneInstance> handle)
     {
         //handle is loading scene, if its isValid then close this function or its enter the "while" that can update the loading bar 
         if(!handle.IsValid())

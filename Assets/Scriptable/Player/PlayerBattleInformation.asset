@@ -12,15 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 286d038f52148ae40932868b959af281, type: 3}
   m_Name: PlayerBattleInformation
   m_EditorClassIdentifier: 
+  initM_Hp: 100
+  HealthChange:
+    m_PersistentCalls:
+      m_Calls: []
   Role: {fileID: 11400000, guid: d2600dd773fa00b45a09a3270bb931fe, type: 2}
-  Health: 100
-  Magic: 300
-  AttackDamage: 20
-  WalkSpeed: 10
-  JumpForce: 10
-  AttackSpeed: 10
-  ReloadingSpeed: 2
-  Q_SkillDamage: 50
-  Q_Skill: {fileID: 0}
-  E_SkillDamage: 100
-  E_Skill: {fileID: 0}
+  nowWeaponData: {fileID: 0}

@@ -10,6 +10,7 @@ public class InitializationLoader : MonoBehaviour
 {
     [SerializeField] AssetReferenceT<SceneAsset> PersistenceScene, LoadingScene;
     [SerializeField] GameStatus gameStatus;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,17 +30,12 @@ public class InitializationLoader : MonoBehaviour
             gameStatus.LoadingSceneHandle.Completed += (Handle) => 
             {
                 StartCoroutine(WaitForCatachData());
-                //Release handle to avoid memory leak 
-                Addressables.Release(gameStatus.LoadingSceneHandle);
             };
         }
         else
         {
             Debug.LogError("Fail to load the PersistenceScene");
         }
-
-        //Release handle to avoid memory leak 
-        Addressables.Release(asyncOperationHandle);
     }
 
     IEnumerator WaitForCatachData()

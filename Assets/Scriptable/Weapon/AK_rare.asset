@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f9e5ee33ac581944895bb2515ae8ebc, type: 3}
+  m_Name: AK_rare
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 6231888369005412580, guid: a80eff1b9e736064cb0ffd35a10af00e, type: 3}
+  shootForce: 25
+  upwardForce: 1
+  timeBetweenShooting: 0.1
+  spread: 0
+  reloadTime: 1
+  timeBetweenShots: 0.02
+  magazineSize: 1000
+  bulletsPerTap: 3
+  allowButtonHold: 0
+  bulletsLeft: 30
+  maxBullets: 30
+  bulletsShot: 0
+  recoilForce: 1
+  allowInvoke: 1
+  gunSound: {fileID: 8300000, guid: dff055e4400984148b4c6f0e0b3bd666, type: 3}
+  recoilX: -3.05
+  recoilY: 0
+  recoilZ: 0

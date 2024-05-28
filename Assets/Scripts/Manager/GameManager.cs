@@ -16,16 +16,16 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Delete))
+        {
+            PlayerPrefs.DeleteKey("IsFirstTime");
+            Debug.Log("Reset");
+        }
     }
 
     IEnumerator WaitForLoadingMainScene()
     {
         yield return new WaitUntil(() => gameStatus.CatchData);
         gameStatus.LoadingSceneHandle = Addressables.LoadSceneAsync(mainScene, LoadSceneMode.Additive);
-        gameStatus.LoadingSceneHandle.Completed += (Handle) =>
-        {
-            Addressables.Release(gameStatus.LoadingSceneHandle);
-        };
     }
 }

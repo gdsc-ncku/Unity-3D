@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3abe5057433daab4690e24c6b750537e, type: 3}
+  m_Name: EyeEnemy
+  m_EditorClassIdentifier: 
+  AttackRangeOffset: 5
+  AttackRange: 15
+  AttackSpeed: 1
+  AttackTime: 2
+  AttackDamage: 5
+  MoveSpeed: 2
+  Health: 100
+  Bullet: {fileID: 4038842101496279827, guid: 0766e9edb6709c740a7fef949530fbd5, type: 3}
+  BulletsPerGen: 3

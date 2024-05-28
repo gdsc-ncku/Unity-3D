@@ -34,11 +34,20 @@ public class DataManager : MonoBehaviour
             PlayerPrefs.SetInt("Height", 1080);
 
             PlayerPrefs.SetString("Rebinds", playerControl.SaveBindingOverridesAsJson());
-
-            PlayerPrefs.SetInt("Attack", (int)KeyCode.Mouse0);
-            PlayerPrefs.SetInt("Aim", (int)KeyCode.Mouse1);
-            PlayerPrefs.SetInt("E_Skill", (int)KeyCode.E);
-            PlayerPrefs.SetInt("Q_Skill", (int)KeyCode.Q);
+            PlayerPrefs.SetString(KeyIndex.Weapon1.ToString(), "1");
+            PlayerPrefs.SetString(KeyIndex.Weapon2.ToString(), "2");
+            PlayerPrefs.SetString(KeyIndex.Q_Skill.ToString(), "Q");
+            PlayerPrefs.SetString(KeyIndex.E_Skill.ToString(), "E");
+            PlayerPrefs.SetString(KeyIndex.Backpack.ToString(), "Tab");
+            PlayerPrefs.SetString(KeyIndex.Reload.ToString(), "R");
+            PlayerPrefs.SetString(KeyIndex.WeaponSkill.ToString(), "R Click");
+            PlayerPrefs.SetString(KeyIndex.Forward.ToString(), "W");
+            PlayerPrefs.SetString(KeyIndex.Backward.ToString(), "S");
+            PlayerPrefs.SetString(KeyIndex.Left.ToString(), "A");
+            PlayerPrefs.SetString(KeyIndex.Right.ToString(), "D");
+            PlayerPrefs.SetString(KeyIndex.Jump.ToString(), "Space");
+            PlayerPrefs.SetString(KeyIndex.Fire.ToString(), "L Click");
+            PlayerPrefs.SetString(KeyIndex.PickUp.ToString(), "F");
 
             PlayerPrefs.SetFloat("MouseSensitivity", 800);
 
