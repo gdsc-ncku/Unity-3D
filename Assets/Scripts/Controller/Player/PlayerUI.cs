@@ -8,9 +8,11 @@ public class PlayerUI : MonoBehaviour
     public Text BulletMaxNum;
     public Image WeaponIcon;
     [SerializeField] PlayerBattleValueScriptable PlayerInfo;
+    [SerializeField] GameObject playerDieUI;
     // Start is called before the first frame update
     void Start()
     {
+        PlayerInfo.PlayerDieUI = playerDieUI;
         HealthBar.maxValue = PlayerInfo.MaxHealth;
         PlayerInfo.HealthChange.AddListener(ChangeHealthBar);
     }

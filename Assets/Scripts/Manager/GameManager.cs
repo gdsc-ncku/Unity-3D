@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
 
     public void level1()
     {
+        gameStatus.Duration = 600;
         StartCoroutine(SpawnRandomOnNavMesh());
     }
     IEnumerator SpawnRandomOnNavMesh()
