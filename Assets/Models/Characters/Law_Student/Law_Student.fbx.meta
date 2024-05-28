@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8bd9eb57f7e83a6459ed0b877e468968
+guid: 2652183c584d59841befa0a07910fd28
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,13 +7,28 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: mini simple material primary.001
-    second: {fileID: 2100000, guid: 3dce833b5716271438e9fedcb71ebc50, type: 2}
+      name: Material
+    second: {fileID: 2100000, guid: a16d99ff092bec9498b771600e57a0f5, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: mini simple material secondary.001
-    second: {fileID: 2100000, guid: e47c392e137677f43aa560b5f10b5a58, type: 2}
+      name: blinn10
+    second: {fileID: 2100000, guid: ffdbc5c869fb46741b26d76e30177ea2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m_hair1
+    second: {fileID: 2100000, guid: ff6ba7ca12a67714e8e5763636b9c1bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mini simple material primary
+    second: {fileID: 2100000, guid: 440985be8a49e9049bb48866e477cbdd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mini simple material secondary
+    second: {fileID: 2100000, guid: 91c1cfafefcbd2d4caac2fae126e5380, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
