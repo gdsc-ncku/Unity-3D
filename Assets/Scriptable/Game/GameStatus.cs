@@ -49,6 +49,7 @@ public class GameStatus : ScriptableObject
         set
         {
             duration = value;
+            RemainingDuration = value;
             settingTimer.Invoke();
         }
     }

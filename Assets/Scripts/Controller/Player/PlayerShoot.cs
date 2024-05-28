@@ -153,7 +153,7 @@ public class PlayerShoot : MonoBehaviour
             }
         }
 
-        currentBullet = Instantiate(BattleInfo.nowWeaponData.ThisWeapon.bullet, BattleInfo.nowWeaponData.weaponAttackPoint.position + directionWithoutSpread.normalized * (offset + 1), Quaternion.identity);
+        currentBullet = Instantiate(BattleInfo.nowWeaponData.ThisWeapon.bullet, BattleInfo.nowWeaponData.weaponAttackPoint.position + directionWithoutSpread.normalized * (offset + 1), Quaternion.Euler(directionWithoutSpread.normalized));
         currentBullet.transform.forward = directionWithoutSpread.normalized;
         currentBullet.GetComponent<FPSCustomBullet>().AttackWeapon = BattleInfo.nowWeaponData;
 
