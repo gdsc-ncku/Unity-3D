@@ -116,6 +116,8 @@ public class GameStatus : ScriptableObject
         {
             Level = 1;
             playerBattle.MaxHealth = playerBattle.initM_Hp;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         };
         
     }
