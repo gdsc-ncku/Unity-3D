@@ -7,25 +7,10 @@ public class FPSCustomBullet : MonoBehaviour
     public WeaponsDataFetch AttackWeapon;
     public Rigidbody rb;
     public GameObject explosion;
-    public LayerMask whatIsEnemies;
     private Vector3 OriginAttackPoint;
 
-    //Stats
-    [Range(0f, 1f)]
-    public float bounciness;
-    public bool useGravity;
-
-    //Damage
-    public float explosionDamage;
-    public float explosionRange;
-    public float explosionForce;
-
     //Lifetime
-    public int maxCollisions;
     public float maxLifetime;
-    public bool explodeOnTouch = true;
-
-    PhysicMaterial physics_mat;
 
     public AudioClip explosionSound;
     private void Start()
@@ -47,13 +32,6 @@ public class FPSCustomBullet : MonoBehaviour
         GetComponent<TrailRenderer>().enabled = false;
         Ray ray = new(OriginAttackPoint, rb.velocity.normalized);
         RaycastHit[] hits = Physics.RaycastAll(ray, (collider.transform.position - OriginAttackPoint).magnitude);
-
-        EnemyAI EnemyInfo = collider.transform.root.gameObject.GetComponent<EnemyAI>();
-        Debug.Log(collider.gameObject.name);
-        if (EnemyInfo != null)
-        {
-            EnemyInfo.ReduceHealth(AttackWeapon.ThisWeapon.damage);
-        }
 
         foreach (RaycastHit hit in hits)
         {

@@ -114,8 +114,12 @@ public class GameStatus : ScriptableObject
         AsyncOperationHandle unLoad = LoadingSceneHandle;
         Addressables.UnloadSceneAsync(unLoad);
         LoadingSceneHandle = Addressables.LoadSceneAsync(adventureScene, LoadSceneMode.Additive);
-        LoadingSceneHandle.Completed += (Handle) => { Level = 1; };
-        playerBattle.MaxHealth = playerBattle.initM_Hp;
+        LoadingSceneHandle.Completed += (Handle) => 
+        {
+            Level = 1;
+            playerBattle.MaxHealth = playerBattle.initM_Hp;
+        };
+        
     }
 
     public void ExitGame()
