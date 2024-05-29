@@ -11,6 +11,11 @@ public class SensitivitySetting : MonoBehaviour
 
     private void Start()
     {
+        if (playerBasic == null)
+        {
+            Debug.Log("PlayerBasicInformationScriptable Disappear");
+            return;
+        }
         float sensitivity = playerBasic.edpi / playerBasic.MouseDPI;
         sliderText.text = sensitivity.ToString("0.0##");
         slider.value = sensitivity / maxSliderAmount;

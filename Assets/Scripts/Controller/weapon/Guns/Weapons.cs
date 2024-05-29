@@ -30,8 +30,7 @@ public class Weapons : MonoBehaviour
     {
         if (informationScriptable == null || informationScriptable.playerControl == null)
         {
-            Debug.Log("GunBasic: Setting informationScriptable and playerControl first");
-            StartCoroutine("DebugPlayerControl");
+            Debug.Log("PlayerBasicInformationScriptable Disappear");
             return;
         }
 
@@ -41,12 +40,24 @@ public class Weapons : MonoBehaviour
 
     private void OnDisable()
     {
+        if (informationScriptable == null || informationScriptable.playerControl == null)
+        {
+            Debug.Log("PlayerBasicInformationScriptable Disappear");
+            return;
+        }
+
         informationScriptable.playerControl.Player.Weapon1.performed -= changeToMainWeapon;
         informationScriptable.playerControl.Player.Weapon2.performed -= changeToSecondWeapon;
     }
 
     private void OnDestroy()
     {
+        if (informationScriptable == null || informationScriptable.playerControl == null)
+        {
+            Debug.Log("PlayerBasicInformationScriptable Disappear");
+            return;
+        }
+
         informationScriptable.playerControl.Player.Weapon1.performed -= changeToMainWeapon;
         informationScriptable.playerControl.Player.Weapon2.performed -= changeToSecondWeapon;
     }
@@ -105,12 +116,5 @@ public class Weapons : MonoBehaviour
         //UI
         BattleInfo.nowWeaponData.BulletsLeftChange.AddListener(() => PlayerUI.BulletLeftNumUpdate());
         PlayerUI.ChangeWeaponInfo();
-    }
-
-    IEnumerator DebugPlayerControl()
-    {
-        yield return new WaitForSeconds(1);
-        informationScriptable.playerControl.Player.Weapon1.performed += changeToMainWeapon;
-        informationScriptable.playerControl.Player.Weapon2.performed += changeToSecondWeapon;
     }
 }

@@ -1,8 +1,4 @@
-using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
@@ -19,12 +15,6 @@ public class PlayerUI : MonoBehaviour
         PlayerInfo.PlayerDieUI = playerDieUI;
         HealthBar.maxValue = PlayerInfo.MaxHealth;
         PlayerInfo.HealthChange.AddListener(ChangeHealthBar);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     private void ChangeHealthBar()

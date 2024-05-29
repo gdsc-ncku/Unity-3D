@@ -1,8 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.SceneManagement;
 
 enum ContentsName { TalentContent, HeroContent, SettingContent };
 public class MainSceneController : MonoBehaviour

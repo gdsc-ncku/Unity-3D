@@ -8,12 +8,25 @@ public class StudentDataManager : MonoBehaviour
 
     public void Die(GameObject playerDie, GameObject PlayerDieUI)
     {
+        if (playerDie == null || PlayerDieUI == null)
+        {
+            Debug.Log("Data disappear");
+            return;
+        }
         StartCoroutine(DieUIDisplay(playerDie, PlayerDieUI));
     }
 
     IEnumerator DieUIDisplay(GameObject playerDie, GameObject PlayerDieUI)
     {
-        yield return new WaitForSeconds(playerDie.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0).Length + 3f);
+        if (playerDie.GetComponent<Animator>())
+        {
+            yield return new WaitForSeconds(playerDie.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0).Length + 3f);
+        }
+        else
+        {
+            Debug.Log("Animator disappear");
+            yield break;
+        }
         PlayerDieUI.SetActive(true);
         GameObject originDie = PlayerDieUI.transform.GetChild(0).gameObject;
         Destroy(playerDie.transform.GetChild(0).gameObject);

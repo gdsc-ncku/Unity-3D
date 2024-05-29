@@ -13,9 +13,10 @@ public class PlayerMovement : MonoBehaviour
     PlayerControl playerControl;
     private void Awake()
     {
-        if (PlayerMove.playerControl == null)
+        if(PlayerMove == null || PlayerMove.playerControl == null)
         {
-            PlayerMove.playerControl = new();
+            Debug.Log("PlayerBasicInformationScriptable Disappear");
+            return;
         }
 
         playerControl = PlayerMove.playerControl;
@@ -25,22 +26,46 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnEnable()
     {
+        if (playerControl == null)
+        {
+            Debug.Log("PlayerBasicInformationScriptable Disappear");
+            return;
+        }
+
         playerControl.Player.Jump.performed += Jumping;
     }
 
     private void OnDisable()
     {
+        if (playerControl == null)
+        {
+            Debug.Log("PlayerBasicInformationScriptable Disappear");
+            return;
+        }
+
         playerControl.Player.Jump.performed -= Jumping;
         playerControl.Player.Disable();
     }
 
     private void OnDestroy()
     {
+        if (playerControl == null)
+        {
+            Debug.Log("PlayerBasicInformationScriptable Disappear");
+            return;
+        }
+
         playerControl.Player.Jump.performed -= Jumping;
     }
 
     void Start()
     {
+        if (MovementConst == null || MovementConst.Role == null)
+        {
+            Debug.Log("PlayerBasicInformationScriptable Disappear");
+            return;
+        }
+
         Speed = MovementConst.Role.GetComponent<StudentDataManager>().studentData.WalkSpeed;
         // Initialize Rigidbody and freeze rotation
         rb = GetComponent<Rigidbody>();

@@ -31,4 +31,4 @@ MonoBehaviour:
   recoilX: -0.6
   recoilY: 0
   recoilZ: 0
-  Icon: {fileID: 0}
+  Icon: {fileID: -1709523185, guid: 687c0ebfb2bd3a94cb7cde203d97701e, type: 3}

@@ -1,14 +1,14 @@
 using System.Collections;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public class InitializationLoader : MonoBehaviour
 {
-    [SerializeField] AssetReferenceT<SceneAsset> PersistenceScene, LoadingScene;
+    [SerializeField] AssetReference PersistenceScene, LoadingScene;
     [SerializeField] GameStatus gameStatus;
 
     // Start is called before the first frame update

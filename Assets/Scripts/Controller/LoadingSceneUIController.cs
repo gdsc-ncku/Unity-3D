@@ -14,25 +14,37 @@ public class LoadingSceneUIController : MonoBehaviour
         uiManager.loadingUI.enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     //Add listener event in OnEnable and remove in OnDisable and OnDestroy to avoid memory leak
     private void OnEnable()
     {
+        if(gameStatus == null)
+        {
+            Debug.Log("gameStatus disappear");
+            return;
+        }
+
         gameStatus.loadingSceneHandleChange.AddListener(HandleLoadingEvent);
     }
 
     private void OnDisable()
     {
+        if (gameStatus == null)
+        {
+            Debug.Log("gameStatus disappear");
+            return;
+        }
+
         gameStatus.loadingSceneHandleChange.RemoveListener(HandleLoadingEvent);
     }
 
     private void OnDestroy()
     {
+        if (gameStatus == null)
+        {
+            Debug.Log("gameStatus disappear");
+            return;
+        }
+
         gameStatus.loadingSceneHandleChange.RemoveListener(HandleLoadingEvent);
     }
 

@@ -4,17 +4,6 @@ public class PlayerCam : MonoBehaviour
 {
     [SerializeField] private float senX;
     [SerializeField] private float senY;
-
-/* 取消合併專案 'Assembly-CSharp.Player' 的變更
-之前:
-    public Transform orientation;
-    
-    float xRotation;
-之後:
-    public Transform orientation;
-
-    float xRotation;
-*/
     public Transform orientation;
 
     float xRotation;

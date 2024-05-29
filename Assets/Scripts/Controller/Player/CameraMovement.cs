@@ -5,19 +5,17 @@ public class CameraMovement : MonoBehaviour
     public bool _lock;
     [SerializeField] GameObject _cameraRoot;
     [SerializeField] float _cameraMovingThreshold, _topClamp, _bottomClamp;
-    float _mouseSensitivity;
     [SerializeField] PlayerBasicInformationScriptable _playerInformation;
     float _mouseXInput, _mouseYInput;
 
     private void Start()
     {
-        _mouseSensitivity = _playerInformation.edpi;
         _lock = false;
     }
 
     void Update()
     {
-        //Click right mouse to hide cursor or press ESC to display cursor
+        /*//Click right mouse to hide cursor or press ESC to display cursor
         if (Input.GetMouseButtonDown(0))
         {
             Cursor.visible = false;
@@ -27,7 +25,7 @@ public class CameraMovement : MonoBehaviour
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-        }
+        }*/
     }
 
     // Update is called once per frame
@@ -48,8 +46,8 @@ public class CameraMovement : MonoBehaviour
         //Detect whether camera open and input >= threshold
         if (!_lock && (Mathf.Abs(_mouseXInput) >= _cameraMovingThreshold || Mathf.Abs(_mouseYInput) >= _cameraMovingThreshold))
         {
-            _rotateX -= _mouseYInput * _mouseSensitivity * Time.deltaTime;
-            _rotateY += _mouseXInput * _mouseSensitivity * Time.deltaTime;
+            _rotateX -= _mouseYInput * _playerInformation.edpi * Time.deltaTime;
+            _rotateY += _mouseXInput * _playerInformation.edpi * Time.deltaTime;
         }
 
         //Limit camera rotation
