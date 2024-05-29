@@ -16,7 +16,7 @@ MonoBehaviour:
   damage: 5
   shootForce: 40
   upwardForce: 1
-  timeBetweenShooting: 0.01
+  timeBetweenShooting: 0.03
   spread: 1
   reloadTime: 3
   timeBetweenShots: 0
