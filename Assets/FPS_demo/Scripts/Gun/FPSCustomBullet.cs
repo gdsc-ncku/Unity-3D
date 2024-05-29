@@ -6,7 +6,7 @@ public class FPSCustomBullet : MonoBehaviour
     //Assignables
     public WeaponsDataFetch AttackWeapon;
     public Rigidbody rb;
-    public GameObject explosion;
+    public GameObject explosion, target;
     private Vector3 OriginAttackPoint;
 
     //Lifetime
@@ -26,12 +26,12 @@ public class FPSCustomBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.transform.root.gameObject.CompareTag("bullet") || collider.transform.root.gameObject.CompareTag("Weapon") || collider.transform.root.gameObject == AttackWeapon.transform.root.gameObject) return;
+        if (collider.transform.root.gameObject != target || target == null) return;
 
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<TrailRenderer>().enabled = false;
         Ray ray = new(OriginAttackPoint, rb.velocity.normalized);
-        RaycastHit[] hits = Physics.RaycastAll(ray, (collider.transform.position - OriginAttackPoint).magnitude);
+        RaycastHit[] hits = Physics.RaycastAll(ray, (collider.transform.position - OriginAttackPoint).magnitude * 2);
 
         foreach (RaycastHit hit in hits)
         {
