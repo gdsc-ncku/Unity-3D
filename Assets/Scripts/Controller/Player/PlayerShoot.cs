@@ -143,18 +143,16 @@ public class PlayerShoot : MonoBehaviour
 
         //Instantiate bullet/projectile
         GameObject currentBullet;
-        RaycastHit attackPointHit;
-        float offset = 0f;
+        currentBullet = Instantiate(BattleInfo.nowWeaponData.ThisWeapon.bullet, BattleInfo.nowWeaponData.weaponAttackPoint.position + directionWithoutSpread.normalized, Quaternion.identity);
+        currentBullet.transform.forward = (targetPoint - currentBullet.transform.position).normalized;
         if (isHit)
         {
-            while (Physics.Raycast(new Ray(BattleInfo.nowWeaponData.weaponAttackPoint.position + directionWithoutSpread.normalized * offset, directionWithoutSpread), out attackPointHit) && attackPointHit.collider.gameObject != hit.collider.gameObject)
-            {
-                offset += 0.1f;
-            }
+            currentBullet.GetComponent<FPSCustomBullet>().target = hit.collider.transform.root.gameObject;
         }
-
-        currentBullet = Instantiate(BattleInfo.nowWeaponData.ThisWeapon.bullet, BattleInfo.nowWeaponData.weaponAttackPoint.position + directionWithoutSpread.normalized * (offset + 1), Quaternion.Euler(directionWithoutSpread.normalized));
-        currentBullet.transform.forward = directionWithoutSpread.normalized;
+        else
+        {
+            currentBullet.GetComponent<FPSCustomBullet>().target = null;
+        }
         currentBullet.GetComponent<FPSCustomBullet>().AttackWeapon = BattleInfo.nowWeaponData;
 
         //Add forces to bullet

@@ -269,4 +269,12 @@ public class EnemyAI : MonoBehaviour
 
         return hitColliders.Length > 0;
     }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.transform.root.gameObject.CompareTag("bullet"))
+        {
+            ReduceHealth(collider.GetComponent<FPSCustomBullet>().AttackWeapon.ThisWeapon.damage);
+        }
+    }
 }

@@ -17,6 +17,7 @@ public class EyeEnemyBullet : MonoBehaviour
     {
         offset = transform.position - Spawner.transform.position;
         rb = GetComponent<Rigidbody>();
+        rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
         rb.velocity = Vector3.zero; // 清除初始速度
         rb.angularVelocity = Vector3.zero; // 清除初始角速度
         rotateSpeed = Random.Range(1f, 5f);

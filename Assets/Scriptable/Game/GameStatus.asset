@@ -31,6 +31,7 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  playerBattle: {fileID: 11400000, guid: e7c568f5ad6fe6e4d80ab0c9089eb3a4, type: 2}
   _catach: 1
   catachDataSuccess:
     m_PersistentCalls:

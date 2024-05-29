@@ -11,6 +11,7 @@ public class ChestEnemyBullets : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
         float randomX = Random.Range(0f, 360f);
         float randomY = Random.Range(0f, 360f);
         float randomZ = Random.Range(0f, 360f);
