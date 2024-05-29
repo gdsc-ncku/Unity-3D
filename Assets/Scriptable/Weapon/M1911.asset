@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 6231888369005412580, guid: 1dd4c55a5522bf44495b87168b3e39f4, type: 3}
   damage: 2
-  shootForce: 50
+  shootForce: 40
   upwardForce: 0.7
   timeBetweenShooting: 0.1
   spread: 0
@@ -31,3 +31,4 @@ MonoBehaviour:
   recoilX: -0.3
   recoilY: 0
   recoilZ: 0
+  Icon: {fileID: 0}
