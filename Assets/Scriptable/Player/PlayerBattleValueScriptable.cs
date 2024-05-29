@@ -14,7 +14,7 @@ public class PlayerBattleValueScriptable : ScriptableObject
     }
     #region BasicBattleValue
     [Header("BasicBattleValue")]
-    public GameObject Player, PlayerDieUI;
+    public GameObject Player, PlayerDieUI, PlayerDie;
     public float initM_Hp;
     private float m_Health;
     public float MaxHealth
@@ -40,9 +40,11 @@ public class PlayerBattleValueScriptable : ScriptableObject
     {
         //Debug.Log("Player be attacked");
         CurrentHealth -= Damage;
-        if (CurrentHealth < 0)
+        if (CurrentHealth <= 0)
         {
             CurrentHealth = 0;
+            GameObject playerDie = Instantiate(PlayerDie, Player.transform.position, Quaternion.identity);
+            Destroy(playerDie, playerDie.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0).Length + 3f);
             PlayerDieUI.SetActive(true);
             Player.SetActive(false);
             Light directionalLight = GameObject.FindGameObjectWithTag("MainLight").GetComponent<Light>();
