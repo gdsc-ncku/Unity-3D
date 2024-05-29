@@ -19,6 +19,7 @@ public class GameStatus : ScriptableObject
     public TMP_FontAsset commonFont;
     public UnityEvent settingTimer, settingLevel;
     public AssetReference mainScene, adventureScene;
+    public PlayerBattleValueScriptable playerBattle;
     private int level = 0, duration = 0, remainingDuration = 0;
     public int Level
     {
@@ -114,6 +115,7 @@ public class GameStatus : ScriptableObject
         Addressables.UnloadSceneAsync(unLoad);
         LoadingSceneHandle = Addressables.LoadSceneAsync(adventureScene, LoadSceneMode.Additive);
         LoadingSceneHandle.Completed += (Handle) => { Level = 1; };
+        playerBattle.MaxHealth = playerBattle.initM_Hp;
     }
 
     public void ExitGame()
