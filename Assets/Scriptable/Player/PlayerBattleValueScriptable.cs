@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Experimental.GlobalIllumination;
 
 //Storage battle information
 [CreateAssetMenu(fileName = "PlayerBattleInformation", menuName = "PlayerInformation/Player/PlayerBattleInformation", order = 2)]
@@ -14,7 +13,7 @@ public class PlayerBattleValueScriptable : ScriptableObject
     }
     #region BasicBattleValue
     [Header("BasicBattleValue")]
-    public GameObject Player, PlayerDieUI, PlayerDie;
+    public GameObject Player, PlayerDieUI, Role;
     public float initM_Hp;
     private float m_Health;
     public float MaxHealth
@@ -43,9 +42,8 @@ public class PlayerBattleValueScriptable : ScriptableObject
         if (CurrentHealth <= 0)
         {
             CurrentHealth = 0;
-            GameObject playerDie = Instantiate(PlayerDie, Player.transform.position, Quaternion.identity);
-            Destroy(playerDie, playerDie.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0).Length + 3f);
-            PlayerDieUI.SetActive(true);
+            GameObject playerDie = Instantiate(Role, Player.transform.position, Quaternion.identity);
+            playerDie.GetComponent<StudentDataManager>().Die(playerDie, PlayerDieUI);
             Player.SetActive(false);
             Light directionalLight = GameObject.FindGameObjectWithTag("MainLight").GetComponent<Light>();
             if(directionalLight != null)
@@ -63,7 +61,6 @@ public class PlayerBattleValueScriptable : ScriptableObject
         HealthChange.Invoke();
     }
 
-    public CharacterBaseData Role;
     private GameObject Weapon;
     public WeaponsDataFetch nowWeaponData;
     public GameObject nowWeapon

@@ -31,14 +31,12 @@ public class ChangeKey : MonoBehaviour
 
     public void changeSpaceKey()
     {
-        Debug.Log("Start");
         settingController.ChangeKey(settingController.settingManager.playerBasicInformationScriptable.playerControl.Player, settingController.settingManager.playerBasicInformationScriptable.playerControl.Player.Jump, bindingIndex, text);
         PlayerPrefs.SetString(KeyIndex.Jump.ToString(), text.text);
     }
 
     public void changeFireKey()
     {
-        Debug.Log("Start");
         settingController.ChangeKey(settingController.settingManager.playerBasicInformationScriptable.playerControl.Player, settingController.settingManager.playerBasicInformationScriptable.playerControl.Player.Fire, bindingIndex, text);
         PlayerPrefs.SetString(KeyIndex.Fire.ToString(), text.text);
     }

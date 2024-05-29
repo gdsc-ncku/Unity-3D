@@ -14,12 +14,6 @@ public class ShotGunBullet : MonoBehaviour
         StartCoroutine(Calculateforce());
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-
-    }
-
     IEnumerator Calculateforce()
     {
         yield return new WaitForSeconds(0.01f);

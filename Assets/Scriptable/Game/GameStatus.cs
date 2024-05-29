@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -15,7 +14,6 @@ public enum Character
 [CreateAssetMenu(fileName = "GameStatus", menuName = "PlayerInformation/Game/GameStatus", order = 1)]
 public class GameStatus : ScriptableObject
 {
-    public CharacterBaseData []Roles = {};
     public TMP_FontAsset commonFont;
     public UnityEvent settingTimer, settingLevel;
     public AssetReference mainScene, adventureScene;
@@ -118,6 +116,8 @@ public class GameStatus : ScriptableObject
         {
             Level = 1;
             playerBattle.MaxHealth = playerBattle.initM_Hp;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         };
         
     }

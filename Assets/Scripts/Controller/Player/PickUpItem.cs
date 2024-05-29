@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
 
-
 public class PickUpItem : MonoBehaviour
 {
     [SerializeField] private PlayerBasicInformationScriptable PlayerMove;
@@ -13,17 +12,18 @@ public class PickUpItem : MonoBehaviour
     {
         if (PlayerMove == null || PlayerMove.playerControl == null)
         {
-            Debug.Log("GunBasic: Setting informationScriptable and playerControl first");
-            StartCoroutine("DebugPlayerControl");
+            Debug.Log("PlayerBasicInformationScriptable disapear");
             return;
         }
+
+        PlayerMove.playerControl.Player.PickUp.started += pickUp;
     }
 
     private void OnDisable()
     {
-        if (PlayerMove == null)
+        if (PlayerMove == null || PlayerMove.playerControl == null)
         {
-            Debug.Log("GunBasic: Setting informationScriptable first");
+            Debug.Log("PlayerBasicInformationScriptable disapear");
             return;
         }
 
@@ -32,24 +32,13 @@ public class PickUpItem : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (PlayerMove == null)
+        if (PlayerMove == null || PlayerMove.playerControl == null)
         {
-            Debug.Log("GunBasic: Setting informationScriptable first");
+            Debug.Log("PlayerBasicInformationScriptable disapear");
             return;
         }
 
         PlayerMove.playerControl.Player.PickUp.started -= pickUp;
-    }
-
-    IEnumerator DebugPlayerControl()
-    {
-        yield return new WaitForSeconds(1);
-        PlayerMove.playerControl.Player.PickUp.started += pickUp;
-    }
-
-    void Update()
-    {
-
     }
 
     public void pickUp(InputAction.CallbackContext context)
@@ -77,25 +66,21 @@ public class PickUpItem : MonoBehaviour
 
     private void changeItems(GameObject ItemA, GameObject ItemB)
     {
-        // �O�s����A����m�B����M�Y��
         Vector3 positionA = ItemA.transform.position;
         Quaternion rotationA = ItemA.transform.rotation;
         Vector3 scaleA = ItemA.transform.localScale;
         Transform parentA = ItemA.transform.parent;
 
-        // �O�s����B����m�B����M�Y��
         Vector3 positionB = ItemB.transform.position;
         Quaternion rotationB = ItemB.transform.rotation;
         Vector3 scaleB = ItemB.transform.localScale;
         Transform parentB = ItemB.transform.parent;
 
-        // �N����A����m�B����M�Y��]�m������B����m�B����M�Y��
         ItemA.transform.position = positionB;
         ItemA.transform.rotation = rotationB;
         ItemA.transform.localScale = scaleB;
         ItemA.transform.parent = parentB;
 
-        // �N����B����m�B����M�Y��]�m������A����m�B����M�Y��
         ItemB.transform.position = positionA;
         ItemB.transform.rotation = rotationA;
         ItemB.transform.localScale = scaleA;

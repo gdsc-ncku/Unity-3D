@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerShoot : MonoBehaviour
@@ -25,9 +23,6 @@ public class PlayerShoot : MonoBehaviour
 
     //recoil
     [SerializeField] GameObject cameraRoot;
-    [SerializeField] private float snappiness;
-    [SerializeField] private float returnSpeed;
-    [SerializeField] private float returnRate;
 
     public void Awake()
     {
@@ -42,10 +37,9 @@ public class PlayerShoot : MonoBehaviour
 
     public void OnEnable()
     {
-        if (informationScriptable == null || informationScriptable.playerControl == null)
+        if(informationScriptable == null || informationScriptable.playerControl == null)
         {
-            Debug.Log("GunBasic: Setting informationScriptable and playerControl first");
-            StartCoroutine("DebugPlayerControl");
+            Debug.Log("Mistake");
             return;
         }
 
@@ -56,9 +50,9 @@ public class PlayerShoot : MonoBehaviour
 
     public void OnDisable()
     {
-        if (informationScriptable == null)
+        if (informationScriptable.playerControl == null)
         {
-            Debug.Log("GunBasic: Setting informationScriptable first");
+            Debug.Log("informationScriptable disappear");
             return;
         }
 
@@ -69,6 +63,12 @@ public class PlayerShoot : MonoBehaviour
 
     public void OnDestroy()
     {
+        if (informationScriptable.playerControl == null)
+        {
+            Debug.Log("informationScriptable disappear");
+            return;
+        }
+
         informationScriptable.playerControl.Player.Fire.started -= startShoot;
         informationScriptable.playerControl.Player.Fire.canceled -= FinishShoot;
         informationScriptable.playerControl.Player.Reload.started -= Reload;
@@ -205,14 +205,6 @@ public class PlayerShoot : MonoBehaviour
     {
         //Debug.Log("cancel");
         CancelInvoke("Shoot");
-    }
-
-    IEnumerator DebugPlayerControl()
-    {
-        yield return new WaitForSeconds(1);
-        informationScriptable.playerControl.Player.Fire.started += startShoot;
-        informationScriptable.playerControl.Player.Fire.canceled += FinishShoot;
-        informationScriptable.playerControl.Player.Reload.started += Reload;
     }
 
     private void Reload(InputAction.CallbackContext context)

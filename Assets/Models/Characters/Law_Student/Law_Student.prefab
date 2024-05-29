@@ -74,6 +74,7 @@ GameObject:
   m_Component:
   - component: {fileID: 200590147134007386}
   - component: {fileID: 1359840080629485257}
+  - component: {fileID: 8973500216501105470}
   m_Layer: 0
   m_Name: Law_Student
   m_TagString: Untagged
@@ -94,6 +95,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8591695023025311969}
   - {fileID: 7853395079659512423}
   - {fileID: 6246450119852491748}
   - {fileID: 233567510038500190}
@@ -108,7 +110,6 @@ Transform:
   - {fileID: 1471504692926308453}
   - {fileID: 1218542606621377100}
   - {fileID: 8219284332348140466}
-  - {fileID: 8591695023025311969}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1359840080629485257
@@ -132,6 +133,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8973500216501105470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946270617512685866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d350abd4ba9d55448077ca5dbde3d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  studentData: {fileID: 11400000, guid: d2600dd773fa00b45a09a3270bb931fe, type: 2}
 --- !u!1 &993358851867265407
 GameObject:
   m_ObjectHideFlags: 0

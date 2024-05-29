@@ -31,9 +31,4 @@ public class WeaponsDataFetch : MonoBehaviour
         bulletsLeft = ThisWeapon.maxBullets;
         bulletsMax = ThisWeapon.maxBullets;
     }
-
-    private void Start()
-    {
-
-    }
 }
