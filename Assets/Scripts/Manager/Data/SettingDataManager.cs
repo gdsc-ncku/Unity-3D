@@ -16,7 +16,14 @@ public class SettingDataManager : BasicDataManager
         playerBasicInformation.Height = PlayerPrefs.GetInt("Height");
 
         playerBasicInformation.playerControl = new PlayerControl();
-        Debug.Log("playerControl Setting Complete");
+        if (playerBasicInformation.playerControl != null)
+        {
+            Debug.Log("playerControl Setting Complete");
+        }
+        else
+        {
+            Debug.Log("playerControl Setting miss");
+        }
         playerBasicInformation.playerControl.LoadBindingOverridesFromJson(PlayerPrefs.GetString("Rebinds"));
 
         playerBasicInformation.edpi = PlayerPrefs.GetFloat("MouseSensitivity");

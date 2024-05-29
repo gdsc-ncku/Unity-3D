@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [Serializable]
 public class keyboard
@@ -31,7 +32,7 @@ public class PlayerBasicInformationScriptable : ScriptableObject
 
     #region ButtonSetting
     //Input System
-    public PlayerControl playerControl = null;
+    public PlayerControl playerControl;
     #endregion
 
     #region MouseSensitivity
@@ -60,4 +61,13 @@ public class PlayerBasicInformationScriptable : ScriptableObject
     public float Q_SkillDamageRate = 1;
     public float E_SkillDamageRate = 1;
     #endregion
+
+    private void OnEnable()
+    {
+        if(playerControl == null)
+        {
+            playerControl = new PlayerControl();
+            playerControl.LoadBindingOverridesFromJson(PlayerPrefs.GetString("Rebinds"));
+        }
+    }
 }

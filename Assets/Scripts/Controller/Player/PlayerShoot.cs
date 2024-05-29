@@ -23,9 +23,6 @@ public class PlayerShoot : MonoBehaviour
 
     //recoil
     [SerializeField] GameObject cameraRoot;
-    [SerializeField] private float snappiness;
-    [SerializeField] private float returnSpeed;
-    [SerializeField] private float returnRate;
 
     public void Awake()
     {
