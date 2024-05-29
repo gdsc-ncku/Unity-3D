@@ -9,10 +9,12 @@ public class PlayerBattleValueScriptable : ScriptableObject
     private void OnEnable()
     {
         MaxHealth = initM_Hp;
+        HealthDecrease.AddListener(ChangeHealth);
+        HealthIncrease.AddListener(ChangeHealth);
     }
     #region BasicBattleValue
     [Header("BasicBattleValue")]
-    public GameObject Player, PlayerDieUI;
+    public GameObject Player, PlayerDieUI, PlayerDie;
     public float initM_Hp;
     private float m_Health;
     public float MaxHealth
@@ -28,7 +30,7 @@ public class PlayerBattleValueScriptable : ScriptableObject
         }
     }
     private float CurrentHealth;
-    public UnityEvent HealthChange;
+    public UnityEvent HealthDecrease, HealthIncrease, HealthChange;
     public float GetHealth()
     {
         return CurrentHealth;
@@ -36,11 +38,13 @@ public class PlayerBattleValueScriptable : ScriptableObject
 
     public void ReduceHealth(float Damage)
     {
-        Debug.Log("Player be attacked");
+        //Debug.Log("Player be attacked");
         CurrentHealth -= Damage;
-        if (CurrentHealth < 0)
+        if (CurrentHealth <= 0)
         {
             CurrentHealth = 0;
+            GameObject playerDie = Instantiate(PlayerDie, Player.transform.position, Quaternion.identity);
+            Destroy(playerDie, playerDie.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0).Length + 3f);
             PlayerDieUI.SetActive(true);
             Player.SetActive(false);
             Light directionalLight = GameObject.FindGameObjectWithTag("MainLight").GetComponent<Light>();
@@ -51,6 +55,11 @@ public class PlayerBattleValueScriptable : ScriptableObject
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
+        HealthDecrease.Invoke();
+    }
+
+    public void ChangeHealth()
+    {
         HealthChange.Invoke();
     }
 

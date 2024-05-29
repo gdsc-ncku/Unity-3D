@@ -17,8 +17,9 @@ MonoBehaviour:
   AttackRange: 30
   AttackSpeed: 1
   AttackTime: 5
-  AttackDamage: 50
-  MoveSpeed: 16
+  AttackDamage: 30
+  MoveSpeed: 4
+  RunSpeed: 8
   Health: 10
   Bullets:
   - {fileID: 1801169046827820, guid: b05e9710e1b257f44a80ac8365c46467, type: 3}

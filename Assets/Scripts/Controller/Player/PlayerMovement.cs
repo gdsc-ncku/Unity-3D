@@ -23,9 +23,20 @@ public class PlayerMovement : MonoBehaviour
         playerControl.Player.Jump.performed += Jumping;
     }
 
+    private void OnEnable()
+    {
+        playerControl.Player.Jump.performed += Jumping;
+    }
+
     private void OnDisable()
     {
+        playerControl.Player.Jump.performed -= Jumping;
         playerControl.Player.Disable();
+    }
+
+    private void OnDestroy()
+    {
+        playerControl.Player.Jump.performed -= Jumping;
     }
 
     void Start()

@@ -18,6 +18,7 @@ public class CactusEnemyBullets : MonoBehaviour
     {
         parts = 1f / 60f;
         rb = GetComponent<Rigidbody>();
+        rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
         float randomX = Random.Range(0f, 360f);
         float randomY = Random.Range(0f, 360f);
         float randomZ = Random.Range(0f, 360f);
@@ -26,6 +27,7 @@ public class CactusEnemyBullets : MonoBehaviour
         transform.GetChild(0).transform.rotation = Quaternion.Euler(Vector3.zero);
         transform.GetChild(0).transform.position = Enemy + new Vector3(0, cactusEnemy.BulletZoomInEverySecond - 2f, 0);
         zoom = cactusEnemy.BulletFinalSize * parts / cactusEnemy.BulletChargingTime;
+        Destroy(gameObject, cactusEnemy.BulletChargingTime + 10f);
         StartCoroutine(attack());
     }
 
@@ -96,13 +98,12 @@ public class CactusEnemyBullets : MonoBehaviour
         {
             PlayerInfo.ReduceHealth(cactusEnemy.AttackDamage / cactusEnemy.BulletFinalSize * gameObject.transform.localScale.x);
             other.gameObject.transform.root.gameObject.GetComponent<Rigidbody>().AddForce(rb.velocity.normalized * volumeA, ForceMode.Impulse);
+            Destroy(gameObject);
         }
-        else if(percentage < 75f)
+        else if(percentage >= 75f)
         {
-            return;
+            Destroy(gameObject);
         }
-
-        Destroy(gameObject);
     }
 
     private Vector3 GetObjectSize(GameObject obj)

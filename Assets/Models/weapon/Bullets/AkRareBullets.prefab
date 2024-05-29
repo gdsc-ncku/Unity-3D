@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 6231888369005412580}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.95, y: 10.99, z: 4.5405846}
+  m_LocalPosition: {x: 21.95, y: 10.99, z: 6.62}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -129,17 +129,7 @@ MonoBehaviour:
   AttackWeapon: {fileID: 0}
   rb: {fileID: 1165490155807771508}
   explosion: {fileID: 1263282939118438294, guid: c150d7df7f6325646bea7fda20458269, type: 3}
-  whatIsEnemies:
-    serializedVersion: 2
-    m_Bits: 128
-  bounciness: 1
-  useGravity: 1
-  explosionDamage: 10
-  explosionRange: 2.18
-  explosionForce: 0
-  maxCollisions: 1
   maxLifetime: 5
-  explodeOnTouch: 1
   explosionSound: {fileID: 0}
 --- !u!96 &3435128838079751265
 TrailRenderer:

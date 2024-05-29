@@ -1,16 +1,11 @@
+using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Events;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
-
-public enum gameStatus
-{
-    Active,
-    Paused,
-    Ended
-}
 
 public enum Character
 {
@@ -22,8 +17,9 @@ public class GameStatus : ScriptableObject
 {
     public CharacterBaseData []Roles = {};
     public TMP_FontAsset commonFont;
-    public gameStatus nowStatus = gameStatus.Active;
     public UnityEvent settingTimer, settingLevel;
+    public AssetReference mainScene, adventureScene;
+    public PlayerBattleValueScriptable playerBattle;
     private int level = 0, duration = 0, remainingDuration = 0;
     public int Level
     {
@@ -92,11 +88,39 @@ public class GameStatus : ScriptableObject
             loadingSceneHandleChange.Invoke(_loadingSceneHandle);
             LoadingSceneHandle.Completed += (Handle) =>
             {
-                SceneManager.SetActiveScene(LoadingSceneHandle.Result.Scene);
+                SceneManager.SetActiveScene(_loadingSceneHandle.Result.Scene);
             };
         }
     }
     #endregion
+
+    public void LoadOtherScene(bool doUnload, AssetReference scene)
+    {
+        if (doUnload)
+        {
+            AsyncOperationHandle unLoad = LoadingSceneHandle;
+            Addressables.UnloadSceneAsync(unLoad);
+        }
+        LoadingSceneHandle = Addressables.LoadSceneAsync(scene, LoadSceneMode.Additive);
+    }
+
+    public void StartGame()
+    {
+        ResetGame();
+    }
+
+    public void ResetGame()
+    {
+        AsyncOperationHandle unLoad = LoadingSceneHandle;
+        Addressables.UnloadSceneAsync(unLoad);
+        LoadingSceneHandle = Addressables.LoadSceneAsync(adventureScene, LoadSceneMode.Additive);
+        LoadingSceneHandle.Completed += (Handle) => 
+        {
+            Level = 1;
+            playerBattle.MaxHealth = playerBattle.initM_Hp;
+        };
+        
+    }
 
     public void ExitGame()
     {

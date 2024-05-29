@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8bd9eb57f7e83a6459ed0b877e468968
+guid: d3c6a3de133c08945949da9114de65cb
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,13 +7,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: mini simple material primary.001
-    second: {fileID: 2100000, guid: 3dce833b5716271438e9fedcb71ebc50, type: 2}
+      name: M_Science
+    second: {fileID: 2100000, guid: 9ff9b603614d757419a60263d11520b8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: mini simple material secondary.001
-    second: {fileID: 2100000, guid: e47c392e137677f43aa560b5f10b5a58, type: 2}
+      name: Transparent
+    second: {fileID: 2100000, guid: 6ca03cd67f44c9d4b96069b49dbc68f3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mini simple material primary.005
+    second: {fileID: 2100000, guid: 1ffbc703a745b03459a5908c6918c90c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mini simple material secondary.005
+    second: {fileID: 2100000, guid: e7853ec90d1db9342b8aa59fb3216708, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -60,7 +60,7 @@ public class SettingController : MonoBehaviour
         }
         foreach (var key in Enum.GetValues(typeof(KeyIndex)))
         {
-            Debug.Log(PlayerPrefs.GetString(key.ToString()));
+            //Debug.Log(PlayerPrefs.GetString(key.ToString()));
             SettingKeyText[(int)key].text = PlayerPrefs.GetString(key.ToString());
         }
     }
@@ -71,6 +71,7 @@ public class SettingController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             NowContent.SetActive(false);
+            PlayerPrefs.Save();
         }
     }
 
@@ -121,7 +122,7 @@ public class SettingController : MonoBehaviour
                 callback.Dispose();
                 mp.Enable();
 
-                Debug.Log("Finish");
+                //Debug.Log("Finish");
             })
             .Start();
     }

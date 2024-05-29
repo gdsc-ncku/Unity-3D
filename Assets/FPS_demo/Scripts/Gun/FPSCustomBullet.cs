@@ -6,26 +6,11 @@ public class FPSCustomBullet : MonoBehaviour
     //Assignables
     public WeaponsDataFetch AttackWeapon;
     public Rigidbody rb;
-    public GameObject explosion;
-    public LayerMask whatIsEnemies;
+    public GameObject explosion, target;
     private Vector3 OriginAttackPoint;
 
-    //Stats
-    [Range(0f, 1f)]
-    public float bounciness;
-    public bool useGravity;
-
-    //Damage
-    public float explosionDamage;
-    public float explosionRange;
-    public float explosionForce;
-
     //Lifetime
-    public int maxCollisions;
     public float maxLifetime;
-    public bool explodeOnTouch = true;
-
-    PhysicMaterial physics_mat;
 
     public AudioClip explosionSound;
     private void Start()
@@ -39,29 +24,18 @@ public class FPSCustomBullet : MonoBehaviour
         Destroy(gameObject, maxLifetime);
     }
 
-    private void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider collider)
     {
+        if (collider.transform.root.gameObject != target || target == null) return;
+
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<TrailRenderer>().enabled = false;
         Ray ray = new(OriginAttackPoint, rb.velocity.normalized);
-        RaycastHit[] hits = Physics.RaycastAll(ray, (collider.transform.position - OriginAttackPoint).magnitude);
-
-        if (collider.CompareTag("bullet") || collider.gameObject == AttackWeapon.gameObject) return;
-        
-        EnemyAI EnemyInfo = collider.gameObject.GetComponent<EnemyAI>();
-        if (EnemyInfo != null)
-        {
-            EnemyInfo.ReduceHealth(AttackWeapon.ThisWeapon.damage);
-        }
+        RaycastHit[] hits = Physics.RaycastAll(ray, (collider.transform.position - OriginAttackPoint).magnitude * 2);
 
         foreach (RaycastHit hit in hits)
         {
-            if (!hit.collider.gameObject.CompareTag("bullet") && AttackWeapon.gameObject != hit.collider.gameObject && hit.collider.gameObject == collider.gameObject)
+            if (hit.collider.transform.root.gameObject == collider.transform.root.gameObject)
             {
                 if (explosion != null)
                 {

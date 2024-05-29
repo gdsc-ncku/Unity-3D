@@ -152,18 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0547bd95b1195d46ba2b03cda955a3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level1EnemyNum: 50
+  level1EnemyNum: 20
   gameStatus: {fileID: 11400000, guid: 45b26f6374270b54899136a3a711ada1, type: 2}
-  mainScene:
-    m_AssetGUID: 534455f7538c3bb4da64f2735d4b3db2
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  advenatureScene:
-    m_AssetGUID: 947adea53dee95443bdd5e791c52fba1
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
   Enemys:
   - {fileID: 7225062596225999594, guid: 3fd681123c384cc4cbe4a1190a79f347, type: 3}
   - {fileID: 5931577888601064834, guid: f5a420a40ced07444a4ec701d4616c5c, type: 3}
