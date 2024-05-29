@@ -15,7 +15,6 @@ public enum Character
 [CreateAssetMenu(fileName = "GameStatus", menuName = "PlayerInformation/Game/GameStatus", order = 1)]
 public class GameStatus : ScriptableObject
 {
-    public CharacterBaseData []Roles = {};
     public TMP_FontAsset commonFont;
     public UnityEvent settingTimer, settingLevel;
     public AssetReference mainScene, adventureScene;

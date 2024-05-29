@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   PlayerDieUI: {fileID: 0}
-  PlayerDie: {fileID: 946270617512685866, guid: 5d1786efca1691e42ad3f71b5d73e7e8, type: 3}
+  Role: {fileID: 946270617512685866, guid: 5d1786efca1691e42ad3f71b5d73e7e8, type: 3}
   initM_Hp: 100
   HealthDecrease:
     m_PersistentCalls:
@@ -25,5 +25,4 @@ MonoBehaviour:
   HealthChange:
     m_PersistentCalls:
       m_Calls: []
-  Role: {fileID: 11400000, guid: d2600dd773fa00b45a09a3270bb931fe, type: 2}
   nowWeaponData: {fileID: 0}

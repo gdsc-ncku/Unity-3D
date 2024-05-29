@@ -6,24 +6,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-enum ContentsName { TalentContent, HeroContent, SettingContent };
 public class SettingController : MonoBehaviour
 {
-    ContentsName contentsName;
     public SettingManager settingManager;
-    private GameObject NowContent;
-    public List<GameObject> Contents;
-
-/* 取消合併專案 'Assembly-CSharp.Player' 的變更
-之前:
-    public List<TextMeshProUGUI> SettingKeyText;
-    
-    // Start is called before the first frame update
-之後:
-    public List<TextMeshProUGUI> SettingKeyText;
-
-    // Start is called before the first frame update
-*/
     public List<TextMeshProUGUI> SettingKeyText;
 
     // Start is called before the first frame update
@@ -62,16 +47,6 @@ public class SettingController : MonoBehaviour
         {
             //Debug.Log(PlayerPrefs.GetString(key.ToString()));
             SettingKeyText[(int)key].text = PlayerPrefs.GetString(key.ToString());
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            NowContent.SetActive(false);
-            PlayerPrefs.Save();
         }
     }
 
@@ -127,9 +102,4 @@ public class SettingController : MonoBehaviour
             .Start();
     }
 
-    public void OpenSetting()
-    {
-        NowContent = Contents[(int)ContentsName.SettingContent];
-        NowContent.SetActive(true);
-    }
 }

@@ -50,6 +50,7 @@ public class PlayerBasicInformationScriptable : ScriptableObject
     public float BackgroundMusic = 100;
     #endregion
 
+    //Just record what character we have
     #region Character
     public LawStudent Law;
     #endregion

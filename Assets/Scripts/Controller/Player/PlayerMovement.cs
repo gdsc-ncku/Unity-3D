@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        Speed = MovementConst.Role.WalkSpeed;
+        Speed = MovementConst.Role.GetComponent<StudentDataManager>().studentData.WalkSpeed;
         // Initialize Rigidbody and freeze rotation
         rb = GetComponent<Rigidbody>();
         MovementConst.Player = gameObject;
@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator Jump()
     {
-        float jumpForce = MovementConst.Role.JumpForce;
+        float jumpForce = MovementConst.Role.GetComponent<StudentDataManager>().studentData.JumpForce;
         rb.AddForce(gameObject.transform.up * jumpForce, ForceMode.Impulse);
 
         //jump cooldown
