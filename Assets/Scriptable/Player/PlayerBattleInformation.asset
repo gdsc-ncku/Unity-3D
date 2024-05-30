@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   PlayerDieUI: {fileID: 0}
-  Role: {fileID: 946270617512685866, guid: 5d1786efca1691e42ad3f71b5d73e7e8, type: 3}
-  initM_Hp: 100
+  role: {fileID: 946270617512685866, guid: 5d1786efca1691e42ad3f71b5d73e7e8, type: 3}
+  initM_Hp: 1200
   HealthDecrease:
     m_PersistentCalls:
       m_Calls: []
