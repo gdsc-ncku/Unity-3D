@@ -70,7 +70,6 @@ public class guncontroller_light : MonoBehaviour
         if (Physics.Raycast(ray, out hit, range, whatIsEnemy))
         {
             targetPoint = hit.point;
-            Debug.Log(hit.collider.name);
         }
         else
             targetPoint = ray.GetPoint(75); //Just a point far away from the player
