@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BombCollision : MonoBehaviour
+public class MolotovCocktail : MonoBehaviour
 {
     // Define the detection radius
     public float detectionRadius = 1f;
