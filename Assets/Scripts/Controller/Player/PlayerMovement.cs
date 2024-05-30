@@ -83,10 +83,6 @@ public class PlayerMovement : MonoBehaviour
         Vector2 inputVector = playerControl.Player.Move.ReadValue<Vector2>();
         Vector3 moveDirection = rb.transform.forward * inputVector.y + rb.transform.right * inputVector.x;
         rb.AddForce(moveDirection.normalized * Speed * 5f, ForceMode.Force);
-
-        // Get camera's Y rotation and apply it to the player
-        float cameraYRotation = Camera.main.transform.rotation.eulerAngles.y;
-        transform.rotation = Quaternion.Euler(0f, cameraYRotation, 0f);
     }
 
     // Jump

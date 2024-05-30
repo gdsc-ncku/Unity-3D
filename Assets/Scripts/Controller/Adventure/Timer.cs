@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] private Image uiFill;
     [SerializeField] private Text uiText;
     [SerializeField] private GameStatus gameStatus;
 
@@ -28,7 +27,6 @@ public class Timer : MonoBehaviour
             if (!Pause)
             {
                 uiText.text = $"{gameStatus.RemainingDuration / 60:00}:{gameStatus.RemainingDuration % 60:00}";
-                uiFill.fillAmount = Mathf.InverseLerp(0, gameStatus.Duration, gameStatus.RemainingDuration);
                 gameStatus.RemainingDuration--;
                 yield return new WaitForSeconds(1f);
             }
