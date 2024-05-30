@@ -145,7 +145,7 @@ public class EnemyAI : MonoBehaviour
     {
         agent.speed = EnemyInfo.MoveSpeed;
         Vector3 direction = BattleInfo.Player.transform.position - transform.position;
-        direction.y = 0; // ©¿²¤ Y ¶bªº®t²§
+        direction.y = 0; // ï¿½ï¿½ï¿½ï¿½ Y ï¿½bï¿½ï¿½ï¿½tï¿½ï¿½
         StartCoroutine(Attack());
 
         while (BattleInfo.Player != null && direction != Vector3.zero && nowStatus == status.attack)
@@ -167,7 +167,7 @@ public class EnemyAI : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5.0f);
             direction = BattleInfo.Player.transform.position - transform.position;
-            direction.y = 0; // ©¿²¤ Y ¶bªº®t²§
+            direction.y = 0; // ï¿½ï¿½ï¿½ï¿½ Y ï¿½bï¿½ï¿½ï¿½tï¿½ï¿½
 
             if (!SearchInSphere())
             {
