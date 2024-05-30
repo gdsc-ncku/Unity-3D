@@ -96,6 +96,7 @@ public class CactusEnemyBullets : MonoBehaviour
 
         if (((1 << other.gameObject.transform.root.gameObject.layer) & bulletAim) != 0)
         {
+            Debug.Log("Player be attacked");
             PlayerInfo.ReduceHealth(cactusEnemy.AttackDamage / cactusEnemy.BulletFinalSize * gameObject.transform.localScale.x);
             other.gameObject.transform.root.gameObject.GetComponent<Rigidbody>().AddForce(rb.velocity.normalized * volumeA, ForceMode.Impulse);
             Destroy(gameObject);

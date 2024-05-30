@@ -12,7 +12,7 @@ public class HeroDataManager : BasicDataManager
     IEnumerator WaitForDataManager()
     {
         yield return new WaitUntil(() => dataManager.initData);
-        playerBasicInformation.Law.Unlocked = PlayerPrefs.HasKey("LawStudent");
+        playerBasicInformation.Law.GetComponent<StudentDataManager>().studentData.Unlocked = PlayerPrefs.HasKey("LawStudent");
 
         Catched.Invoke(true);
     }

@@ -50,7 +50,7 @@ public class PlayerBasicInformationScriptable : ScriptableObject
 
     //Just record what character we have
     #region Character
-    public LawStudent Law;
+    public GameObject Law, Mechanic, Chemistry;
     #endregion
 
     #region Talent

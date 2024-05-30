@@ -13,13 +13,11 @@ MonoBehaviour:
   m_Name: LawStudent
   m_EditorClassIdentifier: 
   Unlocked: 1
-  Health: 1200
-  Magic: 300
-  MagicReply: 10
-  AttackDamage: 300
-  WalkSpeed: 4
+  Health: 120
+  Defense: 20
+  AttackDamage: 1
+  WalkSpeed: 7
   JumpForce: 8
-  AttackSpeed: 0.25
   Q_SkillDamage: 300
   Q_Skill: {fileID: 0}
   E_SkillDamage: 200

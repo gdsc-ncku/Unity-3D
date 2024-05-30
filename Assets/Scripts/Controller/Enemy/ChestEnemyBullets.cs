@@ -4,6 +4,7 @@ public class ChestEnemyBullets : MonoBehaviour
 {
     public GameObject Spawner;
     private Rigidbody rb;
+    private float damage;
     [SerializeField] LayerMask bulletAim;
     [SerializeField] PlayerBattleValueScriptable PlayerInfo;
     [SerializeField] ChestEnemy chestEnemy;
@@ -36,7 +37,7 @@ public class ChestEnemyBullets : MonoBehaviour
 
         if (((1 << other.gameObject.transform.root.gameObject.layer) & bulletAim) != 0)
         {
-            PlayerInfo.ReduceHealth(Spawner.GetComponent<EnemyAI>().EnemyInfo.AttackDamage);
+            PlayerInfo.ReduceHealth(chestEnemy.AttackDamage);
             other.gameObject.transform.root.gameObject.GetComponent<Rigidbody>().AddForce(rb.velocity.normalized * rb.mass * Random.Range(5f, 10f), ForceMode.Impulse);
         }
 

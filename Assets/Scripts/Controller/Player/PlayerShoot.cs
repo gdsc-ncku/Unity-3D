@@ -143,8 +143,7 @@ public class PlayerShoot : MonoBehaviour
 
         //Instantiate bullet/projectile
         GameObject currentBullet;
-        currentBullet = Instantiate(BattleInfo.nowWeaponData.ThisWeapon.bullet, BattleInfo.nowWeaponData.weaponAttackPoint.position + directionWithoutSpread.normalized, Quaternion.identity);
-        currentBullet.transform.forward = (targetPoint - currentBullet.transform.position).normalized;
+        currentBullet = Instantiate(BattleInfo.nowWeaponData.ThisWeapon.bullet, BattleInfo.nowWeaponData.weaponAttackPoint.position, Quaternion.LookRotation(directionWithoutSpread));
         if (isHit)
         {
             currentBullet.GetComponent<FPSCustomBullet>().target = hit.collider.transform.root.gameObject;
