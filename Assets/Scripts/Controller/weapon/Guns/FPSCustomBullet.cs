@@ -24,6 +24,11 @@ public class FPSCustomBullet : MonoBehaviour
         Destroy(gameObject, maxLifetime);
     }
 
+    private void FixedUpdate()
+    {
+        transform.forward = rb.velocity.normalized;
+    }
+
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.transform.root.gameObject != target || target == null) return;
