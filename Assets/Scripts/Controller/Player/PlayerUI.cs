@@ -22,8 +22,12 @@ public class PlayerUI : MonoBehaviour
 
     private void ChangeHealthBar()
     {
-        HealthBar.value = PlayerInfo.GetHealth();
-        HealthValueDisplay.text = HealthBar.value.ToString() + "/" + HealthBar.maxValue.ToString();
+        if(PlayerInfo != null)
+        {
+            HealthBar.value = PlayerInfo.GetHealth();
+            HealthValueDisplay.text = HealthBar.value.ToString() + "/" + HealthBar.maxValue.ToString();
+        }
+        
     }
 
     public void ChangeWeaponInfo()
