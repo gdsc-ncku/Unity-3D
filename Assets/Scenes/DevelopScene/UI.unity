@@ -411,7 +411,7 @@ RectTransform:
   m_AnchoredPosition: {x: -612, y: 0}
   m_SizeDelta: {x: 450, y: 750}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &597545730
+--- !u!1 &101681328
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -13220,54 +13220,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: InventorySlot (6)
       objectReference: {fileID: 0}
-    - target: {fileID: 8072375992416266765, guid: dc07edbed35066b4698f6a4f2bbea59e, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8072375992416266765, guid: dc07edbed35066b4698f6a4f2bbea59e, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8072375992416266765, guid: dc07edbed35066b4698f6a4f2bbea59e, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8072375992416266765, guid: dc07edbed35066b4698f6a4f2bbea59e, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8072375992416266765, guid: dc07edbed35066b4698f6a4f2bbea59e, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8072375992416266765, guid: dc07edbed35066b4698f6a4f2bbea59e, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671477976995430715, guid: dc07edbed35066b4698f6a4f2bbea59e, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671477976995430715, guid: dc07edbed35066b4698f6a4f2bbea59e, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671477976995430715, guid: dc07edbed35066b4698f6a4f2bbea59e, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671477976995430715, guid: dc07edbed35066b4698f6a4f2bbea59e, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671477976995430715, guid: dc07edbed35066b4698f6a4f2bbea59e, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671477976995430715, guid: dc07edbed35066b4698f6a4f2bbea59e, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13350,6 +13302,7 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 492868042}
   - {fileID: 597545732}
   - {fileID: 1003209340}
   - {fileID: 86568670}
