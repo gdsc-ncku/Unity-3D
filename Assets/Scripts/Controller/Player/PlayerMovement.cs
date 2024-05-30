@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private PlayerBasicInformationScriptable PlayerMove;
     [SerializeField] private PlayerBattleValueScriptable MovementConst;
     [SerializeField] private GameObject GroundDetector;
-    [SerializeField] private GameObject MainCamera;
     private Rigidbody rb;
     float Speed;  // Movement speed
     private bool Grounded = true, isJumping = false;  // Whether the player is on the ground
@@ -112,34 +111,34 @@ public class PlayerMovement : MonoBehaviour
     }
 
     IEnumerator Jump()
-{
-    float jumpForce = MovementConst.Role.JumpForce;
-    rb.AddForce(gameObject.transform.up * jumpForce, ForceMode.Impulse);
-
-    yield return new WaitForSeconds(0.1f);
-    
-    while (!Physics.Raycast(GroundDetector.transform.position, GroundDetector.transform.up * -1, out _, 0.05f))
     {
         float jumpForce = MovementConst.Role.GetComponent<StudentDataManager>().studentData.JumpForce;
         rb.AddForce(gameObject.transform.up * jumpForce, ForceMode.Impulse);
 
-        //jump cooldown
         yield return new WaitForSeconds(0.1f);
 
-        //wait for tauch ground again
-        RaycastHit hit;
-        while (!Physics.Raycast(GroundDetector.transform.position, GroundDetector.transform.up * -1, out hit, 0.1f))
+        while (!Physics.Raycast(GroundDetector.transform.position, GroundDetector.transform.up * -1, out _, 0.05f))
         {
+            jumpForce = MovementConst.Role.GetComponent<StudentDataManager>().studentData.JumpForce;
+            rb.AddForce(gameObject.transform.up * jumpForce, ForceMode.Impulse);
+
+            //jump cooldown
+            yield return new WaitForSeconds(0.1f);
+
+            //wait for tauch ground again
+            RaycastHit hit;
+            while (!Physics.Raycast(GroundDetector.transform.position, GroundDetector.transform.up * -1, out hit, 0.1f))
+            {
+                yield return null;
+            }
+
+            isJumping = false;
+            Grounded = true;
             yield return null;
         }
 
-        isJumping = false;
         Grounded = true;
-        yield return null;
+        isJumping = false;
     }
-
-    Grounded = true;
-    isJumping = false;
-}
 
 }

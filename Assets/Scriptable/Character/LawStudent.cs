@@ -5,21 +5,21 @@ public class LawStudent : CharacterBaseData
 {
     // You can create specific strengthening below.
     #region Hero_Q_Skill
-    public float range = 10f;
+    public float rangeQ = 10f;
     #endregion
 
     #region Hero_E_Skill
-    public float range = 10f;
+    public float rangeE = 10f;
     #endregion
 
     // Hero skills effect need to write in the functions below.
     public new void UseingQ_Skill(Transform player, LayerMask whatIsEnemy ,GameObject effectPrefab)
     {
-        Instantiate(effectPrefab, player, Quaternion.identity);
-        if (Physics.Raycast(ray, out hit, range, whatIsEnemy))
+        /*Instantiate(effectPrefab, player, Quaternion.identity);
+        if (Physics.Raycast(ray, out hit, rangeQ, whatIsEnemy))
         {
             Debug.Log("Skill activated at enemy position: " + hit.point);
-        }
+        }*/
     }
 
     // This method combines skill activation.
@@ -29,7 +29,7 @@ public class LawStudent : CharacterBaseData
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, range, whatIsEnemy))
+        if (Physics.Raycast(ray, out hit, rangeE, whatIsEnemy))
         {
             // Instantiate effect at enemy position
             Instantiate(effectPrefab, hit.point, Quaternion.identity);
