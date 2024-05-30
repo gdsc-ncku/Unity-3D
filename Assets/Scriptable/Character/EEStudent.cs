@@ -1,15 +1,19 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ChemStudent", menuName = "Character/ChemStudent")]
-public class ChemStudent : CharacterBaseData
+[CreateAssetMenu(fileName = "EEStudent", menuName = "Character/EEStudent")]
+public class EEStudent : CharacterBaseData
 {
+    // You can create specific strengthening below.
     #region Hero_Q_Skill
-    
     public float throwForce;
     public float throwUpwardForce;
+    #endregion
+
+    #region Hero_E_Skill
 
     #endregion
-    // Use the Q skill
+
+    // Hero skills effect need to write in the functions below.
     public void UseQSkill(Transform cam, Transform attackPoint, GameObject objectToThrow)
     {
         // instantiate object to throw
@@ -34,9 +38,9 @@ public class ChemStudent : CharacterBaseData
         projectileRb.AddForce(forceToAdd, ForceMode.Impulse);
     }
 
-    // Use the E skill (if any)
-    public void UseESkill()
+    // This method combines skill activation.
+    public void UseingE_Skill()
     {
-        // Implement the effect of the E skill here
+        
     }
 }
