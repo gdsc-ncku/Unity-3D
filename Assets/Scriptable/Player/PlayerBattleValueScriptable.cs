@@ -37,6 +37,7 @@ public class PlayerBattleValueScriptable : ScriptableObject
         {
             m_Health = value;
             CurrentHealth = value;
+            ChangeHealth();
         }
     }
     private float CurrentHealth;

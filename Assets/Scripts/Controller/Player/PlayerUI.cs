@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ public class PlayerUI : MonoBehaviour
     public Text BulletLeftNum;
     public Text BulletMaxNum;
     public Image WeaponIcon;
+    public TextMeshProUGUI HealthValueDisplay;
     [SerializeField] PlayerBattleValueScriptable PlayerInfo;
     [SerializeField] GameObject playerDieUI;
     // Start is called before the first frame update
@@ -14,12 +16,14 @@ public class PlayerUI : MonoBehaviour
     {
         PlayerInfo.PlayerDieUI = playerDieUI;
         HealthBar.maxValue = PlayerInfo.MaxHealth;
+        ChangeHealthBar();
         PlayerInfo.HealthChange.AddListener(ChangeHealthBar);
     }
 
     private void ChangeHealthBar()
     {
         HealthBar.value = PlayerInfo.GetHealth();
+        HealthValueDisplay.text = HealthBar.value.ToString() + "/" + HealthBar.maxValue.ToString();
     }
 
     public void ChangeWeaponInfo()

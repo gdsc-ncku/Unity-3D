@@ -5,7 +5,7 @@ public class EyeEnemyBullet : MonoBehaviour
 {
     public GameObject Spawner;
     public float waittingTime;
-    [SerializeField] EnemyScriptableObject EnemyInfo;
+    [SerializeField] EyeEnemy EnemyInfo;
     [SerializeField] PlayerBattleValueScriptable PlayerInfo;
     [SerializeField] LayerMask bulletAim;
     [SerializeField] Rigidbody rb;
@@ -63,7 +63,7 @@ public class EyeEnemyBullet : MonoBehaviour
         {
             if (((1 << other.gameObject.transform.root.gameObject.layer) & bulletAim) != 0)
             {
-                PlayerInfo.ReduceHealth(Spawner.GetComponent<EnemyAI>().EnemyInfo.AttackDamage);
+                PlayerInfo.ReduceHealth(EnemyInfo.AttackDamage);
                 other.gameObject.transform.root.gameObject.GetComponent<Rigidbody>().AddForce(rb.velocity.normalized * rb.mass, ForceMode.Impulse);
             }
 
