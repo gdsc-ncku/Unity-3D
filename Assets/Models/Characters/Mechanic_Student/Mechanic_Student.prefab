@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d350abd4ba9d55448077ca5dbde3d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  studentData: {fileID: 0}
+  studentData: {fileID: 11400000, guid: caf80440c0cc10548be79dfc7c64df3a, type: 2}
 --- !u!4 &2935652947693502692 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d3c6a3de133c08945949da9114de65cb, type: 3}
