@@ -8,6 +8,7 @@ public class MushroomEnemyController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.gameObject.name);
         if (((1 << collision.collider.gameObject.layer) & layerMask) != 0)
         {
             playerInfo.ReduceHealth(mushroomEnemy.AttackDamage);
