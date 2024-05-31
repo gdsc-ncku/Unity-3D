@@ -3143,6 +3143,7 @@ MonoBehaviour:
   settingController: {fileID: 289304538}
   text: {fileID: 24711752}
   bindingIndex: 4
+  key: 0
 --- !u!114 &206088777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4821,6 +4822,7 @@ MonoBehaviour:
   settingController: {fileID: 289304538}
   text: {fileID: 243555458}
   bindingIndex: 0
+  key: 13
 --- !u!114 &334886499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5549,6 +5551,7 @@ MonoBehaviour:
   settingController: {fileID: 289304538}
   text: {fileID: 1735406368}
   bindingIndex: 0
+  key: 0
 --- !u!114 &408489738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7954,6 +7957,7 @@ MonoBehaviour:
   settingController: {fileID: 289304538}
   text: {fileID: 1805442813}
   bindingIndex: 0
+  key: 3
 --- !u!114 &653680628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8975,6 +8979,7 @@ MonoBehaviour:
   settingController: {fileID: 289304538}
   text: {fileID: 2119641043}
   bindingIndex: 0
+  key: 0
 --- !u!114 &703243015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9209,6 +9214,7 @@ MonoBehaviour:
   settingController: {fileID: 289304538}
   text: {fileID: 848497976}
   bindingIndex: 0
+  key: 0
 --- !u!114 &732512443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9778,6 +9784,7 @@ MonoBehaviour:
   settingController: {fileID: 289304538}
   text: {fileID: 109732441}
   bindingIndex: 0
+  key: 6
 --- !u!114 &824304121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10342,6 +10349,7 @@ MonoBehaviour:
   settingController: {fileID: 289304538}
   text: {fileID: 44398805}
   bindingIndex: 3
+  key: 9
 --- !u!114 &882313830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10466,6 +10474,7 @@ MonoBehaviour:
   settingController: {fileID: 289304538}
   text: {fileID: 1684841825}
   bindingIndex: 0
+  key: 5
 --- !u!114 &897635830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11788,6 +11797,7 @@ MonoBehaviour:
   settingController: {fileID: 289304538}
   text: {fileID: 563838734}
   bindingIndex: 0
+  key: 0
 --- !u!114 &1036516452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12667,6 +12677,7 @@ MonoBehaviour:
   settingController: {fileID: 289304538}
   text: {fileID: 593287806}
   bindingIndex: 1
+  key: 7
 --- !u!114 &1128320892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13255,6 +13266,7 @@ MonoBehaviour:
   settingController: {fileID: 289304538}
   text: {fileID: 1172992685}
   bindingIndex: 3
+  key: 0
 --- !u!114 &1183399775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14137,6 +14149,7 @@ MonoBehaviour:
   settingController: {fileID: 289304538}
   text: {fileID: 722478804}
   bindingIndex: 0
+  key: 2
 --- !u!114 &1274749356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14571,6 +14584,7 @@ MonoBehaviour:
   settingController: {fileID: 289304538}
   text: {fileID: 13210050}
   bindingIndex: 4
+  key: 10
 --- !u!114 &1320073050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14664,6 +14678,7 @@ MonoBehaviour:
   settingController: {fileID: 289304538}
   text: {fileID: 1348497934}
   bindingIndex: 2
+  key: 0
 --- !u!114 &1331552228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15501,6 +15516,7 @@ MonoBehaviour:
   settingController: {fileID: 289304538}
   text: {fileID: 492670916}
   bindingIndex: 2
+  key: 8
 --- !u!114 &1376681059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15996,6 +16012,7 @@ MonoBehaviour:
   settingController: {fileID: 289304538}
   text: {fileID: 1197377484}
   bindingIndex: 0
+  key: 0
 --- !u!114 &1411616394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16356,6 +16373,7 @@ MonoBehaviour:
   settingController: {fileID: 289304538}
   text: {fileID: 1406592366}
   bindingIndex: 0
+  key: 0
 --- !u!114 &1443524385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17088,6 +17106,7 @@ MonoBehaviour:
   settingController: {fileID: 289304538}
   text: {fileID: 1000519568}
   bindingIndex: 0
+  key: 0
 --- !u!114 &1524209503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17581,6 +17600,7 @@ MonoBehaviour:
   settingController: {fileID: 289304538}
   text: {fileID: 1635236020}
   bindingIndex: 0
+  key: 1
 --- !u!114 &1574419043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18263,6 +18283,7 @@ MonoBehaviour:
   settingController: {fileID: 289304538}
   text: {fileID: 877119555}
   bindingIndex: 0
+  key: 4
 --- !u!114 &1628637019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18760,6 +18781,7 @@ MonoBehaviour:
   settingController: {fileID: 289304538}
   text: {fileID: 85783251}
   bindingIndex: 0
+  key: 11
 --- !u!114 &1646357810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19631,6 +19653,7 @@ MonoBehaviour:
   settingController: {fileID: 289304538}
   text: {fileID: 270233551}
   bindingIndex: 0
+  key: 0
 --- !u!114 &1781858435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22648,6 +22671,7 @@ MonoBehaviour:
   settingController: {fileID: 289304538}
   text: {fileID: 1858367561}
   bindingIndex: 0
+  key: 0
 --- !u!114 &1982445383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23737,6 +23761,7 @@ MonoBehaviour:
   settingController: {fileID: 289304538}
   text: {fileID: 470579122}
   bindingIndex: 0
+  key: 12
 --- !u!114 &2060626895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24002,6 +24027,7 @@ MonoBehaviour:
   settingController: {fileID: 289304538}
   text: {fileID: 486421526}
   bindingIndex: 1
+  key: 0
 --- !u!114 &2108209915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24133,6 +24159,7 @@ MonoBehaviour:
   settingController: {fileID: 289304538}
   text: {fileID: 5095993063860059241}
   bindingIndex: 0
+  key: 0
 --- !u!1 &2119641041
 GameObject:
   m_ObjectHideFlags: 0

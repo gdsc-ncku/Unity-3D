@@ -50,12 +50,12 @@ public class SettingController : MonoBehaviour
         }
     }
 
-    public void ChangeKey(InputActionMap mp, InputAction action, int bindingIndex, TextMeshProUGUI text)
+    public void ChangeKey(InputActionMap mp, InputAction action, int bindingIndex, TextMeshProUGUI text, KeyIndex key)
     {
-        ResettingPressKey(mp, action, bindingIndex, text);
+        ResettingPressKey(mp, action, bindingIndex, text, key);
     }
 
-    void ResettingPressKey(InputActionMap mp, InputAction action, int bindingIndex, TextMeshProUGUI text)
+    void ResettingPressKey(InputActionMap mp, InputAction action, int bindingIndex, TextMeshProUGUI text, KeyIndex key)
     {
         mp.Disable();
         text.text = "";
@@ -93,10 +93,11 @@ public class SettingController : MonoBehaviour
                     }
                 }
 
+                PlayerPrefs.SetString(key.ToString(), text.text);
                 PlayerPrefs.SetString("Rebinds", settingManager.playerBasicInformationScriptable.playerControl.SaveBindingOverridesAsJson());
                 callback.Dispose();
                 mp.Enable();
-
+                PlayerPrefs.Save();
                 //Debug.Log("Finish");
             })
             .Start();
