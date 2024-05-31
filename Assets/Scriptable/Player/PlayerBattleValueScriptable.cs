@@ -35,7 +35,7 @@ public class PlayerBattleValueScriptable : ScriptableObject
         {
             return m_Health;
         }
-        set
+        set 
         {
             m_Health = value;
             CurrentHealth = value;
