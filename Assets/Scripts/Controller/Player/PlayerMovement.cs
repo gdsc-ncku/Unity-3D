@@ -115,21 +115,6 @@ public class PlayerMovement : MonoBehaviour
 
         while (!Physics.Raycast(GroundDetector.transform.position, GroundDetector.transform.up * -1, out _, 0.05f))
         {
-            jumpForce = MovementConst.Role.GetComponent<StudentDataManager>().studentData.JumpForce;
-            rb.AddForce(gameObject.transform.up * jumpForce, ForceMode.Impulse);
-
-            //jump cooldown
-            yield return new WaitForSeconds(0.1f);
-
-            //wait for tauch ground again
-            RaycastHit hit;
-            while (!Physics.Raycast(GroundDetector.transform.position, GroundDetector.transform.up * -1, out hit, 0.1f))
-            {
-                yield return null;
-            }
-
-            isJumping = false;
-            Grounded = true;
             yield return null;
         }
 
