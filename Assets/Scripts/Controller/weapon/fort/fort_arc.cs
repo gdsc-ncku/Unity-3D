@@ -1,5 +1,5 @@
 using UnityEngine;
-public class fort_arc : MonoBehaviour
+public class fort_arc: MonoBehaviour
 {
     public float speed = 5f;
     public Transform fort; // 砲台
