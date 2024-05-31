@@ -56,7 +56,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.4368932
+        functionName: InvokeMushroomAttack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 524c553dc91228c42b4a3c99bbb58419, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.8786408
+        functionName: FinishMushroomAttack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 524c553dc91228c42b4a3c99bbb58419, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
