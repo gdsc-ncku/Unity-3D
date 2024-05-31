@@ -29,9 +29,13 @@ public class ChangeKey : MonoBehaviour
         {
             key = KeyIndex.Left;
         }
-        else
+        else if(bindingIndex == 4)
         {
             key = KeyIndex.Right;
+        }
+        else
+        {
+            return;
         }
 
         settingController.ChangeKey(settingController.settingManager.playerBasicInformationScriptable.playerControl.Player, settingController.settingManager.playerBasicInformationScriptable.playerControl.Player.Move, bindingIndex, text, key);
