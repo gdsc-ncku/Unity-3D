@@ -72179,6 +72179,10 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0.5882353
       objectReference: {fileID: 0}
+    - target: {fileID: 6014614620842843150, guid: 66cc2845a5721ae4e86b3698f14fa332, type: 3}
+      propertyPath: m_Name
+      value: Timer
+      objectReference: {fileID: 0}
     - target: {fileID: 6280199916125926590, guid: 66cc2845a5721ae4e86b3698f14fa332, type: 3}
       propertyPath: m_SizeDelta.x
       value: 149.0582
@@ -72248,7 +72252,8 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1309194956762824428, guid: 66cc2845a5721ae4e86b3698f14fa332, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66cc2845a5721ae4e86b3698f14fa332, type: 3}
