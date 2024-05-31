@@ -15,8 +15,9 @@ public class PlayerUI : MonoBehaviour
     void Start()
     {
         PlayerInfo.PlayerDieUI = playerDieUI;
-        HealthBar.maxValue = PlayerInfo.MaxHealth;
-        ChangeHealthBar();
+        HealthBar.maxValue = PlayerInfo.Role.GetComponent<StudentDataManager>().studentData.Health;
+        HealthBar.value = HealthBar.maxValue;
+        HealthValueDisplay.text = HealthBar.value.ToString() + "/" + HealthBar.maxValue.ToString();
         PlayerInfo.HealthChange.AddListener(ChangeHealthBar);
     }
 

@@ -27,8 +27,6 @@ public class CameraMovement : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }*/
-
-        Debug.Log(_lock);
     }
 
     // Update is called once per frame

@@ -29,7 +29,15 @@ public class EnemyAI : MonoBehaviour
             if(Hp <= 0)
             {
                 nowStatus = status.die;
-                gameObject.GetComponent<Collider>().enabled = false;
+                if (gameObject.GetComponent<Collider>())
+                {
+                    gameObject.GetComponent<Collider>().enabled = false;
+                }
+                else
+                {
+                    gameObject.transform.GetChild(1).GetComponent<Collider>().enabled = false;
+                }
+
                 animator.Play("Die", 0, 0);
                 if(EnemyInfo.Drops.Length != 0 && Random.Range(0f, 1f) < EnemyInfo.DropsProbability)
                 {
