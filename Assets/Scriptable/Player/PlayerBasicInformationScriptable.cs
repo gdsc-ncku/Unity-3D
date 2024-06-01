@@ -21,7 +21,19 @@ public class PlayerBasicInformationScriptable : ScriptableObject
     [Header("PlayerInformation")]
     public string Name = "Admin";
     public float Level = 1;
-    public float Soul = 0;
+    [SerializeField] private int soul;
+    public int Soul
+    {
+        get
+        {
+            return soul;
+        }
+        set
+        {
+            soul = value;
+            PlayerPrefs.SetInt("Soul", value);
+        }
+    }
     #endregion
 
     #region ScreenResolution

@@ -3,6 +3,84 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "LawStudent", menuName = "Character/LawStudent")]
 public class LawStudent : CharacterBaseData
 {
+    [SerializeField] private float healthRate;
+    [SerializeField] private float attackRate;
+    [SerializeField] private float walkSpeedRate;
+    [SerializeField] private float defenseRate;
+    [SerializeField] private float q_SkillDamageRate;
+    [SerializeField] private float e_SkillDamageRate;
+    public new float HealthRate
+    {
+        get
+        {
+            return healthRate;
+        }
+        set
+        {
+            healthRate = value;
+            PlayerPrefs.SetFloat("LawHealthRate", value);
+        }
+    }
+    public new float AttackRate
+    {
+        get
+        {
+            return attackRate;
+        }
+        set
+        {
+            attackRate = value;
+            PlayerPrefs.SetFloat("LawAttackRate", value);
+        }
+    }
+    public new float WalkSpeedRate
+    {
+        get
+        {
+            return walkSpeedRate;
+        }
+        set
+        {
+            walkSpeedRate = value;
+            PlayerPrefs.SetFloat("LawWalkSpeedRate", value);
+        }
+    }
+    public new float DefenseRate
+    {
+        get
+        {
+            return defenseRate;
+        }
+        set
+        {
+            defenseRate = value;
+            PlayerPrefs.SetFloat("LawDefenseRate", value);
+        }
+    }
+    public new float Q_SkillDamageRate
+    {
+        get
+        {
+            return q_SkillDamageRate;
+        }
+        set
+        {
+            q_SkillDamageRate = value;
+            PlayerPrefs.SetFloat("LawQ_SkillDamageRate", value);
+        }
+    }
+    public new float E_SkillDamageRate
+    {
+        get
+        {
+            return e_SkillDamageRate;
+        }
+        set
+        {
+            e_SkillDamageRate = value;
+            PlayerPrefs.SetFloat("LawE_SkillDamageRate", value);
+        }
+    }
     // You can create specific strengthening below.
     #region Hero_Q_Skill
     public float rangeQ = 10f;
