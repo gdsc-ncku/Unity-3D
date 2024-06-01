@@ -3,7 +3,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EEStudent", menuName = "Character/EEStudent")]
 public class EEStudent : CharacterBaseData
 {
-    // You can create specific strengthening below.
     #region Hero_Q_Skill
     public float throwForce;
     public float throwUpwardForce;
@@ -13,7 +12,7 @@ public class EEStudent : CharacterBaseData
 
     #endregion
 
-    // Hero skills effect need to write in the functions below.
+    // throwing run time error bomb
     public void UseQSkill(Transform cam, Transform attackPoint, GameObject objectToThrow)
     {
         // instantiate object to throw
@@ -38,7 +37,6 @@ public class EEStudent : CharacterBaseData
         projectileRb.AddForce(forceToAdd, ForceMode.Impulse);
     }
 
-    // This method combines skill activation.
     public void UseingE_Skill()
     {
         
