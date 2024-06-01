@@ -50,16 +50,7 @@ public class PlayerBasicInformationScriptable : ScriptableObject
 
     //Just record what character we have
     #region Character
-    public GameObject Law, Mechanic, Chemistry;
-    #endregion
-
-    #region Talent
-    public float HealthRate = 1;
-    public float AttackRate = 1;
-    public float WalkSpeedRate = 1;
-    public float AttackSpeedRate = 1;
-    public float Q_SkillDamageRate = 1;
-    public float E_SkillDamageRate = 1;
+    public GameObject Law, Mechanic, Chemistry, EE;
     #endregion
 
     private void OnEnable()
