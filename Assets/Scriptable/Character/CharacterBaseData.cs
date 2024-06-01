@@ -14,12 +14,78 @@ public class CharacterBaseData : ScriptableObject
     public ParticleSystem Q_Skill;
     public float E_SkillDamage;
     public ParticleSystem E_Skill;
-    public float HealthRate;
-    public float AttackRate;
-    public float WalkSpeedRate;
-    public float DefenseRate;
-    public float Q_SkillDamageRate;
-    public float E_SkillDamageRate;
+    private float healthRate;
+    private float attackRate;
+    private float walkSpeedRate;
+    private float defenseRate;
+    private float q_SkillDamageRate;
+    private float e_SkillDamageRate;
+    public virtual float HealthRate
+    {
+        get
+        {
+            return healthRate;
+        }
+        set
+        {
+            healthRate = value;
+        }
+    }
+    public virtual float AttackRate
+    {
+        get
+        {
+            return attackRate;
+        }
+        set
+        {
+            attackRate = value;
+        }
+    }
+    public virtual float WalkSpeedRate
+    {
+        get
+        {
+            return walkSpeedRate;
+        }
+        set
+        {
+            walkSpeedRate = value;
+        }
+    }
+    public virtual float DefenseRate
+    {
+        get
+        {
+            return defenseRate;
+        }
+        set
+        {
+            defenseRate = value;
+        }
+    }
+    public virtual float Q_SkillDamageRate
+    {
+        get
+        {
+            return q_SkillDamageRate;
+        }
+        set
+        {
+            q_SkillDamageRate = value;
+        }
+    }
+    public virtual float E_SkillDamageRate
+    {
+        get
+        {
+            return e_SkillDamageRate;
+        }
+        set
+        {
+            e_SkillDamageRate = value;
+        }
+    }
     #endregion
 
     //Hero_Q_Skill and Hero_E_Skill are the basic strengthening direction for every hero and you can define 

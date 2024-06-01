@@ -3,13 +3,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "LawStudent", menuName = "Character/LawStudent")]
 public class LawStudent : CharacterBaseData
 {
-    [SerializeField] private float healthRate;
-    [SerializeField] private float attackRate;
-    [SerializeField] private float walkSpeedRate;
-    [SerializeField] private float defenseRate;
-    [SerializeField] private float q_SkillDamageRate;
-    [SerializeField] private float e_SkillDamageRate;
-    public new float HealthRate
+    private float healthRate;
+    private float attackRate;
+    private float walkSpeedRate;
+    private float defenseRate;
+    private float q_SkillDamageRate;
+    private float e_SkillDamageRate;
+    public override float HealthRate
     {
         get
         {
@@ -21,7 +21,7 @@ public class LawStudent : CharacterBaseData
             PlayerPrefs.SetFloat("LawHealthRate", value);
         }
     }
-    public new float AttackRate
+    public override float AttackRate
     {
         get
         {
@@ -33,7 +33,7 @@ public class LawStudent : CharacterBaseData
             PlayerPrefs.SetFloat("LawAttackRate", value);
         }
     }
-    public new float WalkSpeedRate
+    public override float WalkSpeedRate
     {
         get
         {
@@ -45,7 +45,7 @@ public class LawStudent : CharacterBaseData
             PlayerPrefs.SetFloat("LawWalkSpeedRate", value);
         }
     }
-    public new float DefenseRate
+    public override float DefenseRate
     {
         get
         {
@@ -57,7 +57,7 @@ public class LawStudent : CharacterBaseData
             PlayerPrefs.SetFloat("LawDefenseRate", value);
         }
     }
-    public new float Q_SkillDamageRate
+    public override float Q_SkillDamageRate
     {
         get
         {
@@ -69,7 +69,7 @@ public class LawStudent : CharacterBaseData
             PlayerPrefs.SetFloat("LawQ_SkillDamageRate", value);
         }
     }
-    public new float E_SkillDamageRate
+    public override float E_SkillDamageRate
     {
         get
         {
