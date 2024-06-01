@@ -9,18 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09bb35c5f0e73e9459502439b7140f40, type: 3}
-  m_Name: MechanicStudent
+  m_Script: {fileID: 11500000, guid: 5031cea42edf9da4195b243a4a65ed3b, type: 3}
+  m_Name: EEStudent
   m_EditorClassIdentifier: 
   Unlocked: 0
-  Health: 140
-  Defense: 30
-  AttackDamage: 1.2
-  WalkSpeed: 4
+  Health: 120
+  Defense: 15
+  AttackDamage: 1.1
+  WalkSpeed: 7
   JumpForce: 8
   Q_SkillDamage: 250
   Q_Skill: {fileID: 0}
-  E_SkillDamage: 20
+  E_SkillDamage: 400
   E_Skill: {fileID: 0}
   Q_MagicConsumption: 1
   Q_DamageRate: 1
@@ -28,3 +28,5 @@ MonoBehaviour:
   E_MagicConsumption: 1
   E_DamageRate: 1
   E_SkillRange: 1
+  throwForce: 0
+  throwUpwardForce: 0
