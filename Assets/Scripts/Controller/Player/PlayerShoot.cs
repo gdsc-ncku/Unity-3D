@@ -1,14 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerShoot : MonoBehaviour
 {
     [SerializeField] PlayerBasicInformationScriptable informationScriptable;
     [SerializeField] PlayerBattleValueScriptable BattleInfo;
+    [SerializeField] PlayerUI PlayerUI;
     //bools
     public bool reloading;
     bool CanShoot = true;
@@ -24,9 +23,6 @@ public class PlayerShoot : MonoBehaviour
 
     //recoil
     [SerializeField] GameObject cameraRoot;
-    [SerializeField] private float snappiness;
-    [SerializeField] private float returnSpeed;
-    [SerializeField] private float returnRate;
 
     public void Awake()
     {
@@ -36,14 +32,14 @@ public class PlayerShoot : MonoBehaviour
     private void Start()
     {
         fpsCam = Camera.main;
+        PlayerUI = gameObject.GetComponent<PlayerUI>();
     }
 
     public void OnEnable()
     {
-        if (informationScriptable == null || informationScriptable.playerControl == null)
+        if(informationScriptable == null || informationScriptable.playerControl == null)
         {
-            Debug.Log("GunBasic: Setting informationScriptable and playerControl first");
-            StartCoroutine("DebugPlayerControl");
+            Debug.Log("Mistake");
             return;
         }
 
@@ -54,9 +50,9 @@ public class PlayerShoot : MonoBehaviour
 
     public void OnDisable()
     {
-        if (informationScriptable == null)
+        if (informationScriptable.playerControl == null)
         {
-            Debug.Log("GunBasic: Setting informationScriptable first");
+            Debug.Log("informationScriptable disappear");
             return;
         }
 
@@ -67,6 +63,12 @@ public class PlayerShoot : MonoBehaviour
 
     public void OnDestroy()
     {
+        if (informationScriptable.playerControl == null)
+        {
+            Debug.Log("informationScriptable disappear");
+            return;
+        }
+
         informationScriptable.playerControl.Player.Fire.started -= startShoot;
         informationScriptable.playerControl.Player.Fire.canceled -= FinishShoot;
         informationScriptable.playerControl.Player.Reload.started -= Reload;
@@ -102,7 +104,7 @@ public class PlayerShoot : MonoBehaviour
 
         if (BattleInfo.nowWeaponData.bulletsLeft <= 0)
         {
-            Debug.Log("Reload..");
+            //Debug.Log("Reload..");
             Reload();
             return;
         }
@@ -112,43 +114,50 @@ public class PlayerShoot : MonoBehaviour
             Debug.LogError("Camera.main is not assigned, setting camera's tag as MainCamera first");
             return;
         }
+
+        StartCoroutine(Fire());
+    }
+
+    IEnumerator Fire()
+    {
         //Find the exact hit position using a raycast
         Ray ray = fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)); //Just a ray through the middle of your current view
         RaycastHit hit;
+        bool isHit = false;
 
         //check if ray hits something
         Vector3 targetPoint;
         if (Physics.Raycast(ray, out hit))
         {
-            Debug.Log($"Aim: {hit.collider.gameObject.name}");
+            //Debug.Log($"Aim: {hit.collider.gameObject.name}");
             targetPoint = hit.point;
+            isHit = true;
         }
         else
-            targetPoint = ray.GetPoint(75); //Just a point far away from the player
-
-        while (BattleInfo.nowWeaponData.ThisWeapon.bulletsShot < BattleInfo.nowWeaponData.ThisWeapon.bulletsPerTap)
         {
-            //Calculate direction from attackPoint to targetPoint
-            Vector3 directionWithoutSpread = targetPoint - BattleInfo.nowWeaponData.weaponAttackPoint.position;
-
-            //Calculate spread
-            float x = Random.Range(-BattleInfo.nowWeaponData.ThisWeapon.spread, BattleInfo.nowWeaponData.ThisWeapon.spread);
-            float y = Random.Range(-BattleInfo.nowWeaponData.ThisWeapon.spread, BattleInfo.nowWeaponData.ThisWeapon.spread);
-
-            //Calculate new direction with spread
-            Vector3 directionWithSpread = directionWithoutSpread + new Vector3(x, y, 0); //Just add spread to last direction
-
-            //Instantiate bullet/projectile
-            GameObject currentBullet = Instantiate(BattleInfo.nowWeaponData.ThisWeapon.bullet, BattleInfo.nowWeaponData.weaponAttackPoint.position, Quaternion.identity); //store instantiated bullet in currentBullet
-                                                                                                                                                                                     //Rotate bullet to shoot direction
-            currentBullet.transform.forward = directionWithSpread.normalized;
-
-            //Add forces to bullet
-            currentBullet.GetComponent<Rigidbody>().AddForce(directionWithSpread.normalized * BattleInfo.nowWeaponData.ThisWeapon.shootForce, ForceMode.Impulse);
-            currentBullet.GetComponent<Rigidbody>().AddForce(fpsCam.transform.up * BattleInfo.nowWeaponData.ThisWeapon.upwardForce, ForceMode.Impulse);
-            BattleInfo.nowWeaponData.ThisWeapon.bulletsShot++;
+            targetPoint = ray.GetPoint(1000); //Just a point far away from the player
         }
-        BattleInfo.nowWeaponData.ThisWeapon.bulletsShot = 0;
+
+        //Calculate direction from attackPoint to targetPoint
+        Vector3 directionWithoutSpread = targetPoint - BattleInfo.nowWeaponData.weaponAttackPoint.position;
+
+        //Instantiate bullet/projectile
+        GameObject currentBullet;
+        currentBullet = Instantiate(BattleInfo.nowWeaponData.ThisWeapon.bullet, BattleInfo.nowWeaponData.weaponAttackPoint.position, Quaternion.LookRotation(directionWithoutSpread));
+        if (isHit)
+        {
+            currentBullet.GetComponent<FPSCustomBullet>().target = hit.collider.transform.root.gameObject;
+        }
+        else
+        {
+            currentBullet.GetComponent<FPSCustomBullet>().target = null;
+        }
+        currentBullet.GetComponent<FPSCustomBullet>().AttackWeapon = BattleInfo.nowWeaponData;
+
+        //Add forces to bullet
+        currentBullet.GetComponent<Rigidbody>().AddForce(directionWithoutSpread.normalized * BattleInfo.nowWeaponData.ThisWeapon.shootForce, ForceMode.Impulse);
+        //currentBullet.GetComponent<Rigidbody>().AddForce(fpsCam.transform.up * BattleInfo.nowWeaponData.ThisWeapon.upwardForce, ForceMode.Impulse);
+        BattleInfo.nowWeaponData.ThisWeapon.bulletsShot++;
 
         if (BattleInfo.nowWeaponData.ThisWeapon.gunSound != null)
         {
@@ -162,16 +171,28 @@ public class PlayerShoot : MonoBehaviour
         }
 
         BattleInfo.nowWeaponData.bulletsLeft--;
+        PlayerUI.BulletLeftNumUpdate();
         animator.Play("WeaponRecoil", 0, 0f);
-        Debug.Log(BattleInfo.nowWeaponData.bulletsLeft);
+
+        //Debug.Log(BattleInfo.nowWeaponData.bulletsLeft);
 
         if (BattleInfo.nowWeaponData.bulletsLeft <= 0)
         {
-            Debug.Log("Reload..");
+            //Debug.Log("Reload..");
             Reload();
         }
 
         RecoilFire();
+
+        if (BattleInfo.nowWeaponData.ThisWeapon.bulletsShot < BattleInfo.nowWeaponData.ThisWeapon.bulletsPerTap)
+        {
+            yield return new WaitForSeconds(BattleInfo.nowWeaponData.ThisWeapon.timeBetweenShots);
+            StartCoroutine(Fire());
+        }
+        else
+        {
+            BattleInfo.nowWeaponData.ThisWeapon.bulletsShot = 0;
+        }
     }
 
     private void RecoilFire()
@@ -181,16 +202,8 @@ public class PlayerShoot : MonoBehaviour
 
     public void FinishShoot(InputAction.CallbackContext context)
     {
-        Debug.Log("cancel");
+        //Debug.Log("cancel");
         CancelInvoke("Shoot");
-    }
-
-    IEnumerator DebugPlayerControl()
-    {
-        yield return new WaitForSeconds(1);
-        informationScriptable.playerControl.Player.Fire.started += startShoot;
-        informationScriptable.playerControl.Player.Fire.canceled += FinishShoot;
-        informationScriptable.playerControl.Player.Reload.started += Reload;
     }
 
     private void Reload(InputAction.CallbackContext context)

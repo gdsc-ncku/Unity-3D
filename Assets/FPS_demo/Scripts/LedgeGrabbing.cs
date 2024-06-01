@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LedgeGrabbing : MonoBehaviour
@@ -120,9 +118,9 @@ public class LedgeGrabbing : MonoBehaviour
         float distanceToLedge = Vector3.Distance(transform.position, currLedge.position);
 
         // Move player towards ledge
-        if(distanceToLedge > 1f)
+        if (distanceToLedge > 1f)
         {
-            if(rb.velocity.magnitude < moveToLedgeSpeed)
+            if (rb.velocity.magnitude < moveToLedgeSpeed)
                 rb.AddForce(directionToLedge.normalized * moveToLedgeSpeed * 1000f * Time.deltaTime);
         }
 

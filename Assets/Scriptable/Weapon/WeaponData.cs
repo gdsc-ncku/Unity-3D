@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 //Storage inheritable information
@@ -9,6 +6,7 @@ public class WeaponData : ScriptableObject
 {
     //bullet
     public GameObject bullet;
+    public float damage;
 
     //bullet force
     public float shootForce, upwardForce;
@@ -31,4 +29,17 @@ public class WeaponData : ScriptableObject
     public float recoilX;
     public float recoilY;
     public float recoilZ;
+    public Sprite Icon;
+
+    private void OnValidate()
+    {
+        if (bulletsPerTap > 1)
+        {
+            timeBetweenShooting = timeBetweenShots * bulletsPerTap;
+        }
+        else
+        {
+            timeBetweenShots = 0;
+        }
+    }
 }

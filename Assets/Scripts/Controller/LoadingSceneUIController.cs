@@ -14,25 +14,37 @@ public class LoadingSceneUIController : MonoBehaviour
         uiManager.loadingUI.enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     //Add listener event in OnEnable and remove in OnDisable and OnDestroy to avoid memory leak
     private void OnEnable()
     {
+        if(gameStatus == null)
+        {
+            Debug.Log("gameStatus disappear");
+            return;
+        }
+
         gameStatus.loadingSceneHandleChange.AddListener(HandleLoadingEvent);
     }
 
     private void OnDisable()
     {
+        if (gameStatus == null)
+        {
+            Debug.Log("gameStatus disappear");
+            return;
+        }
+
         gameStatus.loadingSceneHandleChange.RemoveListener(HandleLoadingEvent);
     }
 
     private void OnDestroy()
     {
+        if (gameStatus == null)
+        {
+            Debug.Log("gameStatus disappear");
+            return;
+        }
+
         gameStatus.loadingSceneHandleChange.RemoveListener(HandleLoadingEvent);
     }
 
@@ -45,7 +57,7 @@ public class LoadingSceneUIController : MonoBehaviour
     IEnumerator DisplayLoadingBar(AsyncOperationHandle<SceneInstance> handle)
     {
         //handle is loading scene, if its isValid then close this function or its enter the "while" that can update the loading bar 
-        if(!handle.IsValid())
+        if (!handle.IsValid())
             yield break;
 
         camera.enabled = true;

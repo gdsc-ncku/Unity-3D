@@ -1,7 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class PlayerMovementAdvancedDone : MonoBehaviour
 {
@@ -198,8 +197,19 @@ public class PlayerMovementAdvancedDone : MonoBehaviour
         // smoothly lerp movementSpeed to desired value
         float time = 0;
         float difference = Mathf.Abs(desiredMoveSpeed - moveSpeed);
+
+/* 取消合併專案 'Assembly-CSharp.Player' 的變更
+之前:
         float startValue = moveSpeed;
         
+        while (time < difference)
+之後:
+        float startValue = moveSpeed;
+
+        while (time < difference)
+*/
+        float startValue = moveSpeed;
+
         while (time < difference)
         {
             moveSpeed = Mathf.Lerp(startValue, desiredMoveSpeed, time / difference);
@@ -306,10 +316,10 @@ public class PlayerMovementAdvancedDone : MonoBehaviour
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         if (OnSlope())
-            text_speed.SetText("Speed: " + Round(rb.velocity.magnitude,1));
+            text_speed.SetText("Speed: " + Round(rb.velocity.magnitude, 1));
 
         else
-            text_speed.SetText("Speed: " + Round(flatVel.magnitude,1));
+            text_speed.SetText("Speed: " + Round(flatVel.magnitude, 1));
 
         text_mode.SetText(state.ToString());
     }

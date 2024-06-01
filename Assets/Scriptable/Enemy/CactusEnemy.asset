@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5010df14ced97744a3a16feabceedc7, type: 3}
+  m_Name: CactusEnemy
+  m_EditorClassIdentifier: 
+  Drops: []
+  DropsProbability: 0
+  AttackRange: 30
+  AttackSpeed: 1
+  AttackTime: 5
+  AttackDamage: 30
+  MoveSpeed: 4
+  RunSpeed: 8
+  Health: 10
+  Bullets:
+  - {fileID: 1801169046827820, guid: b05e9710e1b257f44a80ac8365c46467, type: 3}
+  - {fileID: 1847399388852780, guid: 0ecb0487b9a1b84439fcdba3282368ff, type: 3}
+  - {fileID: 1895310422780346, guid: 2a8e7caea7628b145b8db005f44c3ee6, type: 3}
+  - {fileID: 1986181127464668, guid: f60a9097500c8c648b50b51cb66337be, type: 3}
+  - {fileID: 1371378461770868, guid: c8b6f42e1b914cf4db7c0ccca4d106ad, type: 3}
+  BulletChargingTime: 3
+  BulletZoomInEverySecond: 5
+  BulletFinalSize: 15

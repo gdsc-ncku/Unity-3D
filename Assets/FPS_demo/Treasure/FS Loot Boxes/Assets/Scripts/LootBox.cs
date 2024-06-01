@@ -2,8 +2,8 @@
 // written by Sylker Teles
 
 using System;
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>
 /// The Loot class.
@@ -19,7 +19,7 @@ public class Loot
     /// <summary>
     /// The loot drop chance. 1 to 100% chance of drop.
     /// </summary>
-    [Range(0,1)] public float dropChance;
+    [Range(0, 1)] public float dropChance;
 }
 
 /// <summary>
@@ -83,7 +83,7 @@ public class LootBox : MonoBehaviour
     /// You can call OnBoxOpen and OnBoxClose as events, for
     /// instance, you can get what's inside the box.
     /// </summary>
-    public event Action <GameObject[]> OnBoxOpen;
+    public event Action<GameObject[]> OnBoxOpen;
 
     // Start is called before the first frame update
     void Start()
@@ -113,7 +113,7 @@ public class LootBox : MonoBehaviour
     /// Bounces the box.
     /// </summary>
     /// <param name="bounceIt">If set to <c>true</c> bounce it.</param>
-    public void BounceBox (bool bounceIt)
+    public void BounceBox(bool bounceIt)
     {
         // flag the animator property "bounce" accordingly
         if (animator) animator.SetBool("bounce", bounceIt);
@@ -122,7 +122,7 @@ public class LootBox : MonoBehaviour
     /// <summary>
     /// Open the box.
     /// </summary>
-    public void Open ()
+    public void Open()
     {
         // avoid opening when it's already open
         if (isOpen) return;
@@ -158,7 +158,7 @@ public class LootBox : MonoBehaviour
         // earned GameObjects on temp list
         OnBoxOpen?.Invoke(loots.ToArray());
 
-        Destroy(gameObject,2f);
+        Destroy(gameObject, 2f);
     }
 
     /// <summary>

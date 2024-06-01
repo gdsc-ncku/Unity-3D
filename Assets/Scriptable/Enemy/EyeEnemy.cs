@@ -1,25 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "EyeEnemy", menuName = "Enemy/EyeEnemy", order = 2)]
 public class EyeEnemy : EnemyScriptableObject
 {
-    public GameObject Bullet;
     public int BulletsPerGen;
+    public float GenBulletsTime;
+
+    protected override void OnValidate()
+    {
+        base.OnValidate();
+        AttackTime = BulletsPerGen * GenBulletsTime;
+    }
 
     public override void attack(GameObject enemy, float waittingTime)
     {
-        float xOffset = Random.Range(-3f, 3f);
-        float yOffset = Random.Range(0f, 2f) + 2f;
-        float zOffset = Random.Range(-1f, 1f);
+        float xOffset = Random.Range(-6f, 6f);
+        float yOffset = Random.Range(0f, 5f) + 3f;
+        float zOffset = Random.Range(-2f, 2f);
 
         Vector3 offset = new Vector3(xOffset, yOffset, zOffset);
         Vector3 Pos = enemy.transform.position + offset;
 
+        int randomIndex = Random.Range(0, Bullets.Length);
+        GameObject Bullet = Bullets[randomIndex];
         EyeEnemyBullet obj = Instantiate(Bullet, Pos, Bullet.transform.rotation).GetComponent<EyeEnemyBullet>();
         obj.Spawner = enemy;
         obj.waittingTime = waittingTime;
-
     }
 }

@@ -6,12 +6,10 @@ public class CharacterBaseData : ScriptableObject
 
     #region BasicData
     public float Health;
-    public float Magic;
-    public float MagicReply;
+    public float Defense;
     public float AttackDamage;
     public float WalkSpeed;
     public float JumpForce;
-    public float AttackSpeed;
     public float Q_SkillDamage;
     public ParticleSystem Q_Skill;
     public float E_SkillDamage;

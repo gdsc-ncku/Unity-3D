@@ -1,38 +1,48 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.SceneManagement;
 
+enum ContentsName { TalentContent, HeroContent, SettingContent };
 public class MainSceneController : MonoBehaviour
 {
-    [SerializeField] GameStatus gameStatus;
-    [SerializeField] AssetReference advenatureScene, mainScene;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] MainSceneManager mainSceneManager;
+    private GameObject NowContent;
+    public List<GameObject> Contents;
+    ContentsName contentsName;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            NowContent.SetActive(false);
+            PlayerPrefs.Save();
+        }
     }
 
     public void StartGame()
     {
-        if (advenatureScene != null)
-        {
-            AsyncOperationHandle unLoad = gameStatus.LoadingSceneHandle;
-            Addressables.UnloadSceneAsync(unLoad);
-            gameStatus.LoadingSceneHandle = Addressables.LoadSceneAsync(advenatureScene, LoadSceneMode.Additive);
-        }
+        mainSceneManager.gameStatus.StartGame();
+    }
+
+    public void OpenSettingUI()
+    {
+        contentsName = ContentsName.SettingContent;
+        OpenContent();
+    }
+
+    public void OpenHeroUI()
+    {
+        contentsName = ContentsName.HeroContent;
+        OpenContent();
     }
 
     public void ExitGame()
     {
-       gameStatus.ExitGame();
+        mainSceneManager.gameStatus.ExitGame();
+    }
+
+    public void OpenContent()
+    {
+        NowContent = Contents[(int)contentsName];
+        NowContent.SetActive(true);
     }
 }

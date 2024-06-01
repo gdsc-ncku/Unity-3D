@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Climbing : MonoBehaviour
@@ -49,7 +47,7 @@ public class Climbing : MonoBehaviour
 
     private void Start()
     {
-        if(GetComponent<LedgeGrabbing>() != null)
+        if (GetComponent<LedgeGrabbing>() != null)
             lg = GetComponent<LedgeGrabbing>();
     }
 
@@ -65,17 +63,28 @@ public class Climbing : MonoBehaviour
     private void StateMachine()
     {
         // State 0 - Ledge Grabbing
-        
+
         if (lg != null)
         {
             if (lg.holding)
                 if (climbing) StopClimbing();
 
             // everything else gets handled by the SubStateMachine() in the ledge grabbing script
+
+/* 取消合併專案 'Assembly-CSharp.Player' 的變更
+之前:
         }
         
         // State 1 - Climbing
-        else if (wallFront && toClimb && Input.GetKey(KeyCode.W) && wallLookAngle < maxWallLookAngle && !exitingWall )
+之後:
+        }
+
+        // State 1 - Climbing
+*/
+        }
+
+        // State 1 - Climbing
+        else if (wallFront && toClimb && Input.GetKey(KeyCode.W) && wallLookAngle < maxWallLookAngle && !exitingWall)
         {
             if (!climbing && climbTimer > 0) StartClimbing();
 
@@ -132,7 +141,7 @@ public class Climbing : MonoBehaviour
             else
                 toClimb = false;
         }
-        
+
 
     }
 
@@ -166,7 +175,7 @@ public class Climbing : MonoBehaviour
     private void ClimbJump()
     {
         if (pm.grounded) return;
-        if(lg != null)
+        if (lg != null)
             if (lg.holding || lg.exitingLedge) return;
 
         exitingWall = true;

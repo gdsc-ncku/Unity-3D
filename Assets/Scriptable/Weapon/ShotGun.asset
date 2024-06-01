@@ -12,22 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a60de0df29806344f8013b330bb070eb, type: 3}
   m_Name: ShotGun
   m_EditorClassIdentifier: 
-  bullet: {fileID: 6231888369005412580, guid: 1ac98dde1a6ec2b47b8cc8e5b0ef7b31, type: 3}
-  shootForce: 15
+  bullet: {fileID: 6231888369005412580, guid: 6ca876d01b5358e4c91a263d7b3105dd, type: 3}
+  damage: 2.5
+  shootForce: 30
   upwardForce: 1
   timeBetweenShooting: 1
   spread: 1
   reloadTime: 1
   timeBetweenShots: 0
   magazineSize: 150
-  bulletsPerTap: 10
+  bulletsPerTap: 1
   allowButtonHold: 0
-  bulletsLeft: 8
   maxBullets: 8
   bulletsShot: 0
   recoilForce: 1
   allowInvoke: 1
   gunSound: {fileID: 8300000, guid: e838df0e5967a214786f196333d6058b, type: 3}
-  recoilX: -3
-  recoilY: 3.25
-  recoilZ: 1
+  recoilX: -0.6
+  recoilY: 0
+  recoilZ: 0
+  Icon: {fileID: -1709523185, guid: 687c0ebfb2bd3a94cb7cde203d97701e, type: 3}

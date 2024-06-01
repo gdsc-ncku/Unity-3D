@@ -12,22 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c1e61daab889c4cb693c25960ff067, type: 3}
   m_Name: AK
   m_EditorClassIdentifier: 
-  bullet: {fileID: 6231888369005412580, guid: a80eff1b9e736064cb0ffd35a10af00e, type: 3}
-  shootForce: 10
+  bullet: {fileID: 6231888369005412580, guid: 82aecbce257a6564e934d7db36c6c610, type: 3}
+  damage: 10
+  shootForce: 40
   upwardForce: 1
-  timeBetweenShooting: 0.1
+  timeBetweenShooting: 0.05
   spread: 0
   reloadTime: 1
   timeBetweenShots: 0
   magazineSize: 30
   bulletsPerTap: 1
   allowButtonHold: 0
-  bulletsLeft: 30
   maxBullets: 30
   bulletsShot: 0
   recoilForce: 1
   allowInvoke: 1
   gunSound: {fileID: 8300000, guid: dff055e4400984148b4c6f0e0b3bd666, type: 3}
-  recoilX: -2
-  recoilY: 2
-  recoilZ: 0.2
+  recoilX: -0.5
+  recoilY: 0
+  recoilZ: 0
+  Icon: {fileID: 21300000, guid: 7092324b93851a14c858530cca4a6b26, type: 3}

@@ -9,6 +9,7 @@ public class Weapons : MonoBehaviour
     [SerializeField] PlayerBattleValueScriptable BattleInfo;
     public GameObject MainWeapon, SecondWeapon, HoldingWeapon;
     [SerializeField] PlayerShoot playerShoot;
+    [SerializeField] PlayerUI PlayerUI;
 
     private void OnValidate()
     {
@@ -21,14 +22,15 @@ public class Weapons : MonoBehaviour
     private void Start()
     {
         BattleInfo.nowWeapon = MainWeapon.transform.GetChild(0).gameObject;
+        PlayerUI = gameObject.transform.root.gameObject.GetComponent<PlayerUI>();
+        changeToMainWeapon();
     }
 
     private void OnEnable()
     {
         if (informationScriptable == null || informationScriptable.playerControl == null)
         {
-            Debug.Log("GunBasic: Setting informationScriptable and playerControl first");
-            StartCoroutine("DebugPlayerControl");
+            Debug.Log("PlayerBasicInformationScriptable Disappear");
             return;
         }
 
@@ -38,12 +40,24 @@ public class Weapons : MonoBehaviour
 
     private void OnDisable()
     {
+        if (informationScriptable == null || informationScriptable.playerControl == null)
+        {
+            Debug.Log("PlayerBasicInformationScriptable Disappear");
+            return;
+        }
+
         informationScriptable.playerControl.Player.Weapon1.performed -= changeToMainWeapon;
         informationScriptable.playerControl.Player.Weapon2.performed -= changeToSecondWeapon;
     }
 
     private void OnDestroy()
     {
+        if (informationScriptable == null || informationScriptable.playerControl == null)
+        {
+            Debug.Log("PlayerBasicInformationScriptable Disappear");
+            return;
+        }
+
         informationScriptable.playerControl.Player.Weapon1.performed -= changeToMainWeapon;
         informationScriptable.playerControl.Player.Weapon2.performed -= changeToSecondWeapon;
     }
@@ -56,6 +70,10 @@ public class Weapons : MonoBehaviour
         playerShoot.reloading = false;
         MainWeapon.SetActive(true);
         SecondWeapon.SetActive(false);
+
+        //UI
+        BattleInfo.nowWeaponData.BulletsLeftChange.AddListener(() => PlayerUI.BulletLeftNumUpdate());
+        PlayerUI.ChangeWeaponInfo();
     }
 
     public void changeToSecondWeapon(InputAction.CallbackContext context)
@@ -66,6 +84,10 @@ public class Weapons : MonoBehaviour
         playerShoot.reloading = false;
         MainWeapon.SetActive(false);
         SecondWeapon.SetActive(true);
+
+        //UI
+        BattleInfo.nowWeaponData.BulletsLeftChange.AddListener(() => PlayerUI.BulletLeftNumUpdate());
+        PlayerUI.ChangeWeaponInfo();
     }
 
     public void changeToMainWeapon()
@@ -76,6 +98,10 @@ public class Weapons : MonoBehaviour
         playerShoot.reloading = false;
         MainWeapon.SetActive(true);
         SecondWeapon.SetActive(false);
+
+        //UI
+        BattleInfo.nowWeaponData.BulletsLeftChange.AddListener(() => PlayerUI.BulletLeftNumUpdate());
+        PlayerUI.ChangeWeaponInfo();
     }
 
     public void changeToSecondWeapon()
@@ -86,12 +112,9 @@ public class Weapons : MonoBehaviour
         playerShoot.reloading = false;
         MainWeapon.SetActive(false);
         SecondWeapon.SetActive(true);
-    }
 
-    IEnumerator DebugPlayerControl()
-    {
-        yield return new WaitForSeconds(1);
-        informationScriptable.playerControl.Player.Weapon1.performed += changeToMainWeapon;
-        informationScriptable.playerControl.Player.Weapon2.performed += changeToSecondWeapon;
+        //UI
+        BattleInfo.nowWeaponData.BulletsLeftChange.AddListener(() => PlayerUI.BulletLeftNumUpdate());
+        PlayerUI.ChangeWeaponInfo();
     }
 }

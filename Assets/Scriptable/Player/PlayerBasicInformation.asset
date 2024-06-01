@@ -17,11 +17,14 @@ MonoBehaviour:
   Soul: 0
   Width: 1920
   Height: 1080
-  MouseSensitivity: 200
+  MouseDPI: 800
+  edpi: 80
   MovingMusic: 100
   EnemyMusic: 100
   BackgroundMusic: 100
-  Law: {fileID: 11400000, guid: d2600dd773fa00b45a09a3270bb931fe, type: 2}
+  Law: {fileID: 946270617512685866, guid: 5d1786efca1691e42ad3f71b5d73e7e8, type: 3}
+  Mechanic: {fileID: 2591355812482505310, guid: 572e9de430316ed40a6ffaa05f0afdd0, type: 3}
+  Chemistry: {fileID: 6231363875576087526, guid: 484c2f9cce8ad2847895330cd3724d34, type: 3}
   HealthRate: 1
   AttackRate: 1
   WalkSpeedRate: 1

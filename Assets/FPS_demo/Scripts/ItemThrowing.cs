@@ -1,7 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
+using 
+/* 取消合併專案 'Assembly-CSharp.Player' 的變更
+之前:
 using UnityEngine;
 using TMPro;
+之後:
+using TMPro;
+using UnityEngine;
+*/
+UnityEngine;
 
 public class ItemThrowing : MonoBehaviour
 {
@@ -36,7 +42,7 @@ public class ItemThrowing : MonoBehaviour
                 Throw();
             }
         }
-        
+
     }
 
     private void Throw()

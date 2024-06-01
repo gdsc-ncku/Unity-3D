@@ -11,6 +11,8 @@ TagManager:
   - FxTemporaire
   - Bullet
   - Weapon
+  - EnemyBullets
+  - MainLight
   layers:
   - Default
   - TransparentFX
@@ -23,11 +25,11 @@ TagManager:
   - whatIsHolding
   - whatIsWall
   - WhatIsGround
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Die
+  - GetHit
+  - LawStudentUI
+  - MechanicStudentUI
+  - ChemistryStudentUI
   - 
   - 
   - 

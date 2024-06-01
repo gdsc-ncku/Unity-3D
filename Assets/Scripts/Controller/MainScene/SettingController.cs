@@ -5,17 +5,12 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
 
-enum ContentsName { TalentContent, HeroContent, SettingContent };
 public class SettingController : MonoBehaviour
 {
-    ContentsName contentsName;
     public SettingManager settingManager;
-    private GameObject NowContent;
-    public List<GameObject> Contents;
     public List<TextMeshProUGUI> SettingKeyText;
-    
+
     // Start is called before the first frame update
     IEnumerator Start()
     {
@@ -48,19 +43,10 @@ public class SettingController : MonoBehaviour
                 settingManager.keyboards.Add(newkey);
             }
         }
-        foreach(var key in Enum.GetValues(typeof(KeyIndex)))
+        foreach (var key in Enum.GetValues(typeof(KeyIndex)))
         {
-            Debug.Log(PlayerPrefs.GetString(key.ToString()));
+            //Debug.Log(PlayerPrefs.GetString(key.ToString()));
             SettingKeyText[(int)key].text = PlayerPrefs.GetString(key.ToString());
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            NowContent.SetActive(false);
         }
     }
 
@@ -74,7 +60,8 @@ public class SettingController : MonoBehaviour
         mp.Disable();
         text.text = "";
         action.PerformInteractiveRebinding(bindingIndex)
-            .OnComplete(callback => {
+            .OnComplete(callback =>
+            {
                 string newKey = callback.action.bindings[bindingIndex].overridePath.ToString().Split('/').Last();
                 //Input System
                 foreach (InputAction ac in settingManager.playerBasicInformationScriptable.playerControl)
@@ -110,14 +97,9 @@ public class SettingController : MonoBehaviour
                 callback.Dispose();
                 mp.Enable();
 
-                Debug.Log("Finish");
+                //Debug.Log("Finish");
             })
             .Start();
     }
 
-    public void OpenSetting()
-    {
-        NowContent = Contents[(int)ContentsName.SettingContent];
-        NowContent.SetActive(true);
-    }
 }

@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponSway : MonoBehaviour {
+public class WeaponSway : MonoBehaviour
+{
 
     [Header("Sway Settings")]
     [SerializeField] private float smooth;
@@ -19,7 +18,7 @@ public class WeaponSway : MonoBehaviour {
         Quaternion rotationY = Quaternion.AngleAxis(mouseX, Vector3.up);
 
         Quaternion targetRotation = rotationX * rotationY;
-            
+
         // rotate 
         transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, smooth * Time.deltaTime);
     }

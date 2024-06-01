@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCam : MonoBehaviour
@@ -7,7 +5,7 @@ public class PlayerCam : MonoBehaviour
     [SerializeField] private float senX;
     [SerializeField] private float senY;
     public Transform orientation;
-    
+
     float xRotation;
     float yRotation;
 
@@ -24,7 +22,7 @@ public class PlayerCam : MonoBehaviour
         //滑鼠輸入
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * senX;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * senX;
-        
+
         yRotation += mouseX;
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);

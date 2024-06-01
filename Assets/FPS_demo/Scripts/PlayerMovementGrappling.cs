@@ -1,7 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
+using 
+/* 取消合併專案 'Assembly-CSharp.Player' 的變更
+之前:
 using UnityEngine;
 using TMPro;
+之後:
+using TMPro;
+using UnityEngine;
+*/
+UnityEngine;
 
 public class PlayerMovementGrappling : MonoBehaviour
 {
@@ -313,10 +320,10 @@ public class PlayerMovementGrappling : MonoBehaviour
         Vector3 displacementXZ = new Vector3(endPoint.x - startPoint.x, 0f, endPoint.z - startPoint.z);
 
         Vector3 velocityY = Vector3.up * Mathf.Sqrt(-2 * gravity * trajectoryHeight);
-        Vector3 velocityXZ = displacementXZ / (Mathf.Sqrt(-2 * trajectoryHeight / gravity) 
+        Vector3 velocityXZ = displacementXZ / (Mathf.Sqrt(-2 * trajectoryHeight / gravity)
             + Mathf.Sqrt(2 * (displacementY - trajectoryHeight) / gravity));
 
-        return 5f*velocityXZ + velocityY;
+        return 5f * velocityXZ + velocityY;
     }
 
     #region Text & Debugging

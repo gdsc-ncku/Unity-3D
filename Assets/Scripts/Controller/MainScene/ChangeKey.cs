@@ -1,7 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public class ChangeKey : MonoBehaviour
 {
@@ -13,11 +11,11 @@ public class ChangeKey : MonoBehaviour
     {
         settingController.ChangeKey(settingController.settingManager.playerBasicInformationScriptable.playerControl.Player, settingController.settingManager.playerBasicInformationScriptable.playerControl.Player.Move, bindingIndex, text);
 
-        if(bindingIndex == 1)
+        if (bindingIndex == 1)
         {
             PlayerPrefs.SetString(KeyIndex.Forward.ToString(), text.text);
         }
-        else if(bindingIndex == 2)
+        else if (bindingIndex == 2)
         {
             PlayerPrefs.SetString(KeyIndex.Backward.ToString(), text.text);
         }
@@ -33,14 +31,12 @@ public class ChangeKey : MonoBehaviour
 
     public void changeSpaceKey()
     {
-        Debug.Log("Start");
         settingController.ChangeKey(settingController.settingManager.playerBasicInformationScriptable.playerControl.Player, settingController.settingManager.playerBasicInformationScriptable.playerControl.Player.Jump, bindingIndex, text);
         PlayerPrefs.SetString(KeyIndex.Jump.ToString(), text.text);
     }
 
     public void changeFireKey()
     {
-        Debug.Log("Start");
         settingController.ChangeKey(settingController.settingManager.playerBasicInformationScriptable.playerControl.Player, settingController.settingManager.playerBasicInformationScriptable.playerControl.Player.Fire, bindingIndex, text);
         PlayerPrefs.SetString(KeyIndex.Fire.ToString(), text.text);
     }

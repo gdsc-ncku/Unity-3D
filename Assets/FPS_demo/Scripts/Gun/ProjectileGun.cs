@@ -1,6 +1,6 @@
 ﻿
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class ProjectileGun : MonoBehaviour
 {
@@ -39,7 +39,7 @@ public class ProjectileGun : MonoBehaviour
 
     public CamRecoil camrecoil;
 
-    public AudioClip gunSound; 
+    public AudioClip gunSound;
 
     public float recoilX;
     public float recoilY;
@@ -85,7 +85,7 @@ public class ProjectileGun : MonoBehaviour
             bulletsShot = 0;
             animator.SetBool("Fire", true);
             Shoot();
-            
+
         }
     }
 
@@ -123,7 +123,7 @@ public class ProjectileGun : MonoBehaviour
         currentBullet.GetComponent<Rigidbody>().AddForce(directionWithSpread.normalized * shootForce, ForceMode.Impulse);
         currentBullet.GetComponent<Rigidbody>().AddForce(fpsCam.transform.up * upwardForce, ForceMode.Impulse);
 
-        if(GetComponent<AudioSource>())
+        if (GetComponent<AudioSource>())
             GetComponent<AudioSource>().PlayOneShot(gunSound);
 
 

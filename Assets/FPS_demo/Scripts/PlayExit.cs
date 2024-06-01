@@ -1,9 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using 
+/* 取消合併專案 'Assembly-CSharp.Player' 的變更
+之前:
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+之後:
 using UnityEngine.EventSystems;
+*/
+UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayExit : MonoBehaviour
 {

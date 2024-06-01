@@ -16,9 +16,17 @@ public class SettingDataManager : BasicDataManager
         playerBasicInformation.Height = PlayerPrefs.GetInt("Height");
 
         playerBasicInformation.playerControl = new PlayerControl();
+        if (playerBasicInformation.playerControl != null)
+        {
+            Debug.Log("playerControl Setting Complete");
+        }
+        else
+        {
+            Debug.Log("playerControl Setting miss");
+        }
         playerBasicInformation.playerControl.LoadBindingOverridesFromJson(PlayerPrefs.GetString("Rebinds"));
 
-        playerBasicInformation.MouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity");
+        playerBasicInformation.edpi = PlayerPrefs.GetFloat("MouseSensitivity");
 
         playerBasicInformation.MovingMusic = PlayerPrefs.GetFloat("MovingMusic");
         playerBasicInformation.EnemyMusic = PlayerPrefs.GetFloat("EnemyMusic");

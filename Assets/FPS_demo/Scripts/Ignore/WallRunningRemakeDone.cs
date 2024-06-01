@@ -1,8 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+
 
 /// simplify wallforward direction calculation (Done)
 // useGravity doesn't work because of direct velocity set
@@ -111,7 +109,7 @@ public class WallRunningRemakeDone : MonoBehaviour
         if ((wallLeft || wallRight) && verticalInput > 0 && AboveGround() && !exitingWall)
         {
             // start wallrun
-            if(!pm.wallrunning) StartWallRun();
+            if (!pm.wallrunning) StartWallRun();
 
             // wallrun timer
             wallRunTimer -= Time.deltaTime;
@@ -133,7 +131,7 @@ public class WallRunningRemakeDone : MonoBehaviour
         }
 
         // State 2 - Exiting (Here)
-        else if(exitingWall)
+        else if (exitingWall)
         {
             //pm.restricted = true;
 
@@ -165,7 +163,7 @@ public class WallRunningRemakeDone : MonoBehaviour
         wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallHit, wallCheckDistance, whatIsWall);
 
         // reset readyToClimb and wallJumps whenever player hits a new wall
-        if((wallLeft || wallRight) && NewWallHit())
+        if ((wallLeft || wallRight) && NewWallHit())
         {
             wallJumpsDone = 0;
             wallRunTimer = maxWallRunTime;
@@ -300,7 +298,7 @@ public class WallRunningRemakeDone : MonoBehaviour
         // if not first jump, remove y component of force
         if (!firstJump)
             forceToApply = new Vector3(forceToApply.x, 0f, forceToApply.z);
-         
+
         // add force
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         rb.AddForce(forceToApply, ForceMode.Impulse);

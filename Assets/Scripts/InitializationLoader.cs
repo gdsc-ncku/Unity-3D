@@ -1,14 +1,14 @@
 using System.Collections;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public class InitializationLoader : MonoBehaviour
 {
-    [SerializeField] AssetReferenceT<SceneAsset> PersistenceScene, LoadingScene;
+    [SerializeField] AssetReference PersistenceScene, LoadingScene;
     [SerializeField] GameStatus gameStatus;
 
     // Start is called before the first frame update
@@ -22,12 +22,12 @@ public class InitializationLoader : MonoBehaviour
 
     void LoadPersistence(AsyncOperationHandle<SceneInstance> asyncOperationHandle)
     {
-        if(asyncOperationHandle.Status == AsyncOperationStatus.Succeeded)
+        if (asyncOperationHandle.Status == AsyncOperationStatus.Succeeded)
         {
             //Unload Scene which follow the build setting order
             //Because InitializationScene is the only one Scene in build thus use order 0;
             gameStatus.LoadingSceneHandle = Addressables.LoadSceneAsync(PersistenceScene, LoadSceneMode.Additive);
-            gameStatus.LoadingSceneHandle.Completed += (Handle) => 
+            gameStatus.LoadingSceneHandle.Completed += (Handle) =>
             {
                 StartCoroutine(WaitForCatachData());
             };

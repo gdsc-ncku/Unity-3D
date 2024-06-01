@@ -1,7 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+
 
 public class PlayerMovementAdvanced : MonoBehaviour
 {
@@ -19,7 +19,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     public float speedIncreaseMultiplier;
     public float slopeIncreaseMultiplier;
-    
+
     public float swingSpeed;
 
     public float groundDrag;
@@ -88,7 +88,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     public bool freeze;
     public bool unlimited;
-    
+
     public bool restricted;
 
     public bool activeGrapple;
@@ -147,7 +147,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
         }
 
         // start crouch
-        if (Input.GetKeyDown(crouchKey) )//&& horizontalInput == 0 && verticalInput == 0
+        if (Input.GetKeyDown(crouchKey))//&& horizontalInput == 0 && verticalInput == 0
         {
             transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
             rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
@@ -321,7 +321,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
             if (restricted) return;
             if (activeGrapple) return;
         }
-        
+
         //if (swinging) return;
         // calculate movement direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
@@ -456,7 +456,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
     {
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        if(text_speed != null)
+        if (text_speed != null)
             if (OnSlope())
                 text_speed.SetText("Speed: " + Round(rb.velocity.magnitude, 1) + " / " + Round(moveSpeed, 1));
 

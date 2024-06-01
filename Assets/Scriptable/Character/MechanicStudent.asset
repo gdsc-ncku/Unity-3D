@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09bb35c5f0e73e9459502439b7140f40, type: 3}
+  m_Name: MechanicStudent
+  m_EditorClassIdentifier: 
+  Unlocked: 0
+  Health: 140
+  Defense: 30
+  AttackDamage: 1.2
+  WalkSpeed: 4
+  JumpForce: 8
+  Q_SkillDamage: 0
+  Q_Skill: {fileID: 0}
+  E_SkillDamage: 0
+  E_Skill: {fileID: 0}
+  Q_MagicConsumption: 1
+  Q_DamageRate: 1
+  Q_SkillRange: 1
+  E_MagicConsumption: 1
+  E_DamageRate: 1
+  E_SkillRange: 1

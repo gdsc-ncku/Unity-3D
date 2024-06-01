@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -34,12 +32,13 @@ public class PlayerBasicInformationScriptable : ScriptableObject
 
     #region ButtonSetting
     //Input System
-    public PlayerControl playerControl = null;
+    public PlayerControl playerControl;
     #endregion
 
     #region MouseSensitivity
     [Header("MouseSensitivity")]
-    public float MouseSensitivity = 800;
+    public float MouseDPI = 800;
+    public float edpi = 800;
     #endregion
 
     #region Music
@@ -49,8 +48,9 @@ public class PlayerBasicInformationScriptable : ScriptableObject
     public float BackgroundMusic = 100;
     #endregion
 
+    //Just record what character we have
     #region Character
-    public LawStudent Law;
+    public GameObject Law, Mechanic, Chemistry;
     #endregion
 
     #region Talent
@@ -61,4 +61,13 @@ public class PlayerBasicInformationScriptable : ScriptableObject
     public float Q_SkillDamageRate = 1;
     public float E_SkillDamageRate = 1;
     #endregion
+
+    private void OnEnable()
+    {
+        if(playerControl == null)
+        {
+            playerControl = new PlayerControl();
+            playerControl.LoadBindingOverridesFromJson(PlayerPrefs.GetString("Rebinds"));
+        }
+    }
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LedgeGrabbingOld : MonoBehaviour
@@ -63,7 +61,7 @@ public class LedgeGrabbingOld : MonoBehaviour
         directionToLedge = ledgeHit.transform.position - transform.position;
         distanceToLedge = directionToLedge.magnitude;
 
-        if(ledgeDetected && distanceToLedge < maxLedgeGrabDistance && !holding) EnterLedgeHold();
+        if (ledgeDetected && distanceToLedge < maxLedgeGrabDistance && !holding) EnterLedgeHold();
     }
 
     private void LedgeJump()
@@ -85,7 +83,7 @@ public class LedgeGrabbingOld : MonoBehaviour
     private void FreezeRigidbodyOnLedge()
     {
         // Move player towards ledge
-        if(distanceToLedge > 0.6f)
+        if (distanceToLedge > 0.6f)
         {
             rb.velocity = directionToLedge * moveToLedgeSpeed;
         }

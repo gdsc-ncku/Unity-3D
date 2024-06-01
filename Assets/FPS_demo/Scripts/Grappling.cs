@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Grappling : MonoBehaviour
@@ -57,7 +55,7 @@ public class Grappling : MonoBehaviour
         pm.freeze = true;
 
         RaycastHit hit;
-        if(Physics.Raycast(orientation.position, orientation.forward, out hit, maxGrappleDistance, whatIsGrappleable))
+        if (Physics.Raycast(orientation.position, orientation.forward, out hit, maxGrappleDistance, whatIsGrappleable))
         {
             grapplePoint = hit.point;
 

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CamRecoil : MonoBehaviour
@@ -24,7 +22,7 @@ public class CamRecoil : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("ItemHoldingR")) 
+        if (GameObject.Find("ItemHoldingR"))
         {
             GameObject weapon = GameObject.Find("ItemHoldingR");
             int index = weapon.GetComponent<WeaponSwitching>().selectedWeapon;
@@ -46,7 +44,7 @@ public class CamRecoil : MonoBehaviour
                         recoilY = child.GetComponent<ProjectileGun>().recoilY;
                         recoilZ = child.GetComponent<ProjectileGun>().recoilZ;
                     }
-                    
+
                 }
 
             }
@@ -68,7 +66,7 @@ public class CamRecoil : MonoBehaviour
         }
 
         targetRotaion = Vector3.Lerp(targetRotaion, Vector3.zero, returnSpeed * Time.deltaTime);
-        currentRotation = Vector3.Slerp(currentRotation, targetRotaion, snappiness* Time.fixedDeltaTime);
+        currentRotation = Vector3.Slerp(currentRotation, targetRotaion, snappiness * Time.fixedDeltaTime);
         transform.localRotation = Quaternion.Euler(currentRotation);
         Debug.Log($"{targetRotaion}, {currentRotation}, {transform.localRotation}");
     }

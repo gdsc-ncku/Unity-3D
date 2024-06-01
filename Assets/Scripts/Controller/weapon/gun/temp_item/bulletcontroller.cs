@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class bulletcontroller : MonoBehaviour
@@ -7,13 +5,13 @@ public class bulletcontroller : MonoBehaviour
     //武器屬性
     [SerializeField]
     WeaponData gun;
-    private float downtime=0.8f; //落下時間(高度)
+    private float downtime = 0.8f; //落下時間(高度)
     // Start is called before the first frame update
     void Start()
     {
         gameObject.GetComponent<MeshRenderer>().enabled = false;
         Invoke("displayBullet", 0.05f);
-        GetComponent<Rigidbody>().AddForce(transform.forward*8000);
+        GetComponent<Rigidbody>().AddForce(transform.forward * 8000);
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -23,7 +21,7 @@ public class bulletcontroller : MonoBehaviour
     // // Update is called once per frame
     void Update()
     {
-        Destroy(gameObject,downtime);
+        Destroy(gameObject, downtime);
     }
 
     private void displayBullet()

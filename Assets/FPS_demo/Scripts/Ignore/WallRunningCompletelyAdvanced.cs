@@ -1,7 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
+using 
+/* 取消合併專案 'Assembly-CSharp.Player' 的變更
+之前:
 using UnityEngine;
 using TMPro;
+之後:
+using TMPro;
+using UnityEngine;
+*/
+UnityEngine;
 
 public class WallRunningCompletelyAdvanced : MonoBehaviour
 {
@@ -292,7 +299,7 @@ public class WallRunningCompletelyAdvanced : MonoBehaviour
 
         // Spherecast forwards
         RaycastHit sphereCastHit;
-        if(Physics.SphereCast(transform.position, 2f, camT.forward, out sphereCastHit, 7f, whatIsWall))
+        if (Physics.SphereCast(transform.position, 2f, camT.forward, out sphereCastHit, 7f, whatIsWall))
         {
             jumpPoint = sphereCastHit.point;
         }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 // Dave's Tutorials - LedgeGrabbing
@@ -80,7 +78,7 @@ public class LedgeGrabbingDone : MonoBehaviour
 
             if (timeOnLedge > minTimeOnLedge && anyInputKeyPressed) ExitLedgeHold();
 
-            if(Input.GetKeyDown(jumpKey)) LedgeJump();
+            if (Input.GetKeyDown(jumpKey)) LedgeJump();
         }
 
         // SubState 2 - Exiting Ledge
@@ -124,7 +122,7 @@ public class LedgeGrabbingDone : MonoBehaviour
 
         holding = true; //
 
-        pm.restricted = true; 
+        pm.restricted = true;
         pm.unlimited = true;
 
         currLedge = ledgeHit.transform; //
@@ -172,7 +170,7 @@ public class LedgeGrabbingDone : MonoBehaviour
         timeOnLedge = 0; //
 
         pm.freeze = false; //
-        pm.unlimited = false; 
+        pm.unlimited = false;
         pm.restricted = false;
 
         rb.useGravity = true;

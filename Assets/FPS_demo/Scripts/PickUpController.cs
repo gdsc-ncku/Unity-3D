@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
+﻿using UnityEngine;
 
 public class PickUpController : MonoBehaviour
 {
@@ -16,8 +12,19 @@ public class PickUpController : MonoBehaviour
     public float dropForwardForce, dropUpwardForce;
     public WeaponSwitching ws;
     public bool equipped;
+
+/* 取消合併專案 'Assembly-CSharp.Player' 的變更
+之前:
     public static bool slotFull;
     
+    private void Start()
+之後:
+    public static bool slotFull;
+
+    private void Start()
+*/
+    public static bool slotFull;
+
     private void Start()
     {
         //Setup
@@ -41,7 +48,7 @@ public class PickUpController : MonoBehaviour
     {
         //Check if player is in range and "E" is pressed
         Vector3 distanceToPlayer = player.position - transform.position;
-        if (!equipped && distanceToPlayer.magnitude <= pickUpRange && Input.GetKeyDown(pickKey) ) PickUp();//&& !slotFull
+        if (!equipped && distanceToPlayer.magnitude <= pickUpRange && Input.GetKeyDown(pickKey)) PickUp();//&& !slotFull
 
         //Drop if equipped and "Q" is pressed
         if (equipped && Input.GetKeyDown(dropKey)) Drop();
@@ -63,7 +70,7 @@ public class PickUpController : MonoBehaviour
         foreach (Transform weapon in gunContainer.transform)
             weapon.gameObject.SetActive(false);
         transform.SetParent(gunContainer);
-        ws.selectedWeapon = gunContainer.transform.childCount- 1;
+        ws.selectedWeapon = gunContainer.transform.childCount - 1;
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.Euler(Vector3.zero);
         transform.localScale = Vector3.one;
