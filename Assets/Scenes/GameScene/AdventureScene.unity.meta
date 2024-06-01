@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/GameScene/AdventureScene.unity.meta
 guid: 947adea53dee95443bdd5e791c52fba1
 DefaultImporter:
+========
+guid: bb8e0206ca4e1a844a43e93f16fc22e4
+NativeFormatImporter:
+>>>>>>>> 31867b9 (feat: Add StingRay Enemy):Assets/Scriptable/Enemy/StingRayEnemy.asset.meta
   externalObjects: {}
+  mainObjectFileID: 11400000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

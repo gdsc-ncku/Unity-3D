@@ -26,7 +26,10 @@ public class FPSCustomBullet : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.forward = rb.velocity.normalized;
+        if (rb.velocity.normalized != Vector3.zero)
+        {
+            transform.forward = rb.velocity.normalized;
+        }
     }
 
     private void OnTriggerEnter(Collider collider)

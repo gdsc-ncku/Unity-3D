@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ddd4fec1715c4245826fb28f2b1d40c, type: 3}
+  m_Name: SalamanderEnemy
+  m_EditorClassIdentifier: 
+  Drops: []
+  DropsProbability: 0
+  AttackRange: 10
+  AttackSpeed: 2
+  AttackTime: 4
+  AttackDamage: 10
+  MoveSpeed: 4
+  RunSpeed: 6
+  Health: 50
+  Bullets:
+  - {fileID: 1217664648157524, guid: 446b3d87a50580e4284d65e791efcae4, type: 3}
+  - {fileID: 1776909336342538, guid: 303a7c1f85259bc4bba8258385f9730c, type: 3}
+  - {fileID: 1968155112565690, guid: ec28a878d2e8cf44195d1b9444848ad6, type: 3}
+  - {fileID: 1943519805648896, guid: 59fdba740e090324abdd3fd5373bfd43, type: 3}
+  - {fileID: 1095381659082510, guid: 9988328c8945b6f48ab2a1150a272d5f, type: 3}

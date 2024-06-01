@@ -9,6 +9,8 @@ public class PlayerBattleValueScriptable : ScriptableObject
     {
         HealthDecrease.AddListener(ChangeHealth);
         HealthIncrease.AddListener(ChangeHealth);
+        initM_Hp = role.GetComponent<StudentDataManager>().studentData.Health;
+        MaxHealth = initM_Hp;
     }
     #region BasicBattleValue
     [Header("BasicBattleValue")]
@@ -33,7 +35,7 @@ public class PlayerBattleValueScriptable : ScriptableObject
         {
             return m_Health;
         }
-        set
+        set 
         {
             m_Health = value;
             CurrentHealth = value;
@@ -106,13 +108,4 @@ public class PlayerBattleValueScriptable : ScriptableObject
     #region Awakening
     //Storage awakening
     #endregion
-
-    private void OnValidate()
-    {
-        if(role != null)
-        {
-            initM_Hp = role.GetComponent<StudentDataManager>().studentData.Health;
-            MaxHealth = initM_Hp;
-        }
-    }
 }

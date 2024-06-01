@@ -14,8 +14,8 @@ public class MEStudent : CharacterBaseData
     // The turret falls and hits the enemy
     public void UseingQ_Skill(Transform cam, Transform attackPoint, LayerMask whatIsEnemy, GameObject effectPrefab)
     {
-        // Cast a ray to detect enemy
-        Ray ray = new Ray(cam.transform.position, cam.transform.forward);
+        /*// Cast a ray to detect enemy
+        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, QskillRange, whatIsEnemy))
@@ -23,7 +23,7 @@ public class MEStudent : CharacterBaseData
             // Instantiate effect at enemy position
             Instantiate(effectPrefab, hit.point, Quaternion.identity);
             Debug.Log("Skill activated at enemy position: " + hit.point);
-        }
+        }*/
     }
 
     // This method combines skill activation.

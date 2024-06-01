@@ -15,6 +15,7 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
+        /*
         //Click right mouse to hide cursor or press ESC to display cursor
         if (Input.GetMouseButtonDown(0))
         {
@@ -25,7 +26,7 @@ public class CameraMovement : MonoBehaviour
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-        }
+        }*/
     }
 
     // Update is called once per frame
@@ -43,6 +44,13 @@ public class CameraMovement : MonoBehaviour
             _rotateX -= 360;
         else if (_rotateX < -180)
             _rotateX += 360;
+
+        // The range of _rotateY is 0~360, therefore we need if, else if to let its range limit in -180~180
+        if (_rotateY > 180)
+            _rotateY -= 360;
+        else if (_rotateY < -180)
+            _rotateY += 360;
+
         //Detect whether camera open and input >= threshold
         if (!_lock && (Mathf.Abs(_mouseXInput) >= _cameraMovingThreshold || Mathf.Abs(_mouseYInput) >= _cameraMovingThreshold))
         {
