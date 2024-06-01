@@ -5,8 +5,9 @@ using UnityEngine.InputSystem;
 public class PickUpItem : MonoBehaviour
 {
     [SerializeField] private PlayerBasicInformationScriptable PlayerMove;
+    [SerializeField] private PlayerBattleValueScriptable PlayerBattleValue;
     [SerializeField] Weapons Weapon;
-    private float pickUpRange = 4f;
+    private float pickUpRange = 8f;
 
     private void OnEnable()
     {
@@ -52,9 +53,9 @@ public class PickUpItem : MonoBehaviour
         // Emit a ray to detect item
         if (Physics.Raycast(cameraPosition, cameraDirection, out hitInfo, pickUpRange))
         {
-            if (hitInfo.collider.CompareTag("Item"))
+            if (hitInfo.collider.CompareTag("Gem"))
             {
-                Debug.Log("Picked up: " + hitInfo.collider.name);
+                PlayerBattleValue.Soul++;
                 Destroy(hitInfo.collider.gameObject);
             }
             else if (hitInfo.collider.CompareTag("Weapon"))

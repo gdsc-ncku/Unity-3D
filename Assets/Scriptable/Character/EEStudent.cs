@@ -3,12 +3,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EEStudent", menuName = "Character/EEStudent")]
 public class EEStudent : CharacterBaseData
 {
-    private float healthRate;
-    private float attackRate;
-    private float walkSpeedRate;
-    private float defenseRate;
-    private float q_SkillDamageRate;
-    private float e_SkillDamageRate;
     public override float HealthRate
     {
         get

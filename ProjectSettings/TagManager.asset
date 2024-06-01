@@ -13,6 +13,7 @@ TagManager:
   - Weapon
   - EnemyBullets
   - MainLight
+  - Gem
   layers:
   - Default
   - TransparentFX
@@ -33,7 +34,7 @@ TagManager:
   - Weapon
   - EEStudentUI
   - GemUI
-  - 
+  - Gem
   - 
   - 
   - 

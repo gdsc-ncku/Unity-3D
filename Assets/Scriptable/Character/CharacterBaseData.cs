@@ -14,12 +14,12 @@ public class CharacterBaseData : ScriptableObject
     public ParticleSystem Q_Skill;
     public float E_SkillDamage;
     public ParticleSystem E_Skill;
-    private float healthRate;
-    private float attackRate;
-    private float walkSpeedRate;
-    private float defenseRate;
-    private float q_SkillDamageRate;
-    private float e_SkillDamageRate;
+    protected float healthRate;
+    protected float attackRate;
+    protected float walkSpeedRate;
+    protected float defenseRate;
+    protected float q_SkillDamageRate;
+    protected float e_SkillDamageRate;
     public virtual float HealthRate
     {
         get
@@ -75,7 +75,7 @@ public class CharacterBaseData : ScriptableObject
             q_SkillDamageRate = value;
         }
     }
-    public virtual float E_SkillDamageRate
+    public virtual  float E_SkillDamageRate
     {
         get
         {
