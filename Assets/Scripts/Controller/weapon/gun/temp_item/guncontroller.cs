@@ -34,7 +34,7 @@ public class guncontroller : MonoBehaviour
 
     IEnumerator Shoot()
     {
-        yield return new WaitForSeconds(gun.attackSpeedMultiplier);
+        yield return new WaitForSeconds(gun.timeBetweenShooting);
         Instantiate(bulletPre, shotpoint.position, shotpoint.rotation);
         shooting = false;
     }

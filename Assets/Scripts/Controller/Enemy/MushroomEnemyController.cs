@@ -25,7 +25,6 @@ public class MushroomEnemyController : MonoBehaviour
             return;
         }
 
-        Debug.Log(other.gameObject.name);
         if (((1 << other.gameObject.layer) & layerMask) != 0)
         {
             playerInfo.ReduceHealth(mushroomEnemy.AttackDamage);
