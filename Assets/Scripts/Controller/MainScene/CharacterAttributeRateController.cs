@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 enum whichRate { Health, Defense, AttackRate, WalkSpeed, MainDamage, SecondDamage };
 public class CharacterAttributeRateController : MonoBehaviour
 {
-    [SerializeField] GameObject department, minus;
+    [SerializeField] GameObject department, plus, minus;
     [SerializeField] CharacterAttributeDisplay display;
+    [SerializeField] PlayerBasicInformationScriptable playerBasicInfo;
     [SerializeField] whichRate rate;
+    [SerializeField] TextMeshProUGUI consume;
     private float originRate, nowRate;
     private CharacterBaseData characterBaseData;
     // Start is called before the first frame update
@@ -48,6 +51,27 @@ public class CharacterAttributeRateController : MonoBehaviour
             originRate = characterBaseData.E_SkillDamageRate;
         }
         nowRate = originRate;
+
+        if (nowRate > originRate)
+        {
+            minus.SetActive(true);
+        }
+        else
+        {
+            minus.SetActive(false);
+        }
+
+        int val = (1 << (int)((nowRate - 1) * 10));
+        if (playerBasicInfo.Soul < val)
+        {
+            plus.SetActive(false);
+        }
+        else
+        {
+            plus.SetActive(true);
+        }
+
+        consume.text = val.ToString("0");
     }
 
     private void Update()
@@ -60,6 +84,18 @@ public class CharacterAttributeRateController : MonoBehaviour
         {
             minus.SetActive(false);
         }
+
+        int val = (1 << (int)((nowRate - 1) * 10));
+        if (playerBasicInfo.Soul < val)
+        {
+            plus.SetActive(false);
+        }
+        else
+        {
+            plus.SetActive(true);
+        }
+
+        consume.text = val.ToString("0");
     }
 
     public void Plus()
@@ -94,6 +130,8 @@ public class CharacterAttributeRateController : MonoBehaviour
             nowRate++;
             characterBaseData.E_SkillDamageRate += 0.1f;
         }
+
+        playerBasicInfo.Soul -= (1 << (int)((nowRate - 1) * 10));
         display.UpdateDisplay();
     }
 
@@ -134,6 +172,8 @@ public class CharacterAttributeRateController : MonoBehaviour
             nowRate--;
             characterBaseData.E_SkillDamageRate -= 0.1f;
         }
+
+        playerBasicInfo.Soul += (1 << (int)(((nowRate - 1) * 10) - 1));
         display.UpdateDisplay();
     }
 }
