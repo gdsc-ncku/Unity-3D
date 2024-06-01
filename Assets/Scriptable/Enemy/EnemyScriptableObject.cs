@@ -34,6 +34,11 @@ public class EnemyScriptableObject : ScriptableObject
 
     }
 
+    public virtual void attack(GameObject enemy, GameObject GenPos)
+    {
+        
+    }
+
     public virtual void attack(GameObject gameObject, float waittingTime)
     {
 
