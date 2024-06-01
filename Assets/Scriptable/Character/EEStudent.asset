@@ -13,15 +13,21 @@ MonoBehaviour:
   m_Name: EEStudent
   m_EditorClassIdentifier: 
   Unlocked: 0
-  Health: 120
-  Defense: 15
-  AttackDamage: 1.1
-  WalkSpeed: 7
+  Health: 100
+  Defense: 10
+  AttackDamage: 1
+  WalkSpeed: 4
   JumpForce: 8
-  Q_SkillDamage: 250
+  Q_SkillDamage: 10
   Q_Skill: {fileID: 0}
-  E_SkillDamage: 400
+  E_SkillDamage: 10
   E_Skill: {fileID: 0}
+  HealthRate: 1
+  AttackRate: 1
+  WalkSpeedRate: 1
+  DefenseRate: 1
+  Q_SkillDamageRate: 1
+  E_SkillDamageRate: 1
   Q_MagicConsumption: 1
   Q_DamageRate: 1
   Q_SkillRange: 1
