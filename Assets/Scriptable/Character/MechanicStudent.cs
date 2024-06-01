@@ -5,13 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MechanicStudent", menuName = "Character/MechanicStudent")]
 public class MechanicStudent : CharacterBaseData
 {
-    [SerializeField] private float healthRate;
-    [SerializeField] private float attackRate;
-    [SerializeField] private float walkSpeedRate;
-    [SerializeField] private float defenseRate;
-    [SerializeField] private float q_SkillDamageRate;
-    [SerializeField] private float e_SkillDamageRate;
-    public new float HealthRate
+    public override float HealthRate
     {
         get
         {
@@ -23,7 +17,7 @@ public class MechanicStudent : CharacterBaseData
             PlayerPrefs.SetFloat("MechanicHealthRate", value);
         }
     }
-    public new float AttackRate
+    public override float AttackRate
     {
         get
         {
@@ -35,7 +29,7 @@ public class MechanicStudent : CharacterBaseData
             PlayerPrefs.SetFloat("MechanicAttackRate", value);
         }
     }
-    public new float WalkSpeedRate
+    public override float WalkSpeedRate
     {
         get
         {
@@ -47,7 +41,7 @@ public class MechanicStudent : CharacterBaseData
             PlayerPrefs.SetFloat("MechanicWalkSpeedRate", value);
         }
     }
-    public new float DefenseRate
+    public override float DefenseRate
     {
         get
         {
@@ -59,7 +53,7 @@ public class MechanicStudent : CharacterBaseData
             PlayerPrefs.SetFloat("MechanicDefenseRate", value);
         }
     }
-    public new float Q_SkillDamageRate
+    public override float Q_SkillDamageRate
     {
         get
         {
@@ -71,7 +65,7 @@ public class MechanicStudent : CharacterBaseData
             PlayerPrefs.SetFloat("MechanicQ_SkillDamageRate", value);
         }
     }
-    public new float E_SkillDamageRate
+    public override float E_SkillDamageRate
     {
         get
         {

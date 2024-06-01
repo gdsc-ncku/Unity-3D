@@ -5,13 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ChemistryStudent", menuName = "Character/ChemistryStudent")]
 public class ChemistryStudent : CharacterBaseData
 {
-    [SerializeField] private float healthRate;
-    [SerializeField] private float attackRate;
-    [SerializeField] private float walkSpeedRate;
-    [SerializeField] private float defenseRate;
-    [SerializeField] private float q_SkillDamageRate;
-    [SerializeField] private float e_SkillDamageRate;
-    public new float HealthRate
+    public override float HealthRate
     {
         get
         {
@@ -23,7 +17,7 @@ public class ChemistryStudent : CharacterBaseData
             PlayerPrefs.SetFloat("ChemistryHealthRate", value);
         }
     }
-    public new float AttackRate
+    public override float AttackRate
     {
         get
         {
@@ -35,7 +29,7 @@ public class ChemistryStudent : CharacterBaseData
             PlayerPrefs.SetFloat("ChemistryAttackRate", value);
         }
     }
-    public new float WalkSpeedRate
+    public override float WalkSpeedRate
     {
         get
         {
@@ -47,7 +41,7 @@ public class ChemistryStudent : CharacterBaseData
             PlayerPrefs.SetFloat("ChemistryWalkSpeedRate", value);
         }
     }
-    public new float DefenseRate
+    public override float DefenseRate
     {
         get
         {
@@ -59,7 +53,7 @@ public class ChemistryStudent : CharacterBaseData
             PlayerPrefs.SetFloat("ChemistryDefenseRate", value);
         }
     }
-    public new float Q_SkillDamageRate
+    public override float Q_SkillDamageRate
     {
         get
         {
@@ -71,7 +65,7 @@ public class ChemistryStudent : CharacterBaseData
             PlayerPrefs.SetFloat("ChemistryQ_SkillDamageRate", value);
         }
     }
-    public new float E_SkillDamageRate
+    public override float E_SkillDamageRate
     {
         get
         {

@@ -5,8 +5,17 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName = "PlayerBattleInformation", menuName = "PlayerInformation/Player/PlayerBattleInformation", order = 2)]
 public class PlayerBattleValueScriptable : ScriptableObject
 {
+    private int soul;
+    public int Soul
+    {
+        get { return soul; }
+        set { soul = value; }
+    }
+
     private void OnEnable()
     {
+        soul = 0;
+        Soul = 0;
         HealthDecrease.AddListener(ChangeHealth);
         HealthIncrease.AddListener(ChangeHealth);
         initM_Hp = role.GetComponent<StudentDataManager>().studentData.Health;

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93789bda45df55449b5dd45b05be6441, type: 3}
   m_Name: StingRayEnemy
   m_EditorClassIdentifier: 
-  Drops: []
-  DropsProbability: 0
+  Drops:
+  - {fileID: 3187354347425594553, guid: e8bfe557e45df6240a508fdb15390b66, type: 3}
+  DropsProbability: 0.3
   AttackRange: 30
   AttackSpeed: 1
   AttackTime: 2

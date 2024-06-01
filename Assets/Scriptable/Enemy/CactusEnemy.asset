@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5010df14ced97744a3a16feabceedc7, type: 3}
   m_Name: CactusEnemy
   m_EditorClassIdentifier: 
-  Drops: []
-  DropsProbability: 0
+  Drops:
+  - {fileID: 3187354347425594553, guid: e8bfe557e45df6240a508fdb15390b66, type: 3}
+  DropsProbability: 0.3
   AttackRange: 30
   AttackSpeed: 1
   AttackTime: 5

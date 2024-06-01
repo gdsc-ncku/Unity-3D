@@ -96,8 +96,9 @@ public class CactusEnemyBullets : MonoBehaviour
 
         if (((1 << other.gameObject.transform.root.gameObject.layer) & bulletAim) != 0)
         {
-            Debug.Log("Player be attacked");
-            PlayerInfo.ReduceHealth(cactusEnemy.AttackDamage / cactusEnemy.BulletFinalSize * gameObject.transform.localScale.x);
+            //To ensure that defense does not completely offset the damage, we set the minimum value of defense power to 20% of attack power.
+            float effectiveDefense = Mathf.Max(PlayerInfo.Role.GetComponent<StudentDataManager>().studentData.Defense, cactusEnemy.AttackDamage * 0.1f);
+            PlayerInfo.ReduceHealth(Mathf.Max(0, cactusEnemy.AttackDamage * (100f / (100f + effectiveDefense))));
             other.gameObject.transform.root.gameObject.GetComponent<Rigidbody>().AddForce(rb.velocity.normalized * volumeA, ForceMode.Impulse);
             Destroy(gameObject);
         }

@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     PlayerControl playerControl;
     private void Awake()
     {
-        if(PlayerMove == null || PlayerMove.playerControl == null)
+        if (PlayerMove == null || PlayerMove.playerControl == null)
         {
             Debug.Log("PlayerBasicInformationScriptable Disappear");
             return;
@@ -108,7 +108,6 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator Jump()
     {
-<<<<<<<<< Temporary merge branch 1
         float jumpForce = MovementConst.Role.GetComponent<StudentDataManager>().studentData.JumpForce;
         rb.AddForce(gameObject.transform.up * jumpForce, ForceMode.Impulse);
 
@@ -116,11 +115,10 @@ public class PlayerMovement : MonoBehaviour
 
         while (!Physics.Raycast(GroundDetector.transform.position, GroundDetector.transform.up * -1, out _, 0.05f))
         {
+            yield return null;
         }
 
         Grounded = true;
         isJumping = false;
     }
-    }
-
 }

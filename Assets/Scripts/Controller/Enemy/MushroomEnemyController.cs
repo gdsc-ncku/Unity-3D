@@ -27,7 +27,8 @@ public class MushroomEnemyController : MonoBehaviour
 
         if (((1 << other.gameObject.layer) & layerMask) != 0)
         {
-            playerInfo.ReduceHealth(mushroomEnemy.AttackDamage);
+            float effectiveDefense = Mathf.Max(playerInfo.Role.GetComponent<StudentDataManager>().studentData.Defense, mushroomEnemy.AttackDamage * 0.1f);
+            playerInfo.ReduceHealth(Mathf.Max(0, mushroomEnemy.AttackDamage * (100f / (100f + effectiveDefense))));
         }
     }
 }

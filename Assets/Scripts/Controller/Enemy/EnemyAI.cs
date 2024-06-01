@@ -50,7 +50,8 @@ public class EnemyAI : MonoBehaviour
         yield return null;
         if (EnemyInfo.Drops.Length != 0 && Random.Range(0f, 1f) < EnemyInfo.DropsProbability)
         {
-            Instantiate(EnemyInfo.Drops[Random.Range(0, EnemyInfo.Drops.Length)], transform);
+            GameObject drop = EnemyInfo.Drops[Random.Range(0, EnemyInfo.Drops.Length)];
+            Instantiate(drop, transform.position, Quaternion.identity);
         }
 
         Destroy(gameObject, animator.GetCurrentAnimatorClipInfo(0).Length);
@@ -298,7 +299,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (collider.transform.root.gameObject.CompareTag("bullet"))
         {
-            ReduceHealth(collider.GetComponent<FPSCustomBullet>().AttackWeapon.ThisWeapon.damage);
+            ReduceHealth(collider.GetComponent<FPSCustomBullet>().AttackWeapon.ThisWeapon.damage * BattleInfo.Role.GetComponent<StudentDataManager>().studentData.AttackDamage);
         }
     }
 }
