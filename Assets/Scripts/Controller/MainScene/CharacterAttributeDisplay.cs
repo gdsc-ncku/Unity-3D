@@ -33,7 +33,7 @@ public class CharacterAttributeDisplay : MonoBehaviour, IPointerEnterHandler, IP
 
         Health.transform.parent.GetComponent<TextMeshProUGUI>().text = "血量:(" + ((student.HealthRate - 1) * 10).ToString("0") + ")";
         Defense.transform.parent.GetComponent<TextMeshProUGUI>().text = "防禦:(" + ((student.DefenseRate - 1) * 10).ToString("0") + ")";
-        AttackRate.transform.parent.GetComponent<TextMeshProUGUI>().text = "攻擊力:(" + ((student.AttackRate - 1) * 10).ToString("0") + ")";
+        AttackRate.transform.parent.GetComponent<TextMeshProUGUI>().text = "攻擊倍率:(" + ((student.AttackRate - 1) * 10).ToString("0") + ")";
         WalkSpeed.transform.parent.GetComponent<TextMeshProUGUI>().text = "移動速度:(" + ((student.WalkSpeedRate - 1) * 10).ToString("0") + ")";
         MainDamage.transform.parent.GetComponent<TextMeshProUGUI>().text = "主技能傷害:(" + ((student.Q_SkillDamageRate - 1) * 10).ToString("0") + ")";
         SecondDamage.transform.parent.GetComponent<TextMeshProUGUI>().text = "副技能傷害:(" + ((student.E_SkillDamageRate - 1) * 10).ToString("0") + ")";

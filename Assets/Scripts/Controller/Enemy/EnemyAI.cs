@@ -298,7 +298,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (collider.transform.root.gameObject.CompareTag("bullet"))
         {
-            ReduceHealth(collider.GetComponent<FPSCustomBullet>().AttackWeapon.ThisWeapon.damage);
+            ReduceHealth(collider.GetComponent<FPSCustomBullet>().AttackWeapon.ThisWeapon.damage * BattleInfo.Role.GetComponent<StudentDataManager>().studentData.AttackDamage);
         }
     }
 }
