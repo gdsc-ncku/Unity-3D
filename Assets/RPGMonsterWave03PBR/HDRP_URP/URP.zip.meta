@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/RPGMonsterWave03PBR/HDRP_URP/URP.zip.meta
 guid: e211c1dcf9d7bd4449d5a42b44cbd0dc
+========
+guid: 6fa411752901cac459ff1062c8f91437
+folderAsset: yes
+>>>>>>>> 091c92a5096b27f6edaa65e9f4de2e19e3d949b0:Assets/Scripts/Controller/Skill.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
