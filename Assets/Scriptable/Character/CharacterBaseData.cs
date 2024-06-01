@@ -14,6 +14,12 @@ public class CharacterBaseData : ScriptableObject
     public ParticleSystem Q_Skill;
     public float E_SkillDamage;
     public ParticleSystem E_Skill;
+    public float HealthRate;
+    public float AttackRate;
+    public float WalkSpeedRate;
+    public float DefenseRate;
+    public float Q_SkillDamageRate;
+    public float E_SkillDamageRate;
     #endregion
 
     //Hero_Q_Skill and Hero_E_Skill are the basic strengthening direction for every hero and you can define 

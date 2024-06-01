@@ -57,12 +57,33 @@ public class DataManager : MonoBehaviour
 
             PlayerPrefs.SetInt("LawStudent", 1);
 
-            PlayerPrefs.SetFloat("HealthRate", 1);
-            PlayerPrefs.SetFloat("AttackRate", 1);
-            PlayerPrefs.SetFloat("WalkSpeedRate", 1);
-            PlayerPrefs.SetFloat("AttackSpeedRate", 1);
-            PlayerPrefs.SetFloat("Q_SkillDamageRate", 1);
-            PlayerPrefs.SetFloat("E_SkillDamageRate", 1);
+            PlayerPrefs.SetFloat("LawHealthRate", 1f);
+            PlayerPrefs.SetFloat("LawAttackRate", 1);
+            PlayerPrefs.SetFloat("LawWalkSpeedRate", 1.6f);
+            PlayerPrefs.SetFloat("LawDefenseRate", 1.4f);
+            PlayerPrefs.SetFloat("LawQ_SkillDamageRate", 1);
+            PlayerPrefs.SetFloat("LawE_SkillDamageRate", 1);
+
+            PlayerPrefs.SetFloat("ChemistryHealthRate", 1f);
+            PlayerPrefs.SetFloat("ChemistryAttackRate", 1f);
+            PlayerPrefs.SetFloat("ChemistryWalkSpeedRate", 1.4f);
+            PlayerPrefs.SetFloat("ChemistryDefenseRate", 1f);
+            PlayerPrefs.SetFloat("ChemistryQ_SkillDamageRate", 1.3f);
+            PlayerPrefs.SetFloat("ChemistryE_SkillDamageRate", 1.3f);
+
+            PlayerPrefs.SetFloat("EEHealthRate", 1.9f);
+            PlayerPrefs.SetFloat("EEAttackRate", 1.1f);
+            PlayerPrefs.SetFloat("EEWalkSpeedRate", 1f);
+            PlayerPrefs.SetFloat("EEDefenseRate", 1f);
+            PlayerPrefs.SetFloat("EEQ_SkillDamageRate", 1);
+            PlayerPrefs.SetFloat("EEE_SkillDamageRate", 1);
+
+            PlayerPrefs.SetFloat("MechanicHealthRate", 1.3f);
+            PlayerPrefs.SetFloat("MechanicAttackRate", 1.2f);
+            PlayerPrefs.SetFloat("MechanicWalkSpeedRate", 1);
+            PlayerPrefs.SetFloat("MechanicDefenseRate", 1.5f);
+            PlayerPrefs.SetFloat("MechanicQ_SkillDamageRate", 1);
+            PlayerPrefs.SetFloat("MechanicE_SkillDamageRate", 1);
 
             PlayerPrefs.Save();
         }
