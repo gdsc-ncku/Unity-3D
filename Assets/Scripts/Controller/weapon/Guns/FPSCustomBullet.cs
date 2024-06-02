@@ -36,10 +36,21 @@ public class FPSCustomBullet : MonoBehaviour
     {
         if (collider.transform.root.gameObject != target || target == null) return;
 
-        GetComponent<MeshRenderer>().enabled = false;
-        GetComponent<TrailRenderer>().enabled = false;
+        MeshRenderer meshRenderer;
+        TrailRenderer trailRenderer;
+        if (TryGetComponent(out meshRenderer))
+        {
+            meshRenderer.enabled = false;
+        }
+
+        if (TryGetComponent(out trailRenderer))
+        {
+            trailRenderer.enabled = false;
+        }
+
         Ray ray = new(OriginAttackPoint, rb.velocity.normalized);
         RaycastHit[] hits = Physics.RaycastAll(ray, (collider.transform.position - OriginAttackPoint).magnitude * 2);
+        GameObject explosionObj;
 
         foreach (RaycastHit hit in hits)
         {
@@ -47,13 +58,21 @@ public class FPSCustomBullet : MonoBehaviour
             {
                 if (explosion != null)
                 {
-                    Destroy(Instantiate(explosion, hit.point, Quaternion.identity), 1f);
+                    explosionObj = Instantiate(explosion, hit.point, Quaternion.identity);
+                    ExplosionDamageController explosionDamageController;
+                    if(explosionObj.TryGetComponent(out explosionDamageController))
+                    {
+                        explosionDamageController.bullet = gameObject;
+                        explosionDamageController.hit = hit;
+                    }
+                    Destroy(explosionObj, 1f);
                 }
 
                 if (GetComponent<AudioSource>())
                 {
                     GetComponent<AudioSource>().PlayOneShot(explosionSound);
                 }
+                break;
             }
         }
 
