@@ -5,6 +5,7 @@ public class CharacterBaseData : ScriptableObject
     public bool Unlocked = false;
 
     #region BasicData
+    public bool rateSetting = false;
     public float Health;
     public float Defense;
     public float AttackDamage;

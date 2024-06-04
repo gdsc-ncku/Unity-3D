@@ -17,8 +17,8 @@ MonoBehaviour:
   DropsProbability: 0.3
   AttackRange: 30
   AttackSpeed: 1
-  AttackTime: 5
-  AttackDamage: 30
+  AttackTime: 3
+  AttackDamage: 20
   MoveSpeed: 4
   RunSpeed: 8
   Health: 10

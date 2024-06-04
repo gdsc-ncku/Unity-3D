@@ -20,6 +20,7 @@ public class DataManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(PlayerPrefs.HasKey("IsFirstTime"));
         //If player firstly open game, init some base player information in PlayerPrefs System;
         if (!PlayerPrefs.HasKey("IsFirstTime"))
         {

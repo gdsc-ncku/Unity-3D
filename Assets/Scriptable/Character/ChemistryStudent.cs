@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ChemistryStudent", menuName = "Character/ChemistryStudent")]
@@ -93,5 +94,19 @@ public class ChemistryStudent : CharacterBaseData
     public new void UseingE_Skill()
     {
 
+    }
+
+    private void OnEnable()
+    {
+        if(!rateSetting)
+        {
+            HealthRate = PlayerPrefs.GetFloat("ChemistryHealthRate");
+            AttackRate = PlayerPrefs.GetFloat("ChemistryAttackRate");
+            WalkSpeedRate = PlayerPrefs.GetFloat("ChemistryWalkSpeedRate");
+            DefenseRate = PlayerPrefs.GetFloat("ChemistryDefenseRate");
+            Q_SkillDamageRate = PlayerPrefs.GetFloat("ChemistryQ_SkillDamageRate");
+            E_SkillDamageRate = PlayerPrefs.GetFloat("ChemistryE_SkillDamageRate");
+            rateSetting = true;
+        }
     }
 }

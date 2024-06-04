@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameStatus.GenerateSpeed = 20f - (1 << (gameStatus.Level - 1)) + 1;
         transform.position = Vector3.zero;
         gameStatus.settingLevel.AddListener(() => LevelChoose());
         StartCoroutine(WaitForLoadingMainScene());
@@ -36,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     public void LevelChoose()
     {
-        if(gameStatus.Level == 1)
+        if(gameStatus.Level != 0)
         {
             level1();
         }
@@ -44,17 +46,17 @@ public class GameManager : MonoBehaviour
 
     public void level1()
     {
-        gameStatus.Duration = 600;
+        gameStatus.Duration = 600 + (gameStatus.Level - 1 ) * 60;
         StartCoroutine(SpawnRandomOnNavMesh());
     }
     IEnumerator SpawnRandomOnNavMesh()
     {
-        for (int i = 0; i < level1EnemyNum; i++)
+        while(gameStatus.RemainingDuration > 0)
         {
             Vector3 randomPosition = GetRandomPosition();
             if (randomPosition != Vector3.zero)
             {
-                GameObject instance = Instantiate(Enemys[Random.Range(0, Enemys.Length)], randomPosition, Quaternion.identity);
+                GameObject instance = Instantiate(Enemys[UnityEngine.Random.Range(0, Enemys.Length)], randomPosition, Quaternion.identity);
                 NavMeshAgent agent = instance.GetComponent<NavMeshAgent>();
                 if (agent != null)
                 {
@@ -65,8 +67,9 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
-
-            yield return null;
+            float waitTime = Math.Max(gameStatus.GenerateSpeed, 0.5f);
+            yield return new WaitForSeconds(waitTime);
+            gameStatus.RemainingDuration -= waitTime;
         }
     }
 
@@ -74,7 +77,7 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < maxAttempts; i++)
         {
-            Vector3 randomPoint = transform.position + Random.insideUnitSphere * radius;
+            Vector3 randomPoint = transform.position + UnityEngine.Random.insideUnitSphere * radius;
             NavMeshHit hit;
             if (NavMesh.SamplePosition(randomPoint, out hit, radius, NavMesh.AllAreas))
             {

@@ -25,6 +25,7 @@ public class PlayerBattleValueScriptable : ScriptableObject
     [Header("BasicBattleValue")]
     public GameObject Player, PlayerDieUI;
     [SerializeField] private GameObject role;
+    [SerializeField] GameStatus gameStatus;
     public GameObject Role
     {
         get { return role; }
@@ -61,7 +62,7 @@ public class PlayerBattleValueScriptable : ScriptableObject
     public void ReduceHealth(float Damage)
     {
         //Debug.Log("Player be attacked");
-        CurrentHealth -= Damage;
+        CurrentHealth -= (Damage * (1 << (gameStatus.Level - 1)));
         if (CurrentHealth <= 0)
         {
             CurrentHealth = 0;
