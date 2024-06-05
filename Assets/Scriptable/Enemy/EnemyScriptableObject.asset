@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aba3968936b0394990deb76e6ddc4c1, type: 3}
   m_Name: EnemyScriptableObject
   m_EditorClassIdentifier: 
-  Drops: []
+  Drops:
+  - {fileID: 1715415756834708287, guid: c6a164e412efb2046a4451f17d4b6a9e, type: 3}
+  - {fileID: 6273768277581816718, guid: cfba57e73740e3a4cb8ebb0b2cc53894, type: 3}
+  - {fileID: 7019969886298369894, guid: 4b2161b83e97cdf45af1af1478e5e2eb, type: 3}
+  - {fileID: 5004794661129548158, guid: dfd4e3b633f844c4685f541e618d7bf5, type: 3}
+  - {fileID: 3740127585108845052, guid: e0563c14fa9ac1445b29c5b7bc93402e, type: 3}
+  - {fileID: 3170650453285994056, guid: c90ef715887ccc848991efbb10b0b88f, type: 3}
   DropsProbability: 0
   AttackRange: 15
   AttackSpeed: 0.5

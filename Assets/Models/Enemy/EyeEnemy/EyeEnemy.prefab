@@ -1345,6 +1345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyInfo: {fileID: 11400000, guid: 6188b8f2d4a6c9f488b78becc2b49bed, type: 2}
+  WeaponDrops: {fileID: 11400000, guid: b97f36434d5262c439d0cc0d8b697b90, type: 2}
   BattleInfo: {fileID: 11400000, guid: e7c568f5ad6fe6e4d80ab0c9089eb3a4, type: 2}
   searchLayer:
     serializedVersion: 2
