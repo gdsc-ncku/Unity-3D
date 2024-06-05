@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator SpawnRandomOnNavMesh()
     {
-        for(int i = 0; i < 10; i++)
+        for(int i = 0; i < 5; i++)
         {
             Vector3 randomPosition = GetRandomPosition();
             if (randomPosition != Vector3.zero)

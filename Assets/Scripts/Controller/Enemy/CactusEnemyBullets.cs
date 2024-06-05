@@ -32,7 +32,7 @@ public class CactusEnemyBullets : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Enemy = Spawner == null ? Enemy : Spawner.transform.position;
         if (attacking && transform.childCount > 0)
@@ -44,7 +44,6 @@ public class CactusEnemyBullets : MonoBehaviour
             transform.GetChild(0).transform.position = Enemy + new Vector3(0, cactusEnemy.BulletZoomInEverySecond - 2f, 0);
             gameObject.transform.position = Enemy + new Vector3(0, cactusEnemy.BulletZoomInEverySecond, 0);
         }
-        gameObject.transform.RotateAround(transform.position, Vector3.up, 1f);
     }
 
     IEnumerator attack()
@@ -99,7 +98,8 @@ public class CactusEnemyBullets : MonoBehaviour
             //To ensure that defense does not completely offset the damage, we set the minimum value of defense power to 20% of attack power.
             float effectiveDefense = Mathf.Max(PlayerInfo.Role.GetComponent<StudentDataManager>().studentData.Defense, cactusEnemy.AttackDamage * 0.1f);
             PlayerInfo.ReduceHealth(Mathf.Max(0, cactusEnemy.AttackDamage * (100f / (100f + effectiveDefense))));
-            other.gameObject.transform.root.gameObject.GetComponent<Rigidbody>().AddForce(rb.velocity.normalized * volumeA, ForceMode.Impulse);
+            Vector3 force = rb.velocity.normalized * volumeA, fixedForce = new Vector3(force.x, force.y == 0 ? 0 : Mathf.Min(force.y, 3f), force.z);
+            other.gameObject.transform.root.gameObject.GetComponent<Rigidbody>().AddForce(fixedForce, ForceMode.Impulse);
             Destroy(gameObject);
         }
         else if(percentage >= 75f)
