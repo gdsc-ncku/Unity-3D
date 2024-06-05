@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [CreateAssetMenu(fileName = "ChemistryStudent", menuName = "Character/ChemistryStudent")]
 public class ChemistryStudent : CharacterBaseData
@@ -86,12 +87,12 @@ public class ChemistryStudent : CharacterBaseData
     #endregion
 
     //Hero skills effect need to write in the functions below.
-    public new void UseingQ_Skill()
+    public override void UseingQ_Skill()
     {
 
     }
 
-    public new void UseingE_Skill()
+    public override void UseingE_Skill()
     {
 
     }

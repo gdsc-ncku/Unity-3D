@@ -113,12 +113,12 @@ public class CharacterBaseData : ScriptableObject
     public float E_DamageRate = 1;
     public float E_SkillRange = 1;
     #endregion
-    public void UseingQ_Skill()
+    public virtual void UseingQ_Skill()
     {
 
     }
 
-    public void UseingE_Skill()
+    public virtual void UseingE_Skill()
     {
 
     }

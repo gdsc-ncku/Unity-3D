@@ -85,18 +85,25 @@ public class LawStudent : CharacterBaseData
     #endregion
 
     // document falls around and hits the enemy
-    public void UseingQ_Skill(Transform player, LayerMask whatIsEnemy, GameObject effectPrefab)
+    public void UseingQ_Skill(Transform player, LayerMask whatIsEnemy)
     {
-        // Instantiate effect at player position
-        Instantiate(effectPrefab, player.position, Quaternion.identity);
-
-        // Find all enemies within range
-        Collider[] enemiesInRange = Physics.OverlapSphere(player.position, QSkillRange, whatIsEnemy);
-
-        // Log the names of all enemies within range
-        foreach (Collider enemy in enemiesInRange)
+        RaycastHit hit;
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        if(Physics.Raycast(ray, out hit, Q_SkillRange))
         {
-            Debug.Log("Enemy in range: " + enemy.gameObject.name);
+            Vector3 pos = new Vector3(hit.point.x, 0, hit.point.z);
+
+            // Instantiate effect at player position
+            Instantiate(Q_Skill, pos, Quaternion.identity);
+
+            // Find all enemies within range
+            Collider[] enemiesInRange = Physics.OverlapSphere(player.position, QSkillRange, whatIsEnemy);
+
+            // Log the names of all enemies within range
+            foreach (Collider enemy in enemiesInRange)
+            {
+                Debug.Log("Enemy in range: " + enemy.gameObject.name);
+            }
         }
     }
 

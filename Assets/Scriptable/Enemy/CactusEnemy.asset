@@ -23,11 +23,9 @@ MonoBehaviour:
   RunSpeed: 8
   Health: 10
   Bullets:
-  - {fileID: 1801169046827820, guid: b05e9710e1b257f44a80ac8365c46467, type: 3}
-  - {fileID: 1847399388852780, guid: 0ecb0487b9a1b84439fcdba3282368ff, type: 3}
-  - {fileID: 1895310422780346, guid: 2a8e7caea7628b145b8db005f44c3ee6, type: 3}
-  - {fileID: 1986181127464668, guid: f60a9097500c8c648b50b51cb66337be, type: 3}
-  - {fileID: 1371378461770868, guid: c8b6f42e1b914cf4db7c0ccca4d106ad, type: 3}
+  - {fileID: 5605614315553501252, guid: e11f74edce83c1b40a0744564c953fef, type: 3}
+  - {fileID: 5605614315553501252, guid: 17bf57d03c2a02540881338a4cd38563, type: 3}
+  - {fileID: 5605614315553501252, guid: 795e7607ec76c484c9ff104e7ee18d07, type: 3}
   BulletChargingTime: 3
   BulletZoomInEverySecond: 5
   BulletFinalSize: 15
