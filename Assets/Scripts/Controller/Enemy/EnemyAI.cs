@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-enum status { chasing, stuck, attack, die};
+enum status { chasing, stuck, repath, attack, die};
 public class EnemyAI : MonoBehaviour
 {
     public EnemyScriptableObject EnemyInfo;
+    [SerializeField] EnemyScriptableObject WeaponDrops;
     [SerializeField] PlayerBattleValueScriptable BattleInfo;
     [SerializeField] LayerMask searchLayer;
     [SerializeField] Slider HealthBar;
@@ -50,7 +51,12 @@ public class EnemyAI : MonoBehaviour
         yield return null;
         if (EnemyInfo.Drops.Length != 0 && Random.Range(0f, 1f) < EnemyInfo.DropsProbability)
         {
-            Instantiate(EnemyInfo.Drops[Random.Range(0, EnemyInfo.Drops.Length)], transform);
+            GameObject drop = EnemyInfo.Drops[0];
+            if(Random.Range(0f, 1f) < EnemyInfo.DropsProbability)
+            {
+                Instantiate(WeaponDrops.Drops[(int)Random.Range(0, WeaponDrops.Drops.Length)], transform.position + Vector3.up * 1f, Quaternion.identity);
+            }
+            Instantiate(drop, transform.position, Quaternion.identity);
         }
 
         Destroy(gameObject, animator.GetCurrentAnimatorClipInfo(0).Length);
@@ -165,10 +171,11 @@ public class EnemyAI : MonoBehaviour
         direction.y = 0; // ���� Y �b���t��
         StartCoroutine(Attack());
 
-        while (BattleInfo.Player != null && direction != Vector3.zero && nowStatus == status.attack)
+        while (BattleInfo.Player != null && direction != Vector3.zero && (nowStatus == status.attack || nowStatus == status.repath))
         {
             if (IsPathObstructed() && !agent.hasPath)
             {
+                nowStatus = status.repath;
                 animator.Play("Walking", 0, 0);
                 MoveToNoObstalcePosition();
                 yield return null;
@@ -181,6 +188,7 @@ public class EnemyAI : MonoBehaviour
             }
 
             //Debug.Log("Aim");
+            nowStatus = status.attack;
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5.0f);
             direction = BattleInfo.Player.transform.position - transform.position;
@@ -190,6 +198,7 @@ public class EnemyAI : MonoBehaviour
             {
                 nowStatus = status.chasing;
                 StartCoroutine(SearchRoutine());
+                StopCoroutine(Attack());
                 yield break;
             }
             yield return null;
@@ -246,17 +255,19 @@ public class EnemyAI : MonoBehaviour
     IEnumerator Attack()
     {
         yield return new WaitForSeconds(0.5f);
-        while (BattleInfo.Player != null && nowStatus == status.attack)
+        while (BattleInfo.Player != null && (nowStatus == status.attack || nowStatus == status.repath))
         {
             if(IsPathObstructed() || agent.hasPath)
             {
-                //Debug.Log("return attack");
                 yield return new WaitForSeconds(0.5f);
                 continue;
             }
 
-            animator.SetFloat("Attack", 1 / EnemyInfo.AttackTime);
-            animator.Play("Attacking", 0, 0);
+            if (nowStatus == status.attack)
+            {
+                animator.SetFloat("Attack", 1 / EnemyInfo.AttackTime);
+                animator.Play("Attacking", 0, 0);
+            }
 
             //Wait for StateInfo update
             yield return null;
@@ -293,7 +304,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (collider.transform.root.gameObject.CompareTag("bullet"))
         {
-            ReduceHealth(collider.GetComponent<FPSCustomBullet>().AttackWeapon.ThisWeapon.damage);
+            ReduceHealth(collider.GetComponent<FPSCustomBullet>().AttackWeapon.ThisWeapon.damage * BattleInfo.Role.GetComponent<StudentDataManager>().studentData.AttackDamage);
         }
     }
 }

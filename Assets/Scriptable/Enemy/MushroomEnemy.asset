@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd743653d94b2394ba3f3103b4068e8e, type: 3}
   m_Name: MushroomEnemy
   m_EditorClassIdentifier: 
-  Drops: []
-  DropsProbability: 0
+  Drops:
+  - {fileID: 3187354347425594553, guid: e8bfe557e45df6240a508fdb15390b66, type: 3}
+  DropsProbability: 0.3
   AttackRange: 3
   AttackSpeed: 1
   AttackTime: 1
-  AttackDamage: 5
-  MoveSpeed: 0
-  RunSpeed: 8
+  AttackDamage: 40
+  MoveSpeed: 4
+  RunSpeed: 6
   Health: 100
   Bullets: []

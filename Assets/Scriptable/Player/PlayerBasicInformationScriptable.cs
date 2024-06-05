@@ -21,7 +21,19 @@ public class PlayerBasicInformationScriptable : ScriptableObject
     [Header("PlayerInformation")]
     public string Name = "Admin";
     public float Level = 1;
-    public float Soul = 0;
+    [SerializeField] private int soul;
+    public int Soul
+    {
+        get
+        {
+            return soul;
+        }
+        set
+        {
+            soul = value;
+            PlayerPrefs.SetInt("Soul", value);
+        }
+    }
     #endregion
 
     #region ScreenResolution
@@ -50,16 +62,7 @@ public class PlayerBasicInformationScriptable : ScriptableObject
 
     //Just record what character we have
     #region Character
-    public GameObject Law, Mechanic, Chemistry;
-    #endregion
-
-    #region Talent
-    public float HealthRate = 1;
-    public float AttackRate = 1;
-    public float WalkSpeedRate = 1;
-    public float AttackSpeedRate = 1;
-    public float Q_SkillDamageRate = 1;
-    public float E_SkillDamageRate = 1;
+    public GameObject Law, Mechanic, Chemistry, EE;
     #endregion
 
     private void OnEnable()

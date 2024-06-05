@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     PlayerControl playerControl;
     private void Awake()
     {
-        if(PlayerMove == null || PlayerMove.playerControl == null)
+        if (PlayerMove == null || PlayerMove.playerControl == null)
         {
             Debug.Log("PlayerBasicInformationScriptable Disappear");
             return;
@@ -121,5 +121,4 @@ public class PlayerMovement : MonoBehaviour
         Grounded = true;
         isJumping = false;
     }
-
 }

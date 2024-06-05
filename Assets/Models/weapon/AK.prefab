@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 2611499690249159549}
   - component: {fileID: 8628247653621043257}
   - component: {fileID: -3981039857943747647}
+  - component: {fileID: 4997017795242971026}
   m_Layer: 7
   m_Name: AK
   m_TagString: Weapon
@@ -308,11 +309,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ThisWeapon: {fileID: 11400000, guid: bb254ac2fc5c9454d9e4887b82a81961, type: 2}
+  BulletsLeftChange:
+    m_PersistentCalls:
+      m_Calls: []
   weaponPosOffset: {x: 0, y: 0, z: 0}
   weaponAttackPoint: {fileID: 1545163362158174379}
   bulletsMax: 0
-  bulletsLeft: 0
-  weaponIcon: {fileID: 0}
+  BulletsLeft: 0
+--- !u!114 &4997017795242971026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715415756834708287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2012147aa440d7140b1a96fa27fffad6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2493705048337379768
 GameObject:
   m_ObjectHideFlags: 0

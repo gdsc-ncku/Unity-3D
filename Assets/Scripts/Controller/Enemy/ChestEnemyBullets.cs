@@ -37,7 +37,8 @@ public class ChestEnemyBullets : MonoBehaviour
 
         if (((1 << other.gameObject.transform.root.gameObject.layer) & bulletAim) != 0)
         {
-            PlayerInfo.ReduceHealth(chestEnemy.AttackDamage);
+            float effectiveDefense = Mathf.Max(PlayerInfo.Role.GetComponent<StudentDataManager>().studentData.Defense, chestEnemy.AttackDamage * 0.1f);
+            PlayerInfo.ReduceHealth(Mathf.Max(0, chestEnemy.AttackDamage * (100f / (100f + effectiveDefense))));
             other.gameObject.transform.root.gameObject.GetComponent<Rigidbody>().AddForce(rb.velocity.normalized * rb.mass * Random.Range(5f, 10f), ForceMode.Impulse);
         }
 

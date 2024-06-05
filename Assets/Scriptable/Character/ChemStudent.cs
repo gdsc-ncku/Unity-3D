@@ -9,7 +9,7 @@ public class ChemStudent : CharacterBaseData
     public float throwUpwardForce;
 
     #endregion
-    // Use the Q skill
+    // throwing molocov cocktail
     public void UseQSkill(Transform cam, Transform attackPoint, GameObject objectToThrow)
     {
         // instantiate object to throw
@@ -18,7 +18,7 @@ public class ChemStudent : CharacterBaseData
         // get rigidbody component
         Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
 
-        // calculate direction
+        // calculate throw direction
         Vector3 forceDirection = cam.forward;
 
         RaycastHit hit;
@@ -34,9 +34,7 @@ public class ChemStudent : CharacterBaseData
         projectileRb.AddForce(forceToAdd, ForceMode.Impulse);
     }
 
-    // Use the E skill (if any)
     public void UseESkill()
     {
-        // Implement the effect of the E skill here
     }
 }

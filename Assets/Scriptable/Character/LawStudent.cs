@@ -3,37 +3,123 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "LawStudent", menuName = "Character/LawStudent")]
 public class LawStudent : CharacterBaseData
 {
+    public override float HealthRate
+    {
+        get
+        {
+            return healthRate;
+        }
+        set
+        {
+            healthRate = value;
+            PlayerPrefs.SetFloat("LawHealthRate", value);
+        }
+    }
+    public override float AttackRate
+    {
+        get
+        {
+            return attackRate;
+        }
+        set
+        {
+            attackRate = value;
+            PlayerPrefs.SetFloat("LawAttackRate", value);
+        }
+    }
+    public override float WalkSpeedRate
+    {
+        get
+        {
+            return walkSpeedRate;
+        }
+        set
+        {
+            walkSpeedRate = value;
+            PlayerPrefs.SetFloat("LawWalkSpeedRate", value);
+        }
+    }
+    public override float DefenseRate
+    {
+        get
+        {
+            return defenseRate;
+        }
+        set
+        {
+            defenseRate = value;
+            PlayerPrefs.SetFloat("LawDefenseRate", value);
+        }
+    }
+    public override float Q_SkillDamageRate
+    {
+        get
+        {
+            return q_SkillDamageRate;
+        }
+        set
+        {
+            q_SkillDamageRate = value;
+            PlayerPrefs.SetFloat("LawQ_SkillDamageRate", value);
+        }
+    }
+    public override float E_SkillDamageRate
+    {
+        get
+        {
+            return e_SkillDamageRate;
+        }
+        set
+        {
+            e_SkillDamageRate = value;
+            PlayerPrefs.SetFloat("LawE_SkillDamageRate", value);
+        }
+    }
     // You can create specific strengthening below.
     #region Hero_Q_Skill
-    public float rangeQ = 10f;
+    // document falls around and hits the enemy
+    public override void UseingQ_Skill()
+    {
+        RaycastHit hit;
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        if (Physics.Raycast(ray, out hit, Q_SkillRange))
+        {
+            Vector3 pos = new Vector3(hit.point.x, 8, hit.point.z);
+
+            // Instantiate effect at player position
+            Instantiate(Q_Skill, pos, Quaternion.identity);
+        }
+    }
     #endregion
 
     #region Hero_E_Skill
-    public float rangeE = 10f;
+    // Throw the gavel at the enemy
+    public override void UseingE_Skill()
+    {
+        RaycastHit hit;
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        if (Physics.Raycast(ray, out hit, E_SkillRange))
+        {
+            Vector3 pos = new Vector3(hit.point.x, 8, hit.point.z);
+
+            // Instantiate effect at player position
+            GameObject effect = Instantiate(E_Skill, pos, Quaternion.identity);
+            effect.transform.forward = -Vector3.up;
+            if(hit.collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                effect.GetComponent<GravelEffect>().target = hit.collider.gameObject;
+            }
+        }
+    }
     #endregion
 
-    // Hero skills effect need to write in the functions below.
-    public new void UseingQ_Skill(Transform player, LayerMask whatIsEnemy ,GameObject effectPrefab)
+    private void OnEnable()
     {
-        /*Instantiate(effectPrefab, player, Quaternion.identity);
-        if (Physics.Raycast(ray, out hit, rangeQ, whatIsEnemy))
-        {
-            Debug.Log("Skill activated at enemy position: " + hit.point);
-        }*/
-    }
-
-    // This method combines skill activation.
-    public void UseingE_Skill(Transform cam, Transform attackPoint, LayerMask whatIsEnemy, GameObject effectPrefab)
-    {
-        // Cast a ray to detect enemy
-        Ray ray = new Ray(cam.transform.position, cam.transform.forward);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, rangeE, whatIsEnemy))
-        {
-            // Instantiate effect at enemy position
-            Instantiate(effectPrefab, hit.point, Quaternion.identity);
-            Debug.Log("Skill activated at enemy position: " + hit.point);
-        }
+        HealthRate = PlayerPrefs.GetFloat("LawHealthRate");
+        AttackRate = PlayerPrefs.GetFloat("LawAttackRate");
+        WalkSpeedRate = PlayerPrefs.GetFloat("LawWalkSpeedRate");
+        DefenseRate = PlayerPrefs.GetFloat("LawDefenseRate");
+        Q_SkillDamageRate = PlayerPrefs.GetFloat("LawQ_SkillDamageRate");
+        E_SkillDamageRate = PlayerPrefs.GetFloat("LawE_SkillDamageRate");
     }
 }

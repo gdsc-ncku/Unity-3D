@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HeroController : MonoBehaviour
 {
-    [SerializeField] GameObject LawUI, MechanicUI, ChemistryUI;
+    [SerializeField] GameObject LawUI, MechanicUI, ChemistryUI, EEUI;
     [SerializeField] PlayerBattleValueScriptable playerBattle;
     [SerializeField] PlayerBasicInformationScriptable playerBasicInformation;
     private void OnEnable()
@@ -12,8 +12,9 @@ public class HeroController : MonoBehaviour
         LawUI.transform.GetChild(0).gameObject.SetActive(false);
         MechanicUI.transform.GetChild(0).gameObject.SetActive(false);
         ChemistryUI.transform.GetChild(0).gameObject.SetActive(false);
+        EEUI.transform.GetChild(0).gameObject.SetActive(false);
 
-        if(playerBattle.Role == playerBasicInformation.Law)
+        if (playerBattle.Role == playerBasicInformation.Law)
         {
             LawUI.transform.GetChild(0).gameObject.SetActive(true);
         }
@@ -25,6 +26,10 @@ public class HeroController : MonoBehaviour
         {
             ChemistryUI.transform.GetChild(0).gameObject.SetActive(true);
         }
+        else if(playerBattle.Role == playerBasicInformation.EE)
+        {
+            EEUI.transform.GetChild(0).gameObject.SetActive(true);
+        }
     }
 
     public void chooseLaw()
@@ -32,6 +37,7 @@ public class HeroController : MonoBehaviour
         LawUI.transform.GetChild(0).gameObject.SetActive(false);
         MechanicUI.transform.GetChild(0).gameObject.SetActive(false);
         ChemistryUI.transform.GetChild(0).gameObject.SetActive(false);
+        EEUI.transform.GetChild(0).gameObject.SetActive(false);
 
         LawUI.transform.GetChild(0).gameObject.SetActive(true);
         playerBattle.Role = playerBasicInformation.Law;
@@ -42,6 +48,7 @@ public class HeroController : MonoBehaviour
         LawUI.transform.GetChild(0).gameObject.SetActive(false);
         MechanicUI.transform.GetChild(0).gameObject.SetActive(false);
         ChemistryUI.transform.GetChild(0).gameObject.SetActive(false);
+        EEUI.transform.GetChild(0).gameObject.SetActive(false);
 
         MechanicUI.transform.GetChild(0).gameObject.SetActive(true);
         playerBattle.Role = playerBasicInformation.Mechanic;
@@ -52,8 +59,20 @@ public class HeroController : MonoBehaviour
         LawUI.transform.GetChild(0).gameObject.SetActive(false);
         MechanicUI.transform.GetChild(0).gameObject.SetActive(false);
         ChemistryUI.transform.GetChild(0).gameObject.SetActive(false);
+        EEUI.transform.GetChild(0).gameObject.SetActive(false);
 
         ChemistryUI.transform.GetChild(0).gameObject.SetActive(true);
         playerBattle.Role = playerBasicInformation.Chemistry;
+    }
+
+    public void chooseEE()
+    {
+        LawUI.transform.GetChild(0).gameObject.SetActive(false);
+        MechanicUI.transform.GetChild(0).gameObject.SetActive(false);
+        ChemistryUI.transform.GetChild(0).gameObject.SetActive(false);
+        EEUI.transform.GetChild(0).gameObject.SetActive(false);
+
+        EEUI.transform.GetChild(0).gameObject.SetActive(true);
+        playerBattle.Role = playerBasicInformation.EE;
     }
 }

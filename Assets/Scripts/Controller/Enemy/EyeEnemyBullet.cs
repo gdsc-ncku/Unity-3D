@@ -63,7 +63,8 @@ public class EyeEnemyBullet : MonoBehaviour
         {
             if (((1 << other.gameObject.transform.root.gameObject.layer) & bulletAim) != 0)
             {
-                PlayerInfo.ReduceHealth(EnemyInfo.AttackDamage);
+                float effectiveDefense = Mathf.Max(PlayerInfo.Role.GetComponent<StudentDataManager>().studentData.Defense, EnemyInfo.AttackDamage * 0.1f);
+                PlayerInfo.ReduceHealth(Mathf.Max(0, EnemyInfo.AttackDamage * (100f / (100f + effectiveDefense))));
                 other.gameObject.transform.root.gameObject.GetComponent<Rigidbody>().AddForce(rb.velocity.normalized * rb.mass, ForceMode.Impulse);
             }
 

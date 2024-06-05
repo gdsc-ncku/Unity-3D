@@ -18,7 +18,8 @@ public class GameStatus : ScriptableObject
     public UnityEvent settingTimer, settingLevel;
     public AssetReference mainScene, adventureScene;
     public PlayerBattleValueScriptable playerBattle;
-    private int level = 0, duration = 0, remainingDuration = 0;
+    public float GenerateSpeed, remainingDuration = 0;
+    private int level = 0, duration = 0;
     public int Level
     {
         get 
@@ -47,7 +48,7 @@ public class GameStatus : ScriptableObject
             settingTimer.Invoke();
         }
     }
-    public int RemainingDuration
+    public float RemainingDuration
     {
         get
         { 

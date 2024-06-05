@@ -9,10 +9,10 @@ TagManager:
   - Item
   - Enemy
   - FxTemporaire
-  - Bullet
   - Weapon
   - EnemyBullets
   - MainLight
+  - Gem
   layers:
   - Default
   - TransparentFX
@@ -31,9 +31,9 @@ TagManager:
   - MechanicStudentUI
   - ChemistryStudentUI
   - Weapon
-  - 
-  - 
-  - 
+  - EEStudentUI
+  - GemUI
+  - Gem
   - 
   - 
   - 

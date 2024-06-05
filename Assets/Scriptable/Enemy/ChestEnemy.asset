@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812bded395a3c864891a1513937522c3, type: 3}
   m_Name: ChestEnemy
   m_EditorClassIdentifier: 
-  Drops: []
-  DropsProbability: 0
+  Drops:
+  - {fileID: 3187354347425594553, guid: e8bfe557e45df6240a508fdb15390b66, type: 3}
+  DropsProbability: 1
   AttackRange: 15
   AttackSpeed: 0.5
   AttackTime: 1
-  AttackDamage: 10
+  AttackDamage: 5
   MoveSpeed: 2
   RunSpeed: 4
   Health: 30

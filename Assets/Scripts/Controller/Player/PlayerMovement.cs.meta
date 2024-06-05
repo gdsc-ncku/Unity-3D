@@ -3,7 +3,10 @@ guid: e7f74206974ee8e45af0711ff9997b63
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - PlayerMove: {fileID: 11400000, guid: 5186a9aa120a8a049a936607850ca30c, type: 2}
+  - MovementConst: {fileID: 11400000, guid: e7c568f5ad6fe6e4d80ab0c9089eb3a4, type: 2}
+  - GroundDetector: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

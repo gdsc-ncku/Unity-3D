@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: ChemistryStudent
   m_EditorClassIdentifier: 
   Unlocked: 0
-  Health: 120
+  Health: 100
   Defense: 10
   AttackDamage: 1
-  WalkSpeed: 5
+  WalkSpeed: 4
   JumpForce: 8
-  Q_SkillDamage: 0
+  Q_SkillDamage: 10
   Q_Skill: {fileID: 0}
-  E_SkillDamage: 0
+  E_SkillDamage: 10
   E_Skill: {fileID: 0}
   Q_MagicConsumption: 1
   Q_DamageRate: 1
