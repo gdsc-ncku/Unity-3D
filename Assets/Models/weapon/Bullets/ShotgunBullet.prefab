@@ -130,17 +130,8 @@ MonoBehaviour:
   AttackWeapon: {fileID: 0}
   rb: {fileID: 1165490155807771508}
   explosion: {fileID: 1263282939118438294, guid: c150d7df7f6325646bea7fda20458269, type: 3}
-  whatIsEnemies:
-    serializedVersion: 2
-    m_Bits: 128
-  bounciness: 1
-  useGravity: 1
-  explosionDamage: 15
-  explosionRange: 3
-  explosionForce: 0
-  maxCollisions: 0
+  target: {fileID: 0}
   maxLifetime: 5
-  explodeOnTouch: 1
   explosionSound: {fileID: 0}
 --- !u!96 &3435128838079751265
 TrailRenderer:
@@ -269,7 +260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   splitAmount: 8
   GenOtherBullet: 1
-  spreadRange: 0.2
+  spreadRange: 0.5
 --- !u!64 &-4409218677163547033
 MeshCollider:
   m_ObjectHideFlags: 0
