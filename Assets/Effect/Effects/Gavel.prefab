@@ -5176,7 +5176,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -8568,7 +8568,7 @@ ParticleSystem:
   CollisionModule:
     enabled: 1
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -8744,7 +8744,7 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -9783,6 +9783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab03524d15e6bbf4eaec4e6af549a33a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerBattleInfo: {fileID: 0}
 --- !u!1 &7294663880851947647
 GameObject:
   m_ObjectHideFlags: 0

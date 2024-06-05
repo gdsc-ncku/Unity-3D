@@ -2205,6 +2205,7 @@ GameObject:
   - component: {fileID: 6126825716273743917}
   - component: {fileID: 5805465644574315523}
   - component: {fileID: 8867151234388378933}
+  - component: {fileID: 6039906116569970953}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -2515,6 +2516,20 @@ MonoBehaviour:
   HealthValueDisplay: {fileID: 1823436200975399929}
   PlayerInfo: {fileID: 11400000, guid: e7c568f5ad6fe6e4d80ab0c9089eb3a4, type: 2}
   playerDieUI: {fileID: 0}
+--- !u!114 &6039906116569970953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8973365206664145692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a1fbc587af8e964fb86824aa8a9d882, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerBasicInfo: {fileID: 11400000, guid: 5186a9aa120a8a049a936607850ca30c, type: 2}
+  PlayerBattleInfo: {fileID: 11400000, guid: e7c568f5ad6fe6e4d80ab0c9089eb3a4, type: 2}
 --- !u!1001 &4468485872436518514
 PrefabInstance:
   m_ObjectHideFlags: 0

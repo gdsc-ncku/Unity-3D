@@ -12,6 +12,7 @@ public class PlayerSkill : MonoBehaviour
     {
         if (PlayerBasicInfo == null || PlayerBasicInfo.playerControl == null)
         {
+            Debug.Log("Null");
             return;
         }
 
@@ -23,6 +24,7 @@ public class PlayerSkill : MonoBehaviour
     {
         if(PlayerBasicInfo == null || PlayerBasicInfo.playerControl == null)
         {
+            Debug.Log("Null");
             return;
         }
 
@@ -34,6 +36,7 @@ public class PlayerSkill : MonoBehaviour
     {
         if (PlayerBasicInfo == null || PlayerBasicInfo.playerControl == null)
         {
+            Debug.Log("Null");
             return;
         }
 
