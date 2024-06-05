@@ -77,8 +77,6 @@ public class LawStudent : CharacterBaseData
     }
     // You can create specific strengthening below.
     #region Hero_Q_Skill
-    public float QSkillRange = 10f;
-
     // document falls around and hits the enemy
     public override void UseingQ_Skill()
     {
@@ -86,7 +84,7 @@ public class LawStudent : CharacterBaseData
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         if (Physics.Raycast(ray, out hit, Q_SkillRange))
         {
-            Vector3 pos = new Vector3(hit.point.x, 4, hit.point.z);
+            Vector3 pos = new Vector3(hit.point.x, 8, hit.point.z);
 
             // Instantiate effect at player position
             Instantiate(Q_Skill, pos, Quaternion.identity);
@@ -95,8 +93,6 @@ public class LawStudent : CharacterBaseData
     #endregion
 
     #region Hero_E_Skill
-    public float ESkillRange = 10f;
-
     // Throw the gavel at the enemy
     public override void UseingE_Skill()
     {
@@ -104,10 +100,15 @@ public class LawStudent : CharacterBaseData
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         if (Physics.Raycast(ray, out hit, E_SkillRange))
         {
-            Vector3 pos = new Vector3(hit.point.x, 4, hit.point.z);
+            Vector3 pos = new Vector3(hit.point.x, 8, hit.point.z);
 
             // Instantiate effect at player position
-            Instantiate(E_Skill, pos, Quaternion.identity);
+            GameObject effect = Instantiate(E_Skill, pos, Quaternion.identity);
+            effect.transform.forward = -Vector3.up;
+            if(hit.collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                effect.GetComponent<GravelEffect>().target = hit.collider.gameObject;
+            }
         }
     }
     #endregion

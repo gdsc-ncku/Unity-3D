@@ -4914,7 +4914,7 @@ Transform:
   m_GameObject: {fileID: 5885895851586270034}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 15, z: 0}
+  m_LocalPosition: {x: 0.01, y: 15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5176,7 +5176,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.3
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -9783,7 +9783,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab03524d15e6bbf4eaec4e6af549a33a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerBattleInfo: {fileID: 0}
+  playerBattleInfo: {fileID: 11400000, guid: e7c568f5ad6fe6e4d80ab0c9089eb3a4, type: 2}
+  target: {fileID: 0}
 --- !u!1 &7294663880851947647
 GameObject:
   m_ObjectHideFlags: 0
