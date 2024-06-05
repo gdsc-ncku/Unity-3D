@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ChemistryStudent
   m_EditorClassIdentifier: 
   Unlocked: 0
-  rateSetting: 0
+  rateSetting: 1
   Health: 100
   Defense: 10
   AttackDamage: 1

@@ -17032,7 +17032,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attribute: {fileID: 399711814}
-  department: {fileID: 6231363875576087526, guid: 484c2f9cce8ad2847895330cd3724d34, type: 3}
+  department: {fileID: 1887274982}
   Health: {fileID: 604136529}
   Defense: {fileID: 1050187803}
   AttackRate: {fileID: 1847009136}
@@ -29434,6 +29434,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c6ea161fe3ce4c84f80a8dd871205cbf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1887274984}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c6ea161fe3ce4c84f80a8dd871205cbf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1887274985}
   m_SourcePrefab: {fileID: 100100000, guid: c6ea161fe3ce4c84f80a8dd871205cbf, type: 3}
 --- !u!1 &1122361677
 GameObject:
@@ -30757,7 +30760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attribute: {fileID: 1215596238}
-  department: {fileID: 2591355812482505310, guid: 572e9de430316ed40a6ffaa05f0afdd0, type: 3}
+  department: {fileID: 893214228}
   Health: {fileID: 1203147991}
   Defense: {fileID: 1658467014}
   AttackRate: {fileID: 1716165816}
@@ -43840,7 +43843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attribute: {fileID: 352442976}
-  department: {fileID: 946270617512685866, guid: 5d1786efca1691e42ad3f71b5d73e7e8, type: 3}
+  department: {fileID: 1723136116}
   Health: {fileID: 488075517}
   Defense: {fileID: 1755025120}
   AttackRate: {fileID: 1056511394}
@@ -44887,18 +44890,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8998780227762316758}
     m_Modifications:
-    - target: {fileID: -6745547455194545294, guid: c6ea161fe3ce4c84f80a8dd871205cbf, type: 3}
-      propertyPath: m_Layer
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: -5775783527547205550, guid: c6ea161fe3ce4c84f80a8dd871205cbf, type: 3}
-      propertyPath: m_Layer
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: -3039047096625075603, guid: c6ea161fe3ce4c84f80a8dd871205cbf, type: 3}
-      propertyPath: m_Layer
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 16497037992373149, guid: 99fbd28ddef181d4f8cb680c16cd634d, type: 3}
       propertyPath: m_Layer
       value: 17
@@ -45146,6 +45137,18 @@ PrefabInstance:
     - target: {fileID: 9116338714608850534, guid: 99fbd28ddef181d4f8cb680c16cd634d, type: 3}
       propertyPath: m_Layer
       value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: -6745547455194545294, guid: c6ea161fe3ce4c84f80a8dd871205cbf, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: -5775783527547205550, guid: c6ea161fe3ce4c84f80a8dd871205cbf, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: -3039047096625075603, guid: c6ea161fe3ce4c84f80a8dd871205cbf, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -48595,6 +48598,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &1723136116 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2652183c584d59841befa0a07910fd28, type: 3}
+  m_PrefabInstance: {fileID: 1997960502}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1723136117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723136116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d350abd4ba9d55448077ca5dbde3d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  studentData: {fileID: 11400000, guid: d2600dd773fa00b45a09a3270bb931fe, type: 2}
 --- !u!1 &1724349114
 GameObject:
   m_ObjectHideFlags: 0
@@ -50602,7 +50623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attribute: {fileID: 775536072}
-  department: {fileID: 2021171994817122406, guid: 99fbd28ddef181d4f8cb680c16cd634d, type: 3}
+  department: {fileID: 878883360}
   Health: {fileID: 1297835411}
   Defense: {fileID: 990439364}
   AttackRate: {fileID: 641787388}
@@ -54379,6 +54400,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1887274985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887274982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d350abd4ba9d55448077ca5dbde3d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  studentData: {fileID: 11400000, guid: 40df8b2e25775494bbe94396eb75b58a, type: 2}
 --- !u!1 &1890533151
 GameObject:
   m_ObjectHideFlags: 0
@@ -58739,7 +58773,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2652183c584d59841befa0a07910fd28, type: 3}
       insertIndex: -1
       addedObject: {fileID: 368993255}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2652183c584d59841befa0a07910fd28, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1723136117}
   m_SourcePrefab: {fileID: 100100000, guid: 2652183c584d59841befa0a07910fd28, type: 3}
 --- !u!1001 &2004220370
 PrefabInstance:
@@ -59019,6 +59056,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d3c6a3de133c08945949da9114de65cb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2004220372}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d3c6a3de133c08945949da9114de65cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2004220373}
   m_SourcePrefab: {fileID: 100100000, guid: d3c6a3de133c08945949da9114de65cb, type: 3}
 --- !u!4 &2004220371 stripped
 Transform:
@@ -59046,6 +59086,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2004220373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893214228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d350abd4ba9d55448077ca5dbde3d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  studentData: {fileID: 11400000, guid: caf80440c0cc10548be79dfc7c64df3a, type: 2}
 --- !u!1 &2017758938
 GameObject:
   m_ObjectHideFlags: 0

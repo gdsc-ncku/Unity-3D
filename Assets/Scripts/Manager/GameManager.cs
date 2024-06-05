@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameStatus.GenerateSpeed = 20f - (1 << (gameStatus.Level - 1)) + 1;
         transform.position = Vector3.zero;
         gameStatus.settingLevel.AddListener(() => LevelChoose());
         StartCoroutine(WaitForLoadingMainScene());
@@ -40,6 +39,7 @@ public class GameManager : MonoBehaviour
     {
         if(gameStatus.Level != 0)
         {
+            gameStatus.GenerateSpeed = Mathf.Max(3f - (1 << (gameStatus.Level - 1)) * 0.2f, 0.5f);
             level1();
         }
     }
@@ -51,7 +51,27 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator SpawnRandomOnNavMesh()
     {
-        while(gameStatus.RemainingDuration > 0)
+        for(int i = 0; i < 10; i++)
+        {
+            Vector3 randomPosition = GetRandomPosition();
+            if (randomPosition != Vector3.zero)
+            {
+                GameObject instance = Instantiate(Enemys[UnityEngine.Random.Range(0, Enemys.Length)], randomPosition, Quaternion.identity);
+                NavMeshAgent agent = instance.GetComponent<NavMeshAgent>();
+                if (agent != null)
+                {
+                    Vector3 targetPosition = GetRandomPosition();
+                    if (targetPosition != Vector3.zero)
+                    {
+                        agent.SetDestination(targetPosition);
+                    }
+                }
+            }
+
+            yield return null;
+        }
+
+        while (gameStatus.RemainingDuration > 0)
         {
             Vector3 randomPosition = GetRandomPosition();
             if (randomPosition != Vector3.zero)
@@ -86,5 +106,15 @@ public class GameManager : MonoBehaviour
         }
         Debug.LogWarning("Could not find a valid position on the NavMesh");
         return Vector3.zero;
+    }
+
+    private void OnDisable()
+    {
+        Debug.Log("Game Manager Disable");
+    }
+
+    private void OnDestroy()
+    {
+        Debug.Log("Game Manager Destroy");
     }
 }
