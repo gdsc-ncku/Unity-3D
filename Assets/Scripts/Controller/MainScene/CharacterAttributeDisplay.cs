@@ -24,6 +24,7 @@ public class CharacterAttributeDisplay : MonoBehaviour, IPointerEnterHandler, IP
     public void UpdateDisplay()
     {
         CharacterBaseData student = department.GetComponent<StudentDataManager>().studentData;
+        Debug.Log(student.HealthRate);
         Health.text = (student.Health * student.HealthRate).ToString("0.#");
         Defense.text = (student.Defense * student.DefenseRate).ToString("0.#");
         AttackRate.text = (student.AttackDamage * student.AttackRate).ToString("0.#");

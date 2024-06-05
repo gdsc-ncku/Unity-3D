@@ -14,11 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Drops:
   - {fileID: 3187354347425594553, guid: e8bfe557e45df6240a508fdb15390b66, type: 3}
+  - {fileID: 3187354347425594553, guid: e8bfe557e45df6240a508fdb15390b66, type: 3}
+  - {fileID: 3187354347425594553, guid: e8bfe557e45df6240a508fdb15390b66, type: 3}
+  - {fileID: 1715415756834708287, guid: c6a164e412efb2046a4451f17d4b6a9e, type: 3}
+  - {fileID: 1715415756834708287, guid: c6a164e412efb2046a4451f17d4b6a9e, type: 3}
+  - {fileID: 6273768277581816718, guid: cfba57e73740e3a4cb8ebb0b2cc53894, type: 3}
+  - {fileID: 6273768277581816718, guid: cfba57e73740e3a4cb8ebb0b2cc53894, type: 3}
+  - {fileID: 7019969886298369894, guid: 4b2161b83e97cdf45af1af1478e5e2eb, type: 3}
+  - {fileID: 5004794661129548158, guid: dfd4e3b633f844c4685f541e618d7bf5, type: 3}
+  - {fileID: 3740127585108845052, guid: e0563c14fa9ac1445b29c5b7bc93402e, type: 3}
   DropsProbability: 0.3
   AttackRange: 30
   AttackSpeed: 1
-  AttackTime: 5
-  AttackDamage: 30
+  AttackTime: 3
+  AttackDamage: 20
   MoveSpeed: 4
   RunSpeed: 8
   Health: 10

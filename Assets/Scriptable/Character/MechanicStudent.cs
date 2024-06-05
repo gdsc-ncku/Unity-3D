@@ -95,4 +95,18 @@ public class MechanicStudent : CharacterBaseData
     {
 
     }
+
+    private void OnEnable()
+    {
+        if(!rateSetting)
+        {
+            HealthRate = PlayerPrefs.GetFloat("MechanicHealthRate");
+            AttackRate = PlayerPrefs.GetFloat("MechanicAttackRate");
+            WalkSpeedRate = PlayerPrefs.GetFloat("MechanicWalkSpeedRate");
+            DefenseRate = PlayerPrefs.GetFloat("MechanicDefenseRate");
+            Q_SkillDamageRate = PlayerPrefs.GetFloat("MechanicQ_SkillDamageRate");
+            E_SkillDamageRate = PlayerPrefs.GetFloat("MechanicE_SkillDamageRate");
+            rateSetting = true;
+        }
+    }
 }

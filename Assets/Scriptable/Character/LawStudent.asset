@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: LawStudent
   m_EditorClassIdentifier: 
   Unlocked: 1
+  rateSetting: 1
   Health: 100
   Defense: 10
   AttackDamage: 1
@@ -22,17 +23,11 @@ MonoBehaviour:
   Q_Skill: {fileID: 0}
   E_SkillDamage: 10
   E_Skill: {fileID: 0}
-  HealthRate: 1
-  AttackRate: 1
-  WalkSpeedRate: 1
-  DefenseRate: 1
-  Q_SkillDamageRate: 1
-  E_SkillDamageRate: 1
   Q_MagicConsumption: 1
   Q_DamageRate: 1
   Q_SkillRange: 1
   E_MagicConsumption: 1
   E_DamageRate: 1
   E_SkillRange: 1
-  rangeQ: 10
-  rangeE: 10
+  QSkillRange: 10
+  ESkillRange: 10

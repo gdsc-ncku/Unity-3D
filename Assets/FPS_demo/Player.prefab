@@ -3564,7 +3564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerMove: {fileID: 11400000, guid: 5186a9aa120a8a049a936607850ca30c, type: 2}
-  PlayerBattleValue: {fileID: 0}
+  PlayerBattleValue: {fileID: 11400000, guid: e7c568f5ad6fe6e4d80ab0c9089eb3a4, type: 2}
   Weapon: {fileID: 6790719919048404328}
 --- !u!114 &6126825716273743917
 MonoBehaviour:

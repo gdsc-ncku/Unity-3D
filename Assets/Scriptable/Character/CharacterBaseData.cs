@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CharacterBaseData : ScriptableObject
@@ -5,6 +6,7 @@ public class CharacterBaseData : ScriptableObject
     public bool Unlocked = false;
 
     #region BasicData
+    public bool rateSetting = false;
     public float Health;
     public float Defense;
     public float AttackDamage;
@@ -14,50 +16,57 @@ public class CharacterBaseData : ScriptableObject
     public ParticleSystem Q_Skill;
     public float E_SkillDamage;
     public ParticleSystem E_Skill;
-    protected float healthRate;
-    protected float attackRate;
-    protected float walkSpeedRate;
-    protected float defenseRate;
-    protected float q_SkillDamageRate;
-    protected float e_SkillDamageRate;
+    [NonSerialized] protected float healthRate;
+    [NonSerialized] protected float attackRate;
+    [NonSerialized] protected float walkSpeedRate;
+    [NonSerialized] protected float defenseRate;
+    [NonSerialized] protected float q_SkillDamageRate;
+    [NonSerialized] protected float e_SkillDamageRate;
     public virtual float HealthRate
     {
         get
         {
-            return healthRate;
+            Debug.Log("Bug");
+            return 0;
         }
         set
         {
-            healthRate = value;
+            Debug.Log("Bug");
+            return;
         }
     }
     public virtual float AttackRate
     {
         get
         {
-            return attackRate;
+            Debug.Log("Bug");
+            return 0;
         }
         set
         {
-            attackRate = value;
+            Debug.Log("Bug");
+            return;
         }
     }
     public virtual float WalkSpeedRate
     {
         get
         {
-            return walkSpeedRate;
+            Debug.Log("Bug");
+            return 0;
         }
         set
         {
-            walkSpeedRate = value;
+            Debug.Log("Bug");
+            return;
         }
     }
     public virtual float DefenseRate
     {
         get
         {
-            return defenseRate;
+            Debug.Log("Bug");
+            return 0;
         }
         set
         {
@@ -68,22 +77,26 @@ public class CharacterBaseData : ScriptableObject
     {
         get
         {
-            return q_SkillDamageRate;
+            Debug.Log("Bug");
+            return 0;
         }
         set
         {
-            q_SkillDamageRate = value;
+            Debug.Log("Bug");
+            return;
         }
     }
     public virtual  float E_SkillDamageRate
     {
         get
         {
-            return e_SkillDamageRate;
+            Debug.Log("Bug");
+            return 0;
         }
         set
         {
-            e_SkillDamageRate = value;
+            Debug.Log("Bug");
+            return;
         }
     }
     #endregion
@@ -109,5 +122,10 @@ public class CharacterBaseData : ScriptableObject
     public void UseingE_Skill()
     {
 
+    }
+
+    protected void OnDisable()
+    {
+        rateSetting = false;
     }
 }

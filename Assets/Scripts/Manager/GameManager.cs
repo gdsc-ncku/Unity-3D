@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -36,25 +37,26 @@ public class GameManager : MonoBehaviour
 
     public void LevelChoose()
     {
-        if(gameStatus.Level == 1)
+        if(gameStatus.Level != 0)
         {
+            gameStatus.GenerateSpeed = Mathf.Max(3f - (1 << (gameStatus.Level - 1)) * 0.2f, 0.5f);
             level1();
         }
     }
 
     public void level1()
     {
-        gameStatus.Duration = 600;
+        gameStatus.Duration = 600 + (gameStatus.Level - 1 ) * 60;
         StartCoroutine(SpawnRandomOnNavMesh());
     }
     IEnumerator SpawnRandomOnNavMesh()
     {
-        for (int i = 0; i < level1EnemyNum; i++)
+        for(int i = 0; i < 10; i++)
         {
             Vector3 randomPosition = GetRandomPosition();
             if (randomPosition != Vector3.zero)
             {
-                GameObject instance = Instantiate(Enemys[Random.Range(0, Enemys.Length)], randomPosition, Quaternion.identity);
+                GameObject instance = Instantiate(Enemys[UnityEngine.Random.Range(0, Enemys.Length)], randomPosition, Quaternion.identity);
                 NavMeshAgent agent = instance.GetComponent<NavMeshAgent>();
                 if (agent != null)
                 {
@@ -68,13 +70,34 @@ public class GameManager : MonoBehaviour
 
             yield return null;
         }
+
+        while (gameStatus.RemainingDuration > 0)
+        {
+            Vector3 randomPosition = GetRandomPosition();
+            if (randomPosition != Vector3.zero)
+            {
+                GameObject instance = Instantiate(Enemys[UnityEngine.Random.Range(0, Enemys.Length)], randomPosition, Quaternion.identity);
+                NavMeshAgent agent = instance.GetComponent<NavMeshAgent>();
+                if (agent != null)
+                {
+                    Vector3 targetPosition = GetRandomPosition();
+                    if (targetPosition != Vector3.zero)
+                    {
+                        agent.SetDestination(targetPosition);
+                    }
+                }
+            }
+            float waitTime = Math.Max(gameStatus.GenerateSpeed, 0.5f);
+            yield return new WaitForSeconds(waitTime);
+            gameStatus.RemainingDuration -= waitTime;
+        }
     }
 
     Vector3 GetRandomPosition()
     {
         for (int i = 0; i < maxAttempts; i++)
         {
-            Vector3 randomPoint = transform.position + Random.insideUnitSphere * radius;
+            Vector3 randomPoint = transform.position + UnityEngine.Random.insideUnitSphere * radius;
             NavMeshHit hit;
             if (NavMesh.SamplePosition(randomPoint, out hit, radius, NavMesh.AllAreas))
             {
@@ -83,5 +106,15 @@ public class GameManager : MonoBehaviour
         }
         Debug.LogWarning("Could not find a valid position on the NavMesh");
         return Vector3.zero;
+    }
+
+    private void OnDisable()
+    {
+        Debug.Log("Game Manager Disable");
+    }
+
+    private void OnDestroy()
+    {
+        Debug.Log("Game Manager Destroy");
     }
 }

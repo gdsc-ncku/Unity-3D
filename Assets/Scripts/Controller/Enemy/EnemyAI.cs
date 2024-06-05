@@ -8,6 +8,7 @@ enum status { chasing, stuck, repath, attack, die};
 public class EnemyAI : MonoBehaviour
 {
     public EnemyScriptableObject EnemyInfo;
+    [SerializeField] EnemyScriptableObject WeaponDrops;
     [SerializeField] PlayerBattleValueScriptable BattleInfo;
     [SerializeField] LayerMask searchLayer;
     [SerializeField] Slider HealthBar;
@@ -50,7 +51,11 @@ public class EnemyAI : MonoBehaviour
         yield return null;
         if (EnemyInfo.Drops.Length != 0 && Random.Range(0f, 1f) < EnemyInfo.DropsProbability)
         {
-            GameObject drop = EnemyInfo.Drops[Random.Range(0, EnemyInfo.Drops.Length)];
+            GameObject drop = EnemyInfo.Drops[0];
+            if(Random.Range(0f, 1f) < EnemyInfo.DropsProbability)
+            {
+                Instantiate(WeaponDrops.Drops[(int)Random.Range(0, WeaponDrops.Drops.Length)], transform.position, Quaternion.identity);
+            }
             Instantiate(drop, transform.position, Quaternion.identity);
         }
 

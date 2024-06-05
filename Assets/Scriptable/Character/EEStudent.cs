@@ -114,4 +114,18 @@ public class EEStudent : CharacterBaseData
     {
         
     }
+
+    private void OnEnable()
+    {
+        if(!rateSetting)
+        {
+            HealthRate = PlayerPrefs.GetFloat("EEHealthRate");
+            AttackRate = PlayerPrefs.GetFloat("EEAttackRate");
+            WalkSpeedRate = PlayerPrefs.GetFloat("EEWalkSpeedRate");
+            DefenseRate = PlayerPrefs.GetFloat("EEDefenseRate");
+            Q_SkillDamageRate = PlayerPrefs.GetFloat("EEQ_SkillDamageRate");
+            E_SkillDamageRate = PlayerPrefs.GetFloat("EEE_SkillDamageRate");
+            rateSetting = true;
+        }
+    }
 }

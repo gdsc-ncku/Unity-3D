@@ -114,4 +114,18 @@ public class LawStudent : CharacterBaseData
             Debug.Log("Skill activated at enemy position: " + hit.point);
         }
     }
+
+    private void OnEnable()
+    {
+        if(!rateSetting)
+        {
+            HealthRate = PlayerPrefs.GetFloat("LawHealthRate");
+            AttackRate = PlayerPrefs.GetFloat("LawAttackRate");
+            WalkSpeedRate = PlayerPrefs.GetFloat("LawWalkSpeedRate");
+            DefenseRate = PlayerPrefs.GetFloat("LawDefenseRate");
+            Q_SkillDamageRate = PlayerPrefs.GetFloat("LawQ_SkillDamageRate");
+            E_SkillDamageRate = PlayerPrefs.GetFloat("LawE_SkillDamageRate");
+            rateSetting = true;
+        }
+    }
 }
