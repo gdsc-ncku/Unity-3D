@@ -77,43 +77,41 @@ public class LawStudent : CharacterBaseData
     }
     // You can create specific strengthening below.
     #region Hero_Q_Skill
-    public float QSkillRange = 10f;
+    // document falls around and hits the enemy
+    public override void UseingQ_Skill()
+    {
+        RaycastHit hit;
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        if (Physics.Raycast(ray, out hit, Q_SkillRange))
+        {
+            Vector3 pos = new Vector3(hit.point.x, 8, hit.point.z);
+
+            // Instantiate effect at player position
+            Instantiate(Q_Skill, pos, Quaternion.identity);
+        }
+    }
     #endregion
 
     #region Hero_E_Skill
-    public float ESkillRange = 10f;
-    #endregion
-
-    // document falls around and hits the enemy
-    public void UseingQ_Skill(Transform player, LayerMask whatIsEnemy, GameObject effectPrefab)
-    {
-        // Instantiate effect at player position
-        Instantiate(effectPrefab, player.position, Quaternion.identity);
-
-        // Find all enemies within range
-        Collider[] enemiesInRange = Physics.OverlapSphere(player.position, QSkillRange, whatIsEnemy);
-
-        // Log the names of all enemies within range
-        foreach (Collider enemy in enemiesInRange)
-        {
-            Debug.Log("Enemy in range: " + enemy.gameObject.name);
-        }
-    }
-
     // Throw the gavel at the enemy
-    public void UseingE_Skill(Transform cam, Transform attackPoint, LayerMask whatIsEnemy, GameObject effectPrefab)
+    public override void UseingE_Skill()
     {
-        // Cast a ray to detect enemy
-        Ray ray = new Ray(cam.transform.position, cam.transform.forward);
         RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, ESkillRange, whatIsEnemy))
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        if (Physics.Raycast(ray, out hit, E_SkillRange))
         {
-            // Instantiate effect at enemy position
-            Instantiate(effectPrefab, hit.point, Quaternion.identity);
-            Debug.Log("Skill activated at enemy position: " + hit.point);
+            Vector3 pos = new Vector3(hit.point.x, 8, hit.point.z);
+
+            // Instantiate effect at player position
+            GameObject effect = Instantiate(E_Skill, pos, Quaternion.identity);
+            effect.transform.forward = -Vector3.up;
+            if(hit.collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                effect.GetComponent<GravelEffect>().target = hit.collider.gameObject;
+            }
         }
     }
+    #endregion
 
     private void OnEnable()
     {

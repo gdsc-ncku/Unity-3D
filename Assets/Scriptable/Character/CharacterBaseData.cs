@@ -12,9 +12,9 @@ public class CharacterBaseData : ScriptableObject
     public float WalkSpeed;
     public float JumpForce;
     public float Q_SkillDamage;
-    public ParticleSystem Q_Skill;
+    public GameObject Q_Skill;
     public float E_SkillDamage;
-    public ParticleSystem E_Skill;
+    public GameObject E_Skill;
     [NonSerialized] protected float healthRate;
     [NonSerialized] protected float attackRate;
     [NonSerialized] protected float walkSpeedRate;
@@ -113,14 +113,14 @@ public class CharacterBaseData : ScriptableObject
     public float E_DamageRate = 1;
     public float E_SkillRange = 1;
     #endregion
-    public void UseingQ_Skill()
+    public virtual void UseingQ_Skill()
     {
-
+        Debug.Log("Base");
     }
 
-    public void UseingE_Skill()
+    public virtual void UseingE_Skill()
     {
-
+        Debug.Log("Base");
     }
 
     protected void OnDisable()

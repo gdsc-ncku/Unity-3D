@@ -49,7 +49,7 @@ public class FPSCustomBullet : MonoBehaviour
         }
 
         Ray ray = new(OriginAttackPoint, rb.velocity.normalized);
-        RaycastHit[] hits = Physics.RaycastAll(ray, (collider.transform.position - OriginAttackPoint).magnitude * 2);
+        RaycastHit[] hits = Physics.RaycastAll(ray, (collider.transform.position - OriginAttackPoint).magnitude * 1.2f);
         GameObject explosionObj;
 
         foreach (RaycastHit hit in hits)
