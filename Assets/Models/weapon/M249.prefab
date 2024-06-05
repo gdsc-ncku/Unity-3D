@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3588210281693836707}
   - component: {fileID: 7143779007069235401}
   - component: {fileID: 4104452950585734758}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 1771788800914950036}
   - component: {fileID: 9103016812094068496}
   - component: {fileID: 2322112099025673874}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: M249
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 2934785024888486702}
   - component: {fileID: 8169723322548259215}
   - component: {fileID: 5939331830356753404}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Slide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 87601673988917955}
   - component: {fileID: 4916199245238345507}
   - component: {fileID: 2430915099161599553}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Magazin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 174524092561682543}
   - component: {fileID: -8855950274942594448}
   - component: {fileID: -8228123435433492711}
-  m_Layer: 7
+  m_Layer: 16
   m_Name: M249
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -561,7 +561,7 @@ GameObject:
   - component: {fileID: 3260497935495671267}
   - component: {fileID: 6405329397560003380}
   - component: {fileID: 2588667828622301191}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Bolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -642,7 +642,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6869575260466724928}
-  m_Layer: 7
+  m_Layer: 16
   m_Name: AttackPint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

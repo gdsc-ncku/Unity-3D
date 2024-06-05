@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8010431462498427404}
   - component: {fileID: 6969158537040860408}
   - component: {fileID: 6811564673133958309}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 5458683993438073759}
   - component: {fileID: 1818866906485844122}
   - component: {fileID: 5543901540795533149}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: sawed gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 5878327941087185560}
   - component: {fileID: -545542006920825408}
   - component: {fileID: 6957012950415992273}
-  m_Layer: 7
+  m_Layer: 16
   m_Name: ShotGun
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -392,7 +392,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3382761635928072453}
-  m_Layer: 7
+  m_Layer: 16
   m_Name: AttackPint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 5704202613826940760}
   - component: {fileID: 2767278561226105229}
   - component: {fileID: 1221245260764899825}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Trap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -508,7 +508,7 @@ GameObject:
   - component: {fileID: 4055052903161899099}
   - component: {fileID: 7408606444186944576}
   - component: {fileID: 8154450287188914267}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Bolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}

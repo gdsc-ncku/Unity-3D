@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2277362110374899438}
-  m_Layer: 7
+  m_Layer: 16
   m_Name: AttackPint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 4194482928075561417}
   - component: {fileID: -3412399505937723168}
   - component: {fileID: 1975894520729306901}
-  m_Layer: 7
+  m_Layer: 16
   m_Name: AK_rare
   m_TagString: Weapon
   m_Icon: {fileID: 0}

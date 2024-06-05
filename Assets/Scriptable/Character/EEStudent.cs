@@ -86,31 +86,17 @@ public class EEStudent : CharacterBaseData
     #endregion
 
     // throwing run time error bomb
-    public void UseQSkill(Transform cam, Transform attackPoint, GameObject objectToThrow)
+    public override void UseingQ_Skill()
     {
         // instantiate object to throw
-        GameObject projectile = Instantiate(objectToThrow, attackPoint.position, cam.rotation);
+        GameObject projectile = Instantiate(Q_Skill, Camera.main.transform.position + Camera.main.transform.forward * 1f, Quaternion.identity);
 
         // get rigidbody component
         Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
-
-        // calculate direction
-        Vector3 forceDirection = cam.forward;
-
-        RaycastHit hit;
-
-        if (Physics.Raycast(cam.position, cam.forward, out hit, 500f))
-        {
-            forceDirection = (hit.point - attackPoint.position).normalized;
-        }
-
-        // add force
-        Vector3 forceToAdd = forceDirection * throwForce + cam.up * throwUpwardForce;
-
-        projectileRb.AddForce(forceToAdd, ForceMode.Impulse);
+        projectileRb.AddForce(Camera.main.transform.forward * 15f, ForceMode.Impulse);
     }
 
-    public void UseingE_Skill()
+    public override void UseingE_Skill()
     {
         
     }
