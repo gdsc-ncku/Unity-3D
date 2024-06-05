@@ -1,10 +1,11 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-enum status { chasing, stuck, repath, attack, die};
+public enum EnemyStatus { chasing, stuck, pause, repath, attack, die};
 public class EnemyAI : MonoBehaviour
 {
     public EnemyScriptableObject EnemyInfo;
@@ -12,8 +13,9 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] PlayerBattleValueScriptable BattleInfo;
     [SerializeField] LayerMask searchLayer;
     [SerializeField] Slider HealthBar;
+    bool isPause = false;
     private Animator animator;
-    private status nowStatus;
+    public EnemyStatus nowStatus;
     private float Hp;
     private Vector3 lastPosition;
     private float Health 
@@ -30,7 +32,7 @@ public class EnemyAI : MonoBehaviour
 
             if(Hp <= 0)
             {
-                nowStatus = status.die;
+                nowStatus = EnemyStatus.die;
                 StartCoroutine(EnemyDie());
             }
         }
@@ -38,6 +40,11 @@ public class EnemyAI : MonoBehaviour
 
     IEnumerator EnemyDie()
     {
+        if(Health > 0)
+        {
+            yield break;
+        }
+
         if (gameObject.GetComponent<Collider>())
         {
             gameObject.GetComponent<Collider>().enabled = false;
@@ -74,19 +81,55 @@ public class EnemyAI : MonoBehaviour
     }
 
     private NavMeshAgent agent;
-    // Start is called before the first frame update
-    void Start()
+
+    private void OnEnable()
     {
         lastPosition = transform.position;
         animator = GetComponent<Animator>();
         animator.speed = 1;
         agent = GetComponent<NavMeshAgent>();
-        HealthBar.maxValue = EnemyInfo.Health;
         agent.speed = EnemyInfo.MoveSpeed;
         Health = EnemyInfo.Health;
-        nowStatus = status.chasing;
+        nowStatus = EnemyStatus.chasing;
         StartCoroutine(SearchRoutine());
         StartCoroutine(AvoidStuck());
+        StartCoroutine(PauseDetect());
+    }
+
+    private void Start()
+    {
+        HealthBar.maxValue = EnemyInfo.Health;
+    }
+
+    private void OnDisable()
+    {
+        StopCoroutine(SearchRoutine());
+        StopCoroutine(AvoidStuck());
+        StopCoroutine(PauseDetect());
+    }
+
+    IEnumerator PauseDetect()
+    {
+        while(true)
+        {
+            if(nowStatus == EnemyStatus.pause && !isPause)
+            {
+                StopAllCoroutines();
+                agent.ResetPath();
+                isPause = true;
+                animator.speed = 0;
+                StartCoroutine(PauseDetect());
+            }
+            else if(nowStatus != EnemyStatus.pause && isPause)
+            {
+                StartCoroutine(Aim());
+                StartCoroutine(AvoidStuck());
+                StartCoroutine(EnemyDie());
+                animator.speed = 1;
+                isPause = false;
+            }
+            yield return null;
+        }
     }
 
     IEnumerator AvoidStuck()
@@ -95,10 +138,10 @@ public class EnemyAI : MonoBehaviour
         yield return new WaitForSeconds(1f);
         while(true)
         {
-            if (Vector3.Distance(agent.transform.position, lastPosition) < 0.1f && nowStatus != status.attack)
+            if (Vector3.Distance(agent.transform.position, lastPosition) < 0.1f && nowStatus != EnemyStatus.attack)
             {
                 //Debug.Log(gameObject.name + "Stuck");
-                nowStatus = status.stuck;
+                nowStatus = EnemyStatus.stuck;
                 agent.ResetPath();
                 Vector3 randomPoint = transform.position + Random.insideUnitSphere * 100;
                 NavMeshHit hit;
@@ -114,9 +157,9 @@ public class EnemyAI : MonoBehaviour
                 stuckTime = 0;
             }
 
-            if(nowStatus == status.stuck && !agent.hasPath) 
+            if(nowStatus == EnemyStatus.stuck && !agent.hasPath) 
             {
-                nowStatus = status.chasing;
+                nowStatus = EnemyStatus.chasing;
                 StartCoroutine(SearchRoutine());
             }
 
@@ -138,7 +181,7 @@ public class EnemyAI : MonoBehaviour
     IEnumerator SearchRoutine()
     {    
         //Debug.Log("Chasing");
-        while (BattleInfo.Player != null && nowStatus == status.chasing)
+        while (BattleInfo.Player != null && nowStatus == EnemyStatus.chasing)
         {
             animator.Play("Chasing", 0, 0);
             agent.speed = EnemyInfo.RunSpeed;
@@ -150,14 +193,14 @@ public class EnemyAI : MonoBehaviour
 
             if (SearchInSphere())
             {
-                nowStatus = status.attack;
+                nowStatus = EnemyStatus.attack;
                 agent.ResetPath();
                 StartCoroutine(Aim());
                 yield break;
             }
             else
             {
-                nowStatus = status.chasing;
+                nowStatus = EnemyStatus.chasing;
             }
             yield return new WaitForSeconds(1.0f);
         }
@@ -171,11 +214,11 @@ public class EnemyAI : MonoBehaviour
         direction.y = 0; // ���� Y �b���t��
         StartCoroutine(Attack());
 
-        while (BattleInfo.Player != null && direction != Vector3.zero && (nowStatus == status.attack || nowStatus == status.repath))
+        while (BattleInfo.Player != null && direction != Vector3.zero && (nowStatus == EnemyStatus.attack || nowStatus == EnemyStatus.repath))
         {
             if (IsPathObstructed() && !agent.hasPath)
             {
-                nowStatus = status.repath;
+                nowStatus = EnemyStatus.repath;
                 animator.Play("Walking", 0, 0);
                 MoveToNoObstalcePosition();
                 yield return null;
@@ -188,7 +231,7 @@ public class EnemyAI : MonoBehaviour
             }
 
             //Debug.Log("Aim");
-            nowStatus = status.attack;
+            nowStatus = EnemyStatus.attack;
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5.0f);
             direction = BattleInfo.Player.transform.position - transform.position;
@@ -196,7 +239,7 @@ public class EnemyAI : MonoBehaviour
 
             if (!SearchInSphere())
             {
-                nowStatus = status.chasing;
+                nowStatus = EnemyStatus.chasing;
                 StartCoroutine(SearchRoutine());
                 StopCoroutine(Attack());
                 yield break;
@@ -255,7 +298,7 @@ public class EnemyAI : MonoBehaviour
     IEnumerator Attack()
     {
         yield return new WaitForSeconds(0.5f);
-        while (BattleInfo.Player != null && (nowStatus == status.attack || nowStatus == status.repath))
+        while (BattleInfo.Player != null && (nowStatus == EnemyStatus.attack || nowStatus == EnemyStatus.repath))
         {
             if(IsPathObstructed() || agent.hasPath)
             {
@@ -263,7 +306,7 @@ public class EnemyAI : MonoBehaviour
                 continue;
             }
 
-            if (nowStatus == status.attack)
+            if (nowStatus == EnemyStatus.attack)
             {
                 animator.SetFloat("Attack", 1 / EnemyInfo.AttackTime);
                 animator.Play("Attacking", 0, 0);
@@ -272,7 +315,7 @@ public class EnemyAI : MonoBehaviour
             //Wait for StateInfo update
             yield return null;
             yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-            if (BattleInfo.Player != null && nowStatus == status.attack)
+            if (BattleInfo.Player != null && nowStatus == EnemyStatus.attack)
             {
                 animator.Play("Idle", 0, 0);
             }

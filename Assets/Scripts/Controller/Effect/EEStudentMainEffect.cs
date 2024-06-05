@@ -17,12 +17,24 @@ public class EEStudentMainEffect : MonoBehaviour
 
             foreach (Collider collider in colliders)
             {
-                if (collider.gameObject.TryGetComponent(out EnemyAI enemy))
+                if (collider.gameObject.transform.root.gameObject.TryGetComponent(out EnemyAI enemy))
                 {
                     enemy.ReduceHealth(playerBattleInfo.Role.GetComponent<StudentDataManager>().studentData.Q_SkillDamage * playerBattleInfo.Role.GetComponent<StudentDataManager>().studentData.Q_SkillDamageRate);
+                    enemy.nowStatus = EnemyStatus.pause;
                 }
+
+                StartCoroutine(Reply(collider.gameObject.transform.root.gameObject));
             }
-            Destroy(gameObject, 2f);
+            Destroy(gameObject, 2.1f);
+        }
+    }
+
+    IEnumerator Reply(GameObject collider)
+    {
+        yield return new WaitForSeconds(2f);
+        if (collider != null && collider.TryGetComponent(out EnemyAI enemy))
+        {
+            enemy.nowStatus = EnemyStatus.attack;
         }
     }
 
