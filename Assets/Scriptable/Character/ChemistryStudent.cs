@@ -98,15 +98,11 @@ public class ChemistryStudent : CharacterBaseData
 
     private void OnEnable()
     {
-        if(!rateSetting)
-        {
-            HealthRate = PlayerPrefs.GetFloat("ChemistryHealthRate");
-            AttackRate = PlayerPrefs.GetFloat("ChemistryAttackRate");
-            WalkSpeedRate = PlayerPrefs.GetFloat("ChemistryWalkSpeedRate");
-            DefenseRate = PlayerPrefs.GetFloat("ChemistryDefenseRate");
-            Q_SkillDamageRate = PlayerPrefs.GetFloat("ChemistryQ_SkillDamageRate");
-            E_SkillDamageRate = PlayerPrefs.GetFloat("ChemistryE_SkillDamageRate");
-            rateSetting = true;
-        }
+        HealthRate = PlayerPrefs.GetFloat("ChemistryHealthRate");
+        AttackRate = PlayerPrefs.GetFloat("ChemistryAttackRate");
+        WalkSpeedRate = PlayerPrefs.GetFloat("ChemistryWalkSpeedRate");
+        DefenseRate = PlayerPrefs.GetFloat("ChemistryDefenseRate");
+        Q_SkillDamageRate = PlayerPrefs.GetFloat("ChemistryQ_SkillDamageRate");
+        E_SkillDamageRate = PlayerPrefs.GetFloat("ChemistryE_SkillDamageRate");
     }
 }

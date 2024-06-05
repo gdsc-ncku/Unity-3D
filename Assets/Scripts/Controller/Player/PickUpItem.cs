@@ -60,33 +60,50 @@ public class PickUpItem : MonoBehaviour
             }
             else if (hitInfo.collider.CompareTag("Weapon"))
             {
-                changeItems(Weapon.HoldingWeapon.transform.GetChild(0).gameObject, hitInfo.collider.gameObject);
+                hitInfo.collider.gameObject.GetComponent<GunInGround>().enabled = false;
+                if (Weapon.transform.GetChild(0).childCount == 0)
+                {
+                    hitInfo.collider.gameObject.transform.parent = Weapon.transform.GetChild(0);
+                    hitInfo.collider.gameObject.transform.localPosition = Vector3.zero;
+                    hitInfo.collider.gameObject.transform.localRotation = Quaternion.Euler(Vector3.zero);
+                }
+                else if (Weapon.transform.GetChild(1).childCount == 0)
+                {
+                    hitInfo.collider.gameObject.transform.parent = Weapon.transform.GetChild(1);
+                    hitInfo.collider.gameObject.transform.localPosition = Vector3.zero;
+                    hitInfo.collider.gameObject.transform.localRotation = Quaternion.Euler(Vector3.zero);
+                }
+                else
+                {
+                    changeItems(Weapon.HoldingWeapon.transform.GetChild(0).gameObject, hitInfo.collider.gameObject);
+                }
             }
         }
     }
 
-    private void changeItems(GameObject ItemA, GameObject ItemB)
+    private void changeItems(GameObject HandleItemA, GameObject GroundItemB)
     {
-        Vector3 positionA = ItemA.transform.position;
-        Quaternion rotationA = ItemA.transform.rotation;
-        Vector3 scaleA = ItemA.transform.localScale;
-        Transform parentA = ItemA.transform.parent;
+        Vector3 positionA = HandleItemA.transform.position;
+        Quaternion rotationA = HandleItemA.transform.rotation;
+        Vector3 scaleA = HandleItemA.transform.localScale;
+        Transform parentA = HandleItemA.transform.parent;
 
-        Vector3 positionB = ItemB.transform.position;
-        Quaternion rotationB = ItemB.transform.rotation;
-        Vector3 scaleB = ItemB.transform.localScale;
-        Transform parentB = ItemB.transform.parent;
+        Vector3 positionB = GroundItemB.transform.position;
+        Quaternion rotationB = GroundItemB.transform.rotation;
+        Vector3 scaleB = GroundItemB.transform.localScale;
+        Transform parentB = GroundItemB.transform.parent;
 
-        ItemA.transform.position = positionB;
-        ItemA.transform.rotation = rotationB;
-        ItemA.transform.localScale = scaleB;
-        ItemA.transform.parent = parentB;
+        HandleItemA.transform.position = positionB;
+        HandleItemA.transform.rotation = rotationB;
+        HandleItemA.transform.localScale = scaleB;
+        HandleItemA.transform.parent = parentB;
 
-        ItemB.transform.position = positionA;
-        ItemB.transform.rotation = rotationA;
-        ItemB.transform.localScale = scaleA;
-        ItemB.transform.parent = parentA;
+        GroundItemB.transform.position = positionA;
+        GroundItemB.transform.rotation = rotationA;
+        GroundItemB.transform.localScale = scaleA;
+        GroundItemB.transform.parent = parentA;
 
+        HandleItemA.GetComponent<GunInGround>().enabled = true;
         if (Weapon.HoldingWeapon == Weapon.MainWeapon)
         {
             Weapon.changeToMainWeapon();

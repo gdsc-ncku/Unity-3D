@@ -20,7 +20,7 @@ public class FPSCustomBullet : MonoBehaviour
         {
             rb = GetComponent<Rigidbody>();
         }
-        rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
         Destroy(gameObject, maxLifetime);
     }
 

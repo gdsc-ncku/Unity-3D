@@ -38,23 +38,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6812e8089592f22419cbb7002cc9e718, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.74333733
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6812e8089592f22419cbb7002cc9e718, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.66891676
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6812e8089592f22419cbb7002cc9e718, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6812e8089592f22419cbb7002cc9e718, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6812e8089592f22419cbb7002cc9e718, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -83.967
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6812e8089592f22419cbb7002cc9e718, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -125,6 +125,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6812e8089592f22419cbb7002cc9e718, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6574750110901704976}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6812e8089592f22419cbb7002cc9e718, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4437649588270779378}
   m_SourcePrefab: {fileID: 100100000, guid: 6812e8089592f22419cbb7002cc9e718, type: 3}
 --- !u!1 &3187354347425594553 stripped
 GameObject:
@@ -181,3 +184,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4437649588270779378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3187354347425594553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c52a3b0e297525d40a380955eb472ab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followObject:
+    serializedVersion: 2
+    m_Bits: 8
+  moveSpeed: 5
+  radius: 5
+  PlayerBattleValue: {fileID: 11400000, guid: e7c568f5ad6fe6e4d80ab0c9089eb3a4, type: 2}

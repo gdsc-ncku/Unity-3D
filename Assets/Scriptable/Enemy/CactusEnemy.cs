@@ -17,6 +17,6 @@ public class CactusEnemy : EnemyScriptableObject
 
     public override void attack(GameObject enemy)
     {
-        Instantiate(Bullets[Random.Range(0, Bullets.Length)], enemy.transform.position + new Vector3(0, BulletZoomInEverySecond, 0), enemy.transform.rotation).GetComponent<CactusEnemyBullets>().Spawner = enemy;
+        Instantiate(Bullets[Random.Range(0, Bullets.Length)], enemy.transform.position + new Vector3(0, BulletZoomInEverySecond, 0), enemy.transform.rotation).transform.GetChild(0).GetComponent<CactusEnemyBullets>().Spawner = enemy;
     }
 }

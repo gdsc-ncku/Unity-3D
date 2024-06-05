@@ -64,6 +64,11 @@ public class Weapons : MonoBehaviour
 
     public void changeToMainWeapon(InputAction.CallbackContext context)
     {
+        if (MainWeapon.transform.childCount == 0)
+        {
+            return;
+        }
+
         BattleInfo.nowWeapon = MainWeapon.transform.GetChild(0).gameObject;
         HoldingWeapon = MainWeapon;
         GetComponent<Animator>().Play("WeaponIdle");
@@ -78,6 +83,11 @@ public class Weapons : MonoBehaviour
 
     public void changeToSecondWeapon(InputAction.CallbackContext context)
     {
+        if(SecondWeapon.transform.childCount == 0)
+        {
+            return;
+        }
+
         BattleInfo.nowWeapon = SecondWeapon.transform.GetChild(0).gameObject;
         HoldingWeapon = SecondWeapon;
         GetComponent<Animator>().Play("WeaponIdle");
@@ -92,6 +102,11 @@ public class Weapons : MonoBehaviour
 
     public void changeToMainWeapon()
     {
+        if (MainWeapon.transform.childCount == 0)
+        {
+            return;
+        }
+
         BattleInfo.nowWeapon = MainWeapon.transform.GetChild(0).gameObject;
         HoldingWeapon = MainWeapon;
         GetComponent<Animator>().Play("WeaponIdle");
@@ -106,6 +121,11 @@ public class Weapons : MonoBehaviour
 
     public void changeToSecondWeapon()
     {
+        if (SecondWeapon.transform.childCount == 0)
+        {
+            return;
+        }
+
         BattleInfo.nowWeapon = SecondWeapon.transform.GetChild(0).gameObject;
         HoldingWeapon = SecondWeapon;
         GetComponent<Animator>().Play("WeaponIdle");

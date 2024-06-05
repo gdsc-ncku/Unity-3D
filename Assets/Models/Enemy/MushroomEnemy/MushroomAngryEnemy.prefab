@@ -297,6 +297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyInfo: {fileID: 11400000, guid: 7527a9ce7d531e3409b3b5278f45dc83, type: 2}
+  WeaponDrops: {fileID: 11400000, guid: b97f36434d5262c439d0cc0d8b697b90, type: 2}
   BattleInfo: {fileID: 11400000, guid: e7c568f5ad6fe6e4d80ab0c9089eb3a4, type: 2}
   searchLayer:
     serializedVersion: 2
@@ -647,7 +648,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 2.9730003}
+  m_AnchoredPosition: {x: 0, y: 1.8}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6347941403687121026

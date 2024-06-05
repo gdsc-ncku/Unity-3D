@@ -349,6 +349,7 @@ GameObject:
   - component: {fileID: 4944618954621599411}
   - component: {fileID: 174524092561682543}
   - component: {fileID: -8855950274942594448}
+  - component: {fileID: -8228123435433492711}
   m_Layer: 7
   m_Name: M249
   m_TagString: Weapon
@@ -530,11 +531,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ThisWeapon: {fileID: 11400000, guid: ad846c5062f8d2547bc1076ebc8335ac, type: 2}
+  BulletsLeftChange:
+    m_PersistentCalls:
+      m_Calls: []
   weaponPosOffset: {x: 0, y: 0, z: 0}
   weaponAttackPoint: {fileID: 1545163362158174379, guid: c6a164e412efb2046a4451f17d4b6a9e, type: 3}
   bulletsMax: 0
-  bulletsLeft: 0
-  weaponIcon: {fileID: 0}
+  BulletsLeft: 0
+--- !u!114 &-8228123435433492711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5004794661129548158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2012147aa440d7140b1a96fa27fffad6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8848099843878233523
 GameObject:
   m_ObjectHideFlags: 0

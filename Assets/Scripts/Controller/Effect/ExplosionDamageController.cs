@@ -19,7 +19,6 @@ public class ExplosionDamageController : MonoBehaviour
             float currentDistance = (hitCollider.gameObject.transform.position - (transform.position + collider.center)).magnitude;
             if (hitCollider.transform != hit.transform && hitCollider.gameObject.TryGetComponent(out ai))
             {
-                Debug.Log($"{hitCollider.gameObject.name}, {(1f - (currentDistance / Radius))}");
                 ai.ReduceHealth(OriginDamage * (1f - (currentDistance / Radius)));
             }
         }

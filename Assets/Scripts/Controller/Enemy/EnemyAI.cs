@@ -54,7 +54,7 @@ public class EnemyAI : MonoBehaviour
             GameObject drop = EnemyInfo.Drops[0];
             if(Random.Range(0f, 1f) < EnemyInfo.DropsProbability)
             {
-                Instantiate(WeaponDrops.Drops[(int)Random.Range(0, WeaponDrops.Drops.Length)], transform.position, Quaternion.identity);
+                Instantiate(WeaponDrops.Drops[(int)Random.Range(0, WeaponDrops.Drops.Length)], transform.position + Vector3.up * 1f, Quaternion.identity);
             }
             Instantiate(drop, transform.position, Quaternion.identity);
         }
