@@ -22,11 +22,14 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Delete))
-        {
-            PlayerPrefs.DeleteKey("IsFirstTime");
-            Debug.Log("Reset");
-        }
+        #if UNITY_EDITOR
+                if (Input.GetKeyDown(KeyCode.Delete))
+                {
+                    PlayerPrefs.DeleteAll();
+                    PlayerPrefs.Save();
+                    Debug.Log("Reset");
+                }
+        #endif
     }
 
     IEnumerator WaitForLoadingMainScene()

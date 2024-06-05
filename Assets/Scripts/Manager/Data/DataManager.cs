@@ -20,6 +20,7 @@ public class DataManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(PlayerPrefs.HasKey("IsFirstTime"));
         //If player firstly open game, init some base player information in PlayerPrefs System;
         if (!PlayerPrefs.HasKey("IsFirstTime"))
         {
@@ -86,6 +87,8 @@ public class DataManager : MonoBehaviour
             PlayerPrefs.SetFloat("MechanicE_SkillDamageRate", 1);
 
             PlayerPrefs.Save();
+
+            Debug.Log("test: " + PlayerPrefs.GetFloat("LawHealthRate"));
         }
 
         commonTalentDataManager.Catched.AddListener((bool Catched) => FinishTalentData());
