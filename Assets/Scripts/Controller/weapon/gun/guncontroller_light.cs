@@ -28,7 +28,7 @@ public class guncontroller_light : MonoBehaviour
     Vector3 recoil;
     void Start(){
         lineRenderer = gameObject.AddComponent<LineRenderer>();
-        lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+        // lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
         lineRenderer.widthMultiplier = 0.02f;
         lineRenderer.positionCount = 2;
     }
