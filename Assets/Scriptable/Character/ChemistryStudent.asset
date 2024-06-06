@@ -13,15 +13,16 @@ MonoBehaviour:
   m_Name: ChemistryStudent
   m_EditorClassIdentifier: 
   Unlocked: 0
-  Health: 100
+  Health: 10000
   Defense: 10
   AttackDamage: 1
   WalkSpeed: 4
   JumpForce: 8
-  Q_SkillDamage: 100
-  Q_Skill: {fileID: 0}
+  Q_SkillDamage: 30
+  Q_Skill: {fileID: 7292808117586842926, guid: 542c92fb752aed142a91ef2ae943eda2, type: 3}
   E_SkillDamage: 100
-  E_Skill: {fileID: 0}
+  E_Skill: {fileID: 4894561910410313160, guid: 1811523e4bd0cd145b8d06549b5a942a, type: 3}
+  playerBattleInfo: {fileID: 11400000, guid: e7c568f5ad6fe6e4d80ab0c9089eb3a4, type: 2}
   Q_MagicConsumption: 1
   Q_DamageRate: 1
   Q_SkillRange: 1

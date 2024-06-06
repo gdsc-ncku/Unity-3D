@@ -15,6 +15,7 @@ public class CharacterBaseData : ScriptableObject
     public GameObject Q_Skill;
     public float E_SkillDamage;
     public GameObject E_Skill;
+    [SerializeField] protected PlayerBattleValueScriptable playerBattleInfo; 
     [NonSerialized] protected float healthRate;
     [NonSerialized] protected float attackRate;
     [NonSerialized] protected float walkSpeedRate;

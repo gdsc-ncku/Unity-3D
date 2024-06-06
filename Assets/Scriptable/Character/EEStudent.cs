@@ -1,4 +1,7 @@
+using System.Reflection;
 using UnityEngine;
+using UnityEngine.VFX;
+using UnityEngine.VFX.Utility;
 
 [CreateAssetMenu(fileName = "EEStudent", menuName = "Character/EEStudent")]
 public class EEStudent : CharacterBaseData
@@ -98,7 +101,15 @@ public class EEStudent : CharacterBaseData
 
     public override void UseingE_Skill()
     {
-        
+        RaycastHit hit;
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        if (Physics.Raycast(ray, out hit, E_SkillRange, LayerMask.GetMask("Enemy")))
+        {
+            GameObject effect = Instantiate(E_Skill, hit.collider.gameObject.transform.position, Quaternion.identity);
+            effect.GetComponent<EEStudentSecondSkill>().records.Add(effect);
+            effect.GetComponent<EEStudentSecondSkill>().enemyAI = hit.collider.gameObject.transform.root.gameObject.GetComponent<EnemyAI>();
+            Destroy(effect, 2f);
+        }
     }
 
     private void OnEnable()

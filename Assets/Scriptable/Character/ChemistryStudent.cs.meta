@@ -3,7 +3,10 @@ guid: 898d79af331f66a4b82d96ac19588d11
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Q_Skill: {instanceID: 0}
+  - E_Skill: {instanceID: 0}
+  - playerBattleInfo: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -32,7 +32,6 @@ public class EnemyAI : MonoBehaviour
 
             if(Hp <= 0)
             {
-                nowStatus = EnemyStatus.die;
                 StartCoroutine(EnemyDie());
             }
         }
@@ -40,11 +39,12 @@ public class EnemyAI : MonoBehaviour
 
     IEnumerator EnemyDie()
     {
-        if(Health > 0)
+        if(Health > 0 || nowStatus == EnemyStatus.die)
         {
             yield break;
         }
 
+        nowStatus = EnemyStatus.die;
         if (gameObject.GetComponent<Collider>())
         {
             gameObject.GetComponent<Collider>().enabled = false;

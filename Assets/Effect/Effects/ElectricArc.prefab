@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1340751964876895048
+--- !u!1 &287671154710770501
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7683762542625892332}
+  - component: {fileID: 8916148528957189636}
   m_Layer: 0
-  m_Name: Pos2
+  m_Name: Pos1
   m_TagString: Untagged
-  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7683762542625892332
+--- !u!4 &8916148528957189636
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1340751964876895048}
+  m_GameObject: {fileID: 287671154710770501}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.44, y: -0.58, z: -4.04}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.92, y: -0.26335868, z: -0.60149866}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6868909491679601167}
@@ -43,10 +43,10 @@ GameObject:
   - component: {fileID: 8118798193469048064}
   - component: {fileID: 4356712482948495689}
   - component: {fileID: 3512056911857840245}
-  - component: {fileID: 6625293300150518497}
-  - component: {fileID: 2517851580484994783}
-  - component: {fileID: 5655360579415673631}
-  - component: {fileID: 7471069898677121129}
+  - component: {fileID: 4431732681158967897}
+  - component: {fileID: 6171781104357367572}
+  - component: {fileID: 2015863799079930899}
+  - component: {fileID: 1034670566465263103}
   m_Layer: 0
   m_Name: ElectricArc2
   m_TagString: Untagged
@@ -86,26 +86,29 @@ VisualEffect:
   m_ResourceVersion: 1
   m_PropertySheet:
     m_Float:
-      m_Array: []
+      m_Array:
+      - m_Value: 0.08
+        m_Name: Thickness
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: -6.06, y: 4.19, z: -3.32}
+      - m_Value: {x: 29.6, y: -1.3167934, z: -3.0074933}
         m_Name: Pos1
         m_Overridden: 1
-      - m_Value: {x: -4.44, y: 4.55, z: -4.04}
+      - m_Value: {x: -4.9679937, y: -1.3167934, z: -3.0074933}
         m_Name: Pos2
         m_Overridden: 1
-      - m_Value: {x: -3.54, y: 4.5, z: -2.13}
+      - m_Value: {x: -4.9679937, y: -1.3167934, z: -3.0074933}
         m_Name: Pos3
         m_Overridden: 1
-      - m_Value: {x: -1.86, y: 5.13, z: -5.5}
+      - m_Value: {x: -4.9679937, y: -1.3167934, z: -3.0074933}
         m_Name: Pos4
         m_Overridden: 1
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 0.037841283, y: 1.6713254, z: 0.13602899, w: 0}
+      - m_Value: {x: 0.064709105, y: 0.77651, z: 0, w: 1}
         m_Name: Color
         m_Overridden: 1
     m_Uint:
@@ -176,12 +179,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ExecuteInEditor: 1
   m_Bindings:
-  - {fileID: 6625293300150518497}
-  - {fileID: 2517851580484994783}
-  - {fileID: 5655360579415673631}
-  - {fileID: 7471069898677121129}
+  - {fileID: 4431732681158967897}
+  - {fileID: 6171781104357367572}
+  - {fileID: 2015863799079930899}
+  - {fileID: 1034670566465263103}
   m_VisualEffect: {fileID: 8118798193469048064}
---- !u!114 &6625293300150518497
+--- !u!114 &4431732681158967897
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -195,8 +198,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos1
-  Target: {fileID: 8776568807576797053}
---- !u!114 &2517851580484994783
+  Target: {fileID: 8916148528957189636}
+--- !u!114 &6171781104357367572
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -210,8 +213,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos2
-  Target: {fileID: 7683762542625892332}
---- !u!114 &5655360579415673631
+  Target: {fileID: 3207231518580139564}
+--- !u!114 &2015863799079930899
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -225,8 +228,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos3
-  Target: {fileID: 1824522176580338113}
---- !u!114 &7471069898677121129
+  Target: {fileID: 2550569955288709838}
+--- !u!114 &1034670566465263103
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -240,7 +243,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos4
-  Target: {fileID: 1868284130007603889}
+  Target: {fileID: 2326095506395961363}
+--- !u!1 &1972451530937760452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2326095506395961363}
+  m_Layer: 0
+  m_Name: Pos4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2326095506395961363
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972451530937760452}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.99359876, y: -0.26335868, z: -0.60149866}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6868909491679601167}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3692687317736204189
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,9 +288,9 @@ GameObject:
   - component: {fileID: 1482250386829403302}
   - component: {fileID: 2210742847242375384}
   - component: {fileID: 1665888272531175711}
-  - component: {fileID: 5792602614656444263}
-  - component: {fileID: 6270918912811589944}
   - component: {fileID: 1038744489016910254}
+  - component: {fileID: 6573383232489527049}
+  - component: {fileID: 1141637185988961896}
   m_Layer: 0
   m_Name: ElectricArc
   m_TagString: Untagged
@@ -313,21 +347,21 @@ VisualEffect:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: -6.06, y: 4.19, z: -3.32}
+      - m_Value: {x: 29.6, y: -1.3167934, z: -3.0074933}
         m_Name: Pos1
         m_Overridden: 1
-      - m_Value: {x: -4.44, y: 4.55, z: -4.04}
+      - m_Value: {x: -4.9679937, y: -1.3167934, z: -3.0074933}
         m_Name: Pos2
         m_Overridden: 1
-      - m_Value: {x: -3.54, y: 4.5, z: -2.13}
+      - m_Value: {x: -4.9679937, y: -1.3167934, z: -3.0074933}
         m_Name: Pos3
         m_Overridden: 1
-      - m_Value: {x: -1.86, y: 5.13, z: -5.5}
+      - m_Value: {x: -4.9679937, y: -1.3167934, z: -3.0074933}
         m_Name: Pos4
         m_Overridden: 1
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 0.9134326, y: 2.4574585, z: 1.419276, w: 0}
+      - m_Value: {x: 0, y: 0.81366324, z: 0.271221, w: 1}
         m_Name: Color
         m_Overridden: 1
     m_Uint:
@@ -399,9 +433,9 @@ MonoBehaviour:
   m_ExecuteInEditor: 1
   m_Bindings:
   - {fileID: 1665888272531175711}
-  - {fileID: 5792602614656444263}
-  - {fileID: 6270918912811589944}
   - {fileID: 1038744489016910254}
+  - {fileID: 6573383232489527049}
+  - {fileID: 1141637185988961896}
   m_VisualEffect: {fileID: 5938678316446401769}
 --- !u!114 &1665888272531175711
 MonoBehaviour:
@@ -417,37 +451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos1
-  Target: {fileID: 8776568807576797053}
---- !u!114 &5792602614656444263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3692687317736204189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07c3070554d0a8944a95ff8f018c2c9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Property:
-    m_Name: Pos2
-  Target: {fileID: 7683762542625892332}
---- !u!114 &6270918912811589944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3692687317736204189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07c3070554d0a8944a95ff8f018c2c9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Property:
-    m_Name: Pos3
-  Target: {fileID: 1824522176580338113}
+  Target: {fileID: 8916148528957189636}
 --- !u!114 &1038744489016910254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,9 +465,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Property:
+    m_Name: Pos2
+  Target: {fileID: 3207231518580139564}
+--- !u!114 &6573383232489527049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3692687317736204189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c3070554d0a8944a95ff8f018c2c9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Property:
+    m_Name: Pos3
+  Target: {fileID: 2550569955288709838}
+--- !u!114 &1141637185988961896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3692687317736204189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c3070554d0a8944a95ff8f018c2c9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Property:
     m_Name: Pos4
-  Target: {fileID: 1868284130007603889}
---- !u!1 &3715183172672135395
+  Target: {fileID: 2326095506395961363}
+--- !u!1 &6164755914683189870
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -471,56 +505,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1824522176580338113}
+  - component: {fileID: 3207231518580139564}
   m_Layer: 0
-  m_Name: Pos3
+  m_Name: Pos2
   m_TagString: Untagged
-  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1824522176580338113
+--- !u!4 &3207231518580139564
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3715183172672135395}
+  m_GameObject: {fileID: 6164755914683189870}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.54, y: -0.63, z: -2.13}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6868909491679601167}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3865698986274335857
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8776568807576797053}
-  m_Layer: 0
-  m_Name: Pos1
-  m_TagString: Untagged
-  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8776568807576797053
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3865698986274335857}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.06, y: -0.94, z: -3.32}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.99359876, y: -0.26335868, z: -0.60149866}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6868909491679601167}
@@ -534,6 +537,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6868909491679601167}
+  - component: {fileID: 279193368301383523}
   m_Layer: 0
   m_Name: ElectricArc
   m_TagString: Untagged
@@ -550,19 +554,35 @@ Transform:
   m_GameObject: {fileID: 6451951715415573396}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.13, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5040027483863403424}
   - {fileID: 5754731176160777159}
   - {fileID: 598288258637296984}
-  - {fileID: 8776568807576797053}
-  - {fileID: 7683762542625892332}
-  - {fileID: 1824522176580338113}
-  - {fileID: 1868284130007603889}
+  - {fileID: 8916148528957189636}
+  - {fileID: 3207231518580139564}
+  - {fileID: 2550569955288709838}
+  - {fileID: 2326095506395961363}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &279193368301383523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6451951715415573396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe1aea503d3e47f4980e8a5576c78eca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerBattleInfo: {fileID: 11400000, guid: e7c568f5ad6fe6e4d80ab0c9089eb3a4, type: 2}
+  enemyAI: {fileID: 0}
+  connect: 0
+  maxConnect: 3
 --- !u!1 &6569126170877745275
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,10 +595,10 @@ GameObject:
   - component: {fileID: 5996462262990310581}
   - component: {fileID: 3664566614425330397}
   - component: {fileID: 7097540045385124047}
-  - component: {fileID: 5423978077062644205}
-  - component: {fileID: 5082895924413609671}
-  - component: {fileID: 5903823614040369077}
-  - component: {fileID: 430976021843181086}
+  - component: {fileID: 2715574283305338119}
+  - component: {fileID: 5506822289235388556}
+  - component: {fileID: 430377355080745740}
+  - component: {fileID: 5380913737407178291}
   m_Layer: 0
   m_Name: ElectricArc3
   m_TagString: Untagged
@@ -618,26 +638,29 @@ VisualEffect:
   m_ResourceVersion: 1
   m_PropertySheet:
     m_Float:
-      m_Array: []
+      m_Array:
+      - m_Value: 0.08
+        m_Name: Thickness
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: -6.06, y: 4.19, z: -3.32}
+      - m_Value: {x: 29.6, y: -1.3167934, z: -3.0074933}
         m_Name: Pos1
         m_Overridden: 1
-      - m_Value: {x: -4.44, y: 4.55, z: -4.04}
+      - m_Value: {x: -4.9679937, y: -1.3167934, z: -3.0074933}
         m_Name: Pos2
         m_Overridden: 1
-      - m_Value: {x: -3.54, y: 4.5, z: -2.13}
+      - m_Value: {x: -4.9679937, y: -1.3167934, z: -3.0074933}
         m_Name: Pos3
         m_Overridden: 1
-      - m_Value: {x: -1.86, y: 5.13, z: -5.5}
+      - m_Value: {x: -4.9679937, y: -1.3167934, z: -3.0074933}
         m_Name: Pos4
         m_Overridden: 1
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 2.2844799, y: 4.867144, z: 1.9366647, w: 0}
+      - m_Value: {x: 0.106793575, y: 0.87723285, z: 0, w: 1}
         m_Name: Color
         m_Overridden: 1
     m_Uint:
@@ -708,12 +731,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ExecuteInEditor: 1
   m_Bindings:
-  - {fileID: 5423978077062644205}
-  - {fileID: 5082895924413609671}
-  - {fileID: 5903823614040369077}
-  - {fileID: 430976021843181086}
+  - {fileID: 2715574283305338119}
+  - {fileID: 5506822289235388556}
+  - {fileID: 430377355080745740}
+  - {fileID: 5380913737407178291}
   m_VisualEffect: {fileID: 5996462262990310581}
---- !u!114 &5423978077062644205
+--- !u!114 &2715574283305338119
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -727,8 +750,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos1
-  Target: {fileID: 8776568807576797053}
---- !u!114 &5082895924413609671
+  Target: {fileID: 8916148528957189636}
+--- !u!114 &5506822289235388556
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -742,8 +765,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos2
-  Target: {fileID: 7683762542625892332}
---- !u!114 &5903823614040369077
+  Target: {fileID: 3207231518580139564}
+--- !u!114 &430377355080745740
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -757,8 +780,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos3
-  Target: {fileID: 1824522176580338113}
---- !u!114 &430976021843181086
+  Target: {fileID: 2550569955288709838}
+--- !u!114 &5380913737407178291
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -772,8 +795,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Pos4
-  Target: {fileID: 1868284130007603889}
---- !u!1 &9184300234312524242
+  Target: {fileID: 2326095506395961363}
+--- !u!1 &8869482976082797297
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -781,25 +804,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1868284130007603889}
+  - component: {fileID: 2550569955288709838}
   m_Layer: 0
-  m_Name: Pos4
+  m_Name: Pos3
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1868284130007603889
+--- !u!4 &2550569955288709838
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9184300234312524242}
+  m_GameObject: {fileID: 8869482976082797297}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.86, y: 0, z: -5.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.99359876, y: -0.26335868, z: -0.60149866}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6868909491679601167}
