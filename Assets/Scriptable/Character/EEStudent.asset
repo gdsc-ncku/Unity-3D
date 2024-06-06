@@ -18,9 +18,9 @@ MonoBehaviour:
   AttackDamage: 1
   WalkSpeed: 4
   JumpForce: 8
-  Q_SkillDamage: 10
-  Q_Skill: {fileID: 0}
-  E_SkillDamage: 10
+  Q_SkillDamage: 20
+  Q_Skill: {fileID: 6151249542228171782, guid: 49ae9f2ac537a6f47a2f0cb22ba4e365, type: 3}
+  E_SkillDamage: 100
   E_Skill: {fileID: 0}
   Q_MagicConsumption: 1
   Q_DamageRate: 1

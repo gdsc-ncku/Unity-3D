@@ -1069,6 +1069,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   HealthBar: {fileID: 6171485931028743708}
+  nowStatus: 0
 --- !u!195 &2880917604791783815
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7647605903232713159}
   - component: {fileID: 5727158798877446331}
   - component: {fileID: 1700766902646468273}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: M72
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 1333316361190768715}
   - component: {fileID: 1864636038657528173}
   - component: {fileID: 1884410104262648406}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Plug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 272594653255342040}
-  m_Layer: 7
+  m_Layer: 16
   m_Name: AttackPint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 3892031475063157787}
   - component: {fileID: 7320970562119621690}
   - component: {fileID: 766779286291873617}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Rear_Sight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 3841047240503904867}
   - component: {fileID: 1808045800509332175}
   - component: {fileID: 4095029359833008938}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Font_Sight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 6855074631746408646}
   - component: {fileID: 1085270990674124742}
   - component: {fileID: 231770604510680547}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -466,7 +466,7 @@ GameObject:
   - component: {fileID: 9110295874007021852}
   - component: {fileID: -2623734740511764774}
   - component: {fileID: -6263093143664160659}
-  m_Layer: 7
+  m_Layer: 16
   m_Name: M72
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -677,7 +677,7 @@ GameObject:
   - component: {fileID: 6034988274744423456}
   - component: {fileID: 213343639637948019}
   - component: {fileID: 4038726300198300665}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Rear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -760,7 +760,7 @@ GameObject:
   - component: {fileID: 4377705316597152884}
   - component: {fileID: 6548844492372993582}
   - component: {fileID: 6921355508804777795}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Rocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}

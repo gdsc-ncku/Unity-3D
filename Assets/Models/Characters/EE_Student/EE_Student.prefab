@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EE_Student
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: ddd7a9ea1ead590439c8aa4bb824fd54, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 43606e68f7610e648a996573b09f21ea, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

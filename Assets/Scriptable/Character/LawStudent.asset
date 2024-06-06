@@ -18,15 +18,13 @@ MonoBehaviour:
   AttackDamage: 1
   WalkSpeed: 4
   JumpForce: 8
-  Q_SkillDamage: 10
-  Q_Skill: {fileID: 0}
-  E_SkillDamage: 10
-  E_Skill: {fileID: 0}
+  Q_SkillDamage: 100
+  Q_Skill: {fileID: 7404421868503584831, guid: 8bb5d84613fec234c873e294dfd07646, type: 3}
+  E_SkillDamage: 100
+  E_Skill: {fileID: 5885895851586270034, guid: c8c2c75efc8e77743b5f5f2c4b549190, type: 3}
   Q_MagicConsumption: 1
   Q_DamageRate: 1
-  Q_SkillRange: 1
+  Q_SkillRange: 20
   E_MagicConsumption: 1
   E_DamageRate: 1
-  E_SkillRange: 1
-  QSkillRange: 10
-  ESkillRange: 10
+  E_SkillRange: 20

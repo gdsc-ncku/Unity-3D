@@ -929,7 +929,7 @@ Transform:
   m_GameObject: {fileID: 5661953872080213534}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 1.4546525, z: -1.4546525}
+  m_LocalPosition: {x: 0.021, y: 0.007, z: 0.032}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1236,7 +1236,7 @@ GameObject:
   - component: {fileID: 3280837256282555557}
   - component: {fileID: 6369766362078067287}
   - component: {fileID: 6558968397173402460}
-  - component: {fileID: 3169363688355936835}
+  - component: {fileID: 3295566404935835045}
   m_Layer: 7
   m_Name: EyeEnemy
   m_TagString: Enemy
@@ -1364,8 +1364,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eyeEnemy: {fileID: 11400000, guid: 6188b8f2d4a6c9f488b78becc2b49bed, type: 2}
---- !u!135 &3169363688355936835
-SphereCollider:
+--- !u!136 &3295566404935835045
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1382,9 +1382,11 @@ SphereCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.6
-  m_Center: {x: 0, y: 1.4, z: 0}
+  serializedVersion: 2
+  m_Radius: 0.80426764
+  m_Height: 2.0145473
+  m_Direction: 1
+  m_Center: {x: 0.03476882, y: 1.4123878, z: 0}
 --- !u!1 &7278241300597495467
 GameObject:
   m_ObjectHideFlags: 0
