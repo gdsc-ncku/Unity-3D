@@ -13,6 +13,9 @@ TagManager:
   - EnemyBullets
   - MainLight
   - Gem
+  - Undefined
+  - fortBullet
+  - fort
   layers:
   - Default
   - TransparentFX

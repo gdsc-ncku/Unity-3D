@@ -349,5 +349,9 @@ public class EnemyAI : MonoBehaviour
         {
             ReduceHealth(collider.GetComponent<FPSCustomBullet>().AttackWeapon.ThisWeapon.damage * BattleInfo.Role.GetComponent<StudentDataManager>().studentData.AttackDamage);
         }
+        else if(collider.transform.root.gameObject.CompareTag("fortBullet"))
+        {
+            ReduceHealth(BattleInfo.Role.GetComponent<StudentDataManager>().studentData.Q_SkillDamage * BattleInfo.Role.GetComponent<StudentDataManager>().studentData.Q_SkillDamageRate);
+        }
     }
 }

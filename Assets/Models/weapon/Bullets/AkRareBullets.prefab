@@ -129,6 +129,7 @@ MonoBehaviour:
   AttackWeapon: {fileID: 0}
   rb: {fileID: 1165490155807771508}
   explosion: {fileID: 1263282939118438294, guid: c150d7df7f6325646bea7fda20458269, type: 3}
+  target: {fileID: 0}
   maxLifetime: 5
   explosionSound: {fileID: 0}
 --- !u!96 &3435128838079751265
