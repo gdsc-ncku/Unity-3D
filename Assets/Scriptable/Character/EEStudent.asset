@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EEStudent
   m_EditorClassIdentifier: 
   Unlocked: 0
-  Health: 10000
+  Health: 100
   Defense: 10
   AttackDamage: 1
   WalkSpeed: 4

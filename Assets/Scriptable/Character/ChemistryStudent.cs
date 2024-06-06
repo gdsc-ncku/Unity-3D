@@ -89,12 +89,22 @@ public class ChemistryStudent : CharacterBaseData
     //Hero skills effect need to write in the functions below.
     public override void UseingQ_Skill()
     {
+        // instantiate object to throw
+        GameObject projectile = Instantiate(Q_Skill, Camera.main.transform.position + Camera.main.transform.forward * 1f, Quaternion.identity);
 
+        // get rigidbody component
+        Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
+        projectileRb.AddForce(Camera.main.transform.forward * 15f, ForceMode.Impulse);
     }
 
     public override void UseingE_Skill()
     {
+        // instantiate object to throw
+        GameObject projectile = Instantiate(E_Skill, Camera.main.transform.position + Camera.main.transform.forward * 1f, Quaternion.identity);
 
+        // get rigidbody component
+        Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
+        projectileRb.AddForce(Camera.main.transform.forward * 10f, ForceMode.Impulse);
     }
 
     private void OnEnable()
