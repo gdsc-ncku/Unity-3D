@@ -80,45 +80,41 @@ public class MechanicStudent : CharacterBaseData
 
     //You can Create specific strengthening below.
     #region Hero_Q_Skill
+    public override void UseingQ_Skill()
+    {
+        Vector3 cameraPos = Camera.main.transform.position;
+        Vector3 cameraForward = Camera.main.transform.forward;
+        Vector3 objectPos = cameraPos + cameraForward * 2f;
+        RaycastHit hit;
+        if (Physics.Raycast(objectPos, -Vector3.up, out hit, Mathf.Infinity))
+        {
+            objectPos.y = hit.point.y + 0.8f;
+        }
+         
+        GameObject instantiatedObject = Instantiate(Q_Skill, objectPos, Quaternion.identity);
+        Destroy(instantiatedObject, 60f);
+    }
     #endregion
 
     #region Hero_E_Skill
-    #endregion
-
-    //Hero skills effect need to write in the functions below.
-    public GameObject objectTo;
-    public GameObject[] countObjects;
-    public int fortnum=0;
-    public int fortready=1;
-
-
-    public new void UseingQ_Skill()
+    public override void UseingE_Skill()
     {
-        countObjects = GameObject.FindGameObjectsWithTag("fort");
-        fortnum=countObjects.Length;
-        // Debug.Log(fortnum);
-        Vector3 cameraPos = Camera.main.transform.position;
-        Vector3 cameraForward = Camera.main.transform.forward;
-        GameObject myObject = objectTo;
-        Vector3 objectPos = cameraPos + cameraForward * 10;
-
-        objectPos.y = cameraPos.y;
-
-        if(fortnum>20)
+        RaycastHit hit;
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        if (Physics.Raycast(ray, out hit, E_SkillRange))
         {
-            fortready=0;
-        }
-        else if(fortnum<=20 && fortready==1){
-            fortready=1;
-            GameObject instantiatedObject=Instantiate(myObject, objectPos, Quaternion.identity);
-            Destroy(instantiatedObject,10f);
+            Vector3 pos = new Vector3(hit.point.x, 8, hit.point.z);
+
+            // Instantiate effect at player position
+            GameObject effect = Instantiate(E_Skill, pos, Quaternion.identity);
+            effect.transform.forward = -Vector3.up;
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                effect.GetComponent<MEStudentSecondSkill>().target = hit.collider.gameObject;
+            }
         }
     }
-
-    public new void UseingE_Skill()
-    {
-
-    }
+    #endregion
 
     private void OnEnable()
     {
