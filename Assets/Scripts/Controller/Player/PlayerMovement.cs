@@ -69,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
         Speed = MovementConst.Role.GetComponent<StudentDataManager>().studentData.WalkSpeed;
         // Initialize Rigidbody and freeze rotation
         rb = GetComponent<Rigidbody>();
+        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
         MovementConst.Player = gameObject;
     }
 
