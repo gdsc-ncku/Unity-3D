@@ -32,7 +32,7 @@ public class GravelEffect : MonoBehaviour
         EnemyAI enemy;
         if (other.TryGetComponent(out enemy))
         {
-            enemy.ReduceHealth(playerBattleInfo.Role.GetComponent<StudentDataManager>().studentData.Q_SkillDamage * playerBattleInfo.Role.GetComponent<StudentDataManager>().studentData.Q_SkillDamageRate);
+            enemy.ReduceHealth(playerBattleInfo.Role.GetComponent<StudentDataManager>().studentData.E_SkillDamage * playerBattleInfo.Role.GetComponent<StudentDataManager>().studentData.E_SkillDamageRate);
         }
     }
 }

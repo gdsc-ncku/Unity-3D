@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 8850615779088541274}
   m_Layer: 0
   m_Name: fort_up
-  m_TagString: fort
+  m_TagString: Undefined
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -260,11 +260,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  fort: {fileID: 5218006711925189138}
-  whatIsEnemy:
-    serializedVersion: 2
-    m_Bits: 128
-  searchRadius: 20
+  searchRadius: 0.1
+  fort: {fileID: 149777780858479462, guid: 399aef73468908e40b3bdb19495d5b01, type: 3}
+  attackPointLeft: {fileID: 8965211733656879019, guid: 399aef73468908e40b3bdb19495d5b01, type: 3}
+  attackPointRight: {fileID: 7104636575612203981, guid: 399aef73468908e40b3bdb19495d5b01, type: 3}
+  bullet: {fileID: 6231888369005412580, guid: 2ecfdddf5b800de4e93aa6bf9084d849, type: 3}
+  muzzleflash: {fileID: 919132149155446097, guid: eb281fd028491d049be58d47776e94ff, type: 3}
+  audioSource: {fileID: 914310574886090849, guid: 399aef73468908e40b3bdb19495d5b01, type: 3}
 --- !u!65 &8850615779088541274
 BoxCollider:
   m_ObjectHideFlags: 0

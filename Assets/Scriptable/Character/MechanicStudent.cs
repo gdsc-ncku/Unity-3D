@@ -88,7 +88,11 @@ public class MechanicStudent : CharacterBaseData
         RaycastHit hit;
         if (Physics.Raycast(objectPos, -Vector3.up, out hit, Mathf.Infinity))
         {
+<<<<<<< HEAD
             objectPos.y = hit.point.y + 0.8f;
+=======
+            objectPos.y = hit.point.y - 0.1f;
+>>>>>>> 4f70257789b60dd46151bab09e304dac9fc4fb30
         }
          
         GameObject instantiatedObject = Instantiate(Q_Skill, objectPos, Quaternion.identity);
