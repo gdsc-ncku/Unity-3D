@@ -16,20 +16,20 @@ MonoBehaviour:
   Health: 100
   Defense: 10
   AttackDamage: 1
-  WalkSpeed: 4
+  WalkSpeed: 6
   JumpForce: 8
-  Q_SkillDamage: 20
-  Q_Skill: {fileID: 3077360316528972885, guid: 2bd11032a913d0448bcda9554cb074da, type: 3}
-  E_SkillDamage: 100
-  E_Skill: {fileID: 0}
+  Q_SkillDamage: 5
+  Q_Skill: {fileID: 6019554827917046871, guid: 399aef73468908e40b3bdb19495d5b01, type: 3}
+  E_SkillDamage: 50
+  E_Skill: {fileID: 2980672653703016308, guid: 5073f47656180df4b8ddc1432104cc5b, type: 3}
   playerBattleInfo: {fileID: 11400000, guid: e7c568f5ad6fe6e4d80ab0c9089eb3a4, type: 2}
   Q_MagicConsumption: 1
   Q_DamageRate: 1
-  Q_SkillRange: 1
+  Q_SkillRange: 20
   E_MagicConsumption: 1
   E_DamageRate: 1
-  E_SkillRange: 1
-  objectTo: {fileID: 0}
+  E_SkillRange: 20
+  objectTo: {fileID: 4081703593197829968, guid: 44f425d168b135846946bd26557bff69, type: 3}
   countObjects: []
   fortnum: 0
   fortready: 1
