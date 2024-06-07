@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     {
         if(gameStatus.Level != 0)
         {
+            StopCoroutine(SpawnRandomOnNavMesh());
             gameStatus.GenerateSpeed = Mathf.Max(3f - (1 << (gameStatus.Level - 1)) * 0.2f, 0.5f);
             level1();
         }
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour
         gameStatus.Duration = 600 + (gameStatus.Level - 1 ) * 60;
         StartCoroutine(SpawnRandomOnNavMesh());
     }
+
     IEnumerator SpawnRandomOnNavMesh()
     {
         for(int i = 0; i < 5; i++)

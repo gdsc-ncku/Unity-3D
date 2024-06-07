@@ -7,6 +7,7 @@ public class Timer : MonoBehaviour
 {
     [SerializeField] private Text uiText;
     [SerializeField] private GameStatus gameStatus;
+    [SerializeField] GameObject WinUI, PlayerUI;
 
     private bool Pause = false;
 
@@ -35,9 +36,18 @@ public class Timer : MonoBehaviour
         OnEnd();
     }
 
+    public void WinGame()
+    {
+        PlayerUI.SetActive(false);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        WinUI.SetActive(true);
+        Time.timeScale = 0;
+    }
+
     private void OnEnd()
     {
         //End Time , if want Do something
-        print("End");
+        WinGame();
     }
 }
