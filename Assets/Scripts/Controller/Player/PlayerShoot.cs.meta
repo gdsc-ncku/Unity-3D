@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 7e168a1468e284f4dbbc80def05853ba
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - informationScriptable: {fileID: 11400000, guid: 5186a9aa120a8a049a936607850ca30c, type: 2}
+  - BattleInfo: {fileID: 11400000, guid: e7c568f5ad6fe6e4d80ab0c9089eb3a4, type: 2}
+  - PlayerUI: {instanceID: 0}
+  - playerRb: {instanceID: 0}
+  - muzzleFlash: {instanceID: 0}
+  - ammunitionDisplay: {instanceID: 0}
+  - animator: {instanceID: 0}
+  - audioSource: {instanceID: 0}
+  - cameraRoot: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

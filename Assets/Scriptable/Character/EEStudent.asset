@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5031cea42edf9da4195b243a4a65ed3b, type: 3}
+  m_Name: EEStudent
+  m_EditorClassIdentifier: 
+  Unlocked: 0
+  Health: 100
+  Defense: 10
+  AttackDamage: 1
+  WalkSpeed: 6
+  JumpForce: 8
+  Q_SkillDamage: 20
+  Q_Skill: {fileID: 6151249542228171782, guid: 49ae9f2ac537a6f47a2f0cb22ba4e365, type: 3}
+  E_SkillDamage: 30
+  E_Skill: {fileID: 6451951715415573396, guid: 20e3b87b5c899094b922d8ae3cf579aa, type: 3}
+  playerBattleInfo: {fileID: 11400000, guid: e7c568f5ad6fe6e4d80ab0c9089eb3a4, type: 2}
+  Q_MagicConsumption: 1
+  Q_DamageRate: 1
+  Q_SkillRange: 1
+  E_MagicConsumption: 1
+  E_DamageRate: 1
+  E_SkillRange: 20
+  throwForce: 0
+  throwUpwardForce: 0

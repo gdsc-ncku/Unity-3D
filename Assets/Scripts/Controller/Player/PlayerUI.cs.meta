@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 8039e7a40cc6db24697f126115f62458
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - HealthBar: {instanceID: 0}
+  - BulletLeftNum: {instanceID: 0}
+  - BulletMaxNum: {instanceID: 0}
+  - WeaponIcon: {instanceID: 0}
+  - HealthValueDisplay: {instanceID: 0}
+  - PlayerInfo: {fileID: 11400000, guid: e7c568f5ad6fe6e4d80ab0c9089eb3a4, type: 2}
+  - playerDieUI: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

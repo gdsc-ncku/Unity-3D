@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Models/weapon/AK.prefab.meta
+guid: c6a164e412efb2046a4451f17d4b6a9e
+========
+guid: daa1678a0444f1443a5a5cbb01464887
+>>>>>>>> 0f63d18 (ok:shoot&fort/fixing:recoil):Assets/Models/weapon/WeaponHolder.prefab.meta
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

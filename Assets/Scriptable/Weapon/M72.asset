@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9446a65ad0e990842aa37f4c46d68134, type: 3}
+  m_Name: M72
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 5499961820697013737, guid: 429356bded98f9e4aa2fb25dd1a99a11, type: 3}
+  damage: 100
+  shootForce: 10
+  upwardForce: 3
+  timeBetweenShooting: 0
+  spread: 0
+  reloadTime: 2
+  timeBetweenShots: 0
+  magazineSize: 5
+  bulletsPerTap: 1
+  allowButtonHold: 0
+  maxBullets: 1
+  bulletsShot: 0
+  recoilForce: 50
+  allowInvoke: 1
+  gunSound: {fileID: 8300000, guid: 6ac4b883b685995438f8c425cbb14c3f, type: 3}
+  recoilX: -2
+  recoilY: 0
+  recoilZ: 0
+  Icon: {fileID: 21300000, guid: 334819e9a04cea94b8185662987c475f, type: 3}

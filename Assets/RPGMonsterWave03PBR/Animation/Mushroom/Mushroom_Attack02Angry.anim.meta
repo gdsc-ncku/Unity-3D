@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/RPGMonsterWave03PBR/Animation/Mushroom/Mushroom_Attack02Angry.anim.meta
+guid: 6ced56d454909324883d1c8587370921
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+========
+guid: bb8e0206ca4e1a844a43e93f16fc22e4
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+>>>>>>>> d2fe008989ddfaf80e2760321cdf574c377e6452:Assets/Scriptable/Enemy/StingRayEnemy.asset.meta
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

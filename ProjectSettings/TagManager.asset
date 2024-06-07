@@ -3,28 +3,40 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - bullet
+  - Item
+  - Enemy
+  - FxTemporaire
+  - Weapon
+  - EnemyBullets
+  - MainLight
+  - Gem
+  - Undefined
+  - fortBullet
+  - fort
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - ItemLayer
+  - Enemy
+  - whatIsHolding
+  - whatIsWall
+  - WhatIsGround
+  - Die
+  - GetHit
+  - LawStudentUI
+  - MechanicStudentUI
+  - ChemistryStudentUI
+  - Weapon
+  - EEStudentUI
+  - GemUI
+  - Gem
   - 
   - 
   - 

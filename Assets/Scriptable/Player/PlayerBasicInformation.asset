@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b134b4ccaa00969498aae5c3ecc05240, type: 3}
+  m_Name: PlayerBasicInformation
+  m_EditorClassIdentifier: 
+  Name: Admin
+  Level: 1
+  Soul: 0
+  Width: 1920
+  Height: 1080
+  MouseDPI: 800
+  edpi: 80
+  MovingMusic: 100
+  EnemyMusic: 100
+  BackgroundMusic: 100
+  Law: {fileID: 946270617512685866, guid: 5d1786efca1691e42ad3f71b5d73e7e8, type: 3}
+  Mechanic: {fileID: 2591355812482505310, guid: 572e9de430316ed40a6ffaa05f0afdd0, type: 3}
+  Chemistry: {fileID: 6231363875576087526, guid: 484c2f9cce8ad2847895330cd3724d34, type: 3}
+  EE: {fileID: 2021171994817122406, guid: 99fbd28ddef181d4f8cb680c16cd634d, type: 3}
+  HealthRate: 1
+  AttackRate: 1
+  WalkSpeedRate: 1
+  DefenseRate: 1
+  Q_SkillDamageRate: 1
+  E_SkillDamageRate: 1

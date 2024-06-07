@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 286d038f52148ae40932868b959af281, type: 3}
+  m_Name: PlayerBattleInformation
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  PlayerDieUI: {fileID: 0}
+  role: {fileID: 946270617512685866, guid: 5d1786efca1691e42ad3f71b5d73e7e8, type: 3}
+  gameStatus: {fileID: 11400000, guid: 45b26f6374270b54899136a3a711ada1, type: 2}
+  initM_Hp: 100
+  HealthDecrease:
+    m_PersistentCalls:
+      m_Calls: []
+  HealthIncrease:
+    m_PersistentCalls:
+      m_Calls: []
+  HealthChange:
+    m_PersistentCalls:
+      m_Calls: []
+  nowWeaponData: {fileID: 0}

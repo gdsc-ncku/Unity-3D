@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 812bded395a3c864891a1513937522c3, type: 3}
+  m_Name: ChestEnemy
+  m_EditorClassIdentifier: 
+  Drops:
+  - {fileID: 3187354347425594553, guid: e8bfe557e45df6240a508fdb15390b66, type: 3}
+  DropsProbability: 1
+  AttackRange: 15
+  AttackSpeed: 0.5
+  AttackTime: 1
+  AttackDamage: 2
+  MoveSpeed: 2
+  RunSpeed: 4
+  Health: 30
+  Bullets:
+  - {fileID: 1152432382298514, guid: 3b4a0f53dedf97742ab19c480c965e8d, type: 3}
+  - {fileID: 1156661934076386, guid: 7fc0fee6962314e429370d8a99a3017c, type: 3}
+  - {fileID: 1487584829266522, guid: fc1c2ad730ee10d4ca58cb26fa41c38b, type: 3}
+  - {fileID: 1262348151898546, guid: 600e7bb4dc8bf2f4b8335acf9f96c326, type: 3}
