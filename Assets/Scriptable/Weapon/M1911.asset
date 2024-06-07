@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: M1911
   m_EditorClassIdentifier: 
   bullet: {fileID: 6231888369005412580, guid: 1dd4c55a5522bf44495b87168b3e39f4, type: 3}
-  damage: 10
+  damage: 5
   shootForce: 40
   upwardForce: 0.7
   timeBetweenShooting: 0.5
@@ -31,4 +31,4 @@ MonoBehaviour:
   recoilX: -0.3
   recoilY: 0
   recoilZ: 0
-  Icon: {fileID: 698362014, guid: 687c0ebfb2bd3a94cb7cde203d97701e, type: 3}
+  Icon: {fileID: 21300000, guid: 2f8999e93d39cb846801eae8f36e0b8f, type: 3}

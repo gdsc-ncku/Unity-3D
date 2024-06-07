@@ -68,8 +68,9 @@ public class FPSCustomBullet : MonoBehaviour
                     Destroy(explosionObj, 1f);
                 }
 
-                if (GetComponent<AudioSource>())
+                if (explosionSound != null)
                 {
+                    Debug.Log("Play Shot");
                     GetComponent<AudioSource>().PlayOneShot(explosionSound);
                 }
                 break;

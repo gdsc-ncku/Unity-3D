@@ -7,6 +7,7 @@ public class ShotGunBullet : MonoBehaviour
     public bool GenOtherBullet = true;
     public float spreadRange = 0.2f;
     private Rigidbody rb;
+    private Vector3 velocity;
 
     // Start is called before the first frame update
     void Start()
@@ -16,13 +17,12 @@ public class ShotGunBullet : MonoBehaviour
 
     IEnumerator Calculateforce()
     {
-        yield return new WaitForSeconds(0.01f);
-
-        rb = GetComponent<Rigidbody>();
-
         yield return null;
         if (GenOtherBullet)
         {
+            rb = GetComponent<Rigidbody>();
+            velocity = rb.velocity;
+            rb.velocity = Vector3.zero;
             for (int i = 0; i < splitAmount - 1; i++)
             {
                 Vector3 offsetShotgunBullet = new Vector3(Random.Range(-spreadRange, spreadRange), Random.Range(-spreadRange, spreadRange), Random.Range(-spreadRange, spreadRange));
@@ -33,9 +33,11 @@ public class ShotGunBullet : MonoBehaviour
                 GameObject copyBullet = Instantiate(gameObject, gameObject.transform.position + offsetShotgunBullet, gameObject.transform.rotation);
                 copyBullet.GetComponent<ShotGunBullet>().GenOtherBullet = false;
                 Rigidbody copyBulletRb = copyBullet.GetComponent<Rigidbody>();
-                copyBulletRb.velocity = rb.velocity;
+                copyBulletRb.velocity = velocity;
             }
             GenOtherBullet = false;
+            rb.velocity = velocity;
         }
+        yield break;
     }
 }

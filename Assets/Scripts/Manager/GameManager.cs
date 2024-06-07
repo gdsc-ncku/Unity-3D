@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     int maxAttempts = 100, radius = 500;
-    [SerializeField] int level1EnemyNum = 100;
     [SerializeField] GameStatus gameStatus;
     [SerializeField] GameObject[] Enemys;
     // Start is called before the first frame update
@@ -42,6 +41,7 @@ public class GameManager : MonoBehaviour
     {
         if(gameStatus.Level != 0)
         {
+            StopCoroutine(SpawnRandomOnNavMesh());
             gameStatus.GenerateSpeed = Mathf.Max(3f - (1 << (gameStatus.Level - 1)) * 0.2f, 0.5f);
             level1();
         }
@@ -49,9 +49,10 @@ public class GameManager : MonoBehaviour
 
     public void level1()
     {
-        gameStatus.Duration = 600 + (gameStatus.Level - 1 ) * 60;
+        gameStatus.Duration = 1 + (gameStatus.Level - 1 ) * 60;
         StartCoroutine(SpawnRandomOnNavMesh());
     }
+
     IEnumerator SpawnRandomOnNavMesh()
     {
         for(int i = 0; i < 5; i++)
@@ -59,7 +60,7 @@ public class GameManager : MonoBehaviour
             Vector3 randomPosition = GetRandomPosition();
             if (randomPosition != Vector3.zero)
             {
-                GameObject instance = Instantiate(Enemys[UnityEngine.Random.Range(0, Enemys.Length)], randomPosition, Quaternion.identity);
+                GameObject instance = Instantiate(Enemys[0], randomPosition, Quaternion.identity);
                 NavMeshAgent agent = instance.GetComponent<NavMeshAgent>();
                 if (agent != null)
                 {
@@ -92,7 +93,6 @@ public class GameManager : MonoBehaviour
             }
             float waitTime = Math.Max(gameStatus.GenerateSpeed, 0.5f);
             yield return new WaitForSeconds(waitTime);
-            gameStatus.RemainingDuration -= waitTime;
         }
     }
 

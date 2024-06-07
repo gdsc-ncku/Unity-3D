@@ -75,7 +75,7 @@ public class CactusEnemyBullets : MonoBehaviour
             gameObject.transform.localScale -= (Vector3.one * zoom * 5f);
         }
 
-        if(!attacking || (Spawner == null || other.gameObject == Spawner) || ((1 << other.gameObject.layer) & gameObject.layer) != 0)
+        if(!attacking || other.gameObject == Spawner || ((1 << other.gameObject.layer) & gameObject.layer) != 0)
         {
             return;
         }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: M249
   m_EditorClassIdentifier: 
   bullet: {fileID: 6231888369005412580, guid: 4a269118e8207d544b1a85d39cc50279, type: 3}
-  damage: 5
+  damage: 2
   shootForce: 40
   upwardForce: 1
   timeBetweenShooting: 0.03
@@ -31,4 +31,4 @@ MonoBehaviour:
   recoilX: -0.8
   recoilY: 0
   recoilZ: 0
-  Icon: {fileID: 21300000, guid: cf6478ef684ce7f4c830edba147c7607, type: 3}
+  Icon: {fileID: 21300000, guid: 9a5a2f81d99d10d4c955f482e9bbc5f1, type: 3}

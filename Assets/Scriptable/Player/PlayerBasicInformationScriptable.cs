@@ -32,6 +32,7 @@ public class PlayerBasicInformationScriptable : ScriptableObject
         {
             soul = value;
             PlayerPrefs.SetInt("Soul", value);
+            PlayerPrefs.Save();
         }
     }
     #endregion

@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class SettingController : MonoBehaviour
 {
@@ -62,7 +63,8 @@ public class SettingController : MonoBehaviour
         action.PerformInteractiveRebinding(bindingIndex)
             .OnComplete(callback =>
             {
-                string newKey = callback.action.bindings[bindingIndex].overridePath.ToString().Split('/').Last();
+                string newKey = callback.action.bindings[bindingIndex].overridePath.Split('/').Last();
+
                 //Input System
                 foreach (InputAction ac in settingManager.playerBasicInformationScriptable.playerControl)
                 {
@@ -70,7 +72,7 @@ public class SettingController : MonoBehaviour
                     for (int i = 0; i < ac.bindings.Count; i++)
                     {
                         InputBinding binding = ac.bindings[i];
-                        if ((binding.path == callback.action.bindings[bindingIndex].overridePath || (binding.overridePath != null && binding.overridePath == callback.action.bindings[bindingIndex].overridePath)) && binding.id != action.bindings[bindingIndex].id)
+                        if ((binding.overridePath != null && binding.overridePath == callback.action.bindings[bindingIndex].overridePath) && binding.id != action.bindings[bindingIndex].id)
                         {
                             ac.ApplyBindingOverride(i, new InputBinding { overridePath = "" });
                             break;
@@ -80,16 +82,16 @@ public class SettingController : MonoBehaviour
                 }
 
                 //UI
-                foreach (keyboard key in settingManager.keyboards)
+                foreach (keyboard k in settingManager.keyboards)
                 {
-                    if (key.key == newKey)
+                    if (k.key == newKey)
                     {
-                        if (key.value != null && key.value.text == key.display)
+                        if (k.value != null && k.value.text == k.display)
                         {
-                            key.value.text = "";
+                            k.value.text = "";
                         }
-                        key.value = text;
-                        text.text = key.display;
+                        k.value = text;
+                        text.text = k.display;
                     }
                 }
 
@@ -98,7 +100,9 @@ public class SettingController : MonoBehaviour
                 callback.Dispose();
                 mp.Enable();
                 PlayerPrefs.Save();
-                //Debug.Log("Finish");
+
+                text.transform.gameObject.transform.parent.GetComponent<Button>().enabled = true;
+                Debug.Log("Rebinding complete. New key: " + newKey);
             })
             .Start();
     }

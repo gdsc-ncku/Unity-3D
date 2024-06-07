@@ -35,7 +35,7 @@ public class WeaponData : ScriptableObject
     {
         if (bulletsPerTap > 1)
         {
-            timeBetweenShooting = timeBetweenShots * bulletsPerTap;
+            timeBetweenShooting = timeBetweenShots * bulletsPerTap + 0.2f;
         }
         else
         {
