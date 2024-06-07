@@ -93,7 +93,6 @@ public class GameManager : MonoBehaviour
             }
             float waitTime = Math.Max(gameStatus.GenerateSpeed, 0.5f);
             yield return new WaitForSeconds(waitTime);
-            gameStatus.RemainingDuration -= waitTime;
         }
     }
 

@@ -18,7 +18,8 @@ public class GameStatus : ScriptableObject
     public UnityEvent settingTimer, settingLevel;
     public AssetReference mainScene, adventureScene;
     public PlayerBattleValueScriptable playerBattle;
-    public float GenerateSpeed, remainingDuration = 0;
+    public float GenerateSpeed;
+    public int remainingDuration = 0;
     private int level = 0, duration = 0;
     public int Level
     {
@@ -48,7 +49,7 @@ public class GameStatus : ScriptableObject
             settingTimer.Invoke();
         }
     }
-    public float RemainingDuration
+    public int RemainingDuration
     {
         get
         { 
@@ -124,14 +125,14 @@ public class GameStatus : ScriptableObject
     }
 
     //Reset game and go next level
-    public void ResetGame(int level)
+    public void ResetGame(int nextLevel)
     {
         AsyncOperationHandle unLoad = LoadingSceneHandle;
         Addressables.UnloadSceneAsync(unLoad);
         LoadingSceneHandle = Addressables.LoadSceneAsync(adventureScene, LoadSceneMode.Additive);
         LoadingSceneHandle.Completed += (Handle) =>
         {
-            Level = level;
+            Level = nextLevel;
             playerBattle.MaxHealth = playerBattle.initM_Hp;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
