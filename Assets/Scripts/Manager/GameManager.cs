@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
 
     public void level1()
     {
-        gameStatus.Duration = 1 + (gameStatus.Level - 1 ) * 60;
+        gameStatus.Duration = 300 + (gameStatus.Level - 1 ) * 60;
         StartCoroutine(SpawnRandomOnNavMesh());
     }
 
