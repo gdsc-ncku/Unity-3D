@@ -7,6 +7,7 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] float _cameraMovingThreshold, _topClamp, _bottomClamp;
     [SerializeField] PlayerBasicInformationScriptable _playerInformation;
     float _mouseXInput, _mouseYInput;
+    [SerializeField] float rotationSpeed = 5f;
 
     private void Start()
     {
@@ -62,9 +63,12 @@ public class CameraMovement : MonoBehaviour
         _rotateX = ClampAngle(_rotateX, -1 * _topClamp, _bottomClamp);
         _rotateY = ClampAngle(_rotateY, float.MinValue, float.MaxValue);
 
-        //Rotate camera
-        transform.root.rotation = Quaternion.Euler(0, _rotateY, 0);
-        _cameraRoot.transform.localRotation = Quaternion.Euler(_rotateX, 0, 0);
+        //Rotate camera with smoothing
+        Quaternion targetRootRotation = Quaternion.Euler(0, _rotateY, 0);
+        Quaternion targetCameraRotation = Quaternion.Euler(_rotateX, 0, 0);
+
+        transform.root.rotation = Quaternion.Slerp(transform.root.rotation, targetRootRotation, Time.deltaTime * rotationSpeed);
+        _cameraRoot.transform.localRotation = Quaternion.Slerp(_cameraRoot.transform.localRotation, targetCameraRotation, Time.deltaTime * rotationSpeed);
     }
 
     float ClampAngle(float Angle, float Min, float Max)

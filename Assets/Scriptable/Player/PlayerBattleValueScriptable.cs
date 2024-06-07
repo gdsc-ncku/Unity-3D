@@ -34,6 +34,7 @@ public class PlayerBattleValueScriptable : ScriptableObject
             role = value; 
             initM_Hp = role.GetComponent<StudentDataManager>().studentData.Health * role.GetComponent<StudentDataManager>().studentData.HealthRate;
             MaxHealth = initM_Hp;
+            Debug.Log(MaxHealth);
         }
     }
 

@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     int maxAttempts = 100, radius = 500;
-    [SerializeField] int level1EnemyNum = 100;
     [SerializeField] GameStatus gameStatus;
     [SerializeField] GameObject[] Enemys;
     // Start is called before the first frame update
@@ -50,7 +49,7 @@ public class GameManager : MonoBehaviour
 
     public void level1()
     {
-        gameStatus.Duration = 300 + (gameStatus.Level - 1 ) * 60;
+        gameStatus.Duration = 1 + (gameStatus.Level - 1 ) * 60;
         StartCoroutine(SpawnRandomOnNavMesh());
     }
 

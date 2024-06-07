@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: M1911
   m_EditorClassIdentifier: 
   bullet: {fileID: 6231888369005412580, guid: 1dd4c55a5522bf44495b87168b3e39f4, type: 3}
-  damage: 10
+  damage: 5
   shootForce: 40
   upwardForce: 0.7
   timeBetweenShooting: 0.5

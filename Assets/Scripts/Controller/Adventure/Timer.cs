@@ -31,7 +31,10 @@ public class Timer : MonoBehaviour
                 gameStatus.RemainingDuration--;
                 yield return new WaitForSeconds(1f);
             }
-            yield return null;
+            else
+            {
+                yield return null;
+            }
         }
         OnEnd();
     }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AK
   m_EditorClassIdentifier: 
   bullet: {fileID: 6231888369005412580, guid: 82aecbce257a6564e934d7db36c6c610, type: 3}
-  damage: 10
+  damage: 5
   shootForce: 40
   upwardForce: 1
   timeBetweenShooting: 0.05

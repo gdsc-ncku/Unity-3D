@@ -18,7 +18,7 @@ public class PlayerUI : MonoBehaviour
     void Start()
     {
         PlayerBattleInfo.PlayerDieUI = playerDieUI;
-        HealthBar.maxValue = PlayerBattleInfo.Role.GetComponent<StudentDataManager>().studentData.Health;
+        HealthBar.maxValue = PlayerBattleInfo.MaxHealth;
         HealthBar.value = HealthBar.maxValue;
         HealthValueDisplay.text = HealthBar.value.ToString() + "/" + HealthBar.maxValue.ToString();
         PlayerBattleInfo.HealthChange.AddListener(ChangeHealthBar);
@@ -108,6 +108,12 @@ public class PlayerUI : MonoBehaviour
         PlayerBasicInfo.playerControl.Player.Enable();
         Time.timeScale = 1;
         gameStatus.LoadOtherScene(true, gameStatus.mainScene);
+    }
+
+    public void CalculateGem()
+    {
+        PlayerBasicInfo.Soul += PlayerBattleInfo.Soul;
+        Menu();
     }
 
     public void NextLevel()
