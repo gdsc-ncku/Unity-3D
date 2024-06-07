@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
 
     public void level1()
     {
-        gameStatus.Duration = 600 + (gameStatus.Level - 1 ) * 60;
+        gameStatus.Duration = 300 + (gameStatus.Level - 1 ) * 60;
         StartCoroutine(SpawnRandomOnNavMesh());
     }
 
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
             Vector3 randomPosition = GetRandomPosition();
             if (randomPosition != Vector3.zero)
             {
-                GameObject instance = Instantiate(Enemys[UnityEngine.Random.Range(0, Enemys.Length)], randomPosition, Quaternion.identity);
+                GameObject instance = Instantiate(Enemys[0], randomPosition, Quaternion.identity);
                 NavMeshAgent agent = instance.GetComponent<NavMeshAgent>();
                 if (agent != null)
                 {

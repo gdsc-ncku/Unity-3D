@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec55489e788a8764caee366e2ca02cd9, type: 3}
   m_Name: GameStatus
   m_EditorClassIdentifier: 
-  Roles:
-  - {fileID: 11400000, guid: d2600dd773fa00b45a09a3270bb931fe, type: 2}
   commonFont: {fileID: 11400000, guid: f626ad39c31de8d41908d0496e1ae42b, type: 2}
   settingTimer:
     m_PersistentCalls:
@@ -32,6 +30,8 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   playerBattle: {fileID: 11400000, guid: e7c568f5ad6fe6e4d80ab0c9089eb3a4, type: 2}
+  GenerateSpeed: 3
+  remainingDuration: 0
   _catach: 1
   catachDataSuccess:
     m_PersistentCalls:
