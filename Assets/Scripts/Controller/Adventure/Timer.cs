@@ -11,9 +11,19 @@ public class Timer : MonoBehaviour
 
     private bool Pause = false;
 
-    private void Start()
+    private void OnEnable()
     {
-        gameStatus.settingTimer.AddListener(() => Being());
+        gameStatus.settingTimer.AddListener(Being);
+    }
+
+    private void OnDisable()
+    {
+        gameStatus.settingTimer.RemoveListener(Being);
+    }
+
+    private void OnDestroy()
+    {
+        gameStatus.settingTimer.RemoveListener(Being);
     }
 
     private void Being()

@@ -85,7 +85,7 @@ public class PlayerUI : MonoBehaviour
     {
         if (pauseUI.activeSelf)
         {
-            PlayerBasicInfo.playerControl.Player.Disable();
+            PlayerBasicInfo.playerControl.Player.Enable();
             playerUI.SetActive(true);
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
@@ -94,7 +94,7 @@ public class PlayerUI : MonoBehaviour
         }
         else
         {
-            PlayerBasicInfo.playerControl.Player.Enable();
+            PlayerBasicInfo.playerControl.Player.Disable();
             playerUI.SetActive(false);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
@@ -113,15 +113,15 @@ public class PlayerUI : MonoBehaviour
     public void CalculateGem()
     {
         PlayerBasicInfo.Soul += PlayerBattleInfo.Soul;
+        Time.timeScale = 1;
         Menu();
     }
 
     public void NextLevel()
     {
+        Time.timeScale = 1;
         PlayerBasicInfo.playerControl.Player.Enable();
-        int level = gameStatus.Level;
-        gameStatus.ResetGame();
-        gameStatus.Level = level + 1;
+        gameStatus.ResetGame(gameStatus.Level + 1);
     }
 
     public void Exit()

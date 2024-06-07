@@ -108,6 +108,7 @@ public class GameStatus : ScriptableObject
         ResetGame();
     }
 
+    //Reset game and level
     public void ResetGame()
     {
         AsyncOperationHandle unLoad = LoadingSceneHandle;
@@ -120,7 +121,21 @@ public class GameStatus : ScriptableObject
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         };
-        
+    }
+
+    //Reset game and go next level
+    public void ResetGame(int level)
+    {
+        AsyncOperationHandle unLoad = LoadingSceneHandle;
+        Addressables.UnloadSceneAsync(unLoad);
+        LoadingSceneHandle = Addressables.LoadSceneAsync(adventureScene, LoadSceneMode.Additive);
+        LoadingSceneHandle.Completed += (Handle) =>
+        {
+            Level = level;
+            playerBattle.MaxHealth = playerBattle.initM_Hp;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        };
     }
 
     public void ExitGame()
