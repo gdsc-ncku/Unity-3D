@@ -81,14 +81,38 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
+    public void Pause()
+    {
+        if (pauseUI.activeSelf)
+        {
+            PlayerBasicInfo.playerControl.Player.Disable();
+            playerUI.SetActive(true);
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Time.timeScale = 1;
+            pauseUI.SetActive(false);
+        }
+        else
+        {
+            PlayerBasicInfo.playerControl.Player.Enable();
+            playerUI.SetActive(false);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0;
+            pauseUI.SetActive(true);
+        }
+    }
+
     public void Menu()
     {
+        PlayerBasicInfo.playerControl.Player.Enable();
         Time.timeScale = 1;
         gameStatus.LoadOtherScene(true, gameStatus.mainScene);
     }
 
     public void NextLevel()
     {
+        PlayerBasicInfo.playerControl.Player.Enable();
         int level = gameStatus.Level;
         gameStatus.ResetGame();
         gameStatus.Level = level + 1;
