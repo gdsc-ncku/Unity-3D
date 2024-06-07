@@ -16,8 +16,8 @@ MonoBehaviour:
   Health: 100
   Defense: 10
   AttackDamage: 1
-  WalkSpeed: 6
-  JumpForce: 8
+  WalkSpeed: 4
+  JumpForce: 5
   Q_SkillDamage: 20
   Q_Skill: {fileID: 6151249542228171782, guid: 49ae9f2ac537a6f47a2f0cb22ba4e365, type: 3}
   E_SkillDamage: 30

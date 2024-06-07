@@ -1123,6 +1123,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiText: {fileID: 4675346311719295646}
   gameStatus: {fileID: 11400000, guid: 45b26f6374270b54899136a3a711ada1, type: 2}
+  WinUI: {fileID: 0}
+  PlayerUI: {fileID: 0}
 --- !u!1 &6070607890605225814
 GameObject:
   m_ObjectHideFlags: 0
@@ -2312,8 +2314,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8973365206664145692}
   serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 2
+  m_Mass: 60
+  m_Drag: 0
   m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -2349,6 +2351,7 @@ MonoBehaviour:
   _topClamp: 70
   _bottomClamp: 70
   _playerInformation: {fileID: 11400000, guid: 5186a9aa120a8a049a936607850ca30c, type: 2}
+  rotationSpeed: 5
 --- !u!114 &6586530069483122730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2514,8 +2517,13 @@ MonoBehaviour:
   BulletMaxNum: {fileID: 4180648370160603176}
   WeaponIcon: {fileID: 5170985888391862425}
   HealthValueDisplay: {fileID: 1823436200975399929}
-  PlayerInfo: {fileID: 11400000, guid: e7c568f5ad6fe6e4d80ab0c9089eb3a4, type: 2}
+  PlayerBattleInfo: {fileID: 0}
+  PlayerBasicInfo: {fileID: 0}
+  gameStatus: {fileID: 0}
   playerDieUI: {fileID: 0}
+  pauseUI: {fileID: 0}
+  winU: {fileID: 0}
+  playerUI: {fileID: 0}
 --- !u!114 &6039906116569970953
 MonoBehaviour:
   m_ObjectHideFlags: 0

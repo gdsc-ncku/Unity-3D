@@ -83,7 +83,11 @@ public class PlayerMovement : MonoBehaviour
         //Moving
         Vector2 inputVector = playerControl.Player.Move.ReadValue<Vector2>();
         Vector3 moveDirection = rb.transform.forward * inputVector.y + rb.transform.right * inputVector.x;
-        rb.AddForce(moveDirection.normalized * Speed * 5f, ForceMode.Force);
+        rb.AddForce(moveDirection.normalized * Speed * 5f * rb.mass, ForceMode.Force);
+        if(inputVector == Vector2.zero)
+        {
+            rb.velocity = new Vector3(0, rb.velocity.y, 0);
+        }
     }
 
     // Jump
@@ -110,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator Jump()
     {
         float jumpForce = MovementConst.Role.GetComponent<StudentDataManager>().studentData.JumpForce;
-        rb.AddForce(gameObject.transform.up * jumpForce, ForceMode.Impulse);
+        rb.AddForce(gameObject.transform.up * jumpForce * rb.mass, ForceMode.Impulse);
 
         yield return new WaitForSeconds(0.1f);
 
