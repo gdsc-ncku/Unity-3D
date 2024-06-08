@@ -959,6 +959,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   HealthBar: {fileID: 5939902094554527186}
+  gameStatus: {fileID: 11400000, guid: 45b26f6374270b54899136a3a711ada1, type: 2}
   nowStatus: 0
 --- !u!195 &5722188603750483530
 NavMeshAgent:

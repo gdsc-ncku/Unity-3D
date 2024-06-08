@@ -885,6 +885,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   HealthBar: {fileID: 212463396790211666}
+  gameStatus: {fileID: 11400000, guid: 45b26f6374270b54899136a3a711ada1, type: 2}
   nowStatus: 0
 --- !u!54 &521394622962306240
 Rigidbody:

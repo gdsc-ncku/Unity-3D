@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
                     PlayerPrefs.Save();
                     Debug.Log("Reset");
                 }
+
+                Debug.Log(gameStatus.enemyNum);
         #endif
     }
 
@@ -56,7 +58,8 @@ public class GameManager : MonoBehaviour
 
     IEnumerator SpawnRandomOnNavMesh()
     {
-        for(int i = 0; i < 5; i++)
+        Debug.Log(gameStatus.enemyNum);
+        for (int i = 0; i < 5; i++)
         {
             Vector3 randomPosition = GetRandomPosition();
             if (randomPosition != Vector3.zero)
@@ -72,12 +75,17 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
+            gameStatus.enemyNum++;
 
             yield return null;
         }
 
         while (gameStatus.RemainingDuration > 0)
         {
+            while (gameStatus.enemyNum > 12)
+            {
+                yield return new WaitForSeconds(0.1f);
+            }
             Vector3 randomPosition = GetRandomPosition();
             if (randomPosition != Vector3.zero)
             {
@@ -94,6 +102,7 @@ public class GameManager : MonoBehaviour
             }
             float waitTime = Math.Max(gameStatus.GenerateSpeed, 0.5f);
             yield return new WaitForSeconds(waitTime);
+            gameStatus.enemyNum++;
         }
     }
 

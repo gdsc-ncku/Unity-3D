@@ -96,7 +96,7 @@ public class EEStudent : CharacterBaseData
 
         // get rigidbody component
         Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
-        projectileRb.AddForce(Camera.main.transform.forward * 15f, ForceMode.Impulse);
+        projectileRb.AddForce(Camera.main.transform.forward * 30f, ForceMode.Impulse);
     }
 
     public override void UseingE_Skill()

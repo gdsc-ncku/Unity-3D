@@ -13,6 +13,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] PlayerBattleValueScriptable BattleInfo;
     [SerializeField] LayerMask searchLayer;
     [SerializeField] Slider HealthBar;
+    [SerializeField] GameStatus gameStatus;
     bool isPause = false;
     private Animator animator;
     public EnemyStatus nowStatus;
@@ -46,6 +47,7 @@ public class EnemyAI : MonoBehaviour
             yield break;
         }
 
+        gameStatus.enemyNum--;
         nowStatus = EnemyStatus.die;
         if (gameObject.GetComponent<Collider>())
         {

@@ -1351,6 +1351,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   HealthBar: {fileID: 3755463792898056535}
+  gameStatus: {fileID: 11400000, guid: 45b26f6374270b54899136a3a711ada1, type: 2}
   nowStatus: 0
 --- !u!114 &6558968397173402460
 MonoBehaviour:

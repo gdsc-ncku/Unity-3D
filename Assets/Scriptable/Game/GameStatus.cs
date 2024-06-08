@@ -19,6 +19,7 @@ public class GameStatus : ScriptableObject
     public AssetReference mainScene, adventureScene;
     public PlayerBattleValueScriptable playerBattle;
     public float GenerateSpeed;
+    public int enemyNum = 0;
     public int remainingDuration = 0;
     private int level = 0, duration = 0;
     public int Level
@@ -117,6 +118,7 @@ public class GameStatus : ScriptableObject
         LoadingSceneHandle = Addressables.LoadSceneAsync(adventureScene, LoadSceneMode.Additive);
         LoadingSceneHandle.Completed += (Handle) => 
         {
+            enemyNum = 1;
             Level = 1;
             playerBattle.MaxHealth = playerBattle.initM_Hp;
             Cursor.visible = false;
@@ -132,6 +134,7 @@ public class GameStatus : ScriptableObject
         LoadingSceneHandle = Addressables.LoadSceneAsync(adventureScene, LoadSceneMode.Additive);
         LoadingSceneHandle.Completed += (Handle) =>
         {
+            enemyNum = 1;
             Level = nextLevel;
             playerBattle.MaxHealth = playerBattle.initM_Hp;
             Cursor.visible = false;
