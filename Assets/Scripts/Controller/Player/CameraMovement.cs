@@ -7,7 +7,7 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] float _cameraMovingThreshold, _topClamp, _bottomClamp;
     [SerializeField] PlayerBasicInformationScriptable _playerInformation;
     float _mouseXInput, _mouseYInput;
-    [SerializeField] float rotationSpeed = 5f;
+    [SerializeField] float rotationSpeed = 3f;
 
     private void Start()
     {

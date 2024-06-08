@@ -32,7 +32,7 @@ public class CharacterAttributeRateController : MonoBehaviour
         }
         else if (rate == whichRate.Defense)
         {
-            originRate = characterBaseData.Defense;
+            originRate = characterBaseData.DefenseRate;
         }
         else if (rate == whichRate.AttackRate)
         {
@@ -61,7 +61,7 @@ public class CharacterAttributeRateController : MonoBehaviour
             minus.SetActive(false);
         }
 
-        int val = (1 << (int)((nowRate - 1) * 10));
+        int val = (1 << ((int)(nowRate - 1) * 10));
         if (playerBasicInfo.Soul < val)
         {
             plus.SetActive(false);
@@ -96,42 +96,43 @@ public class CharacterAttributeRateController : MonoBehaviour
         }
 
         consume.text = val.ToString("0");
+        Debug.Log(rate.ToString() + "," + val + "," + originRate + "," + nowRate);
     }
 
     public void Plus()
     {
+        playerBasicInfo.Soul -= (1 << (int)((nowRate - 1) * 10));
         if (rate == whichRate.Health)
         {
-            nowRate++;
+            nowRate += 0.1f;
             characterBaseData.HealthRate += 0.1f;
         }
         else if (rate == whichRate.Defense)
         {
-            nowRate++;
+            nowRate += 0.1f;
             characterBaseData.DefenseRate += 0.1f;
         }
         else if (rate == whichRate.AttackRate)
         {
-            nowRate++;
+            nowRate += 0.1f;
             characterBaseData.AttackRate += 0.1f;
         }
         else if (rate == whichRate.WalkSpeed)
         {
-            nowRate++;
+            nowRate += 0.1f;
             characterBaseData.WalkSpeedRate += 0.1f;
         }
         else if (rate == whichRate.MainDamage)
         {
-            nowRate++;
+            nowRate += 0.1f;
             characterBaseData.Q_SkillDamageRate += 0.1f;
         }
         else if (rate == whichRate.SecondDamage)
         {
-            nowRate++;
+            nowRate += 0.1f;
             characterBaseData.E_SkillDamageRate += 0.1f;
         }
 
-        playerBasicInfo.Soul -= (1 << (int)((nowRate - 1) * 10));
         display.UpdateDisplay();
     }
 
@@ -144,36 +145,36 @@ public class CharacterAttributeRateController : MonoBehaviour
 
         if (rate == whichRate.Health)
         {
-            nowRate--;
+            nowRate -= 0.1f;
             characterBaseData.HealthRate -= 0.1f;
         }
         else if (rate == whichRate.Defense)
         {
-            nowRate--;
+            nowRate -= 0.1f;
             characterBaseData.DefenseRate -= 0.1f;
         }
         else if (rate == whichRate.AttackRate)
         {
-            nowRate--;
+            nowRate -= 0.1f;
             characterBaseData.AttackRate -= 0.1f;
         }
         else if (rate == whichRate.WalkSpeed)
         {
-            nowRate--;
+            nowRate -= 0.1f;
             characterBaseData.WalkSpeedRate -= 0.1f;
         }
         else if (rate == whichRate.MainDamage)
         {
-            nowRate--;
+            nowRate -= 0.1f;
             characterBaseData.Q_SkillDamageRate -= 0.1f;
         }
         else if (rate == whichRate.SecondDamage)
         {
-            nowRate--;
+            nowRate -= 0.1f;
             characterBaseData.E_SkillDamageRate -= 0.1f;
         }
 
-        playerBasicInfo.Soul += (1 << (int)(((nowRate - 1) * 10) - 1));
+        playerBasicInfo.Soul += (1 << (int)((nowRate - 1) * 10));
         display.UpdateDisplay();
     }
 }

@@ -118,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
 
         yield return new WaitForSeconds(0.1f);
 
-        while (!Physics.Raycast(GroundDetector.transform.position, GroundDetector.transform.up * -1, out _, 0.05f))
+        while (!Physics.Raycast(GroundDetector.transform.position, GroundDetector.transform.up * -1, 0.05f))
         {
             yield return null;
         }

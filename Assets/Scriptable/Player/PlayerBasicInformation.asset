@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Admin
   Level: 1
-  Soul: 0
+  soul: 0
   Width: 1920
   Height: 1080
   MouseDPI: 800
-  edpi: 80
+  edpi: 800
   MovingMusic: 100
   EnemyMusic: 100
   BackgroundMusic: 100
@@ -26,9 +26,3 @@ MonoBehaviour:
   Mechanic: {fileID: 2591355812482505310, guid: 572e9de430316ed40a6ffaa05f0afdd0, type: 3}
   Chemistry: {fileID: 6231363875576087526, guid: 484c2f9cce8ad2847895330cd3724d34, type: 3}
   EE: {fileID: 2021171994817122406, guid: 99fbd28ddef181d4f8cb680c16cd634d, type: 3}
-  HealthRate: 1
-  AttackRate: 1
-  WalkSpeedRate: 1
-  DefenseRate: 1
-  Q_SkillDamageRate: 1
-  E_SkillDamageRate: 1

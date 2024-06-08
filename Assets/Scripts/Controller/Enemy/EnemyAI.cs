@@ -32,6 +32,7 @@ public class EnemyAI : MonoBehaviour
 
             if(Hp <= 0)
             {
+                StopAllCoroutines();
                 StartCoroutine(EnemyDie());
             }
         }
@@ -39,6 +40,7 @@ public class EnemyAI : MonoBehaviour
 
     IEnumerator EnemyDie()
     {
+        yield return null;
         if(Health > 0 || nowStatus == EnemyStatus.die)
         {
             yield break;
@@ -135,7 +137,7 @@ public class EnemyAI : MonoBehaviour
     IEnumerator AvoidStuck()
     {
         int stuckTime = 0;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.1f);
         while(true)
         {
             if (Vector3.Distance(agent.transform.position, lastPosition) < 0.1f && nowStatus != EnemyStatus.attack)
@@ -163,7 +165,7 @@ public class EnemyAI : MonoBehaviour
                 StartCoroutine(SearchRoutine());
             }
 
-            if(stuckTime > 10)
+            if(stuckTime > 3)
             {
                 Vector3 randomPoint = transform.position + Random.insideUnitSphere * 10;
                 NavMeshHit hit;
@@ -173,17 +175,17 @@ public class EnemyAI : MonoBehaviour
                 }
             }
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
     //Chasing player
     IEnumerator SearchRoutine()
-    {    
+    {
         //Debug.Log("Chasing");
+        animator.Play("Chasing", 0, 0);
         while (BattleInfo.Player != null && nowStatus == EnemyStatus.chasing)
         {
-            animator.Play("Chasing", 0, 0);
             agent.speed = EnemyInfo.RunSpeed;
             NavMeshHit hit;
             if (NavMesh.SamplePosition(BattleInfo.Player.transform.position, out hit, EnemyInfo.AttackRange, NavMesh.AllAreas))
